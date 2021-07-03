@@ -13,6 +13,7 @@
 		FD6956922690DB1E0057BBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6956902690DB1E0057BBE8 /* Main.storyboard */; };
 		FD6956942690DB1F0057BBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD6956932690DB1F0057BBE8 /* Assets.xcassets */; };
 		FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */; };
+		FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FD6956932690DB1F0057BBE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD6956962690DB1F0057BBE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD6956982690DB1F0057BBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheatSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */,
 				FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */,
 				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
+				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
 				FD6956902690DB1E0057BBE8 /* Main.storyboard */,
 				FD6956932690DB1F0057BBE8 /* Assets.xcassets */,
 				FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */,
 				FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */,
+				FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */,
 				FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
