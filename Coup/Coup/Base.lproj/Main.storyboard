@@ -15,8 +15,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coup Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO9-Un-fI2">
+                                <rect key="frame" x="156" y="173" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXP-rl-JN2">
+                                <rect key="frame" x="155" y="269" width="80" height="30"/>
+                                <state key="normal" title="Join Private"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukd-Da-cGx">
+                                <rect key="frame" x="124" y="329" width="142" height="30"/>
+                                <state key="normal" title="Create Private Game"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgm-BL-qKO">
+                                <rect key="frame" x="172" y="389" width="46" height="30"/>
+                                <state key="normal" title="Offline"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDL-VU-DEd">
+                                <rect key="frame" x="166.66666666666666" y="449" width="57" height="30"/>
+                                <state key="normal" title="Settings"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4L-Od-m8e">
+                                <rect key="frame" x="154.66666666666666" y="509" width="81" height="30"/>
+                                <state key="normal" title="How to Play"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vO9-Un-fI2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="0SZ-tR-9F0"/>
+                            <constraint firstItem="sDL-VU-DEd" firstAttribute="top" secondItem="Jgm-BL-qKO" secondAttribute="bottom" constant="30" id="1TG-nX-FBn"/>
+                            <constraint firstItem="YXP-rl-JN2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1yG-fR-8Ko"/>
+                            <constraint firstItem="Jgm-BL-qKO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8eG-Dn-dIE"/>
+                            <constraint firstItem="t4L-Od-m8e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="96L-pe-RSv"/>
+                            <constraint firstItem="Ukd-Da-cGx" firstAttribute="top" secondItem="YXP-rl-JN2" secondAttribute="bottom" constant="30" id="EHZ-fO-ONl"/>
+                            <constraint firstItem="sDL-VU-DEd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HZr-2q-DfK"/>
+                            <constraint firstItem="vO9-Un-fI2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Oet-zE-1XX"/>
+                            <constraint firstItem="Ukd-Da-cGx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TCM-R8-mzs"/>
+                            <constraint firstItem="YXP-rl-JN2" firstAttribute="top" secondItem="vO9-Un-fI2" secondAttribute="bottom" constant="75" id="W1k-rE-o3v"/>
+                            <constraint firstItem="t4L-Od-m8e" firstAttribute="top" secondItem="sDL-VU-DEd" secondAttribute="bottom" constant="30" id="bmb-Ys-9jq"/>
+                            <constraint firstItem="Jgm-BL-qKO" firstAttribute="top" secondItem="Ukd-Da-cGx" secondAttribute="bottom" constant="30" id="r6j-ZH-ulH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ofc-0F-QpB"/>
                 </viewController>
