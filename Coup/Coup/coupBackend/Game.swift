@@ -1,3 +1,4 @@
+//game needs to be a view controller, to hide different components
 class Game{
 
   var all: [Player]
@@ -29,9 +30,18 @@ class Game{
   func actOnMove(move: Move){
     switch move.moveName{
     case "income":
-      move.
+      move.callerPlayer.coins += 1
     }
+    case "foreignAid":
+      move.callerPlayer.coins += 1
+    }
+    case "coup":
+      move.callerPlayer.coins -= 7
+      move.targetPlayer.revealCard()
+    default:
+      break
   }
+
   func incrementInd(ind: inout Int){
     ind += 1
     if ind >= all.count{
