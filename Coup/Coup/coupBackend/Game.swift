@@ -2,6 +2,11 @@
 class Game{
 
   var all: [Player]
+    
+    Deck = new Deck
+    deck.givemeacard()
+    deck.giveCard(card)
+    
   func turn(){
 
     var turnInd = 0
@@ -49,3 +54,4 @@ class Game{
     }
   }
 }
+
