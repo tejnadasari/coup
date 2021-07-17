@@ -19,13 +19,28 @@ class GameViewController: UIViewController {
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var foreignBtn: UIButton!
     
-    var card: Card
+    var deck: Deck?
+    var numPlayers: Int? //this will be set in a prepare function in the previous VC
+    var players: [Player] = []
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        card = Card()
+        initializePlayers()
+        deck = Deck()
         runGame()
+    }
+    
+    func initializePlayers() {
+        if (numPlayers == nil){
+            return
+        }
+        players.append(realPlayer())
+        for n in 2...numPlayers!{
+            players.append(AI())
+        }
     }
     
     func runGame(){
