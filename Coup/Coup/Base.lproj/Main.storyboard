@@ -477,10 +477,10 @@
             </objects>
             <point key="canvasLocation" x="1790.7692307692307" y="870.85308056872032"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="FJp-fG-jiR">
             <objects>
-                <viewController id="P54-Zb-Yud" sceneMemberID="viewController">
+                <viewController id="P54-Zb-Yud" customClass="GameViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fgS-Tg-KgQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,6 +492,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86P-JL-F0s">
                                 <rect key="frame" x="176.66666666666666" y="491" width="37" height="30"/>
                                 <state key="normal" title="Coup"/>
+                                <connections>
+                                    <action selector="coupBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="qp5-QL-IYI"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="o1H-AU-pdU">
                                 <rect key="frame" x="60" y="576" width="82" height="180"/>
@@ -499,18 +502,30 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoC-LC-FiP">
                                         <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
                                         <state key="normal" title="Tax"/>
+                                        <connections>
+                                            <action selector="taxBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="qac-ul-4yj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-Qc-nfV">
                                         <rect key="frame" x="0.0" y="50" width="82" height="30"/>
                                         <state key="normal" title="Steal"/>
+                                        <connections>
+                                            <action selector="stealBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="fhJ-9L-86p"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXG-03-0ij">
                                         <rect key="frame" x="0.0" y="100" width="82" height="30"/>
                                         <state key="normal" title="Assassinate"/>
+                                        <connections>
+                                            <action selector="assassinateBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="15n-OO-kRx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0Y-84-Na6">
                                         <rect key="frame" x="0.0" y="150" width="82" height="30"/>
                                         <state key="normal" title="Allow"/>
+                                        <connections>
+                                            <action selector="allowBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="Kgk-c7-vaS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -520,18 +535,31 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAG-9d-2Lp">
                                         <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
                                         <state key="normal" title="Income"/>
+                                        <connections>
+                                            <action selector="incomeBtn:" destination="wlj-R0-WfG" eventType="touchUpInside" id="sHV-xT-Kba"/>
+                                            <action selector="incomeBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="Gt4-4k-buf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrP-kc-H2t">
                                         <rect key="frame" x="0.0" y="50" width="78" height="30"/>
                                         <state key="normal" title="Foreign Aid"/>
+                                        <connections>
+                                            <action selector="foreignBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="F9N-or-gs4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoV-Az-sxH">
                                         <rect key="frame" x="0.0" y="100" width="78" height="30"/>
                                         <state key="normal" title="Exchange"/>
+                                        <connections>
+                                            <action selector="exchangeBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="2EN-t1-Lbb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h56-EB-oNn">
                                         <rect key="frame" x="0.0" y="150" width="78" height="30"/>
                                         <state key="normal" title="Challenge"/>
+                                        <connections>
+                                            <action selector="challengeBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="O4J-Uw-SYM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -551,8 +579,20 @@
                             <constraint firstItem="csP-34-TK8" firstAttribute="trailing" secondItem="02V-Ef-bxq" secondAttribute="trailing" constant="20" id="wmd-Zi-C5I"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="allowBtn" destination="g0Y-84-Na6" id="Eia-MM-Vr8"/>
+                        <outlet property="assassinateBtn" destination="tXG-03-0ij" id="Nzy-e8-6Ce"/>
+                        <outlet property="challengeBtn" destination="h56-EB-oNn" id="GeR-IN-ysc"/>
+                        <outlet property="coupBtn" destination="86P-JL-F0s" id="GH0-O9-P7w"/>
+                        <outlet property="exchangeBtn" destination="DoV-Az-sxH" id="yHP-uH-Qgv"/>
+                        <outlet property="foreignBtn" destination="JrP-kc-H2t" id="0wC-32-Qc6"/>
+                        <outlet property="incomeBtn" destination="FAG-9d-2Lp" id="rgC-cn-pNH"/>
+                        <outlet property="stealBtn" destination="zhU-Qc-nfV" id="GAO-59-xFB"/>
+                        <outlet property="taxBtn" destination="JoC-LC-FiP" id="sMc-lL-CWe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sx5-pJ-1Yq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="wlj-R0-WfG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2649.2307692307691" y="874.4075829383886"/>
         </scene>
