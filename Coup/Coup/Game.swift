@@ -3,7 +3,7 @@ class Game{
 
   var all: [Player]
     
-    Deck = new Deck
+    Deck = new Deck()
     deck.givemeacard()
     deck.giveCard(card)
     

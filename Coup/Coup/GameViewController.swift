@@ -19,13 +19,23 @@ class GameViewController: UIViewController {
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var foreignBtn: UIButton!
     
+    var card: Card
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        card = Card()
         runGame()
     }
     
     func runGame(){
+        
+        var keepGoing:Bool = true
+        
+        while keepGoing{
+            
+        }
+        
         
     }
     
