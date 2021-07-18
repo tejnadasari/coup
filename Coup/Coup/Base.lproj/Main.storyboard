@@ -431,7 +431,7 @@
                                 <state key="normal" title="Game Start"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Number of AI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eot-XG-cyB">
-                                <rect key="frame" x="111.33333333333331" y="375" width="167.33333333333337" height="21"/>
+                                <rect key="frame" x="111.33333333333333" y="375" width="167.33333333333337" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -618,13 +618,13 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvd-Ar-kyB">
-                                        <rect key="frame" x="124.33333333333331" y="0.0" width="141.66666666666669" height="36.666666666666664"/>
+                                        <rect key="frame" x="124.33333333333333" y="0.0" width="141.66666666666669" height="20.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ba2-Ma-cMU">
-                                        <rect key="frame" x="0.0" y="46.666666666666686" width="390" height="567.66666666666652"/>
+                                        <rect key="frame" x="0.0" y="30.666666666666686" width="390" height="653.66666666666652"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NYZ-d4-uRa">
@@ -638,11 +638,11 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMY-Tt-p7C">
-                                        <rect key="frame" x="178" y="624.33333333333337" width="34" height="54"/>
+                                        <rect key="frame" x="178" y="694.33333333333337" width="34" height="30.666666666666629"/>
                                         <state key="normal" title="Start"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovz-DY-VWR">
-                                        <rect key="frame" x="180" y="688.33333333333337" width="30" height="77.666666666666629"/>
+                                        <rect key="frame" x="180" y="735" width="30" height="31"/>
                                         <state key="normal" title="Exit"/>
                                     </button>
                                 </subviews>
