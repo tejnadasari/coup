@@ -618,13 +618,13 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvd-Ar-kyB">
-                                        <rect key="frame" x="124.33333333333333" y="0.0" width="141.66666666666669" height="20.666666666666668"/>
+                                        <rect key="frame" x="124.33333333333333" y="0.0" width="141.66666666666669" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ba2-Ma-cMU">
-                                        <rect key="frame" x="0.0" y="30.666666666666686" width="390" height="653.66666666666652"/>
+                                        <rect key="frame" x="0.0" y="30.333333333333314" width="390" height="655.66666666666674"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NYZ-d4-uRa">
@@ -638,11 +638,11 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMY-Tt-p7C">
-                                        <rect key="frame" x="178" y="694.33333333333337" width="34" height="30.666666666666629"/>
+                                        <rect key="frame" x="178" y="696" width="34" height="30"/>
                                         <state key="normal" title="Start"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovz-DY-VWR">
-                                        <rect key="frame" x="180" y="735" width="30" height="31"/>
+                                        <rect key="frame" x="180" y="736" width="30" height="30"/>
                                         <state key="normal" title="Exit"/>
                                     </button>
                                 </subviews>

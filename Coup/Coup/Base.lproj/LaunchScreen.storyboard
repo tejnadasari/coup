@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +14,22 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coup Splash Screen" translatesAutoresizingMaskIntoConstraints="NO" id="GNs-Nq-Sjl">
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.84620320800000004" green="0.80273205039999995" blue="0.78727632759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GNs-Nq-Sjl" secondAttribute="trailing" id="FL9-rq-oPH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GNs-Nq-Sjl" secondAttribute="bottom" id="G0W-sb-FNV"/>
+                            <constraint firstItem="GNs-Nq-Sjl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Uvd-d2-H7W"/>
+                            <constraint firstItem="GNs-Nq-Sjl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="a1q-Ut-Rjs"/>
+                            <constraint firstItem="GNs-Nq-Sjl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pFR-Cb-N1l"/>
+                            <constraint firstItem="GNs-Nq-Sjl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uxY-wu-fQC"/>
+                            <constraint firstItem="GNs-Nq-Sjl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xjY-SN-ge6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,8 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Coup Splash Screen" width="367.66665649414062" height="500"/>
     </resources>
 </document>
