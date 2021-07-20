@@ -1,0 +1,14 @@
+platform :ios, '9.0'
+
+target 'Coup' do
+  use_frameworks!
+
+# Add the Firebase pod for Google Analytics
+pod 'Firebase/Analytics'
+
+# add pods for desired Firebase products
+# https://firebase.google.com/docs/ios/setup#available-pods
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+
+end

@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138DD00610EC9333ACEE2278 /* Pods_Coup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FFF089A57325E0FD37053B /* Pods_Coup.framework */; };
 		AC900F0F26A3601F000C6B89 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F0E26A3601F000C6B89 /* GameViewController.swift */; };
 		AC900F1926A36C6D000C6B89 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1826A36C6D000C6B89 /* Card.swift */; };
 		AC900F1B26A36C9C000C6B89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1A26A36C9C000C6B89 /* Deck.swift */; };
 		AC900F1D26A36C9F000C6B89 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1C26A36C9F000C6B89 /* Game.swift */; };
 		AC900F1F26A36CA3000C6B89 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1E26A36CA3000C6B89 /* Player.swift */; };
 		AC900F2126A36CA6000C6B89 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F2026A36CA6000C6B89 /* Move.swift */; };
+		FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */; };
 		FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */; };
 		FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */; };
 		FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568E2690DB1E0057BBE8 /* ViewController.swift */; };
@@ -24,12 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.release.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.release.xcconfig"; sourceTree = "<group>"; };
+		89FFF089A57325E0FD37053B /* Pods_Coup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC900F0E26A3601F000C6B89 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		AC900F1826A36C6D000C6B89 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC900F1A26A36C9C000C6B89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		AC900F1C26A36C9F000C6B89 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AC900F1E26A36CA3000C6B89 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		AC900F2026A36CA6000C6B89 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.debug.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.debug.xcconfig"; sourceTree = "<group>"; };
+		FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6956872690DB1E0057BBE8 /* Coup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,17 +53,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				138DD00610EC9333ACEE2278 /* Pods_Coup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22D575462D679C2F3C65F990 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */,
+				7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5361F571B1CD6A55B0B75EAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89FFF089A57325E0FD37053B /* Pods_Coup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD642A5E26A694BA00EC5B64 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				AC900F1826A36C6D000C6B89 /* Card.swift */,
+				AC900F1A26A36C9C000C6B89 /* Deck.swift */,
+				AC900F1C26A36C9F000C6B89 /* Game.swift */,
+				AC900F1E26A36CA3000C6B89 /* Player.swift */,
+				AC900F2026A36CA6000C6B89 /* Move.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
 		FD69567E2690DB1E0057BBE8 = {
 			isa = PBXGroup;
 			children = (
 				FD6956892690DB1E0057BBE8 /* Coup */,
 				FD6956882690DB1E0057BBE8 /* Products */,
+				22D575462D679C2F3C65F990 /* Pods */,
+				5361F571B1CD6A55B0B75EAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,11 +111,7 @@
 		FD6956892690DB1E0057BBE8 /* Coup */ = {
 			isa = PBXGroup;
 			children = (
-				AC900F1826A36C6D000C6B89 /* Card.swift */,
-				AC900F1A26A36C9C000C6B89 /* Deck.swift */,
-				AC900F1C26A36C9F000C6B89 /* Game.swift */,
-				AC900F1E26A36CA3000C6B89 /* Player.swift */,
-				AC900F2026A36CA6000C6B89 /* Move.swift */,
+				FD642A5E26A694BA00EC5B64 /* Backend */,
 				FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */,
 				FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */,
 				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
@@ -85,7 +120,7 @@
 				FD6956932690DB1F0057BBE8 /* Assets.xcassets */,
 				FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */,
 				FD6956982690DB1F0057BBE8 /* Info.plist */,
-				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
+				FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */,
 			);
 			path = Coup;
 			sourceTree = "<group>";
@@ -93,6 +128,7 @@
 		FD98412E269E3E320035E9BB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
 				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
 				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
 			);
@@ -106,9 +142,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD69569B2690DB1F0057BBE8 /* Build configuration list for PBXNativeTarget "Coup" */;
 			buildPhases = (
+				3ABCA265C13761B13343A7D5 /* [CP] Check Pods Manifest.lock */,
 				FD6956832690DB1E0057BBE8 /* Sources */,
 				FD6956842690DB1E0057BBE8 /* Frameworks */,
 				FD6956852690DB1E0057BBE8 /* Resources */,
+				1AE26592C84216CFBE57BF1A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,12 +195,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */,
+				FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */,
 				FD6956942690DB1F0057BBE8 /* Assets.xcassets in Resources */,
 				FD6956922690DB1E0057BBE8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AE26592C84216CFBE57BF1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coup/Pods-Coup-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coup/Pods-Coup-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coup/Pods-Coup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ABCA265C13761B13343A7D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Coup-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FD6956832690DB1E0057BBE8 /* Sources */ = {
@@ -323,6 +404,7 @@
 		};
 		FD69569C2690DB1F0057BBE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -342,6 +424,7 @@
 		};
 		FD69569D2690DB1F0057BBE8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

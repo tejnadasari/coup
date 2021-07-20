@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>849821126861-84q6oh4bh1j719caic3fgbs7slpj4dhp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.849821126861-84q6oh4bh1j719caic3fgbs7slpj4dhp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAiWI-oWKWOtUSai1BEEBQ8w4OEaWfbifc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>849821126861</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.utexas.team8.Coup</string>
+	<key>PROJECT_ID</key>
+	<string>cs-371l-coup-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cs-371l-coup-project.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:849821126861:ios:d02b61b3a844e66ec09984</string>
+</dict>
+</plist>

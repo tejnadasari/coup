@@ -1,0 +1,6 @@
+framework module Pods_Coup {
+  umbrella header "Pods-Coup-umbrella.h"
+
+  export *
+  module * { export * }
+}
