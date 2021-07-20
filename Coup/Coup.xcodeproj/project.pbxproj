@@ -24,6 +24,7 @@
 		FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */; };
 		FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */; };
 		FD98412D269E3E290035E9BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD98412C269E3E290035E9BB /* SettingsViewController.swift */; };
+		FDF30E3A26A719BE008859A7 /* Cash Register.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDF30E3926A719BE008859A7 /* Cash Register.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		FD6956982690DB1F0057BBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheatSheetViewController.swift; sourceTree = "<group>"; };
 		FD98412C269E3E290035E9BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FDF30E3926A719BE008859A7 /* Cash Register.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cash Register.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		FD6956892690DB1E0057BBE8 /* Coup */ = {
 			isa = PBXGroup;
 			children = (
+				FDF30E3826A719A9008859A7 /* Sounds */,
 				FD2F633426A697CD00E9BE63 /* Coup.entitlements */,
 				FD642A5E26A694BA00EC5B64 /* Backend */,
 				FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */,
@@ -137,6 +140,14 @@
 				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FDF30E3826A719A9008859A7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				FDF30E3926A719BE008859A7 /* Cash Register.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */,
 				FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */,
 				FD6956942690DB1F0057BBE8 /* Assets.xcassets in Resources */,
+				FDF30E3A26A719BE008859A7 /* Cash Register.mp3 in Resources */,
 				FD6956922690DB1E0057BBE8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
