@@ -144,35 +144,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coup Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO9-Un-fI2">
-                                <rect key="frame" x="156" y="173" width="78" height="21"/>
+                                <rect key="frame" x="156" y="129" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXP-rl-JN2">
-                                <rect key="frame" x="155" y="269" width="80" height="30"/>
+                                <rect key="frame" x="155" y="225" width="80" height="30"/>
                                 <state key="normal" title="Join Private"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukd-Da-cGx">
-                                <rect key="frame" x="124" y="329" width="142" height="30"/>
+                                <rect key="frame" x="124" y="285" width="142" height="30"/>
                                 <state key="normal" title="Create Private Game"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgm-BL-qKO">
-                                <rect key="frame" x="172" y="389" width="46" height="30"/>
+                                <rect key="frame" x="172" y="345" width="46" height="30"/>
                                 <state key="normal" title="Offline"/>
                                 <connections>
                                     <segue destination="WAN-SW-7tD" kind="show" identifier="OfflineSegueIdentifier" id="DXk-od-cbA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDL-VU-DEd">
-                                <rect key="frame" x="166.66666666666666" y="449" width="57" height="30"/>
+                                <rect key="frame" x="166.66666666666666" y="405" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="WSx-xW-JoZ" kind="show" id="dXM-7x-Tti"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4L-Od-m8e">
-                                <rect key="frame" x="154.66666666666666" y="509" width="81" height="30"/>
+                                <rect key="frame" x="154.66666666666666" y="465" width="81" height="30"/>
                                 <state key="normal" title="How to Play"/>
                                 <connections>
                                     <segue destination="Auq-Mg-zAN" kind="show" id="Ax4-PV-HJU"/>
@@ -572,27 +572,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coup Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YR-oD-deg">
-                                <rect key="frame" x="156" y="173" width="78" height="21"/>
+                                <rect key="frame" x="156" y="85" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Game Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHn-Oc-VXW">
-                                <rect key="frame" x="121" y="264" width="148" height="21"/>
+                                <rect key="frame" x="121" y="176" width="148" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oez-5g-38o">
-                                <rect key="frame" x="172" y="431" width="46" height="30"/>
+                                <rect key="frame" x="172" y="343" width="46" height="30"/>
                                 <state key="normal" title="Add AI"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8N-Bm-JLU">
-                                <rect key="frame" x="156" y="496" width="78" height="30"/>
+                                <rect key="frame" x="156" y="408" width="78" height="30"/>
                                 <state key="normal" title="Game Start"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Number of AI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eot-XG-cyB">
-                                <rect key="frame" x="111.33333333333333" y="375" width="167.33333333333337" height="21"/>
+                                <rect key="frame" x="111.33333333333333" y="287" width="167.33333333333337" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
