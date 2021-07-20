@@ -14,6 +14,7 @@
 		AC900F1D26A36C9F000C6B89 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1C26A36C9F000C6B89 /* Game.swift */; };
 		AC900F1F26A36CA3000C6B89 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1E26A36CA3000C6B89 /* Player.swift */; };
 		AC900F2126A36CA6000C6B89 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F2026A36CA6000C6B89 /* Move.swift */; };
+		FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */; };
 		FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */; };
 		FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */; };
 		FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 		AC900F2026A36CA6000C6B89 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.debug.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2F633426A697CD00E9BE63 /* Coup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Coup.entitlements; sourceTree = "<group>"; };
+		FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6956872690DB1E0057BBE8 /* Coup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
 				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
 				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
+				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */,
 				FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */,
 				AC900F1D26A36C9F000C6B89 /* Game.swift in Sources */,
 				FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */,
