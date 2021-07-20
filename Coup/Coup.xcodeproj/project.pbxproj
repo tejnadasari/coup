@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		AC900F1E26A36CA3000C6B89 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		AC900F2026A36CA6000C6B89 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.debug.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.debug.xcconfig"; sourceTree = "<group>"; };
+		FD2F633426A697CD00E9BE63 /* Coup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Coup.entitlements; sourceTree = "<group>"; };
 		FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6956872690DB1E0057BBE8 /* Coup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 				CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */,
 				7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -111,6 +111,7 @@
 		FD6956892690DB1E0057BBE8 /* Coup */ = {
 			isa = PBXGroup;
 			children = (
+				FD2F633426A697CD00E9BE63 /* Coup.entitlements */,
 				FD642A5E26A694BA00EC5B64 /* Backend */,
 				FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */,
 				FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */,
@@ -408,6 +409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Coup/Coup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LM9PUW9Q8G;
 				INFOPLIST_FILE = Coup/Info.plist;
@@ -428,6 +430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Coup/Coup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LM9PUW9Q8G;
 				INFOPLIST_FILE = Coup/Info.plist;
