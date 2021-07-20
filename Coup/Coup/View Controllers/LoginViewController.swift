@@ -48,7 +48,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
     @IBAction func loginButtonPressed(_ sender: Any) {
         if segCtrl.selectedSegmentIndex == 0 {
             signIn()
