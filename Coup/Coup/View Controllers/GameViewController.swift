@@ -23,9 +23,6 @@ class GameViewController: UIViewController {
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
     var players: [Player] = []
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializePlayers()
