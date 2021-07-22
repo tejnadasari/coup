@@ -25,6 +25,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        confirmPasswordLabel.isHidden = true
+        confirmPasswordTextField.isHidden = true
+        
+        loginButton.setTitle("Sign In", for: .normal)
+        statusLabel.text = "Status"
     }
     
     @IBAction func onSegmentChange(_ sender: Any) {
@@ -59,8 +65,8 @@ class LoginViewController: UIViewController {
     func signIn() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
-              email.count > 0,
-              password.count > 0
+              email.count > 7,
+              password.count > 7
         else {
             statusLabel.text = "Invalid Email or Password"
             return
@@ -78,8 +84,8 @@ class LoginViewController: UIViewController {
               let password = passwordTextField.text,
               let confirmPassword = confirmPasswordTextField.text,
               password == confirmPassword,
-              email.count > 0,
-              password.count > 0
+              email.count > 7,
+              password.count > 7
         else {
             statusLabel.text = "Invalid Email or (Confirm) Password"
             return
@@ -104,15 +110,4 @@ class LoginViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
