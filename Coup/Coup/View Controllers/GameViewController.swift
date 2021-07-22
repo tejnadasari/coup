@@ -51,8 +51,7 @@ class GameViewController: UIViewController {
         
         
     }
-    
-    
+        
     @IBAction func coupBtnPressed(_ sender: Any) {
     }
     @IBAction func taxBtnPressed(_ sender: Any) {

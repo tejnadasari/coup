@@ -120,7 +120,6 @@
 				FD642A5E26A694BA00EC5B64 /* Backend */,
 				FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */,
 				FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */,
-				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
 				FD98412E269E3E320035E9BB /* View Controllers */,
 				FD6956902690DB1E0057BBE8 /* Main.storyboard */,
 				FD6956932690DB1F0057BBE8 /* Assets.xcassets */,
@@ -134,6 +133,7 @@
 		FD98412E269E3E320035E9BB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
 				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
 				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
 				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
