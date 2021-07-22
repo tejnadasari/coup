@@ -31,6 +31,16 @@ class LoginViewController: UIViewController {
         
         loginButton.setTitle("Sign In", for: .normal)
         statusLabel.text = "Status"
+        
+        Auth.auth().addStateDidChangeListener() {
+          auth, user in
+          
+          if user != nil {
+            self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
+            self.emailTextField.text = nil
+            self.passwordTextField.text = nil
+          }
+        }
     }
     
     @IBAction func onSegmentChange(_ sender: Any) {
