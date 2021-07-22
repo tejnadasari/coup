@@ -1,11 +1,11 @@
 class Move{
-    var moveName: String
-    var callerPlayer: String
-    var targetPlayer: String
+    var name: String
+    var caller: Player
+    var target: Player
 
-    init(move: String, caller: String, target: String) {
-        moveName = move
-        callerPlayer = caller
-        targetPlayer = target
+    init(name: String, caller: Player, target: Player) {
+        self.name = name
+        self.caller = caller
+        self.target = target
     }
 }

@@ -29,6 +29,7 @@
  */
 
 class Card{
+    var name:String?
     var tax:Bool?
     var assassinate:Bool?
     var exchange2Roles:Bool?
@@ -38,6 +39,8 @@ class Card{
 class Assassin: Card {
     
     override init() {
+        super.init()
+        name = "Assassin"
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -49,6 +52,8 @@ class Assassin: Card {
 class Ambassador: Card {
     
     override init() {
+        super.init()
+        name = "Ambassador"
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -60,6 +65,8 @@ class Ambassador: Card {
 class Captain: Card {
     
     override init() {
+        super.init()
+        name = "Captain"
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -71,6 +78,8 @@ class Captain: Card {
 class Contessa: Card {
     
     override init() {
+        super.init()
+        name = "Contessa"
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -82,6 +91,8 @@ class Contessa: Card {
 class Duke: Card {
     
     override init() {
+        super.init()
+        name = "Duke"
         tax = false
         assassinate = true
         exchange2Roles = false

@@ -34,9 +34,10 @@ class GameViewController: UIViewController {
         if (numPlayers == nil){
             return
         }
-        players.append(realPlayer())
-        for n in 2...numPlayers!{
-            players.append(AI())
+        players.append(realPlayer(name: "Xinyi", photo: "", cards: (Card(),Card())))
+        
+        for n in 2...numPlayers! {
+            players.append(AI(name: "", photo: "", cards: (Card(),Card())))
         }
     }
     

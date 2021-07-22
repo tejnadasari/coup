@@ -1,37 +1,37 @@
 class Player{
     var name: String
     var photo: String
-    var coins: Int
-    var cards: Tuple
-    var move: String
+    var cards: (Card, Card)
     
-    init(name: String, photo: String, coins: String, cards: (String, String), move:(String)){
-        self.name = String
-        self.photo = String
-        self.coins = String
-        self.cards = (String, String)
+    var coins = 0
+    
+    init(name: String, photo: String, cards: (Card, Card)){
+        self.name = name
+        self.photo = photo
+        self.cards = cards
     }
     
-    func haveCard(checkName:String) -> Bool{
-        if(self.cards.0 == checkName || self.cards.1 == checkName){
+    func haveCard(checkName: String) -> Bool{
+        if(self.cards.0.name == checkName || self.cards.1.name == checkName){
             return true
         }
         return false
     }
     
-    func getPlayerMove(){
+    func getPlayerMove() -> Move {
         //Swtich Case statement for chosen Move
+        return Move(name: "", caller: Player(name: "", photo: "", cards: (Card(), Card())), target: Player(name: "", photo: "", cards: (Card(), Card())))
     }
     
-    func askPlayerMove(){
-        
-    }
-    
-    func updateCoin(coinVal:Int){
+    func updateCoin(coinVal:Int) {
         self.coins = self.coins + coinVal
     }
     
     func getChallengeOrAllow(){
+        
+    }
+    
+    func choose() {
         
     }
     
