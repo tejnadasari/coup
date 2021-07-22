@@ -65,8 +65,8 @@ class LoginViewController: UIViewController {
     func signIn() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
-              email.count > 7,
-              password.count > 7
+              email.count >= 7,
+              password.count >= 7
         else {
             statusLabel.text = "Invalid Email or Password"
             return
@@ -75,6 +75,8 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let _ = error, user == nil {
                 self.statusLabel.text = "Sign In Failed"
+            } else {
+                self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
             }
         }
     }
@@ -84,8 +86,8 @@ class LoginViewController: UIViewController {
               let password = passwordTextField.text,
               let confirmPassword = confirmPasswordTextField.text,
               password == confirmPassword,
-              email.count > 7,
-              password.count > 7
+              email.count >= 7,
+              password.count >= 7
         else {
             statusLabel.text = "Invalid Email or (Confirm) Password"
             return
@@ -93,11 +95,9 @@ class LoginViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
             if error == nil {
-                Auth.auth().signIn(
-                    withEmail: self.emailTextField.text!,
-                    password: self.passwordTextField.text!)
+                self.signIn()
             } else {
-                self.statusLabel.text = "Sign In Failed"
+                self.statusLabel.text = "Sign Up Failed"
             }
         }
     }
@@ -109,5 +109,5 @@ class LoginViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        }
+    }
 }
