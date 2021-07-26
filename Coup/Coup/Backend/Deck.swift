@@ -23,25 +23,27 @@ class Deck{
         let contessa = Contessa()
         let duke = Duke()
         
-        shuffleDeck3(card: assassin)
-        shuffleDeck3(card: ambassador)
-        shuffleDeck3(card: captain)
-        shuffleDeck3(card: contessa)
-        shuffleDeck3(card: duke)
+        arrangeDeck(card: assassin, count: 3)
+        arrangeDeck(card: ambassador, count: 3)
+        arrangeDeck(card: captain, count: 3)
+        arrangeDeck(card: contessa, count: 3)
+        arrangeDeck(card: duke, count: 3)
         
     }
     
-    func shuffleDeck3(card: Card) {
-        while(count != 0) {
+    func arrangeDeck(card: Card, count: Int) {
+        var temp = count
+        
+        while(temp != 0) {
             while(true) {
-                let num = Int.random(in: 0...14)
+                let num = Int.random(in: 0...(cardDeck.count - 1))
                 
                 if cardDeck[num] as! Int == 0 {
                     cardDeck[num] = card
                     break
                 }
             }
-            count -= 1
+            temp -= 1
         }
         
     }
@@ -53,8 +55,21 @@ class Deck{
         return card as! Card
     }
     
-//    func shuffleAndGive() {
-//
-//    }
+    func Give2Roles(deck: Deck) -> (Card, Card) {
+        let card1 = cardDeck[0]
+        let card2 = cardDeck[1]
+        
+        return (card1 as! Card, card2 as! Card)
+    }
+    
+    func getCardAndShuffle(deck: Deck, card: Card) {
+//        deck.cardDeck.append(card)
+//        let cardNum = cardDeck.count
+            
+    }
+    
+    func shuffle(deck: Deck) {
+//        var newCardDeck = deck.cardDeck
+    }
 
 }
