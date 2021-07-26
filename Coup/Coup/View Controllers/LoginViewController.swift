@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener() {
           auth, user in
-          
+
           if user != nil {
             self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
             self.emailTextField.text = nil
