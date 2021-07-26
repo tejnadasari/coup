@@ -4,7 +4,7 @@ target 'Coup' do
   use_frameworks!
 
 # Add the Firebase pod for Google Analytics
-pod 'Firebase/Analytics'
+# pod 'Firebase/Analytics'
 
 # add pods for desired Firebase products
 # https://firebase.google.com/docs/ios/setup#available-pods
