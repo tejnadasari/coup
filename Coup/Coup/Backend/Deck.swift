@@ -10,12 +10,13 @@
 
 class Deck{
     var cardDeck = [Any](repeating: 0, count: 15)
-    var count = 3
     
+    // MARK:- constructor of Deck
     init() {
         makeDeck()
     }
     
+    // Literally, make deck
     func makeDeck() {
         let assassin = Assassin()
         let ambassador = Ambassador()
@@ -23,15 +24,16 @@ class Deck{
         let contessa = Contessa()
         let duke = Duke()
         
-        arrangeDeck(card: assassin, count: 3)
-        arrangeDeck(card: ambassador, count: 3)
-        arrangeDeck(card: captain, count: 3)
-        arrangeDeck(card: contessa, count: 3)
-        arrangeDeck(card: duke, count: 3)
+        shuffleDeck(cardDeck: &self.cardDeck, card: assassin, count: 3)
+        shuffleDeck(cardDeck: &self.cardDeck, card: ambassador, count: 3)
+        shuffleDeck(cardDeck: &self.cardDeck, card: captain, count: 3)
+        shuffleDeck(cardDeck: &self.cardDeck, card: contessa, count: 3)
+        shuffleDeck(cardDeck: &self.cardDeck, card: duke, count: 3)
         
     }
     
-    func arrangeDeck(card: Card, count: Int) {
+    // Literally, shuffle deck
+    func shuffleDeck(cardDeck: inout [Any], card: Card, count: Int) {
         var temp = count
         
         while(temp != 0) {
@@ -48,28 +50,49 @@ class Deck{
         
     }
     
+    // MARK:- Function for attributing cards to each player
+    
+    // give a card to users when the game was kicked off
     func giveACard() -> Card {
-        let card = cardDeck[0]
-        cardDeck.remove(at: 0)
+        let num = Int.random(in: 0...(cardDeck.count - 1))
+        let card = cardDeck[num]
+        
+        cardDeck.remove(at: num)
         
         return card as! Card
     }
     
-    func Give2Roles(deck: Deck) -> (Card, Card) {
-        let card1 = cardDeck[0]
-        let card2 = cardDeck[1]
+    // MARK:- Function for exchange2Roles of Ambassador
+    
+    // give 2 cards to the user actig 'exchange2Roles'
+    func give2Cards(deck: Deck) -> (Card, Card) {
+        let num1 = Int.random(in: 0...(cardDeck.count - 1))
+        let card1 = cardDeck[num1]
+        cardDeck.remove(at: num1)
+        
+        let num2 = Int.random(in: 0...(cardDeck.count - 1))
+        let card2 = cardDeck[num2]
+        cardDeck.remove(at: num2)
         
         return (card1 as! Card, card2 as! Card)
     }
     
-    func getCardAndShuffle(deck: Deck, card: Card) {
-//        deck.cardDeck.append(card)
-//        let cardNum = cardDeck.count
-            
+    // get 2 cards back from the user who acted 'exchange2Roles' and shuffle the deck
+    func get2CardsBackNShuffle(twoCards: (Card, Card)) {
+        self.cardDeck.append(twoCards.0)
+        self.cardDeck.append(twoCards.1)
+        
+        shuffle()
     }
     
-    func shuffle(deck: Deck) {
-//        var newCardDeck = deck.cardDeck
+    // shuffle the cardDeck
+    func shuffle() {
+        var newCardDeck = [Any](repeating: 0, count: cardDeck.count)
+        
+        for i in 0...cardDeck.count {
+            shuffleDeck(cardDeck: &newCardDeck, card: cardDeck[i] as! Card, count: 1)
+        }
+        
     }
 
 }
