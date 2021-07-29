@@ -10,6 +10,7 @@
 		138DD00610EC9333ACEE2278 /* Pods_Coup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FFF089A57325E0FD37053B /* Pods_Coup.framework */; };
 		326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */; };
 		32DEC32526B299380049F2F3 /* GameLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */; };
+		32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */; };
 		AC900F0F26A3601F000C6B89 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F0E26A3601F000C6B89 /* GameViewController.swift */; };
 		AC900F1926A36C6D000C6B89 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1826A36C6D000C6B89 /* Card.swift */; };
 		AC900F1B26A36C9C000C6B89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1A26A36C9C000C6B89 /* Deck.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewCell.swift; sourceTree = "<group>"; };
 		32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogTableViewCell.swift; sourceTree = "<group>"; };
+		32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAITableViewCell.swift; sourceTree = "<group>"; };
 		7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.release.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.release.xcconfig"; sourceTree = "<group>"; };
 		89FFF089A57325E0FD37053B /* Pods_Coup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC900F0E26A3601F000C6B89 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
 				32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */,
+				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				AC900F1F26A36CA3000C6B89 /* Player.swift in Sources */,
 				FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */,
 				AC900F2126A36CA6000C6B89 /* Move.swift in Sources */,
+				32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

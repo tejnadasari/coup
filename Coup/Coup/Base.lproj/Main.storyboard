@@ -375,10 +375,10 @@
             </objects>
             <point key="canvasLocation" x="3605" y="1029"/>
         </scene>
-        <!--View Controller-->
+        <!--How To Play View Controller-->
         <scene sceneID="8S9-3J-qYx">
             <objects>
-                <viewController id="Auq-Mg-zAN" sceneMemberID="viewController">
+                <viewController id="Auq-Mg-zAN" userLabel="How To Play View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="suN-JZ-sdd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,11 +411,11 @@
             <objects>
                 <viewController id="WSx-xW-JoZ" customClass="SettingsViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e0g-aO-Dso">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="boA-03-5VX">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
@@ -481,7 +481,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK6-fM-8In">
-                                        <rect key="frame" x="0.0" y="524" width="390" height="232"/>
+                                        <rect key="frame" x="0.0" y="524" width="390" height="198"/>
                                         <state key="normal" title="Confirm"/>
                                     </button>
                                 </subviews>
@@ -543,7 +543,7 @@
                                     <constraint firstAttribute="width" constant="358" id="x8u-f7-t5q"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cHO-Mw-oMJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addAITableViewCell" id="cHO-Mw-oMJ" customClass="AddAITableViewCell" customModule="Coup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="358" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cHO-Mw-oMJ" id="6Ey-O9-ghn">
@@ -575,6 +575,10 @@
                                                 <constraint firstItem="uqw-tS-Wwn" firstAttribute="centerY" secondItem="vpa-GA-eKR" secondAttribute="centerY" id="upS-QB-mTR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="aiLabel" destination="vpa-GA-eKR" id="nEN-ta-L4u"/>
+                                            <outlet property="userImage" destination="uqw-tS-Wwn" id="ngT-xS-yrP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -636,7 +640,7 @@
                                 <rect key="frame" x="0.0" y="95" width="390" height="570"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameLogViewCell" id="gYy-Yp-pPW" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameLogTableViewCell" id="gYy-Yp-pPW" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYy-Yp-pPW" id="Nu9-op-Pm0">
@@ -748,9 +752,13 @@
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-iM-kpb">
                                                 <rect key="frame" x="50" y="0.0" width="120" height="160"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="IbL-4T-dzj"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Woy-4r-Q9M" appends="YES" id="Qj7-vP-vgu"/>
+                                                </connections>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgu-rO-l4N" userLabel="Middle Empty View">
                                                 <rect key="frame" x="170" y="0.0" width="50" height="160"/>
@@ -761,9 +769,13 @@
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SPQ-Sg-c1x">
                                                 <rect key="frame" x="220" y="0.0" width="120" height="160"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="hew-kU-f3J"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="HsD-8X-Qvl" appends="YES" id="6up-ir-71F"/>
+                                                </connections>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zh-Sw-8kj" userLabel="Right Empty View">
                                                 <rect key="frame" x="340" y="0.0" width="50" height="160"/>
@@ -803,6 +815,8 @@
                     <size key="freeformSize" width="390" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RI6-f9-FKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Woy-4r-Q9M"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="HsD-8X-Qvl"/>
             </objects>
             <point key="canvasLocation" x="2695" y="709"/>
         </scene>
@@ -847,38 +861,38 @@
                                     <constraint firstAttribute="width" constant="350" id="yQS-sy-6zT"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="02V-Ef-bxq" userLabel="Table View for Activity Log">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="02V-Ef-bxq" userLabel="Table View for Activity Log">
                                 <rect key="frame" x="20" y="198" width="350" height="328"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityLogViewCell" id="jAs-LU-TwI" userLabel="activityLogViewCell" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="350" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityLogTableViewCell" id="jAs-LU-TwI" userLabel="activityLogViewCell" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="350" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jAs-LU-TwI" id="X1e-ks-8Vb">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5KB-kG-YLK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Azl-Ne-syD"/>
-                                                        <constraint firstAttribute="width" constant="60" id="dCy-tQ-bzp"/>
+                                                        <constraint firstAttribute="height" constant="60" id="Azl-Ne-syD"/>
+                                                        <constraint firstAttribute="width" constant="45" id="dCy-tQ-bzp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity( ex: Player 1 took income) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-53-uai" userLabel="activityLogLabel">
-                                                    <rect key="frame" x="74" y="29" width="260" height="20.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Activity( ex: Player 1 took income) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-53-uai" userLabel="activityLogLabel">
+                                                    <rect key="frame" x="62" y="20" width="268" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HHE-53-uai" firstAttribute="top" secondItem="X1e-ks-8Vb" secondAttribute="top" constant="29" id="Kaz-up-f5b"/>
                                                 <constraint firstItem="5KB-kG-YLK" firstAttribute="leading" secondItem="X1e-ks-8Vb" secondAttribute="leading" id="LrB-SQ-Zg8"/>
-                                                <constraint firstItem="HHE-53-uai" firstAttribute="leading" secondItem="5KB-kG-YLK" secondAttribute="trailing" constant="14" id="NwB-Ue-3Wr"/>
                                                 <constraint firstItem="5KB-kG-YLK" firstAttribute="top" secondItem="X1e-ks-8Vb" secondAttribute="top" id="Q3f-gb-9WC"/>
-                                                <constraint firstAttribute="trailing" secondItem="5KB-kG-YLK" secondAttribute="trailing" constant="290" id="ctW-XL-hx3"/>
+                                                <constraint firstItem="HHE-53-uai" firstAttribute="top" secondItem="X1e-ks-8Vb" secondAttribute="top" constant="20" symbolic="YES" id="XwX-ZU-q7L"/>
+                                                <constraint firstAttribute="trailing" secondItem="5KB-kG-YLK" secondAttribute="trailing" constant="305" id="ctW-XL-hx3"/>
                                                 <constraint firstAttribute="bottom" secondItem="5KB-kG-YLK" secondAttribute="bottom" id="e7L-Jz-CGe"/>
+                                                <constraint firstItem="HHE-53-uai" firstAttribute="leading" secondItem="5KB-kG-YLK" secondAttribute="trailing" constant="17" id="r3q-mB-Raq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1085,7 +1099,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O26-sb-GUD"/>
+        <segue reference="Zvh-kD-LKL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="opaqueSeparatorColor">
