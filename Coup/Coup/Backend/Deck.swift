@@ -93,6 +93,7 @@ class Deck{
             shuffleDeck(cardDeck: &newCardDeck, card: cardDeck[i] as! Card, count: 1)
         }
         
+        cardDeck = newCardDeck
     }
 
 }

@@ -2,18 +2,15 @@
 //  GameLogTableViewCell.swift
 //  Coup
 //
-//  Created by Sungwook Kim on 2021/07/29.
+//  Created by Sungwook Kim on 2021/07/25.
 //
 
 import UIKit
 
-class GameLogTableViewCell: UITableViewCell {
+class ActivityLogTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var moneyLabel: UILabel!
-    @IBOutlet weak var identity1Label: UILabel!
-    @IBOutlet weak var identity2Label: UILabel!
+    @IBOutlet weak var userProfile: UIImageView!
+    @IBOutlet weak var gameLogLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

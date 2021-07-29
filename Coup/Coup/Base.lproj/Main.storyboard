@@ -411,11 +411,11 @@
             <objects>
                 <viewController id="WSx-xW-JoZ" customClass="SettingsViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e0g-aO-Dso">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="boA-03-5VX">
-                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
@@ -481,7 +481,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK6-fM-8In">
-                                        <rect key="frame" x="0.0" y="524" width="390" height="198"/>
+                                        <rect key="frame" x="0.0" y="524" width="390" height="232"/>
                                         <state key="normal" title="Confirm"/>
                                     </button>
                                 </subviews>
@@ -650,24 +650,61 @@
                                                         <constraint firstAttribute="height" constant="60" id="yF3-Kr-Ife"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log( ex: Player 1 took income) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZI-Q7-0BG">
-                                                    <rect key="frame" x="79" y="30" width="232" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ambassador" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZI-Q7-0BG" userLabel="identity1">
+                                                    <rect key="frame" x="256" y="11" width="105" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="rIf-HD-iS4"/>
+                                                        <constraint firstAttribute="width" constant="105" id="u7X-dn-DAS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hidden" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-1s-SNA" userLabel="identity2">
+                                                    <rect key="frame" x="256" y="40" width="105" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="105" id="FYb-oM-x10"/>
+                                                        <constraint firstAttribute="height" constant="21" id="rSK-Xa-ckE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ex-6L-C6V" userLabel="money">
+                                                    <rect key="frame" x="174.66666666666666" y="30" width="24" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNk-vH-Zfh" userLabel="username">
+                                                    <rect key="frame" x="68" y="30" width="75.666666666666686" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="dNk-vH-Zfh" firstAttribute="top" secondItem="Nu9-op-Pm0" secondAttribute="top" constant="30" id="3kM-pU-A24"/>
                                                 <constraint firstItem="oNk-LB-xse" firstAttribute="top" secondItem="Nu9-op-Pm0" secondAttribute="top" id="7PE-8f-P37"/>
-                                                <constraint firstItem="NZI-Q7-0BG" firstAttribute="leading" secondItem="oNk-LB-xse" secondAttribute="trailing" constant="19" id="JBL-oe-Vbc"/>
+                                                <constraint firstAttribute="trailing" secondItem="hXa-1s-SNA" secondAttribute="trailing" constant="29" id="CPL-Sh-9xw"/>
                                                 <constraint firstItem="oNk-LB-xse" firstAttribute="leading" secondItem="Nu9-op-Pm0" secondAttribute="leading" id="SMe-V6-IjW"/>
-                                                <constraint firstItem="NZI-Q7-0BG" firstAttribute="top" secondItem="Nu9-op-Pm0" secondAttribute="top" constant="30" id="Tym-gQ-omA"/>
+                                                <constraint firstItem="dNk-vH-Zfh" firstAttribute="leading" secondItem="oNk-LB-xse" secondAttribute="trailing" constant="8" symbolic="YES" id="SZR-wz-Mhi"/>
                                                 <constraint firstAttribute="bottom" secondItem="oNk-LB-xse" secondAttribute="bottom" id="cAo-Lj-Btr"/>
+                                                <constraint firstItem="NZI-Q7-0BG" firstAttribute="top" secondItem="Nu9-op-Pm0" secondAttribute="top" constant="11" id="iTw-aY-N7Q"/>
+                                                <constraint firstItem="1ex-6L-C6V" firstAttribute="leading" secondItem="dNk-vH-Zfh" secondAttribute="trailing" constant="31" id="sOi-Df-KZ2"/>
+                                                <constraint firstItem="1ex-6L-C6V" firstAttribute="top" secondItem="Nu9-op-Pm0" secondAttribute="top" constant="30" id="sUZ-Qc-PTN"/>
+                                                <constraint firstAttribute="bottom" secondItem="hXa-1s-SNA" secondAttribute="bottom" constant="19" id="usf-Hn-OCp"/>
                                                 <constraint firstAttribute="trailing" secondItem="oNk-LB-xse" secondAttribute="trailing" constant="330" id="vr8-BA-Txd"/>
+                                                <constraint firstAttribute="trailing" secondItem="NZI-Q7-0BG" secondAttribute="trailing" constant="29" id="yoD-pg-Jig"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="gameLogLabel" destination="NZI-Q7-0BG" id="ZZX-ll-yLv"/>
+                                            <outlet property="identity1Label" destination="NZI-Q7-0BG" id="jK9-WI-S4q"/>
+                                            <outlet property="identity2Label" destination="hXa-1s-SNA" id="qFJ-2z-MIc"/>
+                                            <outlet property="moneyLabel" destination="1ex-6L-C6V" id="8np-Pd-DX0"/>
+                                            <outlet property="userImage" destination="oNk-LB-xse" id="F6O-zz-kJY"/>
+                                            <outlet property="userNameLabel" destination="dNk-vH-Zfh" id="hiq-AX-szE"/>
                                             <outlet property="userProfile" destination="oNk-LB-xse" id="P1K-Lp-as5"/>
                                         </connections>
                                     </tableViewCell>
@@ -689,7 +726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bB-Fo-MIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2697" y="-591"/>
+            <point key="canvasLocation" x="2696.9230769230767" y="-591.46919431279616"/>
         </scene>
         <!--Exchange View Controller-->
         <scene sceneID="aNY-VI-6Lq">
@@ -792,13 +829,13 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your Card 1: Ambassador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-rG-eeK">
                                                 <rect key="frame" x="0.0" y="0.0" width="260" height="46"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Card 2: Contessa " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-T6-2Zo">
                                                 <rect key="frame" x="0.0" y="46" width="260" height="46"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -810,11 +847,11 @@
                                     <constraint firstAttribute="width" constant="350" id="yQS-sy-6zT"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="02V-Ef-bxq" userLabel="Table View for Game Log">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="02V-Ef-bxq" userLabel="Table View for Activity Log">
                                 <rect key="frame" x="20" y="198" width="350" height="328"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameLogViewCell" id="jAs-LU-TwI" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityLogViewCell" id="jAs-LU-TwI" userLabel="activityLogViewCell" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="350" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jAs-LU-TwI" id="X1e-ks-8Vb">
@@ -828,8 +865,8 @@
                                                         <constraint firstAttribute="width" constant="60" id="dCy-tQ-bzp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log( ex: Player 1 took income) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-53-uai">
-                                                    <rect key="frame" x="74" y="29" width="232" height="20.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity( ex: Player 1 took income) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-53-uai" userLabel="activityLogLabel">
+                                                    <rect key="frame" x="74" y="29" width="260" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1048,9 +1085,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zvh-kD-LKL"/>
+        <segue reference="O26-sb-GUD"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
