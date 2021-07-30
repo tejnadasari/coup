@@ -27,6 +27,7 @@
 		FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */; };
 		FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */; };
 		FD98412D269E3E290035E9BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD98412C269E3E290035E9BB /* SettingsViewController.swift */; };
+		FDEE75AF26B3C88D001EFBF4 /* Settings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDEE75AD26B3C88D001EFBF4 /* Settings.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FD944F1726AE7CFE00A7A9B0 /* Cash Register.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cash Register.m4a"; sourceTree = "<group>"; };
 		FD944F1826AE7CFF00A7A9B0 /* Count Down.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Count Down.m4a"; sourceTree = "<group>"; };
 		FD98412C269E3E290035E9BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FDEE75AE26B3C88D001EFBF4 /* Settings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Settings.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */,
 				FD6956982690DB1F0057BBE8 /* Info.plist */,
 				FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */,
+				FDEE75AD26B3C88D001EFBF4 /* Settings.xcdatamodeld */,
 			);
 			path = Coup;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				AC900F1F26A36CA3000C6B89 /* Player.swift in Sources */,
 				FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */,
 				AC900F2126A36CA6000C6B89 /* Move.swift in Sources */,
+				FDEE75AF26B3C88D001EFBF4 /* Settings.xcdatamodeld in Sources */,
 				32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Coup/Coup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6837JYJ73K;
+				DEVELOPMENT_TEAM = LM9PUW9Q8G;
 				INFOPLIST_FILE = Coup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +466,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Coup/Coup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6837JYJ73K;
+				DEVELOPMENT_TEAM = LM9PUW9Q8G;
 				INFOPLIST_FILE = Coup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,6 +501,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FDEE75AD26B3C88D001EFBF4 /* Settings.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FDEE75AE26B3C88D001EFBF4 /* Settings.xcdatamodel */,
+			);
+			currentVersion = FDEE75AE26B3C88D001EFBF4 /* Settings.xcdatamodel */;
+			path = Settings.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FD69567F2690DB1E0057BBE8 /* Project object */;
 }

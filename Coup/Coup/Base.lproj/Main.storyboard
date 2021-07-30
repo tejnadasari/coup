@@ -426,32 +426,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="scO-36-IEO">
-                                        <rect key="frame" x="0.0" y="70" width="390" height="300"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-yn-4yA">
+                                        <rect key="frame" x="0.0" y="70" width="390" height="468"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-yn-4yA">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-un-gM0">
-                                                        <rect key="frame" x="120" y="0.0" width="150" height="200"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="200" id="JGX-kQ-tfS"/>
-                                                            <constraint firstAttribute="width" constant="150" id="jDy-fb-9S8"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNN-Tu-y8I">
-                                                        <rect key="frame" x="106" y="200" width="178" height="100"/>
-                                                        <state key="normal" title="Change My Profile Picture"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-un-gM0">
+                                                <rect key="frame" x="45" y="0.0" width="300" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="0xR-XQ-CNA"/>
+                                                    <constraint firstAttribute="height" constant="300" id="zRG-ie-SPU"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNN-Tu-y8I">
+                                                <rect key="frame" x="106" y="300" width="178" height="168"/>
+                                                <state key="normal" title="Change My Profile Picture"/>
+                                                <connections>
+                                                    <action selector="changeProfilePicture:" destination="WSx-xW-JoZ" eventType="touchUpInside" id="YkD-fd-9ik"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="aLC-x1-3ZQ"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ytn-oC-X7A">
-                                        <rect key="frame" x="0.0" y="400" width="390" height="32"/>
+                                        <rect key="frame" x="0.0" y="568" width="390" height="32"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-PZ-0Ti">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
@@ -466,7 +461,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="LTl-Qb-bUF">
-                                        <rect key="frame" x="0.0" y="462" width="390" height="32"/>
+                                        <rect key="frame" x="0.0" y="630" width="390" height="32"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gOG-KZ-4Y0">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
@@ -481,7 +476,10 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK6-fM-8In">
-                                        <rect key="frame" x="0.0" y="524" width="390" height="198"/>
+                                        <rect key="frame" x="0.0" y="692" width="390" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gLd-hM-In1"/>
+                                        </constraints>
                                         <state key="normal" title="Confirm"/>
                                     </button>
                                 </subviews>
@@ -497,10 +495,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QqO-tD-Gog"/>
+                    <connections>
+                        <outlet property="imageView" destination="Fmu-un-gM0" id="YBb-Hy-t11"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYT-Hl-h4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949" y="1030"/>
+            <point key="canvasLocation" x="947.69230769230762" y="1029.3838862559242"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nQt-yF-nlq">
