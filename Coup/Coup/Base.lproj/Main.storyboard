@@ -378,7 +378,7 @@
         <!--How To Play View Controller-->
         <scene sceneID="8S9-3J-qYx">
             <objects>
-                <viewController id="Auq-Mg-zAN" userLabel="How To Play View Controller" sceneMemberID="viewController">
+                <viewController id="Auq-Mg-zAN" userLabel="How To Play View Controller" customClass="HowToPlayViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="suN-JZ-sdd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -401,6 +401,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="IdB-Cr-vbk"/>
+                    <connections>
+                        <outlet property="howToPlayLabel" destination="7wd-3w-34A" id="Lw6-mm-Zuc"/>
+                        <outlet property="scrollView" destination="9rU-ib-UR7" id="dSg-1x-jVx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glW-7P-Rki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
