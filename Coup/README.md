@@ -1,14 +1,22 @@
-Team members: Xinyi Zhu
+Team members: Xinyi Zhu, Sungwook Kim, Tejna Dasari, Yash Patil
+<br>
 Name of project: Coup
+<br>
 Dependencies: Xcode ?, Swift ?
 
 Special Instructions:
+<br>
 • You have to open the file Coup.xcworkspace (as opposed to the file Coup.xcodeprog).
+<br>
 • Use an iPhone 12 Pro Simulator in portrait orientation.
+<br>
 • To login with email and password, use this test account:
-	email: testing@gmail.com
-	password: testing
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  email: testing@gmail.com
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  password: testing
 
+<br>
 
 | Feature        | Description           | Who/Percentage worked on  |
 | ------------- |:-------------:| -----:|
