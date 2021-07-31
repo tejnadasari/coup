@@ -18,6 +18,12 @@
 		AC900F1D26A36C9F000C6B89 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1C26A36C9F000C6B89 /* Game.swift */; };
 		AC900F1F26A36CA3000C6B89 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1E26A36CA3000C6B89 /* Player.swift */; };
 		AC900F2126A36CA6000C6B89 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F2026A36CA6000C6B89 /* Move.swift */; };
+		FD1C9A3F26B4CFC7006146D7 /* Justin Bieber.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3926B4CFC6006146D7 /* Justin Bieber.jpg */; };
+		FD1C9A4026B4CFC7006146D7 /* Charlie Puth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3A26B4CFC6006146D7 /* Charlie Puth.jpg */; };
+		FD1C9A4126B4CFC7006146D7 /* Ed Sheeran.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3B26B4CFC7006146D7 /* Ed Sheeran.jpg */; };
+		FD1C9A4226B4CFC7006146D7 /* Taylor Swift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3C26B4CFC7006146D7 /* Taylor Swift.jpg */; };
+		FD1C9A4326B4CFC7006146D7 /* Selena Gomez.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3D26B4CFC7006146D7 /* Selena Gomez.jpg */; };
+		FD1C9A4426B4CFC7006146D7 /* Ariana Grande.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3E26B4CFC7006146D7 /* Ariana Grande.jpg */; };
 		FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */; };
 		FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */; };
 		FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */; };
@@ -45,6 +51,12 @@
 		AC900F1E26A36CA3000C6B89 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		AC900F2026A36CA6000C6B89 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		CB1D42AFC6FA4A2BFEA82C63 /* Pods-Coup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.debug.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.debug.xcconfig"; sourceTree = "<group>"; };
+		FD1C9A3926B4CFC6006146D7 /* Justin Bieber.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Justin Bieber.jpg"; sourceTree = "<group>"; };
+		FD1C9A3A26B4CFC6006146D7 /* Charlie Puth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Charlie Puth.jpg"; sourceTree = "<group>"; };
+		FD1C9A3B26B4CFC7006146D7 /* Ed Sheeran.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ed Sheeran.jpg"; sourceTree = "<group>"; };
+		FD1C9A3C26B4CFC7006146D7 /* Taylor Swift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Taylor Swift.jpg"; sourceTree = "<group>"; };
+		FD1C9A3D26B4CFC7006146D7 /* Selena Gomez.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Selena Gomez.jpg"; sourceTree = "<group>"; };
+		FD1C9A3E26B4CFC7006146D7 /* Ariana Grande.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ariana Grande.jpg"; sourceTree = "<group>"; };
 		FD2F633426A697CD00E9BE63 /* Coup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Coup.entitlements; sourceTree = "<group>"; };
 		FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -93,6 +105,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD1C9A3826B4CFA3006146D7 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				FD1C9A3E26B4CFC7006146D7 /* Ariana Grande.jpg */,
+				FD1C9A3A26B4CFC6006146D7 /* Charlie Puth.jpg */,
+				FD1C9A3B26B4CFC7006146D7 /* Ed Sheeran.jpg */,
+				FD1C9A3926B4CFC6006146D7 /* Justin Bieber.jpg */,
+				FD1C9A3D26B4CFC7006146D7 /* Selena Gomez.jpg */,
+				FD1C9A3C26B4CFC7006146D7 /* Taylor Swift.jpg */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
 		FD642A5E26A694BA00EC5B64 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +151,7 @@
 		FD6956892690DB1E0057BBE8 /* Coup */ = {
 			isa = PBXGroup;
 			children = (
+				FD1C9A3826B4CFA3006146D7 /* AI */,
 				FDF30E3826A719A9008859A7 /* Sounds */,
 				FD2F633426A697CD00E9BE63 /* Coup.entitlements */,
 				FD642A5E26A694BA00EC5B64 /* Backend */,
@@ -227,10 +253,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD1C9A4026B4CFC7006146D7 /* Charlie Puth.jpg in Resources */,
+				FD1C9A4326B4CFC7006146D7 /* Selena Gomez.jpg in Resources */,
 				FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */,
+				FD1C9A4426B4CFC7006146D7 /* Ariana Grande.jpg in Resources */,
 				FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */,
 				FD6956942690DB1F0057BBE8 /* Assets.xcassets in Resources */,
+				FD1C9A4126B4CFC7006146D7 /* Ed Sheeran.jpg in Resources */,
 				FD6956922690DB1E0057BBE8 /* Main.storyboard in Resources */,
+				FD1C9A3F26B4CFC7006146D7 /* Justin Bieber.jpg in Resources */,
+				FD1C9A4226B4CFC7006146D7 /* Taylor Swift.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
