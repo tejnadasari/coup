@@ -60,7 +60,7 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
             # Allow - When a player try to take an action, you will allow it with no doubt although the action can be taken by a specific role
 
             # Challenge - Unlikely to Allow, if you doubt a player has not the roles(cards) you claim, you can challenge them.
-             -> The player must reveal the card that you claimed, if your doubt was right, the player's original action will be not carried out, and the player may no longer use the card. Otherwise, you must reveal your card as a penalty. And the card that the player revealed, will be shuffled back to the deck, and they will get a new card. After failed challenge, the player's original action will be taken as usual (Income, Foreign Aid, Coup which do not need specific role to be taken can never be challenged)
+             -> The player must reveal the card that you claimed. If your doubt was right, the player's original action will be not carried out, and the player may no longer use the card. Otherwise, you must reveal your card as a penalty. And the card that the player revealed, will be shuffled back to the deck, and they will get a new card. After failed challenge, the player's original action will be taken as usual (Income, Foreign Aid, Coup which do not need specific role to be taken can never be challenged)
 
             # Block - You can decide to block a player's action with one of your cards(roles) If other players doubt you do not have the card(role), they can challenge you.
 
@@ -90,7 +90,7 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
     }
 
     /*
-    // MARK: - Navigation
+    // MARK: - Navigation   
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

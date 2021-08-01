@@ -54,25 +54,25 @@ class Deck{
     
     // give a card to users when the game was kicked off
     func giveACard() -> Card {
-        let num = Int.random(in: 0...(cardDeck.count - 1))
-        let card = cardDeck[num]
+        let num = Int.random(in: 0...(self.cardDeck.count - 1))
+        let card = self.cardDeck[num]
         
-        cardDeck.remove(at: num)
+        self.cardDeck.remove(at: num)
         
         return card as! Card
     }
     
     // MARK:- Function for exchange2Roles of Ambassador
     
-    // give 2 cards to the user actig 'exchange2Roles'
-    func give2Cards(deck: Deck) -> (Card, Card) {
-        let num1 = Int.random(in: 0...(cardDeck.count - 1))
-        let card1 = cardDeck[num1]
-        cardDeck.remove(at: num1)
+    // give 2 cards to the user acting 'exchange2Roles'
+    func give2Cards() -> (Card, Card) {
+        let num1 = Int.random(in: 0...(self.cardDeck.count - 1))
+        let card1 = self.cardDeck[num1]
+        self.cardDeck.remove(at: num1)
         
-        let num2 = Int.random(in: 0...(cardDeck.count - 1))
-        let card2 = cardDeck[num2]
-        cardDeck.remove(at: num2)
+        let num2 = Int.random(in: 0...(self.cardDeck.count - 1))
+        let card2 = self.cardDeck[num2]
+        self.cardDeck.remove(at: num2)
         
         return (card1 as! Card, card2 as! Card)
     }
@@ -87,13 +87,30 @@ class Deck{
     
     // shuffle the cardDeck
     func shuffle() {
-        var newCardDeck = [Any](repeating: 0, count: cardDeck.count)
+        var newCardDeck = [Any](repeating: 0, count: self.cardDeck.count)
         
-        for i in 0...cardDeck.count {
-            shuffleDeck(cardDeck: &newCardDeck, card: cardDeck[i] as! Card, count: 1)
+        for i in 0...self.cardDeck.count {
+            shuffleDeck(cardDeck: &newCardDeck, card: self.cardDeck[i] as! Card, count: 1)
         }
         
-        cardDeck = newCardDeck
+        self.cardDeck = newCardDeck
+    }
+    
+    // MARK:- Function for failed challenge situation
+    
+    // when the challenge was failed, the card the targted player revealed will be
+    // shuffled back to the deck and they get a new card
+    func get1CardBackNShuffle(oneCard: Card) {
+        self.cardDeck.append(oneCard)
+        
+        shuffle()
+    }
+    
+    func giveANewCard() -> Card {
+        let num = Int.random(in: 0...(self.cardDeck.count - 1))
+        let newCard = self.cardDeck[num]
+        
+        return newCard as! Card
     }
 
 }
