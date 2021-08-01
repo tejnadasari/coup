@@ -1,9 +1,19 @@
-//
-//  GameViewController.swift
-//  Coup
-//
-//  Created by Yash Patil on 7/17/21.
-//
+/*
+ How will gameplay work:
+ 
+ Previous view controller will initialize: numberOfAI
+ 
+ Deck, and AI array will be initialized.
+ 
+ ViewDidLoad will call runGame() method, will also be in this file
+ 
+ RunGame() will consist of a while loop (moving the Game backend to this file)
+    Within this loop, we need to find a way to pause the gameplay to allow the
+    user to click a button. Potentially will use the willSet and didSet properties
+    of a boolean variable. May use "await" keyword as well. Currently researching
+    concurrency. 
+ 
+ */
 
 import UIKit
 
