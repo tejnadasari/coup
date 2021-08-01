@@ -60,7 +60,7 @@ class GameViewController: UIViewController {
         }
         
         for n in 1...numPlayers! {
-            players.append(AI(name: "", photo: "", cards: (Card(),Card())))
+            players.append(AI(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(),Card())))
         }
     }
     

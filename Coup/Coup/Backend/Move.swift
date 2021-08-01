@@ -1,4 +1,4 @@
-class Move{
+class Move {
     var name: String
     var caller: Player
     var target: Player

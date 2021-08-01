@@ -1,18 +1,22 @@
+import UIKit
+
 class Player{
     var name: String
-    var photo: String
+    var photo: UIImage
     var cards: (Card, Card)
     
     var coins = 0
     
-    init(name: String, photo: String, cards: (Card, Card)){
+    // constructor
+    init(name: String, photo: UIImage, cards: (Card, Card)){
         self.name = name
         self.photo = photo
         self.cards = cards
     }
     
-    func haveCard(checkName: String) -> Bool{
-        if(self.cards.0.name == checkName || self.cards.1.name == checkName){
+    // check out if this player has a specific card or not
+    func checkhaveCard(cardName: String) -> Bool{
+        if(self.cards.0.name == cardName || self.cards.1.name == cardName){
             return true
         }
         return false
@@ -22,7 +26,7 @@ class Player{
         //Swtich Case statement for chosen Move
         // use multithreading to ask for move and get move
         
-        return Move(name: "", caller: Player(name: "", photo: "", cards: (Card(), Card())), target: Player(name: "", photo: "", cards: (Card(), Card())))
+        return Move(name: "", caller: Player(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card())), target: Player(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card())))
     }
     
     func updateCoin(coinVal:Int) {

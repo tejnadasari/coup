@@ -96,7 +96,7 @@ class Deck{
         self.cardDeck = newCardDeck
     }
     
-    // MARK:- Function for failed challenge situation
+    // MARK:- Function for challenge situation
     
     // when the challenge was failed, the card the targted player revealed will be
     // shuffled back to the deck and they get a new card
