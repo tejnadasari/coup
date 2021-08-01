@@ -7,13 +7,12 @@
 
 import UIKit
 
-var aiArray = ["Charlie Puth", "Ed Sheeran", "Justin Bieber", "Selena Gomez", "Taylor Swift"]
-var playerArray: [Player] = []
+class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-class OfflineTableViewController: UITableViewController {
-
-    let user = Player(name: "username", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card()))
-    var aiListCount = 0
+    @IBOutlet weak var tableView: UITableView!
+    var aiArray = ["Charlie Puth", "Ed Sheeran", "Justin Bieber", "Selena Gomez", "Taylor Swift"]
+    let user = Player(name: "Ariana Grande", photo: UIImage(named: "Ariana Grande.jpg")!, cards: (Card(), Card()))
+    var playerArray: [Player] = []
     var playerCount = 1
     
     @IBOutlet weak var gameStartButton: UIButton!
@@ -28,49 +27,59 @@ class OfflineTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         playerArray.append(user)
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return playerArray.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addAITableViewCell", for: indexPath) as! AddAITableViewCell
         
         let row = indexPath.row
         
         // Configure the cell...
         cell.aiLabel.text = playerArray[row].name
-        cell.userImage = UIImageView(image: UIImage(named: cell.aiLabel.text!))
+        cell.userImage.image = playerArray[row].photo
 
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            playerArray.remove(at: indexPath.row)
-            playerCount -= 1
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if indexPath.row != 0 {
+                let temp = playerArray[indexPath.row].name
+                aiArray.append(temp)
+                
+                playerArray.remove(at: indexPath.row)
+                playerCount -= 1
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     @IBAction func addAIButtonPressed(_ sender: Any) {
         
         if playerCount < 6 {
-            let AI = Player(name: aiArray[aiListCount], photo: UIImage(named: aiArray[aiListCount])!, cards: (Card(), Card()))
-            aiListCount = (aiListCount + 1) % 5
+            let AI = Player(name: aiArray[0], photo: UIImage(named: "\(aiArray[0]).jpg")!, cards: (Card(), Card()))
+            aiArray.remove(at: 0)
             playerCount += 1
-            
             playerArray.append(AI)
             
         } else {
@@ -79,7 +88,8 @@ class OfflineTableViewController: UITableViewController {
             present(controller, animated: true, completion: nil)
             
         }
-              
+        
+        tableView.reloadData()
     }
     
     @IBAction func gameStartButtonPressed(_ sender: Any) {

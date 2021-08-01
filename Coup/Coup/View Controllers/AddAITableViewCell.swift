@@ -9,7 +9,7 @@ import UIKit
 
 class AddAITableViewCell: UITableViewCell {
 
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet var userImage: UIImageView!
     @IBOutlet weak var aiLabel: UILabel!
     
     override func awakeFromNib() {

@@ -529,7 +529,7 @@
         <!--Offline View Controller-->
         <scene sceneID="u4L-bl-3OK">
             <objects>
-                <viewController id="WAN-SW-7tD" userLabel="Offline View Controller" customClass="ViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WAN-SW-7tD" userLabel="Offline View Controller" customClass="OfflineViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cNk-Cj-2dX">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -563,9 +563,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI 1: Alex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpa-GA-eKR">
-                                                    <rect key="frame" x="158" y="15" width="105" height="21"/>
+                                                    <rect key="frame" x="100" y="15" width="230" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="105" id="0ea-qq-dHZ"/>
+                                                        <constraint firstAttribute="width" constant="230" id="0ea-qq-dHZ"/>
                                                         <constraint firstAttribute="height" constant="21" id="Ihw-WH-p0a"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -575,7 +575,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uqw-tS-Wwn" firstAttribute="leading" secondItem="6Ey-O9-ghn" secondAttribute="leadingMargin" constant="-20" id="LMF-Lt-lCZ"/>
-                                                <constraint firstItem="vpa-GA-eKR" firstAttribute="leading" secondItem="uqw-tS-Wwn" secondAttribute="trailing" constant="108" id="NSg-C2-flf"/>
+                                                <constraint firstItem="vpa-GA-eKR" firstAttribute="leading" secondItem="uqw-tS-Wwn" secondAttribute="trailing" constant="50" id="NSg-C2-flf"/>
                                                 <constraint firstItem="vpa-GA-eKR" firstAttribute="top" secondItem="6Ey-O9-ghn" secondAttribute="top" constant="15" id="sfu-gI-g2c"/>
                                                 <constraint firstItem="uqw-tS-Wwn" firstAttribute="centerY" secondItem="vpa-GA-eKR" secondAttribute="centerY" id="upS-QB-mTR"/>
                                             </constraints>
@@ -588,8 +588,11 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6c5-7l-C9H" userLabel="Add AI">
-                                <rect key="frame" x="31" y="565" width="46" height="30"/>
+                                <rect key="frame" x="31" y="585" width="46" height="30"/>
                                 <state key="normal" title="Add AI"/>
+                                <connections>
+                                    <action selector="addAIButtonPressed:" destination="WAN-SW-7tD" eventType="touchUpInside" id="5pW-Km-rna"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9E-NV-9CA" userLabel="Settings">
                                 <rect key="frame" x="166.66666666666666" y="689" width="57" height="30"/>
@@ -599,29 +602,44 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jl-4z-LdC" userLabel="Game Start">
-                                <rect key="frame" x="287" y="565" width="78" height="30"/>
+                                <rect key="frame" x="287" y="585" width="78" height="30"/>
                                 <state key="normal" title="Game Start"/>
                                 <connections>
+                                    <action selector="gameStartButtonPressed:" destination="WAN-SW-7tD" eventType="touchUpInside" id="8wM-2W-J7P"/>
                                     <segue destination="P54-Zb-Yud" kind="show" id="tAy-6M-ikX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(You can delete the AI by swiping)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYL-72-TZu">
+                                <rect key="frame" x="79.000000000000014" y="543" width="232.33333333333337" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KRV-HC-GbX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sHn-Oc-VXW" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="0Sl-xc-j8s"/>
+                            <constraint firstItem="CYL-72-TZu" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="5mq-9g-5o1"/>
+                            <constraint firstItem="CYL-72-TZu" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="8" symbolic="YES" id="6T7-6i-kTk"/>
                             <constraint firstItem="w9E-NV-9CA" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="154" id="DLc-hv-16X"/>
                             <constraint firstItem="KRV-HC-GbX" firstAttribute="trailing" secondItem="1jl-4z-LdC" secondAttribute="trailing" constant="25" id="DQK-I1-U7o"/>
-                            <constraint firstItem="1jl-4z-LdC" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="30" id="EJG-1N-4nN"/>
+                            <constraint firstItem="1jl-4z-LdC" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="50" id="EJG-1N-4nN"/>
                             <constraint firstItem="w9E-NV-9CA" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="IG1-Tf-1Jl"/>
                             <constraint firstItem="sHn-Oc-VXW" firstAttribute="top" secondItem="KRV-HC-GbX" secondAttribute="top" constant="85" id="UFv-Jk-8wA"/>
                             <constraint firstItem="6c5-7l-C9H" firstAttribute="leading" secondItem="KRV-HC-GbX" secondAttribute="leading" constant="31" id="Uet-ys-5jp"/>
                             <constraint firstItem="lcW-g4-bxs" firstAttribute="top" secondItem="sHn-Oc-VXW" secondAttribute="bottom" constant="31" id="VSQ-E4-nox"/>
-                            <constraint firstItem="6c5-7l-C9H" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="30" id="qHk-C0-Efg"/>
+                            <constraint firstItem="6c5-7l-C9H" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="50" id="qHk-C0-Efg"/>
                             <constraint firstItem="lcW-g4-bxs" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="vTS-sr-HwM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RdN-KQ-yHT"/>
+                    <connections>
+                        <outlet property="addAIButton" destination="6c5-7l-C9H" id="nXo-gr-oQ2"/>
+                        <outlet property="gameStartButton" destination="1jl-4z-LdC" id="uGX-y7-ftG"/>
+                        <outlet property="settingsButton" destination="w9E-NV-9CA" id="DCB-NJ-SUZ"/>
+                        <outlet property="tableView" destination="lcW-g4-bxs" id="cVw-qA-zF1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJt-Aq-tpc" sceneMemberID="firstResponder"/>
             </objects>

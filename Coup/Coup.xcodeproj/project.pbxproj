@@ -11,6 +11,7 @@
 		326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */; };
 		32DEC32526B299380049F2F3 /* GameLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */; };
 		32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */; };
+		32FA1D6B26B6E00F00B899F4 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */; };
 		32FE4AD226B4663D0055EB30 /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */; };
 		AC900F0F26A3601F000C6B89 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F0E26A3601F000C6B89 /* GameViewController.swift */; };
 		AC900F1926A36C6D000C6B89 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1826A36C6D000C6B89 /* Card.swift */; };
@@ -41,6 +42,7 @@
 		326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewCell.swift; sourceTree = "<group>"; };
 		32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogTableViewCell.swift; sourceTree = "<group>"; };
 		32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAITableViewCell.swift; sourceTree = "<group>"; };
+		32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfflineViewController.swift; path = Coup/OfflineViewController.swift; sourceTree = SOURCE_ROOT; };
 		32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 		7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.release.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.release.xcconfig"; sourceTree = "<group>"; };
 		89FFF089A57325E0FD37053B /* Pods_Coup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,8 @@
 		FD98412E269E3E320035E9BB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */,
+				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
 				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
 				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
 				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
@@ -179,7 +183,6 @@
 				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
 				32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */,
-				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */,
 				32FE4AD226B4663D0055EB30 /* HowToPlayViewController.swift in Sources */,
 				AC900F1B26A36C9C000C6B89 /* Deck.swift in Sources */,
+				32FA1D6B26B6E00F00B899F4 /* OfflineViewController.swift in Sources */,
 				FD98412D269E3E290035E9BB /* SettingsViewController.swift in Sources */,
 				AC900F0F26A3601F000C6B89 /* GameViewController.swift in Sources */,
 				AC900F1F26A36CA3000C6B89 /* Player.swift in Sources */,

@@ -1,4 +1,6 @@
 //turn ind is global, so we know when buttons should be hidden or not
+import UIKit
+
 class Game{
     var players: [Player]
     //all will be initailized by view controller
@@ -19,7 +21,7 @@ class Game{
             //boolean value will be set to false in an onClick method,
             //that will be shared between the player class and the view controller
             if let challenge = anyChallenges(){ //anyChallenges() returns a Move object, works similar to getMove
-                if players[turnInd].haveCard(checkName: curMove.name){ //will pass in cardRequired, member of Move class
+                if players[turnInd].checkhaveCard(cardName: curMove.name){ //will pass in cardRequired, member of Move class
                     challenge.caller.revealCard()
                 }
                 else{
@@ -37,7 +39,7 @@ class Game{
     }
     
     func anyChallenges() -> Move? {
-        return Move(name: "", caller: Player(name: "", photo: "", cards: (Card(), Card())), target: Player(name: "", photo: "", cards: (Card(), Card())))
+        return Move(name: "", caller: Player(name: "", photo: UIImage(named: "Ariana Grande.jpg")!, cards: (Card(), Card())), target: Player(name: "", photo: UIImage(named: "Ariana Grande.jpg")!, cards: (Card(), Card())))
     }
     
     func actOnMove(move: Move){
