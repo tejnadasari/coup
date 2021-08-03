@@ -77,8 +77,8 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func addAIButtonPressed(_ sender: Any) {
         
         if playerCount < 6 {
-            let AI = Player(name: aiArray[0], photo: UIImage(named: "\(aiArray[0]).jpg")!, cards: (Card(), Card()))
-            aiArray.remove(at: 0)
+            let AI = AI(name: aiArray[0], photo: UIImage(named: "\(aiArray[0]).jpg")!, cards: (Card(), Card()))
+            aiArray.remove(at: 0) //change the index to the last index? (increased efficiency? since elements will not get shifted that way
             playerCount += 1
             playerArray.append(AI)
             
@@ -95,14 +95,18 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func gameStartButtonPressed(_ sender: Any) {
         
     }
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toGame",
+                   let nextVC = segue.destination as? GameViewController {
+                   nextVC.players = playerArray
+                }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

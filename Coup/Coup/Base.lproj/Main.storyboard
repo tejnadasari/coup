@@ -598,7 +598,7 @@
                                 <state key="normal" title="Game Start"/>
                                 <connections>
                                     <action selector="gameStartButtonPressed:" destination="WAN-SW-7tD" eventType="touchUpInside" id="8wM-2W-J7P"/>
-                                    <segue destination="P54-Zb-Yud" kind="show" id="tAy-6M-ikX"/>
+                                    <segue destination="P54-Zb-Yud" kind="show" identifier="toGame" id="tAy-6M-ikX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(You can delete the AI by swiping)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYL-72-TZu">

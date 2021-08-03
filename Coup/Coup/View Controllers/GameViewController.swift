@@ -15,7 +15,7 @@
             if movename == "real" then break out of loop
                 button onClick listeners call runGame(true), now we have input from user
                 runGame(true) skips to the line after getPlayerMove()
-        When it is the AI, some calculation is returned
+        When it is the AI, some calculation is done and move is returned
     3)anyChallenges(false), returns a move as well
         loop that just goes through entire player array
         asks getChallengeOrAllow(), AI does calculation, real player return movename = "real"
@@ -45,38 +45,63 @@ class GameViewController: UIViewController {
     
     var deck: Deck?
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
-    var players: [Player] = []
+    var players: [Player] = [] //this is set in previosu VC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializePlayers()
         deck = Deck()
         runGame(resume: false)
-    }
-    
-    func initializePlayers() {
-        if (numPlayers == nil){
-            return
-        }
-        
-        for n in 1...numPlayers! {
-            players.append(AI(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(),Card())))
-        }
+        players.append(Player()) //real player
     }
     
     func runGame(resume: Bool){
         
-        var keepGoing:Bool = true
+        var gameOn:Bool = true
         var turnInd: Int = 0
-        while keepGoing{
+        while gameOn{
+            
             if (!resume){
-                var curMove = players[turnInd].getPlayerMove()
+                let currentPlayer = players[turnInd]
+                let curMove = currentPlayer.getPlayerMove()
+                if (curMove.name == "real"){
+                    enableButtons()
+                    break //to wait for button click from user
+                }
+                else{
+                    let objection = anyChallenges() //move
+                    if (objection.name == "real"){ //wait for user input
+                        break
+                    }
+                    if (objection.name == "challenge"){
+                        if currentPlayer.checkhaveCard(cardName: curMove.name){ //will pass in cardRequired, member of Move class
+                            objection.caller.revealCard()
+                        }
+                        else{
+                            objection.target.revealCard() //reveal card must present modally
+                        }
+                    }
+                    if (objection.name == "allow"){
+                    }
+                }
             }
             //player has just made a move at this point
-            
         }
-        
-        
+    }
+    
+    func enableButtons(){
+        coupBtn.isEnabled = true
+        taxBtn.isEnabled = true
+        stealBtn.isEnabled = true
+        assassinateBtn.isEnabled = true
+        allowBtn.isEnabled = false
+        incomeBtn.isEnabled = true
+        exchangeBtn.isEnabled = true
+        challengeBtn.isEnabled = false
+        foreignBtn.isEnabled = true
+    }
+    
+    func anyChallenges() -> Move{
+        return Move()
     }
     
     func incrementInd(ind: inout Int) {

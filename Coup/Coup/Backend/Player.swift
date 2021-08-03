@@ -14,6 +14,12 @@ class Player{
         self.cards = cards
     }
     
+    init(){
+        name = ""
+        photo = UIImage()
+        cards = Card()
+    }
+    
     // check out if this player has a specific card or not
     func checkhaveCard(cardName: String) -> Bool{
         if(self.cards.0.name == cardName || self.cards.1.name == cardName){

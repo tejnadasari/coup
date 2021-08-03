@@ -3,6 +3,12 @@ class Move {
     var caller: Player
     var target: Player
 
+    init(){
+        name = ""
+        caller = Player()
+        target = Player()
+    }
+    
     init(name: String, caller: Player, target: Player) {
         self.name = name
         self.caller = caller
