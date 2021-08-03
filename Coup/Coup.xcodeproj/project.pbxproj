@@ -10,6 +10,7 @@
 		138DD00610EC9333ACEE2278 /* Pods_Coup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FFF089A57325E0FD37053B /* Pods_Coup.framework */; };
 		326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */; };
 		32BE2ACB26B992AD00CB6A24 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */; };
+		32BE2ACD26B9AD9B00CB6A24 /* ActivityLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE2ACC26B9AD9B00CB6A24 /* ActivityLogViewController.swift */; };
 		32DEC32526B299380049F2F3 /* GameLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */; };
 		32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */; };
 		32FA1D6B26B6E00F00B899F4 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewCell.swift; sourceTree = "<group>"; };
 		32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		32BE2ACC26B9AD9B00CB6A24 /* ActivityLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityLogViewController.swift; path = Coup/ActivityLogViewController.swift; sourceTree = SOURCE_ROOT; };
 		32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogTableViewCell.swift; sourceTree = "<group>"; };
 		32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAITableViewCell.swift; sourceTree = "<group>"; };
 		32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfflineViewController.swift; path = Coup/OfflineViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -184,8 +186,9 @@
 				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
 				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
 				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
-				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
 				32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */,
+				32BE2ACC26B9AD9B00CB6A24 /* ActivityLogViewController.swift */,
+				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */,
+				32BE2ACD26B9AD9B00CB6A24 /* ActivityLogViewController.swift in Sources */,
 				326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */,
 				32BE2ACB26B992AD00CB6A24 /* ExchangeViewController.swift in Sources */,
 				FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */,

@@ -555,9 +555,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI 1: Alex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpa-GA-eKR">
-                                                    <rect key="frame" x="100" y="15" width="230" height="21"/>
+                                                    <rect key="frame" x="150" y="15" width="170" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="230" id="0ea-qq-dHZ"/>
+                                                        <constraint firstAttribute="width" constant="170" id="0ea-qq-dHZ"/>
                                                         <constraint firstAttribute="height" constant="21" id="Ihw-WH-p0a"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -567,7 +567,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uqw-tS-Wwn" firstAttribute="leading" secondItem="6Ey-O9-ghn" secondAttribute="leadingMargin" constant="-20" id="LMF-Lt-lCZ"/>
-                                                <constraint firstItem="vpa-GA-eKR" firstAttribute="leading" secondItem="uqw-tS-Wwn" secondAttribute="trailing" constant="50" id="NSg-C2-flf"/>
+                                                <constraint firstItem="vpa-GA-eKR" firstAttribute="leading" secondItem="uqw-tS-Wwn" secondAttribute="trailing" constant="100" id="NSg-C2-flf"/>
                                                 <constraint firstItem="vpa-GA-eKR" firstAttribute="top" secondItem="6Ey-O9-ghn" secondAttribute="top" constant="15" id="sfu-gI-g2c"/>
                                                 <constraint firstItem="uqw-tS-Wwn" firstAttribute="centerY" secondItem="vpa-GA-eKR" secondAttribute="centerY" id="upS-QB-mTR"/>
                                             </constraints>
@@ -637,29 +637,29 @@
             </objects>
             <point key="canvasLocation" x="1847.6923076923076" y="93.838862559241704"/>
         </scene>
-        <!--Game Log View Controller-->
+        <!--Activity Log View Controller-->
         <scene sceneID="23W-Cg-fgY">
             <objects>
-                <viewController id="Kgb-ep-6KY" userLabel="Game Log View Controller" sceneMemberID="viewController">
+                <viewController id="Kgb-ep-6KY" userLabel="Activity Log View Controller" customClass="ActivityLogViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2A-2M-T5J">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="646"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-tl-J22">
-                                <rect key="frame" x="156.33333333333334" y="10" width="77.666666666666657" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-tl-J22" userLabel="Activity Log Label">
+                                <rect key="frame" x="150.33333333333334" y="15" width="89.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NcD-KM-h8q" userLabel="Table View for Activity Log">
-                                <rect key="frame" x="0.0" y="39" width="390" height="607"/>
+                                <rect key="frame" x="0.0" y="56" width="390" height="590"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="607" id="Fa9-Uk-PXE"/>
-                                    <constraint firstAttribute="width" constant="390" id="Vsi-Js-VPK"/>
+                                    <constraint firstAttribute="width" constant="390" id="IGk-Dh-yWM"/>
+                                    <constraint firstAttribute="height" constant="590" id="f9j-AS-Vqo"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityLogTableViewCell" id="7OQ-f7-ffl" userLabel="activityLogViewCell" customClass="GameLogTableViewCell" customModule="Coup" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityLogTableViewCell" id="7OQ-f7-ffl" userLabel="activityLogViewCell" customClass="ActivityLogTableViewCell" customModule="Coup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7OQ-f7-ffl" id="173-tb-Ihw">
@@ -699,17 +699,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xk-1p-27B">
+                                <rect key="frame" x="20" y="10" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="Kgb-ep-6KY" eventType="touchUpInside" id="Fjt-QZ-kY5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ufa-g1-ZxB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NcD-KM-h8q" firstAttribute="centerX" secondItem="Z2A-2M-T5J" secondAttribute="centerX" id="Nc4-9P-0IY"/>
-                            <constraint firstItem="7Ca-tl-J22" firstAttribute="top" secondItem="Ufa-g1-ZxB" secondAttribute="top" constant="10" id="iN6-Vl-PR6"/>
-                            <constraint firstItem="NcD-KM-h8q" firstAttribute="top" secondItem="7Ca-tl-J22" secondAttribute="bottom" constant="8" symbolic="YES" id="kPz-vP-XmA"/>
+                            <constraint firstItem="7Ca-tl-J22" firstAttribute="top" secondItem="Ufa-g1-ZxB" secondAttribute="top" constant="15" id="iN6-Vl-PR6"/>
+                            <constraint firstItem="NcD-KM-h8q" firstAttribute="top" secondItem="7Ca-tl-J22" secondAttribute="bottom" constant="20" id="j9N-hF-PyI"/>
                             <constraint firstItem="7Ca-tl-J22" firstAttribute="centerX" secondItem="Z2A-2M-T5J" secondAttribute="centerX" id="tPH-4V-Eda"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="390" height="700"/>
+                    <connections>
+                        <outlet property="activityLogLabel" destination="7Ca-tl-J22" id="OjK-n6-yEb"/>
+                        <outlet property="closeButton" destination="6xk-1p-27B" id="BV3-W7-IYF"/>
+                        <outlet property="tableView" destination="NcD-KM-h8q" id="Hgy-My-pRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bB-Fo-MIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -769,20 +783,21 @@
                                             <constraint firstAttribute="height" constant="160" id="zu4-ZA-6cH"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch the card you want to exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNQ-Jd-QeU">
-                                        <rect key="frame" x="0.0" y="160" width="390" height="116"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explain Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNQ-Jd-QeU">
+                                        <rect key="frame" x="0.0" y="160" width="390" height="96"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyy-qI-Lqg">
-                                        <rect key="frame" x="0.0" y="276" width="390" height="80"/>
+                                        <rect key="frame" x="0.0" y="256" width="390" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="orJ-KY-RQR"/>
+                                            <constraint firstAttribute="height" constant="100" id="orJ-KY-RQR"/>
                                         </constraints>
-                                        <state key="normal" title="Done"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="I will keep my current card(s)"/>
                                         <connections>
-                                            <action selector="doneButtonPressed:" destination="RcR-Jo-Qpw" eventType="touchUpInside" id="q4f-Yf-rdv"/>
+                                            <action selector="keepCardButtonPressed:" destination="RcR-Jo-Qpw" eventType="touchUpInside" id="rJ6-fD-fc5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1079,6 +1094,7 @@
                         <outlet property="incomeBtn" destination="FAG-9d-2Lp" id="rgC-cn-pNH"/>
                         <outlet property="stealBtn" destination="zhU-Qc-nfV" id="GAO-59-xFB"/>
                         <outlet property="taxBtn" destination="JoC-LC-FiP" id="sMc-lL-CWe"/>
+                        <segue destination="RcR-Jo-Qpw" kind="presentation" identifier="exchangeSegueIdentifier" id="mhx-iw-rpD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sx5-pJ-1Yq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
