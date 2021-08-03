@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		138DD00610EC9333ACEE2278 /* Pods_Coup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FFF089A57325E0FD37053B /* Pods_Coup.framework */; };
 		326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */; };
+		32BE2ACB26B992AD00CB6A24 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */; };
 		32DEC32526B299380049F2F3 /* GameLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */; };
 		32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */; };
 		32FA1D6B26B6E00F00B899F4 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogTableViewCell.swift; sourceTree = "<group>"; };
+		32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogTableViewCell.swift; sourceTree = "<group>"; };
 		32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAITableViewCell.swift; sourceTree = "<group>"; };
 		32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OfflineViewController.swift; path = Coup/OfflineViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -175,6 +177,7 @@
 			children = (
 				32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */,
 				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
+				32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */,
 				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
 				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
 				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
@@ -320,6 +323,7 @@
 			files = (
 				FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */,
 				326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */,
+				32BE2ACB26B992AD00CB6A24 /* ExchangeViewController.swift in Sources */,
 				FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */,
 				AC900F1D26A36C9F000C6B89 /* Game.swift in Sources */,
 				FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */,

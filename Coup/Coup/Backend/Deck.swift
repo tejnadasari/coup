@@ -52,7 +52,7 @@ class Deck{
     
     // MARK:- Function for attributing cards to each player
     
-    // give a card to users when the game was kicked off
+    // give a card to users when kicking off the game
     func giveACard() -> Card {
         let num = Int.random(in: 0...(self.cardDeck.count - 1))
         let card = self.cardDeck[num]

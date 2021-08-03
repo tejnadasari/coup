@@ -27,13 +27,15 @@
  
  
  */
+import UIKit
 
 class Card{
-    var name:String?
-    var tax:Bool?
-    var assassinate:Bool?
-    var exchange2Roles:Bool?
-    var steal:Bool?
+    var name: String?
+    var photo: UIImage?
+    var tax: Bool?
+    var assassinate: Bool?
+    var exchange2Roles: Bool?
+    var steal: Bool?
 }
 
 class Assassin: Card {
@@ -41,6 +43,7 @@ class Assassin: Card {
     override init() {
         super.init()
         name = "Assassin"
+        photo = UIImage(named: "Assassin.jpeg")
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -54,6 +57,7 @@ class Ambassador: Card {
     override init() {
         super.init()
         name = "Ambassador"
+        photo = UIImage(named: "Ambassador.jpeg")
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -67,6 +71,7 @@ class Captain: Card {
     override init() {
         super.init()
         name = "Captain"
+        photo = UIImage(named: "Captain.jpeg")
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -80,6 +85,7 @@ class Contessa: Card {
     override init() {
         super.init()
         name = "Contessa"
+        photo = UIImage(named: "Contessa.jpeg")
         tax = false
         assassinate = true
         exchange2Roles = false
@@ -93,6 +99,7 @@ class Duke: Card {
     override init() {
         super.init()
         name = "Duke"
+        photo = UIImage(named: "Duke.jpeg")
         tax = false
         assassinate = true
         exchange2Roles = false
