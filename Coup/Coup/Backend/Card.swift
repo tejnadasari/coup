@@ -36,6 +36,9 @@ class Card{
     var assassinate: Bool?
     var exchange2Roles: Bool?
     var steal: Bool?
+    
+    init() {
+    }
 }
 
 class Assassin: Card {

@@ -17,7 +17,7 @@ class Player{
     init(){
         name = ""
         photo = UIImage()
-        cards = Card()
+        cards = (Card(), Card())
     }
     
     // check out if this player has a specific card or not
@@ -39,8 +39,8 @@ class Player{
         self.coins = self.coins + coinVal
     }
     
-    func getChallengeOrAllow(){
-        
+    func getChallengeOrAllow() -> Move{
+        return Move()
     }
     
     func choose() {

@@ -45,46 +45,83 @@ class GameViewController: UIViewController {
     
     var deck: Deck?
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
-    var players: [Player] = [] //this is set in previosu VC
+    var players: [Player] = [] //this is set in previous VC
+    
+    var playerMove: Move = Move() //this is the move the player chooses
+    var didPlayerMove: Bool = false //did the player select a move yet
+    var turnInd: Int = 0 //current turn
+    var didPlayerChallengeOrAllow = false
+    var challengeTurnInd: Int = 0 //whose turn it is to select challenge or allow
+    var challengeMove: Move = Move() //this is the move that is chosen for challenge/allow
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         deck = Deck()
-        runGame(resume: false)
+        runGame(resume: false, playerMove: Move())
         players.append(Player()) //real player
     }
     
-    func runGame(resume: Bool){
+    func runGame(resume: Bool, playerMove: Move){
         
         var gameOn:Bool = true
-        var turnInd: Int = 0
         while gameOn{
-            
-            if (!resume){
-                let currentPlayer = players[turnInd]
-                let curMove = currentPlayer.getPlayerMove()
-                if (curMove.name == "real"){
-                    enableButtons()
-                    break //to wait for button click from user
+            var curMove: Move = Move()
+            let currentPlayer = players[turnInd]
+            if (currentPlayer.name == "real" && didPlayerMove == false){
+                enableButtons()
+                break
+            }
+            else if (currentPlayer.name == "real"){
+                curMove = playerMove
+                didPlayerMove = false
+            }
+            else{
+                curMove = currentPlayer.getPlayerMove()
+            }
+            //curMove is now set
+            //checking for challenges
+            let objection = anyChallenges(move: curMove) //move
+            if (objection.name == "challenge"){
+                if currentPlayer.checkhaveCard(cardName: curMove.name){ //will pass in cardRequired, member of Move class
+                    objection.caller.revealCard()
                 }
                 else{
-                    let objection = anyChallenges() //move
-                    if (objection.name == "real"){ //wait for user input
-                        break
-                    }
-                    if (objection.name == "challenge"){
-                        if currentPlayer.checkhaveCard(cardName: curMove.name){ //will pass in cardRequired, member of Move class
-                            objection.caller.revealCard()
-                        }
-                        else{
-                            objection.target.revealCard() //reveal card must present modally
-                        }
-                    }
-                    if (objection.name == "allow"){
-                    }
+                    objection.target.revealCard() //reveal card must present modally
                 }
             }
-            //player has just made a move at this point
+            if (objection.name == "allow"){
+                actOnMove(move: curMove)
+            }
+            incrementInd(ind: &turnInd)
+        }
+    }
+    
+    
+    func actOnMove(move: Move){
+        switch move.name {
+        case "income":
+            move.caller.coins += 1
+        case "foreignAid":
+            move.caller.coins += 1
+        case "coup":
+            move.caller.coins -= 7
+            move.target.revealCard()
+        case "drawNewRoles": break //ambassador has option to exchange these cards
+            //so we must modally present a view controller, displaying the two cards
+            //how can we go to a new view controller
+            /*deck.takeCard(move.callerPlayer.card1) //giving a card to a deck
+            move.callerPlayer.takeCard(deck.giveACard())
+            */
+        case "assassinate":
+            move.target.revealCard()
+        case "steal":
+            move.target.coins -= 2
+            move.caller.coins += 2
+        case "tax":
+            move.caller.coins += 3
+        default:
+            break
         }
     }
     
@@ -93,15 +130,44 @@ class GameViewController: UIViewController {
         taxBtn.isEnabled = true
         stealBtn.isEnabled = true
         assassinateBtn.isEnabled = true
-        allowBtn.isEnabled = false
+        foreignBtn.isEnabled = true
         incomeBtn.isEnabled = true
         exchangeBtn.isEnabled = true
         challengeBtn.isEnabled = false
-        foreignBtn.isEnabled = true
+        allowBtn.isEnabled = false
     }
     
-    func anyChallenges() -> Move{
-        return Move()
+    func enableChallengeButtons(){
+        coupBtn.isEnabled = false
+        taxBtn.isEnabled = false
+        stealBtn.isEnabled = false
+        assassinateBtn.isEnabled = false
+        foreignBtn.isEnabled = false
+        incomeBtn.isEnabled = false
+        exchangeBtn.isEnabled = false
+        challengeBtn.isEnabled = true
+        allowBtn.isEnabled = true
+    }
+    
+    func anyChallenges(move: Move) -> Move{
+        var curMove: Move = Move()
+        while challengeTurnInd < players.count{
+            let player = players[challengeTurnInd]
+            if (player.name == "real"){
+                enableChallengeButtons()
+                break
+            }
+            else{
+                curMove = player.getPlayerMove()
+            }
+            if (didPlayerChallengeOrAllow){
+                curMove = challengeMove
+            }
+            if (curMove.name == "challenge"){
+                return curMove
+            }
+        }
+        return curMove
     }
     
     func incrementInd(ind: inout Int) {
@@ -111,7 +177,7 @@ class GameViewController: UIViewController {
       }
     }
         
-    @IBAction func coupBtnPressed(_ sender: Any) {
+    @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
     }
     @IBAction func taxBtnPressed(_ sender: Any) {
     }
@@ -120,6 +186,8 @@ class GameViewController: UIViewController {
     @IBAction func assassinateBtnPressed(_ sender: Any) {
     }
     @IBAction func allowBtnPressed(_ sender: Any) {
+        didPlayerChallengeOrAllow = true
+        challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
     }
     @IBAction func incomeBtnPressed(_ sender: Any) {
     }
@@ -128,6 +196,8 @@ class GameViewController: UIViewController {
     @IBAction func exchangeBtnPressed(_ sender: Any) {
     }
     @IBAction func challengeBtnPressed(_ sender: Any) {
+        didPlayerChallengeOrAllow = true
+        challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
     }
     
 
