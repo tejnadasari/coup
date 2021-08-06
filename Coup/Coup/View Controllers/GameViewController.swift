@@ -27,11 +27,28 @@
     4)then the game updates the game stats based on the move made and whether there was a challenge or not
     5)checks to see if game over, if game is not over then loop continues
     6) if game is over, then break out of it, and make sure nothing else happens
+ 
+ 
+ IMPORTANT FOR TABLEVIEW:
+ The user should be able to highlight a user, and then click a button.
+ A user should not be able to click a button, without having a user highlighted (for moves that require a target).
+ Once a user is highlighted, we need to be able to get their name, so we can properly create a Move object.
  */
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController/*, UITableViewDelegate, UITableViewDataSource*/  {
+    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var test: UITableViewCell =
+        return test
+    }*/
+    
     
     @IBOutlet weak var coupBtn: UIButton!
     @IBOutlet weak var taxBtn: UIButton!
@@ -42,6 +59,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var exchangeBtn: UIButton!
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var foreignBtn: UIButton!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var deck: Deck?
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
@@ -58,7 +77,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deck = Deck()
-        runGame(resume: false, playerMove: Move())
+        //runGame(resume: false, playerMove: Move())
         players.append(Player()) //real player
     }
     

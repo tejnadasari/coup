@@ -1093,6 +1093,7 @@
                         <outlet property="foreignBtn" destination="JrP-kc-H2t" id="0wC-32-Qc6"/>
                         <outlet property="incomeBtn" destination="FAG-9d-2Lp" id="rgC-cn-pNH"/>
                         <outlet property="stealBtn" destination="zhU-Qc-nfV" id="GAO-59-xFB"/>
+                        <outlet property="tableView" destination="Otx-vB-4Qp" id="vwD-XO-8SI"/>
                         <outlet property="taxBtn" destination="JoC-LC-FiP" id="sMc-lL-CWe"/>
                         <segue destination="RcR-Jo-Qpw" kind="presentation" identifier="exchangeSegueIdentifier" id="mhx-iw-rpD"/>
                     </connections>

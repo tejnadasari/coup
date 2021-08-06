@@ -23,13 +23,13 @@ class Deck{
         let captain = Captain()
         let contessa = Contessa()
         let duke = Duke()
-        
+        /*
         shuffleDeck(cardDeck: &self.cardDeck, card: assassin, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: ambassador, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: captain, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: contessa, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: duke, count: 3)
-        
+        */
     }
     
     // Literally, shuffle deck
