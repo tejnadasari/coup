@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController,
     
     // MARK: - Core Data
     
-    func getImage() -> UIImage {
+    static func getImage() -> UIImage {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
@@ -116,7 +116,7 @@ class SettingsViewController: UIViewController,
     // MARK: - UI
     
     func loadImage() {
-        let savedImage = getImage()
+        let savedImage = SettingsViewController.getImage()
         imageView.image = savedImage
     }
     

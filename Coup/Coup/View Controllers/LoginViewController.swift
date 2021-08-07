@@ -126,7 +126,7 @@ class LoginViewController: UIViewController {
         print(email)
     }
     
-    func getEmailInUserDefaults() -> String {
+    static func getEmailInUserDefaults() -> String {
         let kEmailKey = "email"
         let defaults = UserDefaults.standard
         return defaults.object(forKey: kEmailKey) as! String
