@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
             if let _ = error, user == nil {
                 self.statusLabel.text = "Sign In Failed"
             } else {
-                self.storeEmailInUserDefaults(email: email)
+                self.initializeSettingsInUserDefaults(email: email)
                 self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
             }
         }
@@ -130,6 +130,38 @@ class LoginViewController: UIViewController {
         let kEmailKey = "email"
         let defaults = UserDefaults.standard
         return defaults.object(forKey: kEmailKey) as! String
+    }
+    
+    static func storeModeInUserDefaults(mode: String) {
+        let kModeKey = "mode"
+        let defaults = UserDefaults.standard
+        defaults.set(mode, forKey: kModeKey)
+        print(mode)
+    }
+    
+    static func getModeInUserDefaults() -> String {
+        let kModeKey = "mode"
+        let defaults = UserDefaults.standard
+        return defaults.object(forKey: kModeKey) as! String
+    }
+    
+    static func storeEffectInUserDefaults(effect: String) {
+        let kEffectKey = "effect"
+        let defaults = UserDefaults.standard
+        defaults.set(effect, forKey: kEffectKey)
+        print(effect)
+    }
+    
+    static func getEffectInUserDefaults() -> String {
+        let kEffectKey = "effect"
+        let defaults = UserDefaults.standard
+        return defaults.object(forKey: kEffectKey) as! String
+    }
+    
+    func initializeSettingsInUserDefaults(email: String) {
+        storeEmailInUserDefaults(email: email)
+        LoginViewController.storeModeInUserDefaults(mode: "light")
+        LoginViewController.storeEffectInUserDefaults(effect: "on")
     }
     
     // MARK: - Dismiss keyboard
