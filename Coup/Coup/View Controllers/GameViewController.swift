@@ -70,6 +70,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var didPlayerChallengeOrAllow = false
     var challengeTurnInd: Int = 0 //whose turn it is to select challenge or allow
     var challengeMove: Move = Move() //this is the move that is chosen for challenge/allow
+    var targetInd: Int = -1 //the index in the players array of whoever is being targeted
     
     
     override func viewDidLoad() {
@@ -97,11 +98,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userCoinLabel.text = "$ \(user!.coins)"
         userCard1Label.text = "Card 1: \(user!.cards.0)"
         userCard2Label.text = "Card 2: \(user!.cards.1)"
-        
     }
     
     // After assigning 2 cards to each player, 
-    func runGame(resume: Bool, playerMove: Move){
+    func runGame(){
         
         var gameOn:Bool = true
         while gameOn{
@@ -122,7 +122,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
             if (objection.name == "challenge"){
-                if currentPlayer.checkhaveCard(cardName: curMove.name){ //will pass in cardRequired, member of Move class
+                if currentPlayer.checkhaveCard(cardName: curMove.name){//fix up in player class
                     objection.caller.revealCard()
                 }
                 else{
@@ -192,14 +192,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func anyChallenges(move: Move) -> Move{
         var curMove: Move = Move()
+        challengeTurnInd = 0
         while challengeTurnInd < players.count{
             let player = players[challengeTurnInd]
+            if (player.name == move.caller.name){
+                continue
+            }
             if (player.name == "real"){
                 enableChallengeButtons()
                 break
             }
             else{
-                curMove = player.getPlayerMove()
+                curMove = player.getChallengeOrAllow(target: move.caller)
             }
             if (didPlayerChallengeOrAllow){
                 curMove = challengeMove
@@ -219,22 +223,45 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
         
     @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "coup", caller: players[turnInd], target: players[targetInd])
+        }
     }
     @IBAction func taxBtnPressed(_ sender: Any) {
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "tax", caller: players[turnInd], target: players[targetInd])
+        }
     }
     @IBAction func stealBtnPressed(_ sender: Any) {
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "steal", caller: players[turnInd], target: players[targetInd])
+        }
     }
     @IBAction func assassinateBtnPressed(_ sender: Any) {
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "assassinate", caller: players[turnInd], target: players[targetInd])
+        }
     }
     @IBAction func allowBtnPressed(_ sender: Any) {
         didPlayerChallengeOrAllow = true
         challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
     }
     @IBAction func incomeBtnPressed(_ sender: Any) {
+        didPlayerMove = true
+        playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
     }
     @IBAction func foreignBtnPressed(_ sender: Any) {
+        didPlayerMove = true
+        playerMove = Move(name: "foreignAid", caller: players[turnInd], target: players[targetInd])
     }
     @IBAction func exchangeBtnPressed(_ sender: Any) {
+        didPlayerMove = true
+        playerMove = Move(name: "exchange", caller: players[turnInd], target: players[targetInd])
+        //intiate segue here
     }
     @IBAction func challengeBtnPressed(_ sender: Any) {
         didPlayerChallengeOrAllow = true
@@ -288,5 +315,4 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            activityLogVC.activityLog = 
         }
     }
-
 }

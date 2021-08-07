@@ -1067,7 +1067,6 @@
                                         <connections>
                                             <outlet property="aiImageView" destination="WeG-b6-NwC" id="hdw-8q-CXt"/>
                                             <outlet property="aiNameLabel" destination="HAt-BJ-yUQ" id="nyn-fQ-1gW"/>
-                                            <outlet property="gameLogLabel" destination="XxQ-Vu-ydz" id="BIU-ZA-NwY"/>
                                             <outlet property="identity1Label" destination="XxQ-Vu-ydz" id="6gB-K8-j5P"/>
                                             <outlet property="identity2Label" destination="58B-gt-CiS" id="tXd-3h-BpM"/>
                                             <outlet property="moneyLabel" destination="4D2-yw-dhx" id="0Db-Aj-lZh"/>
@@ -1146,7 +1145,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zvh-kD-LKL"/>
+        <segue reference="qaR-Rk-EXt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="opaqueSeparatorColor">

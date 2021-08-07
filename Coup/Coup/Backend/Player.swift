@@ -38,7 +38,7 @@ class Player{
         self.coins = self.coins + coinVal
     }
     
-    func getChallengeOrAllow() -> Move{
+    func getChallengeOrAllow(target: Player) -> Move{
         return Move()
     }
     
@@ -54,6 +54,10 @@ class Player{
 class AI: Player{
     func getAIMove(){
         
+    }
+    
+    func getChallengeOrAllow(target: Player) -> Move {
+        return Move(name: "challenge", caller: self, target: target)
     }
 }
 
