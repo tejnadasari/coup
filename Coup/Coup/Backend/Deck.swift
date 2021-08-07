@@ -8,7 +8,7 @@
  
  */
 
-class Deck{
+public class Deck{
     var cardDeck = [Any](repeating: 0, count: 15)
     
     // MARK:- constructor of Deck
@@ -23,13 +23,13 @@ class Deck{
         let captain = Captain()
         let contessa = Contessa()
         let duke = Duke()
-        /*
+
         shuffleDeck(cardDeck: &self.cardDeck, card: assassin, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: ambassador, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: captain, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: contessa, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: duke, count: 3)
-        */
+
     }
     
     // Literally, shuffle deck
@@ -40,7 +40,7 @@ class Deck{
             while(true) {
                 let num = Int.random(in: 0...(cardDeck.count - 1))
                 
-                if cardDeck[num] as! Int == 0 {
+                if !(cardDeck[num] is Card) && cardDeck[num] as! Int == 0 {
                     cardDeck[num] = card
                     break
                 }
@@ -89,7 +89,7 @@ class Deck{
     func shuffle() {
         var newCardDeck = [Any](repeating: 0, count: self.cardDeck.count)
         
-        for i in 0...self.cardDeck.count {
+        for i in 0...self.cardDeck.count - 1 {
             shuffleDeck(cardDeck: &newCardDeck, card: self.cardDeck[i] as! Card, count: 1)
         }
         
