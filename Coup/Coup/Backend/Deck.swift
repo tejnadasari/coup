@@ -29,7 +29,6 @@ public class Deck{
         shuffleDeck(cardDeck: &self.cardDeck, card: captain, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: contessa, count: 3)
         shuffleDeck(cardDeck: &self.cardDeck, card: duke, count: 3)
-
     }
     
     // Literally, shuffle deck
@@ -47,10 +46,9 @@ public class Deck{
             }
             temp -= 1
         }
-        
     }
     
-    // MARK:- Function for attributing cards to each player
+    // MARK:- Function for assigning cards to each player
     
     // give a card to users when kicking off the game
     func giveACard() -> Card {
@@ -60,6 +58,13 @@ public class Deck{
         self.cardDeck.remove(at: num)
         
         return card as! Card
+    }
+    
+    func assign2Cards(players: [Player]) {
+        for i in 0...players.count - 1 {
+            players[i].cards.0 = giveACard()
+            players[i].cards.1 = giveACard()
+        }
     }
     
     // MARK:- Function for exchange2Roles of Ambassador

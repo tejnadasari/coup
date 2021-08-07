@@ -4,7 +4,6 @@ class Player{
     var name: String
     var photo: UIImage
     var cards: (Card, Card)
-    
     var coins = 0
     
     // constructor

@@ -37,18 +37,13 @@
 
 import UIKit
 
-class GameViewController: UIViewController/*, UITableViewDelegate, UITableViewDataSource*/  {
-    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var test: UITableViewCell =
-        return test
-    }*/
-    
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userCoinLabel: UILabel!
+    @IBOutlet weak var userCard1Label: UILabel!
+    @IBOutlet weak var userCard2Label: UILabel!
     
     @IBOutlet weak var coupBtn: UIButton!
     @IBOutlet weak var taxBtn: UIButton!
@@ -65,6 +60,8 @@ class GameViewController: UIViewController/*, UITableViewDelegate, UITableViewDa
     var deck: Deck?
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
     var players: [Player] = [] //this is set in previous VC
+    var user: Player?
+    var AIs: [Player] = []
     
     var playerMove: Move = Move() //this is the move the player chooses
     var didPlayerMove: Bool = false //did the player select a move yet
@@ -76,11 +73,33 @@ class GameViewController: UIViewController/*, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // make Deck and assign 2 cards to each player
         deck = Deck()
+        deck!.assign2Cards(players: players)
+        
         //runGame(resume: false, playerMove: Move())
-        players.append(Player()) //real player
+//        players.append(Player()) //real player
+        
+        // for tableView
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // make AIs
+        AIs = players
+        AIs.remove(at: 0)
+        
+        // for user
+        user = players[0]
+        userImageView.image = user!.photo
+        userNameLabel.text = user!.name
+        userCoinLabel.text = "$ \(user!.coins)"
+        userCard1Label.text = "Card 1: \(user!.cards.0)"
+        userCard2Label.text = "Card 2: \(user!.cards.1)"
+        
     }
     
+    // After assigning 2 cards to each player, 
     func runGame(resume: Bool, playerMove: Move){
         
         var gameOn:Bool = true
@@ -130,7 +149,9 @@ class GameViewController: UIViewController/*, UITableViewDelegate, UITableViewDa
             //so we must modally present a view controller, displaying the two cards
             //how can we go to a new view controller
             /*deck.takeCard(move.callerPlayer.card1) //giving a card to a deck
-            move.callerPlayer.takeCard(deck.giveACard())
+            move.callerPlayer.takeCard(deck.giveACard()) -> Yash, instead of giveACard(), use giveANewCard()
+                                                            in this stituation (draw2NewRoles situation)
+                                                         -> Description about them is already written in comment
             */
         case "assassinate":
             move.target.revealCard()
@@ -219,7 +240,32 @@ class GameViewController: UIViewController/*, UITableViewDelegate, UITableViewDa
         challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
     }
     
+    // MARK:- tableView function
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AIs.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "gameLogTableViewCell", for: indexPath) as! GameLogTableViewCell
+        
+        let row = indexPath.row
+        
+        // Configure the cell...
+        
 
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 

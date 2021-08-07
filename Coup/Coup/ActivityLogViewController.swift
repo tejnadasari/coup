@@ -9,7 +9,6 @@ import UIKit
 
 class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-
     @IBOutlet weak var activityLogLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!

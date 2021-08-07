@@ -859,18 +859,38 @@
                                             <constraint firstAttribute="height" constant="80" id="ryG-gk-8yF"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="o1A-5E-1h1">
-                                        <rect key="frame" x="80" y="0.0" width="270" height="80"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="53N-af-Odx">
+                                        <rect key="frame" x="80" y="0.0" width="100" height="80"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Your Card 1: Ambassador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-rG-eeK">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-B9-NRe">
+                                                <rect key="frame" x="15" y="0.0" width="70.333333333333329" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Card 2: Contessa " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-T6-2Zo">
-                                                <rect key="frame" x="0.0" y="40" width="270" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuT-4a-qcr">
+                                                <rect key="frame" x="27.000000000000004" y="40" width="46.333333333333343" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="xWg-OE-LVr"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="o1A-5E-1h1">
+                                        <rect key="frame" x="190" y="0.0" width="160" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Card 1: Ambassador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-rG-eeK">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card 2: Contessa " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-T6-2Zo">
+                                                <rect key="frame" x="0.0" y="40" width="160" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1001,7 +1021,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ambassador" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxQ-Vu-ydz" userLabel="identity1">
-                                                    <rect key="frame" x="242" y="7" width="105" height="21"/>
+                                                    <rect key="frame" x="214" y="5" width="105" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9Ii-5u-iMQ"/>
                                                         <constraint firstAttribute="width" constant="105" id="OJU-uX-iZD"/>
@@ -1010,20 +1030,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAt-BJ-yUQ" userLabel="username">
-                                                    <rect key="frame" x="68" y="21" width="68" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAt-BJ-yUQ" userLabel="aiName">
+                                                    <rect key="frame" x="76" y="6" width="68" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4D2-yw-dhx" userLabel="money">
-                                                    <rect key="frame" x="186" y="21" width="18.333333333333343" height="18"/>
+                                                    <rect key="frame" x="101" y="31" width="18.333333333333329" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hidden" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58B-gt-CiS" userLabel="identity2">
-                                                    <rect key="frame" x="242" y="32" width="105" height="21"/>
+                                                    <rect key="frame" x="214" y="30" width="105" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="5fe-BA-V8D"/>
                                                         <constraint firstAttribute="width" constant="105" id="Iia-Vq-exM"/>
@@ -1034,27 +1054,26 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="58B-gt-CiS" secondAttribute="trailing" constant="3" id="0jC-Te-tkp"/>
-                                                <constraint firstAttribute="trailing" secondItem="XxQ-Vu-ydz" secondAttribute="trailing" constant="3" id="6vG-dT-BPw"/>
-                                                <constraint firstItem="4D2-yw-dhx" firstAttribute="top" secondItem="sp2-tF-rlX" secondAttribute="top" constant="21" id="8Mj-Vp-pif"/>
-                                                <constraint firstItem="HAt-BJ-yUQ" firstAttribute="top" secondItem="sp2-tF-rlX" secondAttribute="top" constant="21" id="IAa-C5-pD2"/>
-                                                <constraint firstItem="XxQ-Vu-ydz" firstAttribute="top" secondItem="sp2-tF-rlX" secondAttribute="top" constant="7" id="UPs-pz-JTx"/>
+                                                <constraint firstAttribute="trailing" secondItem="58B-gt-CiS" secondAttribute="trailing" constant="31" id="4Ro-l8-zHm"/>
+                                                <constraint firstItem="4D2-yw-dhx" firstAttribute="leading" secondItem="WeG-b6-NwC" secondAttribute="trailing" constant="41" id="GhF-AP-8Gy"/>
+                                                <constraint firstItem="XxQ-Vu-ydz" firstAttribute="top" secondItem="sp2-tF-rlX" secondAttribute="top" constant="5" id="IAq-j5-Kee"/>
+                                                <constraint firstItem="58B-gt-CiS" firstAttribute="top" secondItem="XxQ-Vu-ydz" secondAttribute="bottom" constant="4" id="OgL-qo-Lyn"/>
+                                                <constraint firstAttribute="trailing" secondItem="XxQ-Vu-ydz" secondAttribute="trailing" constant="31" id="QGu-3x-fuN"/>
                                                 <constraint firstAttribute="bottom" secondItem="WeG-b6-NwC" secondAttribute="bottom" id="XV1-Ck-efu"/>
                                                 <constraint firstItem="WeG-b6-NwC" firstAttribute="leading" secondItem="sp2-tF-rlX" secondAttribute="leading" id="deE-4g-7V6"/>
-                                                <constraint firstItem="4D2-yw-dhx" firstAttribute="leading" secondItem="HAt-BJ-yUQ" secondAttribute="trailing" constant="50" id="h0W-se-neh"/>
-                                                <constraint firstItem="HAt-BJ-yUQ" firstAttribute="leading" secondItem="WeG-b6-NwC" secondAttribute="trailing" constant="8" symbolic="YES" id="hMq-cs-E50"/>
-                                                <constraint firstAttribute="bottom" secondItem="58B-gt-CiS" secondAttribute="bottom" constant="7" id="v1T-03-Q67"/>
+                                                <constraint firstItem="HAt-BJ-yUQ" firstAttribute="top" secondItem="sp2-tF-rlX" secondAttribute="top" constant="6" id="mXR-2x-fxz"/>
+                                                <constraint firstItem="4D2-yw-dhx" firstAttribute="top" secondItem="HAt-BJ-yUQ" secondAttribute="bottom" constant="7" id="mYG-Ha-QaP"/>
+                                                <constraint firstItem="HAt-BJ-yUQ" firstAttribute="leading" secondItem="WeG-b6-NwC" secondAttribute="trailing" constant="16" id="ubb-Vz-d6l"/>
                                                 <constraint firstItem="WeG-b6-NwC" firstAttribute="top" secondItem="sp2-tF-rlX" secondAttribute="top" id="xBX-Y6-Ckx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="aiImageView" destination="WeG-b6-NwC" id="hdw-8q-CXt"/>
+                                            <outlet property="aiNameLabel" destination="HAt-BJ-yUQ" id="nyn-fQ-1gW"/>
                                             <outlet property="gameLogLabel" destination="XxQ-Vu-ydz" id="BIU-ZA-NwY"/>
                                             <outlet property="identity1Label" destination="XxQ-Vu-ydz" id="6gB-K8-j5P"/>
                                             <outlet property="identity2Label" destination="58B-gt-CiS" id="tXd-3h-BpM"/>
                                             <outlet property="moneyLabel" destination="4D2-yw-dhx" id="0Db-Aj-lZh"/>
-                                            <outlet property="userImage" destination="WeG-b6-NwC" id="Bu3-nj-kIp"/>
-                                            <outlet property="userNameLabel" destination="HAt-BJ-yUQ" id="iHU-8J-Sca"/>
-                                            <outlet property="userProfile" destination="WeG-b6-NwC" id="JN1-rL-oG2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1103,6 +1122,11 @@
                         <outlet property="stealBtn" destination="zhU-Qc-nfV" id="GAO-59-xFB"/>
                         <outlet property="tableView" destination="Otx-vB-4Qp" id="vwD-XO-8SI"/>
                         <outlet property="taxBtn" destination="JoC-LC-FiP" id="sMc-lL-CWe"/>
+                        <outlet property="userCard1Label" destination="NSt-rG-eeK" id="Hs7-IA-H4E"/>
+                        <outlet property="userCard2Label" destination="T5c-T6-2Zo" id="ele-wp-hFI"/>
+                        <outlet property="userCoinLabel" destination="PuT-4a-qcr" id="v6j-hx-Lhb"/>
+                        <outlet property="userImageView" destination="M2Y-H9-nhJ" id="rMF-YL-yEd"/>
+                        <outlet property="userNameLabel" destination="CnD-B9-NRe" id="B3f-cb-6vp"/>
                         <segue destination="RcR-Jo-Qpw" kind="presentation" identifier="exchangeSegueIdentifier" id="mhx-iw-rpD"/>
                     </connections>
                 </viewController>
