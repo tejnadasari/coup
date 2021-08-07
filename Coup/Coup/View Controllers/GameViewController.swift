@@ -56,6 +56,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var foreignBtn: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
+    var highlightSwitch = false
     
     var deck: Deck?
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
@@ -251,8 +252,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return highlightSwitch
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -261,19 +265,28 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let row = indexPath.row
         
         // Configure the cell...
-        
+        cell.aiImageView.image = AIs[row].photo
+        cell.aiNameLabel.text = AIs[row].name
+        cell.moneyLabel.text = "$ \(AIs[row].coins)"
+        cell.identity1Label.text = AIs[row].cards.0.name
+        cell.identity2Label.text = AIs[row].cards.1.name
 
         return cell
     }
     
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "activityLogSegueIdentifier",
+           let activityLogVC = segue.destination as? ActivityLogViewController {
+            activityLogVC.players = players
+//            activityLogVC.activityLog = 
+        }
     }
-    */
 
 }

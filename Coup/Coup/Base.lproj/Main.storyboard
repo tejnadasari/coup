@@ -397,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glW-7P-Rki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="1029"/>
+            <point key="canvasLocation" x="1848" y="953"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="OSA-Mi-CWu">
@@ -505,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYT-Hl-h4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947.69230769230762" y="1029.3838862559242"/>
+            <point key="canvasLocation" x="949" y="1029"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nQt-yF-nlq">
@@ -615,6 +615,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instruction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvy-ks-cu4">
+                                <rect key="frame" x="158.33333333333334" y="729" width="73.333333333333343" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KRV-HC-GbX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -628,7 +634,9 @@
                             <constraint firstItem="w9E-NV-9CA" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="IG1-Tf-1Jl"/>
                             <constraint firstItem="sHn-Oc-VXW" firstAttribute="top" secondItem="KRV-HC-GbX" secondAttribute="top" constant="85" id="UFv-Jk-8wA"/>
                             <constraint firstItem="6c5-7l-C9H" firstAttribute="leading" secondItem="KRV-HC-GbX" secondAttribute="leading" constant="31" id="Uet-ys-5jp"/>
+                            <constraint firstItem="Yvy-ks-cu4" firstAttribute="top" secondItem="w9E-NV-9CA" secondAttribute="bottom" constant="10" id="VJh-4n-AvB"/>
                             <constraint firstItem="lcW-g4-bxs" firstAttribute="top" secondItem="sHn-Oc-VXW" secondAttribute="bottom" constant="31" id="VSQ-E4-nox"/>
+                            <constraint firstItem="Yvy-ks-cu4" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="Zhm-Th-9h3"/>
                             <constraint firstItem="6c5-7l-C9H" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="50" id="qHk-C0-Efg"/>
                             <constraint firstItem="lcW-g4-bxs" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="vTS-sr-HwM"/>
                         </constraints>
@@ -637,6 +645,7 @@
                     <connections>
                         <outlet property="addAIButton" destination="6c5-7l-C9H" id="nXo-gr-oQ2"/>
                         <outlet property="gameStartButton" destination="1jl-4z-LdC" id="uGX-y7-ftG"/>
+                        <outlet property="instructionLabel" destination="Yvy-ks-cu4" id="UKt-Ah-Kb5"/>
                         <outlet property="settingsButton" destination="w9E-NV-9CA" id="DCB-NJ-SUZ"/>
                         <outlet property="tableView" destination="lcW-g4-bxs" id="cVw-qA-zF1"/>
                     </connections>
@@ -986,18 +995,6 @@
                                     <segue destination="yhG-CG-umP" kind="presentation" id="rgp-ZP-AX2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cd-yr-Ppc">
-                                <rect key="frame" x="254" y="776" width="74" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="57" id="y6i-iO-p6H"/>
-                                </constraints>
-                                <state key="normal" title="Game Log"/>
-                                <connections>
-                                    <segue destination="Kgb-ep-6KY" kind="popoverPresentation" popoverAnchorView="6Cd-yr-Ppc" id="uyu-PJ-HYz">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Otx-vB-4Qp">
                                 <rect key="frame" x="20" y="183" width="350" height="360"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1078,6 +1075,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cd-yr-Ppc">
+                                <rect key="frame" x="248" y="776" width="87" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="y6i-iO-p6H"/>
+                                </constraints>
+                                <state key="normal" title="Activity Log"/>
+                                <connections>
+                                    <segue destination="Kgb-ep-6KY" kind="popoverPresentation" identifier="activityLogSegueIdentifier" popoverAnchorView="6Cd-yr-Ppc" id="uyu-PJ-HYz">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="csP-34-TK8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1137,7 +1146,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qaR-Rk-EXt"/>
+        <segue reference="Zvh-kD-LKL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="opaqueSeparatorColor">

@@ -13,6 +13,7 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var activityLog: [String]?
+    var players: [Player] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,6 +18,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var gameStartButton: UIButton!
     @IBOutlet weak var addAIButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var instructionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,12 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         playerArray.append(user)
+        
+        instructionLabel.numberOfLines = 2
+        instructionLabel.text = """
+                        (Settings: Your picture will be updated if you
+                        go back and make an offline game again)
+                        """
     }
 
     // MARK: - Table view data source
@@ -83,7 +90,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
             playerArray.append(AI)
             
         } else {
-            let controller = UIAlertController(title: "The Max Number of Players Restriction", message: "You can have up to 5 AI players to play the game", preferredStyle: .alert)
+            let controller = UIAlertController(title: "Number of Players Restriction", message: "You can have up to 5 AIs", preferredStyle: .alert)
             controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(controller, animated: true, completion: nil)
             

@@ -9,7 +9,6 @@ import UIKit
 
 class GameLogTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var aiImageView: UIImageView!
     @IBOutlet weak var aiNameLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
