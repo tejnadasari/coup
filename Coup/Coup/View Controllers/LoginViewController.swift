@@ -131,6 +131,18 @@ class LoginViewController: UIViewController {
         return defaults.object(forKey: kEmailKey) as! String
     }
     
+    // use this function when fetching userName -> LoginViewController.getUsername()
+    static func getUsername() -> String {
+        let userEmail = getEmailInUserDefaults()
+        var userName = ""
+        
+        if let rangeU = userEmail.range(of: "@") {
+            userName = String(userEmail[..<rangeU.lowerBound])
+        }
+        
+        return userName
+    }
+    
     static func storeModeInUserDefaults(mode: String) {
         let kModeKey = "mode"
         let defaults = UserDefaults.standard
