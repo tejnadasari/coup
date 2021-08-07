@@ -22,7 +22,9 @@ class SettingsViewController: UIViewController,
         loadImage()
     }
     
-    func loadImage() {
+    // MARK: - Core Data
+    
+    func getImage() -> UIImage {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
@@ -32,14 +34,15 @@ class SettingsViewController: UIViewController,
         do {
             try fetchedResults = context.fetch(request) as? [NSManagedObject]
             
-            for profile in fetchedResults! {
-                if let imageString = profile.value(forKey: "image"),
-                   let decodedData = Data(base64Encoded: imageString as! String,
-                                          options: .ignoreUnknownCharacters)
-                   {
-                    let savedImage = UIImage(data: decodedData)
-                    imageView.image = savedImage
-                }
+            if fetchedResults?.count == 0 {
+                return UIImage(named: "Angela Baby")!
+            }
+            
+            let profile = fetchedResults![0]
+            if let imageString = profile.value(forKey: "image"),
+               let decodedData = Data(base64Encoded: imageString as! String,
+                                      options: .ignoreUnknownCharacters) {
+                return UIImage(data: decodedData)!
             }
         } catch {
             // if an error occurs
@@ -47,6 +50,7 @@ class SettingsViewController: UIViewController,
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
+        return UIImage(named: "Angela Baby")!
     }
     
     func storeImage(selectedImage: UIImage) {
@@ -94,6 +98,8 @@ class SettingsViewController: UIViewController,
         }
     }
     
+    // MARK: - Image Picker Controller
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info:
                                 [UIImagePickerController.InfoKey : Any])
@@ -105,6 +111,13 @@ class SettingsViewController: UIViewController,
         imageView.image = chosenImage
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - UI
+    
+    func loadImage() {
+        let savedImage = getImage()
+        imageView.image = savedImage
     }
     
     @IBAction func changeProfilePicture(_ sender: Any) {
@@ -165,8 +178,6 @@ class SettingsViewController: UIViewController,
         present(controller, animated: true, completion: nil)
     }
     
-    
-
     @IBAction func doneButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
