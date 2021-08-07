@@ -43,6 +43,8 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - UI
+    
     @IBAction func onSegmentChange(_ sender: Any) {
         switch segCtrl.selectedSegmentIndex {
         case 0:
@@ -72,6 +74,8 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - Sign In and Up using Firebase
+    
     func signIn() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
@@ -86,6 +90,7 @@ class LoginViewController: UIViewController {
             if let _ = error, user == nil {
                 self.statusLabel.text = "Sign In Failed"
             } else {
+                self.storeEmailInUserDefaults(email: email)
                 self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
             }
         }
@@ -111,6 +116,23 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - User Defaults
+    
+    func storeEmailInUserDefaults(email: String) {
+        let kEmailKey = "email"
+        let defaults = UserDefaults.standard
+        defaults.set(email, forKey: kEmailKey)
+        print(email)
+    }
+    
+    func getEmailInUserDefaults() -> String {
+        let kEmailKey = "email"
+        let defaults = UserDefaults.standard
+        return defaults.object(forKey: kEmailKey) as! String
+    }
+    
+    // MARK: - Dismiss keyboard
     
     func textFieldShouldReturn(textField:UITextField) -> Bool {
         textField.resignFirstResponder()
