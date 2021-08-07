@@ -13,13 +13,15 @@ class SettingsViewController: UIViewController,
                               UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var modeSegCtrl: UISegmentedControl!
+    @IBOutlet weak var effectSegCtrl: UISegmentedControl!
     
     let picker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-        loadImage()
+        setUpSettings()
     }
     
     // MARK: - Core Data
@@ -113,12 +115,42 @@ class SettingsViewController: UIViewController,
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - UI
+    // MARK: - Load User Defaults
+    
+    func setUpSettings() {
+        loadImage()
+        loadMode()
+        loadEffect()
+    }
     
     func loadImage() {
         let savedImage = SettingsViewController.getImage()
         imageView.image = savedImage
     }
+    
+    func loadMode() {
+        switch LoginViewController.getModeInUserDefaults() {
+        case "light":
+            modeSegCtrl.selectedSegmentIndex = 0
+        case "dark":
+            modeSegCtrl.selectedSegmentIndex = 1
+        default:
+            print("This should never happen")
+        }
+    }
+    
+    func loadEffect() {
+        switch LoginViewController.getEffectInUserDefaults() {
+        case "on":
+            effectSegCtrl.selectedSegmentIndex = 0
+        case "off":
+            effectSegCtrl.selectedSegmentIndex = 1
+        default:
+            print("This should never happen")
+        }
+    }
+    
+    // MARK: - UI
     
     @IBAction func changeProfilePicture(_ sender: Any) {
         let controller = UIAlertController(
@@ -180,5 +212,27 @@ class SettingsViewController: UIViewController,
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onModeSegChange(_ sender: Any) {
+        switch modeSegCtrl.selectedSegmentIndex {
+        case 0:
+            LoginViewController.storeModeInUserDefaults(mode: "light")
+        case 1:
+            LoginViewController.storeModeInUserDefaults(mode: "dark")
+        default:
+            print("This should never happen")
+        }
+    }
+    
+    @IBAction func onEffectSegChange(_ sender: Any) {
+        switch effectSegCtrl.selectedSegmentIndex {
+        case 0:
+            LoginViewController.storeEffectInUserDefaults(effect: "on")
+        case 1:
+            LoginViewController.storeEffectInUserDefaults(effect: "off")
+        default:
+            print("This should never happen")
+        }
     }
 }

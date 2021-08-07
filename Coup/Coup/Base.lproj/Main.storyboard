@@ -450,6 +450,9 @@
                                                     <segment title="Light Mode"/>
                                                     <segment title="Dark Mode"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="onModeSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="cpQ-h0-dTM"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -465,6 +468,9 @@
                                                     <segment title="Sound Effect On"/>
                                                     <segment title="Sound Effect Off"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="onEffectSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="l5X-KK-FRp"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -492,7 +498,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="QqO-tD-Gog"/>
                     <connections>
+                        <outlet property="effectSegCtrl" destination="gOG-KZ-4Y0" id="yPE-z7-qC0"/>
                         <outlet property="imageView" destination="Fmu-un-gM0" id="YBb-Hy-t11"/>
+                        <outlet property="modeSegCtrl" destination="2FZ-PZ-0Ti" id="jt3-0h-mbg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYT-Hl-h4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

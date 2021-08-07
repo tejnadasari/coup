@@ -123,7 +123,6 @@ class LoginViewController: UIViewController {
         let kEmailKey = "email"
         let defaults = UserDefaults.standard
         defaults.set(email, forKey: kEmailKey)
-        print(email)
     }
     
     static func getEmailInUserDefaults() -> String {
@@ -136,7 +135,6 @@ class LoginViewController: UIViewController {
         let kModeKey = "mode"
         let defaults = UserDefaults.standard
         defaults.set(mode, forKey: kModeKey)
-        print(mode)
     }
     
     static func getModeInUserDefaults() -> String {
@@ -149,7 +147,6 @@ class LoginViewController: UIViewController {
         let kEffectKey = "effect"
         let defaults = UserDefaults.standard
         defaults.set(effect, forKey: kEffectKey)
-        print(effect)
     }
     
     static func getEffectInUserDefaults() -> String {
