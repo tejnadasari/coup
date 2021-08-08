@@ -374,7 +374,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     // MARK: - Segues
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -395,5 +394,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
            let nextVC = segue.destination as? GameEndsViewController {
             nextVC.status = status
         }
+    }
+    
+    func youWon() {
+        status = "You Won"
+    }
+    
+    func youLost() {
+        status = "You Lost"
     }
 }
