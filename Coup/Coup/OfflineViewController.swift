@@ -109,7 +109,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGame",
                    let nextVC = segue.destination as? GameViewController {
-                   nextVC.players = playerArray
+                   players = playerArray
                 }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

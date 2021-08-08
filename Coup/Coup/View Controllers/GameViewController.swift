@@ -37,6 +37,8 @@
 
 import UIKit
 
+var players: [Player] = []
+
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -60,7 +62,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var deck: Deck?
     var numPlayers: Int? //this will be set in a prepare function in the previous VC
-    var players: [Player] = [] //this is set in previous VC
+    //var players: [Player] = [] //this is set in previous VC
     var user: Player?
     var AIs: [Player] = []
     
@@ -136,6 +138,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //still need to update the labels!
+    func revealCard(curPlayer: Player){
+        if (curPlayer.name == "real"){}
+        else{
+            if (!curPlayer.cards.0.revealed){
+                curPlayer.cards.0.revealed = true
+            }
+            else if (!curPlayer.cards.1.revealed){
+                curPlayer.cards.1.revealed = true
+            }
+            else{
+                //both of their cards are already revealed
+            }
+        }
+    }
     
     func actOnMove(move: Move){
         switch move.name {
@@ -146,7 +163,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "coup":
             move.caller.coins -= 7
             move.target.revealCard()
-        case "drawNewRoles": break //ambassador has option to exchange these cards
+        case "drawNewRoles":
+            performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+            deck?.give2Cards()//ambassador has option to exchange these cards
             //so we must modally present a view controller, displaying the two cards
             //how can we go to a new view controller
             /*deck.takeCard(move.callerPlayer.card1) //giving a card to a deck
@@ -270,7 +289,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK:- tableView function
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -313,6 +331,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
            let activityLogVC = segue.destination as? ActivityLogViewController {
             activityLogVC.players = players
 //            activityLogVC.activityLog = 
+        }
+        if segue.identifier == "exchangeSegueIdentifier",
+           let exchangeVC = segue.destination as? ExchangeViewController {
+            exchangeVC.twoCards = deck?.give2Cards()
+            //BRIAN IMPLEMENT
         }
     }
 }

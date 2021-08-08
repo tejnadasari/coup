@@ -594,13 +594,6 @@
                                     <action selector="addAIButtonPressed:" destination="WAN-SW-7tD" eventType="touchUpInside" id="5pW-Km-rna"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9E-NV-9CA" userLabel="Settings">
-                                <rect key="frame" x="166.66666666666666" y="689" width="57" height="30"/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <segue destination="WSx-xW-JoZ" kind="presentation" id="Zvh-kD-LKL"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jl-4z-LdC" userLabel="Game Start">
                                 <rect key="frame" x="287" y="585" width="78" height="30"/>
                                 <state key="normal" title="Game Start"/>
@@ -615,7 +608,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instruction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvy-ks-cu4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Instruction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvy-ks-cu4">
                                 <rect key="frame" x="158.33333333333334" y="729" width="73.333333333333343" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -628,13 +621,10 @@
                             <constraint firstItem="sHn-Oc-VXW" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="0Sl-xc-j8s"/>
                             <constraint firstItem="CYL-72-TZu" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="5mq-9g-5o1"/>
                             <constraint firstItem="CYL-72-TZu" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="8" symbolic="YES" id="6T7-6i-kTk"/>
-                            <constraint firstItem="w9E-NV-9CA" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="154" id="DLc-hv-16X"/>
                             <constraint firstItem="KRV-HC-GbX" firstAttribute="trailing" secondItem="1jl-4z-LdC" secondAttribute="trailing" constant="25" id="DQK-I1-U7o"/>
                             <constraint firstItem="1jl-4z-LdC" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="50" id="EJG-1N-4nN"/>
-                            <constraint firstItem="w9E-NV-9CA" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="IG1-Tf-1Jl"/>
                             <constraint firstItem="sHn-Oc-VXW" firstAttribute="top" secondItem="KRV-HC-GbX" secondAttribute="top" constant="85" id="UFv-Jk-8wA"/>
                             <constraint firstItem="6c5-7l-C9H" firstAttribute="leading" secondItem="KRV-HC-GbX" secondAttribute="leading" constant="31" id="Uet-ys-5jp"/>
-                            <constraint firstItem="Yvy-ks-cu4" firstAttribute="top" secondItem="w9E-NV-9CA" secondAttribute="bottom" constant="10" id="VJh-4n-AvB"/>
                             <constraint firstItem="lcW-g4-bxs" firstAttribute="top" secondItem="sHn-Oc-VXW" secondAttribute="bottom" constant="31" id="VSQ-E4-nox"/>
                             <constraint firstItem="Yvy-ks-cu4" firstAttribute="centerX" secondItem="cNk-Cj-2dX" secondAttribute="centerX" id="Zhm-Th-9h3"/>
                             <constraint firstItem="6c5-7l-C9H" firstAttribute="top" secondItem="lcW-g4-bxs" secondAttribute="bottom" constant="50" id="qHk-C0-Efg"/>
@@ -646,7 +636,6 @@
                         <outlet property="addAIButton" destination="6c5-7l-C9H" id="nXo-gr-oQ2"/>
                         <outlet property="gameStartButton" destination="1jl-4z-LdC" id="uGX-y7-ftG"/>
                         <outlet property="instructionLabel" destination="Yvy-ks-cu4" id="UKt-Ah-Kb5"/>
-                        <outlet property="settingsButton" destination="w9E-NV-9CA" id="DCB-NJ-SUZ"/>
                         <outlet property="tableView" destination="lcW-g4-bxs" id="cVw-qA-zF1"/>
                     </connections>
                 </viewController>

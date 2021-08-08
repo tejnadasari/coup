@@ -47,7 +47,21 @@ class Player{
     }
     
     func revealCard(){
-        
+    }
+    
+    func otherCardCount(cardLookingFor: String) -> Int{
+        var count: Int = 0
+        for current in players{
+            if (current.name != self.name){
+                if (current.cards.0.revealed && current.cards.0.name == cardLookingFor){
+                    count += 1
+                }
+                if (current.cards.1.revealed && current.cards.0.name == cardLookingFor){
+                    count += 1
+                }
+            }
+        }
+        return count
     }
 }
 
@@ -56,7 +70,8 @@ class AI: Player{
         
     }
     
-    func getChallengeOrAllow(target: Player) -> Move {
+    
+    override func getChallengeOrAllow(target: Player) -> Move {
         return Move(name: "challenge", caller: self, target: target)
     }
 }
