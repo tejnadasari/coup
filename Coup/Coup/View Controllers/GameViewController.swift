@@ -41,7 +41,6 @@ var players: [Player] = []
 
 protocol ApplyExchangeDelegate {
     func applyExchange(chosenCard: Card, caseNum: Int)
-    
 }
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApplyExchangeDelegate {
@@ -83,6 +82,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var challengeMove: Move = Move() //this is the move that is chosen for challenge/allow
     var targetInd: Int = -1 //the index in the players array of whoever is being targeted
     
+    var status = "You Lost"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -372,7 +372,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
-    // MARK: - Navigation
+    // MARK: - Segues
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -384,12 +384,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             activityLogVC.players = players
 //            activityLogVC.activityLog = 
         }
-        if segue.identifier == "exchangeSegueIdentifier",
+        else if segue.identifier == "exchangeSegueIdentifier",
            let exchangeVC = segue.destination as? ExchangeViewController {
             exchangeVC.delegate = self
             exchangeVC.twoCards = twoCards
             exchangeVC.userCard = userCard
             exchangeVC.caseNum = caseNum
+        }
+        else if segue.identifier == "gameEndsSegueIdentifier",
+           let nextVC = segue.destination as? GameEndsViewController {
+            nextVC.status = status
         }
     }
 }

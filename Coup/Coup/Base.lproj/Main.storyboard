@@ -1137,7 +1137,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="End Game"/>
                             <connections>
-                                <segue destination="vi6-8A-CW4" kind="presentation" modalPresentationStyle="fullScreen" id="cr7-bM-LGL"/>
+                                <segue destination="vi6-8A-CW4" kind="presentation" identifier="gameEndsSegueIdentifier" modalPresentationStyle="fullScreen" id="cr7-bM-LGL"/>
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="oSS-5x-uCA">

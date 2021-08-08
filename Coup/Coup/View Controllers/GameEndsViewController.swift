@@ -9,12 +9,11 @@ import UIKit
 import AVFoundation
 
 class GameEndsViewController: UIViewController {
+    
+    var status = "undefined"
 
     @IBOutlet weak var statusLabel: UILabel!
-    
-    var delegate: UIViewController!
-    var status = "You Lost"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         statusLabel.text = ""
