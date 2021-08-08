@@ -1,7 +1,7 @@
 /*
  How will gameplay work:
  
- Previous view controller will initialize: numberOfAI
+ Previous view controller will initialize: numberOfAI / players
  
  Deck, and AI array will be initialized. Entire array will just be AI.
  User will be included within the array
@@ -39,7 +39,12 @@ import UIKit
 
 var players: [Player] = []
 
-class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+protocol ApplyExchangeDelegate {
+    func applyExchange(chosenCard: Card, caseNum: Int)
+    
+}
+
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApplyExchangeDelegate {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -60,8 +65,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     var highlightSwitch = false
     
-    var deck: Deck?
-    var numPlayers: Int? //this will be set in a prepare function in the previous VC
+    var deck: Deck? // deck for game
+    var twoCards: (Card, Card)? // twoCards for exchange
+    var userCard: Card? // userCard for exchange
+    var caseNum: Int?
+    
+//    var numPlayers: Int? //this will be set in a prepare function in the previous VC
     //var players: [Player] = [] //this is set in previous VC
     var user: Player?
     var AIs: [Player] = []
@@ -106,6 +115,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func runGame(){
         
         var gameOn:Bool = true
+        
         while gameOn{
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
@@ -159,20 +169,27 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "income":
             move.caller.coins += 1
         case "foreignAid":
-            move.caller.coins += 1
+            move.caller.coins += 2
         case "coup":
             move.caller.coins -= 7
             move.target.revealCard()
         case "drawNewRoles":
-            performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
-            deck?.give2Cards()//ambassador has option to exchange these cards
-            //so we must modally present a view controller, displaying the two cards
-            //how can we go to a new view controller
-            /*deck.takeCard(move.callerPlayer.card1) //giving a card to a deck
-            move.callerPlayer.takeCard(deck.giveACard()) -> Yash, instead of giveACard(), use giveANewCard()
-                                                            in this stituation (draw2NewRoles situation)
-                                                         -> Description about them is already written in comment
-            */
+            twoCards = deck!.give2Cards()
+            
+            if self.user!.cards.0.revealed == false {
+                userCard = user!.cards.0
+                caseNum = 0
+                self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+            }
+            
+            if self.user!.cards.1.revealed == false {
+                userCard = user!.cards.1
+                caseNum = 2
+                self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+            }
+            
+            deck!.get2CardsBackNShuffle(twoCards: twoCards!)
+            
         case "assassinate":
             move.target.revealCard()
         case "steal":
@@ -287,6 +304,32 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
     }
     
+    // MARK:- ApplyExchangeDelegate for exchange2Roles
+    
+    func applyExchange(chosenCard: Card, caseNum: Int) {
+        switch caseNum {
+        
+        case 0:
+            twoCards!.0 = user!.cards.0
+            user!.cards.0 = chosenCard
+            
+        case 1:
+            twoCards!.1 = user!.cards.0
+            user!.cards.0 = chosenCard
+            
+        case 2:
+            twoCards!.0 = user!.cards.1
+            user!.cards.1 = chosenCard
+            
+        case 3:
+            twoCards!.1 = user!.cards.1
+            user!.cards.1 = chosenCard
+            
+        default:
+            print("Not Applicable")
+        }
+    }
+    
     // MARK:- tableView function
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -297,6 +340,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // write the code you want to implement when the cell was selected
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -334,8 +380,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if segue.identifier == "exchangeSegueIdentifier",
            let exchangeVC = segue.destination as? ExchangeViewController {
-            exchangeVC.twoCards = deck?.give2Cards()
-            //BRIAN IMPLEMENT
+            exchangeVC.delegate = self
+            exchangeVC.twoCards = twoCards
+            exchangeVC.userCard = userCard
+            exchangeVC.caseNum = caseNum
         }
     }
 }

@@ -177,18 +177,18 @@
 		FD98412E269E3E320035E9BB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
+				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 				32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */,
 				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
-				32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */,
-				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
-				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
 				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
 				32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */,
+				32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */,
 				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
-				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
-				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 				32BE2ACC26B9AD9B00CB6A24 /* ActivityLogViewController.swift */,
 				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
+				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
+				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

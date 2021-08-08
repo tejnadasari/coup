@@ -28,7 +28,7 @@ class Player{
     }
     
     func getPlayerMove() -> Move {
-        //Swtich Case statement for chosen Move
+        // Swtich Case statement for chosen Move
         // use multithreading to ask for move and get move
         
         return Move(name: "", caller: Player(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card())), target: Player(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card())))

@@ -17,8 +17,6 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var gameStartButton: UIButton!
     @IBOutlet weak var addAIButton: UIButton!
-    @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var instructionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +29,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         playerArray.append(user)
-        
-        instructionLabel.numberOfLines = 2
-        instructionLabel.text = """
-                        (Settings: Your picture will be updated if you
-                        go back and make an offline game again)
-                        """
+
     }
 
     // MARK: - Table view data source
