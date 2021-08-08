@@ -402,11 +402,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func dismissHighlights(index: Int) {
-        userCellColor = UIColor.clear
-        userStack.backgroundColor = userCellColor
-        
-        AICellColors[index - 1] = UIColor.clear
-        tableView.reloadData()
+        if index == 0 {
+            userCellColor = UIColor.clear
+            userStack.backgroundColor = userCellColor
+        } else {
+            AICellColors[index - 1] = UIColor.clear
+            tableView.reloadData()
+        }
     }
     
     func highlightAI(index: Int) {
