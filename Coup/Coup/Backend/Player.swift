@@ -27,6 +27,10 @@ class Player{
         return false
     }
     
+    func isPlayerDone() -> Bool{
+            return (self.cards.0.revealed && self.cards.1.revealed)
+    }
+    
     func getPlayerMove() -> Move {
         // Swtich Case statement for chosen Move
         // use multithreading to ask for move and get move

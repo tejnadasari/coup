@@ -61,6 +61,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var foreignBtn: UIButton!
     
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var userStack: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     var highlightSwitch = false
@@ -89,6 +90,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        disableAllButtons()
         
         // make Deck and assign 2 cards to each player
         deck = Deck()
@@ -124,58 +126,78 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while gameOn{
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
-            
+            if (currentPlayer.isPlayerDone()){
+                continue
+            }
+            if currentPlayer.name == "real" {
+                highlightUser()
+            } else {
+                highlightAI(index: turnInd)
+            }
             if (currentPlayer.name == "real" && didPlayerMove == false){
                 enableButtons()
                 break
             }
             else if (currentPlayer.name == "real"){
+                disableAllButtons()
                 curMove = playerMove
                 didPlayerMove = false
             }
             else {
                 curMove = currentPlayer.getPlayerMove()
             }
-            
+            statusLabel.text = curMove.toString() //updates label
             //curMove is now set
             dismissHighlights(index: turnInd)
-            
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
+            sleep(1)
             if (objection.name == "challenge"){
+                statusLabel.text = objection.challengeString()
+                sleep(1)
                 if currentPlayer.checkhaveCard(cardName: curMove.name){//fix up in player class
                     objection.caller.revealCard()
                 }
                 else{
                     objection.target.revealCard() //reveal card must present modally
                 }
+                sleep(1)
             }
             if (objection.name == "allow"){
+                statusLabel.text = curMove.successfulString()
                 actOnMove(move: curMove)
             }
-            
+            isGameOver(gameOn: &gameOn)
             // Highlight next player
             incrementInd(ind: &turnInd)
-            if players[turnInd].name == "real" {
-                highlightUser()
-            } else {
-                highlightAI(index: turnInd)
+        }
+    }
+    
+    func isGameOver(gameOn: inout Bool){
+        var countFalse: Int = 0
+        for cur in players{
+            if cur.isPlayerDone(){
+                countFalse += 1
             }
+        }
+        if (countFalse == 1){
+            gameOn = false
         }
     }
     
     //still need to update the labels!
     func revealCard(curPlayer: Player){
-        if (curPlayer.name == "real"){}
+        if (curPlayer.name == "real"){
+            //create alert message here!!
+        }
         else{
             if (!curPlayer.cards.0.revealed){
+                statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
                 curPlayer.cards.0.revealed = true
             }
             else if (!curPlayer.cards.1.revealed){
+                statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
                 curPlayer.cards.1.revealed = true
-            }
-            else{
-                //both of their cards are already revealed
             }
         }
     }
@@ -232,6 +254,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         foreignBtn.isEnabled = true
         incomeBtn.isEnabled = true
         exchangeBtn.isEnabled = true
+        challengeBtn.isEnabled = false
+        allowBtn.isEnabled = false
+    }
+    
+    func disableAllButtons(){
+        coupBtn.isEnabled = false
+        taxBtn.isEnabled = false
+        stealBtn.isEnabled = false
+        assassinateBtn.isEnabled = false
+        foreignBtn.isEnabled = false
+        incomeBtn.isEnabled = false
+        exchangeBtn.isEnabled = false
         challengeBtn.isEnabled = false
         allowBtn.isEnabled = false
     }

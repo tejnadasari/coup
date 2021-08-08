@@ -1018,11 +1018,10 @@
                                     <segue destination="yhG-CG-umP" kind="presentation" id="rgp-ZP-AX2"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Otx-vB-4Qp">
-                                <rect key="frame" x="20" y="183" width="350" height="360"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Otx-vB-4Qp">
+                                <rect key="frame" x="20" y="183" width="350" height="280"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="360" id="YXz-3O-Pfg"/>
                                     <constraint firstAttribute="width" constant="350" id="g5L-3q-I1W"/>
                                 </constraints>
                                 <prototypes>
@@ -1109,6 +1108,13 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFc-I5-kQu">
+                                <rect key="frame" x="176" y="491" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="csP-34-TK8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1159,6 +1165,7 @@
                         <outlet property="exchangeBtn" destination="DoV-Az-sxH" id="yHP-uH-Qgv"/>
                         <outlet property="foreignBtn" destination="JrP-kc-H2t" id="0wC-32-Qc6"/>
                         <outlet property="incomeBtn" destination="FAG-9d-2Lp" id="rgC-cn-pNH"/>
+                        <outlet property="statusLabel" destination="oFc-I5-kQu" id="epx-Tp-b4l"/>
                         <outlet property="stealBtn" destination="zhU-Qc-nfV" id="GAO-59-xFB"/>
                         <outlet property="tableView" destination="Otx-vB-4Qp" id="vwD-XO-8SI"/>
                         <outlet property="taxBtn" destination="JoC-LC-FiP" id="sMc-lL-CWe"/>

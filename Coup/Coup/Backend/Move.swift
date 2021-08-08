@@ -14,4 +14,20 @@ class Move {
         self.caller = caller
         self.target = target
     }
+    
+    func toString() -> String{
+        return "\(self.caller) played the move \(self.name) onto \(self.target). Waiting for any challenges."
+    }
+    
+    func successfulString() -> String{
+        return "\(self.caller) successfully played the move \(self.name)."
+    }
+    
+    func challengeString() -> String{
+        return "\(self.caller) challenges \(self.target)."
+    }
+    
+    func challengeFailedString() -> String{
+        return "\(self.caller) incorrectly challenged \(self.target), he reveals: "
+    }
 }
