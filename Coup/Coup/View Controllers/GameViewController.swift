@@ -399,8 +399,4 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func youWon() {
         status = "You Won"
     }
-    
-    func youLost() {
-        status = "You Lost"
-    }
 }
