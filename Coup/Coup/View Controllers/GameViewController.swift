@@ -173,21 +173,27 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "coup":
             move.caller.coins -= 7
             move.target.revealCard()
-        case "drawNewRoles":
+        case "exchange":
+            // get 2 cards from the current deck
             twoCards = deck!.give2Cards()
             
+            // if the caller's first card has not revealed yet,
+            // give them a chance to exchange it for another one from twoCards
             if self.user!.cards.0.revealed == false {
                 userCard = user!.cards.0
                 caseNum = 0
                 self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
             }
             
+            // if the caller's second card has not revealed yet,
+            // give them a chance to exchange it for another one from twoCards
             if self.user!.cards.1.revealed == false {
                 userCard = user!.cards.1
                 caseNum = 2
                 self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
             }
             
+            // give 2 cards back to the current deck -> shuffle activated
             deck!.get2CardsBackNShuffle(twoCards: twoCards!)
             
         case "assassinate":

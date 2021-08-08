@@ -51,7 +51,7 @@ class Game{
         case "coup":
             move.caller.coins -= 7
             move.target.revealCard()
-        case "drawNewRoles": //ambassador has option to exchange these cards
+        case "exchange": //ambassador has option to exchange these cards
             //so we must modally present a view controller, displaying the two cards
             players[turnInd].choose() //how can we go to a new view controller
             /*deck.takeCard(move.callerPlayer.card1) //giving a card to a deck

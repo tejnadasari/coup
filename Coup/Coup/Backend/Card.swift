@@ -2,15 +2,15 @@
  
  - At the start of their turn, a player performs one of several actions. Some actions can always be played, while others require a specific role:
  
- 1. getIncome - Draw $1 of income
- 2. getForeignAid - Draw $2 of foreign aid (duke can block)
+ 1. income - Draw $1 of income
+ 2. foreignAid - Draw $2 of foreign aid (duke can block)
  3. stageCoup - Pay $7 to stage a coup -> forcing a player of your choice to
                reveal one influence (cannot be blocked)
  4 .tax(duke) - The duke can claim tax, gaining $3
  5. assassinate(assassin) - The assassin can pay $3 to make a player of their choice
                  reveal an influence (if the targeted player has the contessa,
                  they can block the assassination)
- 6. exchange2Roles(ambassador) - The ambassador can draw two new roles and choose to
+ 6. exchange(ambassador) - The ambassador can draw two new roles and choose to
               exchange any of them with their remaining hidden influences
  7. steal(captain) - The captain can steal $2 from another player (if the
            targeted player has the ambassador or the captain, they can block)
@@ -34,7 +34,7 @@ class Card{
     var photo: UIImage?
     var tax: Bool?
     var assassinate: Bool?
-    var exchange2Roles: Bool?
+    var exchange: Bool?
     var steal: Bool?
     var revealed: Bool = false
     
@@ -50,7 +50,7 @@ class Assassin: Card {
         photo = UIImage(named: "Assassin.jpeg")
         tax = false
         assassinate = true
-        exchange2Roles = false
+        exchange = false
         steal = false
     }
     
@@ -63,8 +63,8 @@ class Ambassador: Card {
         name = "Ambassador"
         photo = UIImage(named: "Ambassador.jpeg")
         tax = false
-        assassinate = true
-        exchange2Roles = false
+        assassinate = false
+        exchange = true
         steal = false
     }
     
@@ -77,9 +77,9 @@ class Captain: Card {
         name = "Captain"
         photo = UIImage(named: "Captain.jpeg")
         tax = false
-        assassinate = true
-        exchange2Roles = false
-        steal = false
+        assassinate = false
+        exchange = false
+        steal = true
     }
     
 }
@@ -91,8 +91,8 @@ class Contessa: Card {
         name = "Contessa"
         photo = UIImage(named: "Contessa.jpeg")
         tax = false
-        assassinate = true
-        exchange2Roles = false
+        assassinate = false
+        exchange = false
         steal = false
     }
     
@@ -104,9 +104,9 @@ class Duke: Card {
         super.init()
         name = "Duke"
         photo = UIImage(named: "Duke.jpeg")
-        tax = false
-        assassinate = true
-        exchange2Roles = false
+        tax = true
+        assassinate = false
+        exchange = false
         steal = false
     }
     
