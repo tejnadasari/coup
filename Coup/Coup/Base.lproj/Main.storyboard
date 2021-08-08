@@ -108,7 +108,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="Main View Controller" customClass="MainViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="949.23076923076917" y="93.838862559241704"/>
         </scene>
-        <!--Cheat Sheet View Controller-->
+        <!--Blank View Controller-->
         <scene sceneID="aQ7-6S-xl1">
             <objects>
-                <viewController id="yhG-CG-umP" customClass="CheatSheetViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yhG-CG-umP" customClass="BlankViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtn-bQ-52d">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -831,6 +831,48 @@
             </objects>
             <point key="canvasLocation" x="2695" y="709"/>
         </scene>
+        <!--Game Ends View Controller-->
+        <scene sceneID="Oda-Zt-TeD">
+            <objects>
+                <viewController id="vi6-8A-CW4" customClass="GameEndsViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fWP-8N-M9a">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bm-hM-NxF">
+                                <rect key="frame" x="123.66666666666669" y="573" width="143" height="30"/>
+                                <state key="normal" title="Return to Main Menu"/>
+                                <connections>
+                                    <action selector="playAgainPressed:" destination="vi6-8A-CW4" eventType="touchUpInside" id="Gw0-dY-yWh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status of Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDi-F7-zJL">
+                                <rect key="frame" x="63.333333333333343" y="293" width="263.33333333333326" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wwA-KM-frd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6bm-hM-NxF" firstAttribute="centerX" secondItem="fWP-8N-M9a" secondAttribute="centerX" id="7be-bu-pHr"/>
+                            <constraint firstItem="wwA-KM-frd" firstAttribute="bottom" secondItem="6bm-hM-NxF" secondAttribute="bottom" constant="207" id="Bgf-1O-Ui2"/>
+                            <constraint firstItem="6bm-hM-NxF" firstAttribute="top" secondItem="RDi-F7-zJL" secondAttribute="bottom" constant="232" id="bL3-WO-2dP"/>
+                            <constraint firstItem="RDi-F7-zJL" firstAttribute="centerX" secondItem="fWP-8N-M9a" secondAttribute="centerX" id="nEq-v7-3o6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2nG-Kb-byv"/>
+                    <connections>
+                        <outlet property="statusLabel" destination="RDi-F7-zJL" id="hOn-uC-Frp"/>
+                        <segue destination="Vet-c4-Mgm" kind="unwind" identifier="unwindToMainVC" unwindAction="prepareForUnwindWithSegue:" id="ZDt-cC-iUE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgd-NU-ZHo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Vet-c4-Mgm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3605" y="-545"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="FJp-fG-jiR">
             <objects>
@@ -1056,11 +1098,11 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cd-yr-Ppc">
-                                <rect key="frame" x="248" y="776" width="87" height="30"/>
+                                <rect key="frame" x="233" y="776" width="116" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="y6i-iO-p6H"/>
                                 </constraints>
-                                <state key="normal" title="Activity Log"/>
+                                <state key="normal" title="Logs"/>
                                 <connections>
                                     <segue destination="Kgb-ep-6KY" kind="popoverPresentation" identifier="activityLogSegueIdentifier" popoverAnchorView="6Cd-yr-Ppc" id="uyu-PJ-HYz">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -1089,6 +1131,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wql-eL-Am7">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wBj-oF-T3e">
+                            <rect key="frame" x="159.66666666666666" y="7" width="71" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="End Game"/>
+                            <connections>
+                                <segue destination="vi6-8A-CW4" kind="presentation" modalPresentationStyle="fullScreen" id="cr7-bM-LGL"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="oSS-5x-uCA">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="68H-E5-6dg">
                                 <rect key="frame" x="288" y="7" width="86" height="30"/>

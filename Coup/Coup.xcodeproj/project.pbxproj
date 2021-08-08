@@ -31,12 +31,13 @@
 		FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */; };
 		FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */; };
 		FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */; };
-		FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568E2690DB1E0057BBE8 /* ViewController.swift */; };
+		FD69568F2690DB1E0057BBE8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568E2690DB1E0057BBE8 /* MainViewController.swift */; };
 		FD6956922690DB1E0057BBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6956902690DB1E0057BBE8 /* Main.storyboard */; };
 		FD6956942690DB1F0057BBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD6956932690DB1F0057BBE8 /* Assets.xcassets */; };
 		FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6956952690DB1F0057BBE8 /* LaunchScreen.storyboard */; };
-		FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */; };
+		FD69569F2690DEB50057BBE8 /* GameEndsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69569E2690DEB50057BBE8 /* GameEndsViewController.swift */; };
 		FD98412D269E3E290035E9BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD98412C269E3E290035E9BB /* SettingsViewController.swift */; };
+		FD9E5ACD26C016450079F28C /* BlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9E5ACC26C016450079F28C /* BlankViewController.swift */; };
 		FDEE75AF26B3C88D001EFBF4 /* Settings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDEE75AD26B3C88D001EFBF4 /* Settings.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -69,16 +70,17 @@
 		FD6956872690DB1E0057BBE8 /* Coup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FD69568E2690DB1E0057BBE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FD69568E2690DB1E0057BBE8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FD6956912690DB1E0057BBE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD6956932690DB1F0057BBE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD6956962690DB1F0057BBE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD6956982690DB1F0057BBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheatSheetViewController.swift; sourceTree = "<group>"; };
+		FD69569E2690DEB50057BBE8 /* GameEndsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndsViewController.swift; sourceTree = "<group>"; };
 		FD944F1626AE7CFE00A7A9B0 /* Waiting.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Waiting.m4a; sourceTree = "<group>"; };
 		FD944F1726AE7CFE00A7A9B0 /* Cash Register.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cash Register.m4a"; sourceTree = "<group>"; };
 		FD944F1826AE7CFF00A7A9B0 /* Count Down.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Count Down.m4a"; sourceTree = "<group>"; };
 		FD98412C269E3E290035E9BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FD9E5ACC26C016450079F28C /* BlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankViewController.swift; sourceTree = "<group>"; };
 		FDEE75AE26B3C88D001EFBF4 /* Settings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Settings.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,8 +132,8 @@
 				AC900F1826A36C6D000C6B89 /* Card.swift */,
 				AC900F1A26A36C9C000C6B89 /* Deck.swift */,
 				AC900F1C26A36C9F000C6B89 /* Game.swift */,
-				AC900F1E26A36CA3000C6B89 /* Player.swift */,
 				AC900F2026A36CA6000C6B89 /* Move.swift */,
+				AC900F1E26A36CA3000C6B89 /* Player.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -177,18 +179,19 @@
 		FD98412E269E3E320035E9BB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FD69568E2690DB1E0057BBE8 /* ViewController.swift */,
+				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
+				32BE2ACC26B9AD9B00CB6A24 /* ActivityLogViewController.swift */,
+				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
+				FD9E5ACC26C016450079F28C /* BlankViewController.swift */,
+				32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */,
+				FD69569E2690DEB50057BBE8 /* GameEndsViewController.swift */,
+				32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */,
+				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
+				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
 				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
 				32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */,
-				32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */,
-				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
-				32DEC32426B299380049F2F3 /* GameLogTableViewCell.swift */,
-				32BE2ACA26B992AD00CB6A24 /* ExchangeViewController.swift */,
-				FD69569E2690DEB50057BBE8 /* CheatSheetViewController.swift */,
-				32BE2ACC26B9AD9B00CB6A24 /* ActivityLogViewController.swift */,
-				326B550126ADC99C0008223E /* ActivityLogTableViewCell.swift */,
 				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
-				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
+				FD69568E2690DB1E0057BBE8 /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -327,13 +330,14 @@
 				FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */,
 				32BE2ACD26B9AD9B00CB6A24 /* ActivityLogViewController.swift in Sources */,
 				326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */,
+				FD9E5ACD26C016450079F28C /* BlankViewController.swift in Sources */,
 				32BE2ACB26B992AD00CB6A24 /* ExchangeViewController.swift in Sources */,
-				FD69568F2690DB1E0057BBE8 /* ViewController.swift in Sources */,
+				FD69568F2690DB1E0057BBE8 /* MainViewController.swift in Sources */,
 				AC900F1D26A36C9F000C6B89 /* Game.swift in Sources */,
 				FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */,
 				AC900F1926A36C6D000C6B89 /* Card.swift in Sources */,
 				32DEC32526B299380049F2F3 /* GameLogTableViewCell.swift in Sources */,
-				FD69569F2690DEB50057BBE8 /* CheatSheetViewController.swift in Sources */,
+				FD69569F2690DEB50057BBE8 /* GameEndsViewController.swift in Sources */,
 				32FE4AD226B4663D0055EB30 /* HowToPlayViewController.swift in Sources */,
 				AC900F1B26A36C9C000C6B89 /* Deck.swift in Sources */,
 				32FA1D6B26B6E00F00B899F4 /* OfflineViewController.swift in Sources */,
