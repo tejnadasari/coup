@@ -61,6 +61,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var challengeBtn: UIButton!
     @IBOutlet weak var foreignBtn: UIButton!
     
+    @IBOutlet weak var userStack: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     var highlightSwitch = false
     
@@ -83,6 +84,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var targetInd: Int = -1 //the index in the players array of whoever is being targeted
     
     var status = "You Lost"
+    var userCellColor = UIColor.clear
+    var AICellColors: [UIColor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +104,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // make AIs
         AIs = players
         AIs.remove(at: 0)
+        addAIColors()
         
         // for user
         user = players[0]
@@ -109,6 +113,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userCoinLabel.text = "$ \(user!.coins)"
         userCard1Label.text = "Card 1: \(user!.cards.0)"
         userCard2Label.text = "Card 2: \(user!.cards.1)"
+        highlightUser()
     }
     
     // After assigning 2 cards to each player, 
@@ -119,6 +124,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while gameOn{
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
+            
             if (currentPlayer.name == "real" && didPlayerMove == false){
                 enableButtons()
                 break
@@ -127,10 +133,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 curMove = playerMove
                 didPlayerMove = false
             }
-            else{
+            else {
                 curMove = currentPlayer.getPlayerMove()
             }
+            
             //curMove is now set
+            dismissHighlights(index: turnInd)
+            
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
             if (objection.name == "challenge"){
@@ -144,7 +153,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (objection.name == "allow"){
                 actOnMove(move: curMove)
             }
+            
+            // Highlight next player
             incrementInd(ind: &turnInd)
+            if players[turnInd].name == "real" {
+                highlightUser()
+            } else {
+                highlightAI(index: turnInd)
+            }
         }
     }
     
@@ -367,11 +383,37 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.moneyLabel.text = "$ \(AIs[row].coins)"
         cell.identity1Label.text = AIs[row].cards.0.name
         cell.identity2Label.text = AIs[row].cards.1.name
+        cell.contentView.backgroundColor = AICellColors[row]
 
         return cell
     }
     
-
+    // MARK: - Table Colors
+    
+    func addAIColors() {
+        for _ in 1...AIs.count {
+            AICellColors.append(UIColor.clear)
+        }
+    }
+    
+    func highlightUser() {
+        userCellColor = UIColor.gray
+        userStack.backgroundColor = userCellColor
+    }
+    
+    func dismissHighlights(index: Int) {
+        userCellColor = UIColor.clear
+        userStack.backgroundColor = userCellColor
+        
+        AICellColors[index - 1] = UIColor.clear
+        tableView.reloadData()
+    }
+    
+    func highlightAI(index: Int) {
+        AICellColors[index] = UIColor.gray
+        tableView.reloadData()
+    }
+    
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

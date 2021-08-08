@@ -1167,6 +1167,7 @@
                         <outlet property="userCoinLabel" destination="PuT-4a-qcr" id="v6j-hx-Lhb"/>
                         <outlet property="userImageView" destination="M2Y-H9-nhJ" id="rMF-YL-yEd"/>
                         <outlet property="userNameLabel" destination="CnD-B9-NRe" id="B3f-cb-6vp"/>
+                        <outlet property="userStack" destination="c7g-4b-0i5" id="S08-cY-pZ6"/>
                         <segue destination="RcR-Jo-Qpw" kind="presentation" identifier="exchangeSegueIdentifier" id="mhx-iw-rpD"/>
                     </connections>
                 </viewController>
