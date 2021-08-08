@@ -189,9 +189,9 @@
 				AC900F0E26A3601F000C6B89 /* GameViewController.swift */,
 				32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */,
 				FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */,
+				FD69568E2690DB1E0057BBE8 /* MainViewController.swift */,
 				32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */,
 				FD98412C269E3E290035E9BB /* SettingsViewController.swift */,
-				FD69568E2690DB1E0057BBE8 /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
