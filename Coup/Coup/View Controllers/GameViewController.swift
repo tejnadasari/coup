@@ -140,7 +140,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         while gameOn{
             dismissPreviousHighlight(nextIndex: turnInd)
-            
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
             highlightPlayer(index: turnInd)
@@ -160,9 +159,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 curMove = currentPlayer.getPlayerMove()
             }
             
-            // ???? nothing is updating
-            statusLabel.text = "hi"
-
             sleep(1)
             statusLabel.text = curMove.toString() //updates label
             
@@ -308,6 +304,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (targetInd != -1){
             didPlayerMove = true
             playerMove = Move(name: "coup", caller: players[turnInd], target: players[targetInd])
+            runGame()
         }
     }
     
@@ -340,7 +337,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func incomeBtnPressed(_ sender: Any) {
         didPlayerMove = true
         playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
-        incrementInd()
         runGame()
     }
     
