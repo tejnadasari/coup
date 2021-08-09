@@ -70,30 +70,30 @@ class Player{
 }
 
 class AI: Player{
-    // name
-    // photo
-    // cards:(Card, Card)
-    // coins
     
-    /*
-     
-    var blockAssassination = true -> Contessa
-    var blockForeignAid = true -> Duke
-    var blockSteal = true -> Captain and Ambassador
-     
-    */
     var moveRateDic: [String:Double] = ["income":2.0, "foreignAid":5.0, "tax":5.0, "steal":5.0, "assassinate":5.0, "exchange":5.0, "coup":5.0]
     
     var blockRateDic: [String:Double] = ["blockAssassination":5.0, "blockForeignAid":5.0, "blockSteal":5.0]
     
     var challengeRate = 0.15
-//    var allowRate: Double?
+
+    // MARK:- getAIMoveName and getPlayerMove
     
     // Let's get the name of Move first and then, let's figure out the target
     func getAIMoveName() -> String {
-        var aiMoveName = ""
+        //exclude the moves challenge / allow
+        //changeMoverate(), then loop through dictionary to find move with highest rating
+        changeMoveRate()
         
-        // more cases needed
+        var aiMoveName = ""
+        var maxDouble = -1.0
+        
+        for (key, value) in moveRateDic {
+            if value >= maxDouble {
+                maxDouble = value
+                aiMoveName = key
+            }
+        }
         
         // as soon as 7+ dollars have been accumulated, initiate coup
         // (lean towards person that is about to be knocked out)
@@ -105,11 +105,16 @@ class AI: Player{
     }
     
     override func getPlayerMove() -> Move {
-        //exclude the moves challenge / allow
-        //changeMoverate(), then loop through dictionary to find move with highest rating
-        return Move()
+        let moveName = getAIMoveName()
+        
+        //randomly select the target of the move
+        let rand = Int.random(in: 0...players.count-1)
+        let target = players[rand]
+        
+        return Move(name: moveName, caller: self, target: target)
     }
     
+    // MARK: changeMoveRate
     // execute this function whenever this AI's turn begins
     func changeMoveRate() {
         
@@ -154,12 +159,8 @@ class AI: Player{
             }
             
             // if card1.revealed then they cannot use it
-            if card1.revealed || card2.revealed {
+            if (card1.revealed && card1.assassinate!) || (card2.revealed && card2.assassinate!) {
                 newRate = moveRateDic["assassinate"]! - 2
-                
-                if card1.revealed && card2.revealed {
-                    newRate = moveRateDic["assassinate"]! - 4
-                }
                 
                 moveRateDic.updateValue(newRate, forKey: "assassinate")
             }
@@ -219,12 +220,8 @@ class AI: Player{
             }
             
             // if card1.revealed then they cannot use it
-            if card1.revealed || card2.revealed {
+            if (card1.revealed && card1.exchange!) || (card2.revealed && card2.exchange!) {
                 newRate = moveRateDic["exchange"]! - 2
-                
-                if card1.revealed && card2.revealed {
-                    newRate = moveRateDic["exchange"]! - 4
-                }
                 
                 moveRateDic.updateValue(newRate, forKey: "exchange")
             }
@@ -284,12 +281,8 @@ class AI: Player{
             }
             
             // if card1.revealed then they cannot use it
-            if card1.revealed || card2.revealed {
+            if (card1.revealed && card1.tax!) || (card2.revealed && card2.tax!) {
                 newRate = moveRateDic["tax"]! - 2
-                
-                if card1.revealed && card2.revealed {
-                    newRate = moveRateDic["tax"]! - 4
-                }
                 
                 moveRateDic.updateValue(newRate, forKey: "tax")
             }
@@ -349,12 +342,8 @@ class AI: Player{
             }
             
             // if card1.revealed then they cannot use it
-            if card1.revealed || card2.revealed {
+            if (card1.revealed && card1.steal!) || (card2.revealed && card2.steal!) {
                 newRate = moveRateDic["steal"]! - 2
-                
-                if card1.revealed && card2.revealed {
-                    newRate = moveRateDic["steal"]! - 4
-                }
                 
                 moveRateDic.updateValue(newRate, forKey: "steal")
             }
@@ -403,12 +392,13 @@ class AI: Player{
         }
         
     }
-    
+
+    // MARK:- changeBlockRate
     /*
-     
-    var blockAssassination = true -> Contessa
-    var blockForeignAid = true -> Duke
-    var blockSteal = true -> Captain and Ambassador
+    You can find out these variables in Card.swift under the Card class and the children classes of Card
+        var blockAssassination = true -> Contessa
+        var blockForeignAid = true -> Duke
+        var blockSteal = true -> Captain and Ambassador
      
     */
     func changeBlockRate() {
@@ -417,12 +407,7 @@ class AI: Player{
         let card2 = self.cards.1
         var newRate = 0.0
         
-        
-        // 1. if AI has the move, increase the rate of it by 2
-        //  if other players have the card, rating is increased by 0.5, each time
-        // 2. if plyaer doe not have the move, decrease the rate of if by 1
-        //  if any other player has the card, rating is lowered again by 1
-        
+        // same principles as changeMoveRate()
         if card1.blockAssassination || card2.blockAssassination {
             
             newRate = blockRateDic["blockAssassination"]! + 2
@@ -620,11 +605,67 @@ class AI: Player{
         
     }
     
+    // MARK: blockOrNot
+    // blockOrNot()
+    // -> determine if the AI will block against the latest move from moveLog
+    //    based on the probability using each block~ rate
+    func blockOrNot() -> Bool{
+        changeBlockRate()
+        
+        var block = false
+        
+        if moveLog[moveLog.count - 1].name == "assassinate" {
+            let rate = blockRateDic["blockAssassination"]!
+            
+            if rate >= 10.0 {
+                block = true
+            } else {
+                let rand = Double.random(in: 0.0...10.0)
+                
+                if rand <= rate {
+                    block = true
+                }
+            }
+            
+        } else if moveLog[moveLog.count - 1].name == "foreignAid" {
+            let rate = blockRateDic["blockForeignAid"]!
+            
+            if rate >= 10.0 {
+                block = true
+            } else {
+                let rand = Double.random(in: 0.0...10.0)
+                
+                if rand <= rate {
+                    block = true
+                }
+            }
+            
+        } else if moveLog[moveLog.count - 1].name == "steal" {
+            let rate = blockRateDic["blockSteal"]!
+            
+            if rate >= 10.0 {
+                block = true
+            } else {
+                let rand = Double.random(in: 0.0...10.0)
+                
+                if rand <= rate {
+                    block = true
+                }
+            }
+            
+        } else {
+            print("Not Applicable")
+        }
+        
+        return block
+    }
+        
+    // MARK:- adustChallengeRate
     // allow/challenge
     // other card count is 1, then 80/20
     // other card count is 2, then 75/25
     // other card count is 3, then 0/100
-    func adjustChallengeRate(target: Player) {
+    func adjustChallengeRate() {
         
         let card1 = self.cards.0
         let card2 = self.cards.1
@@ -758,10 +799,21 @@ class AI: Player{
         }
         
     }
-    
+
+    // MARK: getChallengeOrAllow
+    // -> challenge or allow to the latest move from moveLog
+    //   based on the percentage of challenge rate.
     override func getChallengeOrAllow(target: Player) -> Move {
         //exclude all the moves except for challenge or allow
-        return Move(name: "challenge", caller: self, target: target)
+        self.adjustChallengeRate()
+        
+        let rand = Double.random(in: 0...1.00)
+        
+        if rand <= challengeRate {
+            return Move(name: "challenge", caller: self, target: target)
+        }
+        
+        return Move(name:"allow", caller: self, target: target)
     }
 }
 
