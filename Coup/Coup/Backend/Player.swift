@@ -94,6 +94,12 @@ class AI: Player{
         return aiMoveName
     }
     
+    override func getPlayerMove() -> Move {
+        //exclude the moves challenge / allow
+        //changeMoverate(), then loop through dictionary to find move with highest rating
+        return Move()
+    }
+    
     // execute this function whenever this AI's turn begins
     func changeMoveRate() {
         
@@ -108,6 +114,7 @@ class AI: Player{
         // 2. if plyaer doe not have the move, decrease the rate of if by 1
         //  if any other player has the card, rating is lowered again by 1
         
+        // if card1.revealed then they cannot use it
         if card1.assassinate! || card2.assassinate! {
             
             newRate = moveRateDic["assassinate"]! + 2
@@ -129,7 +136,6 @@ class AI: Player{
                         moveRateDic.updateValue(newRate, forKey: "assassinate")
                     }
                 }
-                
                 if pCard2.revealed {
                     if pCard2.assassinate!{
                         newRate = moveRateDic["assassinate"]! + 0.5
@@ -463,6 +469,7 @@ class AI: Player{
             }
         }
         
+        //access move logs most recent move
         if assassinateCount == 1 || exchangeCount == 1 || taxCount == 1 || stealCount == 1 {
             challengeRate = 0.20
         } else if assassinateCount == 2 || exchangeCount == 2 || taxCount == 2 || stealCount == 2 {
@@ -476,6 +483,7 @@ class AI: Player{
     }
     
     override func getChallengeOrAllow(target: Player) -> Move {
+        //exclude all the moves except for challenge or allow
         return Move(name: "challenge", caller: self, target: target)
     }
 }

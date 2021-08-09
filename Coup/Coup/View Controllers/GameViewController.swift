@@ -38,6 +38,7 @@
 import UIKit
 
 var players: [Player] = []
+var moveLog: [Move] = []
 
 protocol ApplyExchangeDelegate {
     func applyExchange(chosenCard: Card, caseNum: Int)
@@ -152,6 +153,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             sleep(1)
             statusLabel.text = curMove.toString() //updates label
             //curMove is now set
+            moveLog.append(curMove)
             dismissHighlights(index: turnInd)
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
