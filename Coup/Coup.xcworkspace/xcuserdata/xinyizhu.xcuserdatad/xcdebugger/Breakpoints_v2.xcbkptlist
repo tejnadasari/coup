@@ -96,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "495"
             endingLineNumber = "495"
-            landmarkName = "dismissPreviousHighlight(nextIndex:)"
+            landmarkName = "highlightPlayer(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -112,7 +112,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "487"
             endingLineNumber = "487"
-            landmarkName = "highlightPlayer(index:)"
+            landmarkName = "highlightUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -128,7 +128,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "482"
             endingLineNumber = "482"
-            landmarkName = "highlightAI(index:)"
+            landmarkName = "addAIColors()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

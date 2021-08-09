@@ -139,7 +139,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         var gameOn:Bool = true
         
         while gameOn{
-            dismissPreviousHighlight(nextIndex: turnInd)
+            dismissHighlights()
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
             highlightPlayer(index: turnInd)
@@ -499,16 +499,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func dismissPreviousHighlight(nextIndex: Int) {
-        let preIndex = abs((nextIndex - 1) % players.count)
+    func dismissHighlights() {
+        userCellColor = UIColor.clear
+        userStack.backgroundColor = userCellColor
         
-        if preIndex == 0 {
-            userCellColor = UIColor.clear
-            userStack.backgroundColor = userCellColor
-        } else {
-            AICellColors[preIndex - 1] = UIColor.clear
-            tableView.reloadData()
+        for i in 1...AICellColors.count {
+            AICellColors[i - 1] = UIColor.clear
         }
+        tableView.reloadData()
     }
     
     // MARK: - Segues
