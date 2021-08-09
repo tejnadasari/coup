@@ -116,6 +116,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userCard1Label.text = "Card 1: \(user!.cards.0)"
         userCard2Label.text = "Card 2: \(user!.cards.1)"
         highlightUser()
+        
+        runGame()
     }
     
     // After assigning 2 cards to each player, 
@@ -127,6 +129,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
             if (currentPlayer.isPlayerDone()){
+                //JULIE HIGHLIGHT CHANGE
                 continue
             }
             if currentPlayer.name == "real" {
@@ -146,6 +149,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             else {
                 curMove = currentPlayer.getPlayerMove()
             }
+            sleep(1)
             statusLabel.text = curMove.toString() //updates label
             //curMove is now set
             dismissHighlights(index: turnInd)
@@ -200,6 +204,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 curPlayer.cards.1.revealed = true
             }
         }
+        tableView.reloadData()
     }
     
     func actOnMove(move: Move){
@@ -282,6 +287,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         allowBtn.isEnabled = true
     }
     
+    //Julie highlighting
     func anyChallenges(move: Move) -> Move{
         var curMove: Move = Move()
         challengeTurnInd = 0
@@ -423,7 +429,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Table Colors
-    
     func addAIColors() {
         for _ in 1...AIs.count {
             AICellColors.append(UIColor.clear)
@@ -475,6 +480,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func youWon() {
-        status = "You Won"
+        statusLabel.text = "You Won"
     }
 }

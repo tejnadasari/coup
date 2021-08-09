@@ -15,6 +15,7 @@ class Move {
         self.target = target
     }
     
+    //check whenever player is real LoginViewController.getUsername()
     func toString() -> String{
         return "\(self.caller) played the move \(self.name) onto \(self.target). Waiting for any challenges."
     }

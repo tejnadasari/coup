@@ -350,6 +350,7 @@ class AI: Player{
     // other card count is 2, then 75/25
     // other card count is 3, then 0/100
     func adjustChallengeRate(target: Player) {
+        
         let card1 = self.cards.0
         let card2 = self.cards.1
         
@@ -466,7 +467,7 @@ class AI: Player{
             challengeRate = 0.20
         } else if assassinateCount == 2 || exchangeCount == 2 || taxCount == 2 || stealCount == 2 {
             challengeRate = 0.25
-        } else if assassinateCount == 3 || exchangeCount == 3 || taxCount == 3 || stealCount == 3 {
+        } else if assassinateCount >= 3 || exchangeCount >= 3 || taxCount >= 3 || stealCount >= 3 {
             challengeRate = 1.00
         } else {
             print("Not Applicable")
