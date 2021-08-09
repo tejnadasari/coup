@@ -186,6 +186,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 actOnMove(move: curMove)
             }
             
+            /*
+             For block, we also need to figure out how to incorporate extra buttons 
+             if (objection.name == "block"){
+                statusLabel update
+                move = lastRoundOfAnyChallenges() method
+                if move.name == "allow" ...
+                if move.name == "challenge" ...
+             }
+             */
             isGameOver(gameOn: &gameOn)
             incrementInd()
         }
@@ -309,16 +318,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func taxBtnPressed(_ sender: Any) {
-        if (targetInd != -1){
-            didPlayerMove = true
-            playerMove = Move(name: "tax", caller: players[turnInd], target: players[targetInd])
-        }
+        didPlayerMove = true
+        playerMove = Move(name: "tax", caller: players[turnInd], target: players[turnInd])
+        runGame()
     }
     
     @IBAction func stealBtnPressed(_ sender: Any) {
         if (targetInd != -1){
             didPlayerMove = true
             playerMove = Move(name: "steal", caller: players[turnInd], target: players[targetInd])
+            runGame()
         }
     }
     
@@ -326,6 +335,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (targetInd != -1){
             didPlayerMove = true
             playerMove = Move(name: "assassinate", caller: players[turnInd], target: players[targetInd])
+            runGame()
         }
     }
     
@@ -342,12 +352,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func foreignBtnPressed(_ sender: Any) {
         didPlayerMove = true
-        playerMove = Move(name: "foreignAid", caller: players[turnInd], target: players[targetInd])
+        playerMove = Move(name: "foreignAid", caller: players[turnInd], target: players[turnInd])
+        runGame()
     }
     
     @IBAction func exchangeBtnPressed(_ sender: Any) {
         didPlayerMove = true
-        playerMove = Move(name: "exchange", caller: players[turnInd], target: players[targetInd])
+        playerMove = Move(name: "exchange", caller: players[turnInd], target: players[turnInd])
+        runGame()
         //intiate segue here
     }
     
