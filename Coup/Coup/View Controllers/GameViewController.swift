@@ -67,7 +67,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var userStack: UIStackView!
     @IBOutlet weak var tableView: UITableView!
-    var highlightSwitch = false
     
     var deck: Deck? // deck for game
     var twoCards: (Card, Card)? // twoCards for exchange
@@ -399,23 +398,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK:- tableView function
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AIs.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // write the code you want to implement when the cell was selected
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return highlightSwitch
+        return false
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -427,10 +420,24 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.aiImageView.image = AIs[row].photo
         cell.aiNameLabel.text = AIs[row].name
         cell.moneyLabel.text = "$ \(AIs[row].coins)"
-        cell.identity1Label.text = AIs[row].cards.0.name
-        cell.identity2Label.text = AIs[row].cards.1.name
+        
+        if AIs[row].cards.0.revealed {
+            cell.identity1Label.text = AIs[row].cards.0.name
+            cell.identity1Label.textColor = UIColor.label
+        } else {
+            cell.identity1Label.text = "Hidden"
+            cell.identity1Label.textColor = UIColor(white: 1, alpha: 0.5)
+        }
+        
+        if AIs[row].cards.1.revealed {
+            cell.identity2Label.text = AIs[row].cards.1.name
+            cell.identity2Label.textColor = UIColor.label
+        } else {
+            cell.identity2Label.text = "Hidden"
+            cell.identity2Label.textColor = UIColor(white: 1, alpha: 0.5)
+        }
+        
         cell.contentView.backgroundColor = AICellColors[row]
-
         return cell
     }
     
@@ -446,6 +453,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userStack.backgroundColor = userCellColor
     }
     
+    func highlightAI(index: Int) {
+        AICellColors[index] = UIColor.gray
+        tableView.reloadData()
+    }
+    
+    func highlightPlayer(index: Int) {
+        if index == 0 {
+            highlightUser()
+        } else {
+            highlightAI(index: index - 1)
+        }
+    }
+    
     func dismissHighlights(index: Int) {
         if index == 0 {
             userCellColor = UIColor.clear
@@ -454,11 +474,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             AICellColors[index - 1] = UIColor.clear
             tableView.reloadData()
         }
-    }
-    
-    func highlightAI(index: Int) {
-        AICellColors[index] = UIColor.gray
-        tableView.reloadData()
     }
     
     // MARK: - Segues
