@@ -27,7 +27,7 @@ class Player{
         return false
     }
     
-    func isPlayerDone() -> Bool{
+    func isPlayerRevealed() -> Bool{
             return (self.cards.0.revealed && self.cards.1.revealed)
     }
     

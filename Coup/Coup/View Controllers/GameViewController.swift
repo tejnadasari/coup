@@ -90,6 +90,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var userCellColor = UIColor.clear
     var AICellColors: [UIColor] = []
     
+    // MARK: - Setup
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         disableAllButtons()
@@ -98,19 +100,24 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         deck = Deck()
         deck!.assign2Cards(players: players)
         
-        //runGame(resume: false, playerMove: Move())
-//        players.append(Player()) //real player
-        
         // for tableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        // make AIs
+        // setup AIs and user
+        setupAIs()
+        setupUser()
+        
+        runGame()
+    }
+    
+    func setupAIs() {
         AIs = players
         AIs.remove(at: 0)
         addAIColors()
-        
-        // for user
+    }
+    
+    func setupUser() {
         user = players[0]
         userImageView.image = user!.photo
         userNameLabel.text = user!.name
@@ -119,10 +126,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         card1ImageView.image = user!.cards.0.photo
         userCard2Label.text = user!.cards.1.name!
         card2ImageView.image = user!.cards.1.photo
-        highlightUser()
-        
-        runGame()
     }
+    
+    // MARK: - Run game
     
     // After assigning 2 cards to each player, 
     func runGame(){
@@ -130,37 +136,37 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         var gameOn:Bool = true
         
         while gameOn{
+            dismissPreviousHighlight(nextIndex: turnInd)
+            
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
-            if (currentPlayer.isPlayerDone()){
-                //JULIE HIGHLIGHT CHANGE
+            highlightPlayer(index: turnInd)
+            
+            if (currentPlayer.isPlayerRevealed()){
                 continue
             }
-            if currentPlayer.name == LoginViewController.getUsername() {
-                highlightUser()
-            } else {
-                highlightAI(index: turnInd)
-            }
+
             if (currentPlayer.name == LoginViewController.getUsername() && didPlayerMove == false){
                 enableButtons()
                 break
-            }
-            else if (currentPlayer.name == LoginViewController.getUsername()){
+            } else if (currentPlayer.name == LoginViewController.getUsername()) {
                 disableAllButtons()
                 curMove = playerMove
                 didPlayerMove = false
-            }
-            else {
+            } else {
                 curMove = currentPlayer.getPlayerMove()
             }
+            
             sleep(1)
             statusLabel.text = curMove.toString() //updates label
+            
             //curMove is now set
             moveLog.append(curMove)
-            dismissHighlights(index: turnInd)
+            
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
             sleep(1)
+            
             if (objection.name == "challenge"){
                 statusLabel.text = objection.challengeString()
                 sleep(1)
@@ -172,20 +178,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 sleep(1)
             }
+            
             if (objection.name == "allow"){
                 statusLabel.text = curMove.successfulString()
                 actOnMove(move: curMove)
             }
+            
             isGameOver(gameOn: &gameOn)
-            // Highlight next player
-            incrementInd(ind: &turnInd)
+            incrementInd()
         }
     }
     
     func isGameOver(gameOn: inout Bool){
         var countFalse: Int = 0
         for cur in players{
-            if cur.isPlayerDone(){
+            if cur.isPlayerRevealed(){
                 countFalse += 1
             }
         }
@@ -256,6 +263,97 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //Julie highlighting
+    func anyChallenges(move: Move) -> Move{
+        var curMove: Move = Move()
+        challengeTurnInd = 0
+        while challengeTurnInd < players.count{
+            let player = players[challengeTurnInd]
+            if (player.name == move.caller.name){
+                continue
+            }
+            if (player.name == LoginViewController.getUsername()){
+                enableChallengeButtons()
+                break
+            }
+            else{
+                curMove = player.getChallengeOrAllow(target: move.caller)
+            }
+            if (didPlayerChallengeOrAllow){
+                curMove = challengeMove
+            }
+            if (curMove.name == "challenge"){
+                return curMove
+            }
+        }
+        return curMove
+    }
+    
+    func incrementInd() {
+        turnInd += 1
+        if turnInd >= players.count{
+            turnInd = 0
+        }
+    }
+    
+    // MARK: - Buttons
+        
+    @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "coup", caller: players[turnInd], target: players[targetInd])
+        }
+    }
+    
+    @IBAction func taxBtnPressed(_ sender: Any) {
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "tax", caller: players[turnInd], target: players[targetInd])
+        }
+    }
+    
+    @IBAction func stealBtnPressed(_ sender: Any) {
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "steal", caller: players[turnInd], target: players[targetInd])
+        }
+    }
+    
+    @IBAction func assassinateBtnPressed(_ sender: Any) {
+        if (targetInd != -1){
+            didPlayerMove = true
+            playerMove = Move(name: "assassinate", caller: players[turnInd], target: players[targetInd])
+        }
+    }
+    
+    @IBAction func allowBtnPressed(_ sender: Any) {
+        didPlayerChallengeOrAllow = true
+        challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
+    }
+    
+    @IBAction func incomeBtnPressed(_ sender: Any) {
+        didPlayerMove = true
+        playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
+        incrementInd()
+        runGame()
+    }
+    
+    @IBAction func foreignBtnPressed(_ sender: Any) {
+        didPlayerMove = true
+        playerMove = Move(name: "foreignAid", caller: players[turnInd], target: players[targetInd])
+    }
+    
+    @IBAction func exchangeBtnPressed(_ sender: Any) {
+        didPlayerMove = true
+        playerMove = Move(name: "exchange", caller: players[turnInd], target: players[targetInd])
+        //intiate segue here
+    }
+    
+    @IBAction func challengeBtnPressed(_ sender: Any) {
+        didPlayerChallengeOrAllow = true
+        challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
+    }
+    
     func enableButtons(){
         coupBtn.isEnabled = true
         taxBtn.isEnabled = true
@@ -290,85 +388,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         exchangeBtn.isEnabled = false
         challengeBtn.isEnabled = true
         allowBtn.isEnabled = true
-    }
-    
-    //Julie highlighting
-    func anyChallenges(move: Move) -> Move{
-        var curMove: Move = Move()
-        challengeTurnInd = 0
-        while challengeTurnInd < players.count{
-            let player = players[challengeTurnInd]
-            if (player.name == move.caller.name){
-                continue
-            }
-            if (player.name == LoginViewController.getUsername()){
-                enableChallengeButtons()
-                break
-            }
-            else{
-                curMove = player.getChallengeOrAllow(target: move.caller)
-            }
-            if (didPlayerChallengeOrAllow){
-                curMove = challengeMove
-            }
-            if (curMove.name == "challenge"){
-                return curMove
-            }
-        }
-        return curMove
-    }
-    
-    func incrementInd(ind: inout Int) {
-      ind += 1
-      if ind >= players.count{
-        ind = 0
-      }
-    }
-        
-    @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
-        if (targetInd != -1){
-            didPlayerMove = true
-            playerMove = Move(name: "coup", caller: players[turnInd], target: players[targetInd])
-        }
-    }
-    @IBAction func taxBtnPressed(_ sender: Any) {
-        if (targetInd != -1){
-            didPlayerMove = true
-            playerMove = Move(name: "tax", caller: players[turnInd], target: players[targetInd])
-        }
-    }
-    @IBAction func stealBtnPressed(_ sender: Any) {
-        if (targetInd != -1){
-            didPlayerMove = true
-            playerMove = Move(name: "steal", caller: players[turnInd], target: players[targetInd])
-        }
-    }
-    @IBAction func assassinateBtnPressed(_ sender: Any) {
-        if (targetInd != -1){
-            didPlayerMove = true
-            playerMove = Move(name: "assassinate", caller: players[turnInd], target: players[targetInd])
-        }
-    }
-    @IBAction func allowBtnPressed(_ sender: Any) {
-        didPlayerChallengeOrAllow = true
-        challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
-    }
-    @IBAction func incomeBtnPressed(_ sender: Any) {
-        didPlayerMove = true
-        playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
-    }
-    @IBAction func foreignBtnPressed(_ sender: Any) {
-        didPlayerMove = true
-        playerMove = Move(name: "foreignAid", caller: players[turnInd], target: players[targetInd])
-    }
-    @IBAction func exchangeBtnPressed(_ sender: Any) {
-        didPlayerMove = true
-        playerMove = Move(name: "exchange", caller: players[turnInd], target: players[targetInd])
-        //intiate segue here
-    }
-    @IBAction func challengeBtnPressed(_ sender: Any) {
-        didPlayerChallengeOrAllow = true
-        challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
     }
     
     // MARK:- ApplyExchangeDelegate for exchange2Roles
@@ -466,12 +485,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func dismissHighlights(index: Int) {
-        if index == 0 {
+    func dismissPreviousHighlight(nextIndex: Int) {
+        let preIndex = abs((nextIndex - 1) % players.count)
+        
+        if preIndex == 0 {
             userCellColor = UIColor.clear
             userStack.backgroundColor = userCellColor
         } else {
-            AICellColors[index - 1] = UIColor.clear
+            AICellColors[preIndex - 1] = UIColor.clear
             tableView.reloadData()
         }
     }
