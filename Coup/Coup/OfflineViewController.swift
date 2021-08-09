@@ -93,7 +93,14 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func gameStartButtonPressed(_ sender: Any) {
-        
+        if playerCount > 1 {
+            performSegue(withIdentifier: "toGameSegueIdentifier", sender: self)
+            
+        } else {
+            let controller = UIAlertController(title: "More Players Needed", message: "please add at lease 1 AI to start the game", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(controller, animated: true, completion: nil)
+        }
     }
 
     // MARK: - Navigation
@@ -103,7 +110,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         if playerArray.count <= 1{
             return //ADD ALERT
         }
-        if segue.identifier == "toGame",
+        if segue.identifier == "toGameSegueIdentifier",
                    let nextVC = segue.destination as? GameViewController {
                    players = playerArray
                 }

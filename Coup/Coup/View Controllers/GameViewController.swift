@@ -51,6 +51,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var userCoinLabel: UILabel!
     @IBOutlet weak var userCard1Label: UILabel!
     @IBOutlet weak var userCard2Label: UILabel!
+    @IBOutlet weak var card1ImageView: UIImageView!
+    @IBOutlet weak var card2ImageView: UIImageView!
     
     @IBOutlet weak var coupBtn: UIButton!
     @IBOutlet weak var taxBtn: UIButton!
@@ -114,8 +116,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userImageView.image = user!.photo
         userNameLabel.text = user!.name
         userCoinLabel.text = "$ \(user!.coins)"
-        userCard1Label.text = "Card 1: \(user!.cards.0)"
-        userCard2Label.text = "Card 2: \(user!.cards.1)"
+        userCard1Label.text = user!.cards.0.name!
+        card1ImageView.image = user!.cards.0.photo
+        userCard2Label.text = user!.cards.1.name!
+        card2ImageView.image = user!.cards.1.photo
         highlightUser()
         
         runGame()

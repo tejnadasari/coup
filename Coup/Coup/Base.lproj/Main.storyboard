@@ -599,7 +599,6 @@
                                 <state key="normal" title="Game Start"/>
                                 <connections>
                                     <action selector="gameStartButtonPressed:" destination="WAN-SW-7tD" eventType="touchUpInside" id="8wM-2W-J7P"/>
-                                    <segue destination="P54-Zb-Yud" kind="show" identifier="toGame" id="tAy-6M-ikX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(You can delete the AI by swiping)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYL-72-TZu">
@@ -629,6 +628,7 @@
                         <outlet property="addAIButton" destination="6c5-7l-C9H" id="nXo-gr-oQ2"/>
                         <outlet property="gameStartButton" destination="1jl-4z-LdC" id="uGX-y7-ftG"/>
                         <outlet property="tableView" destination="lcW-g4-bxs" id="cVw-qA-zF1"/>
+                        <segue destination="P54-Zb-Yud" kind="show" identifier="toGameSegueIdentifier" id="GFW-xD-3go"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJt-Aq-tpc" sceneMemberID="firstResponder"/>
@@ -912,20 +912,39 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="o1A-5E-1h1">
-                                        <rect key="frame" x="190" y="0.0" width="160" height="80"/>
+                                        <rect key="frame" x="190" y="0.0" width="110" height="80"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Card 1: Ambassador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-rG-eeK">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Ambassador" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-rG-eeK">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card 2: Contessa " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-T6-2Zo">
-                                                <rect key="frame" x="0.0" y="40" width="160" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contessa " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-T6-2Zo">
+                                                <rect key="frame" x="0.0" y="40" width="110" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-JD-DgQ">
+                                        <rect key="frame" x="310" y="0.0" width="40" height="80"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-gA-emY">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="CB5-9J-fOc"/>
+                                                    <constraint firstAttribute="height" constant="40" id="wDC-Sd-X1g"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L5N-DB-eA8">
+                                                <rect key="frame" x="0.0" y="40" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Mby-rD-bWN"/>
+                                                    <constraint firstAttribute="height" constant="40" id="lMN-Xm-JPq"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -1160,6 +1179,8 @@
                     <connections>
                         <outlet property="allowBtn" destination="g0Y-84-Na6" id="Eia-MM-Vr8"/>
                         <outlet property="assassinateBtn" destination="tXG-03-0ij" id="Nzy-e8-6Ce"/>
+                        <outlet property="card1ImageView" destination="jkG-gA-emY" id="0bg-ub-LPI"/>
+                        <outlet property="card2ImageView" destination="L5N-DB-eA8" id="bBh-Ip-2oW"/>
                         <outlet property="challengeBtn" destination="h56-EB-oNn" id="GeR-IN-ysc"/>
                         <outlet property="coupBtn" destination="86P-JL-F0s" id="GH0-O9-P7w"/>
                         <outlet property="exchangeBtn" destination="DoV-Az-sxH" id="yHP-uH-Qgv"/>
