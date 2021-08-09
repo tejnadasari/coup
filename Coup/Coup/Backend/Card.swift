@@ -36,6 +36,11 @@ class Card{
     var assassinate: Bool?
     var exchange: Bool?
     var steal: Bool?
+    
+    var blockAssassination = false
+    var blockForeignAid = false
+    var blockSteal = false
+    
     var revealed: Bool = false
     
     init() {
@@ -66,6 +71,7 @@ class Ambassador: Card {
         assassinate = false
         exchange = true
         steal = false
+        blockSteal = true
     }
     
 }
@@ -80,6 +86,7 @@ class Captain: Card {
         assassinate = false
         exchange = false
         steal = true
+        blockSteal = true
     }
     
 }
@@ -94,6 +101,7 @@ class Contessa: Card {
         assassinate = false
         exchange = false
         steal = false
+        blockAssassination = true
     }
     
 }
@@ -108,6 +116,7 @@ class Duke: Card {
         assassinate = false
         exchange = false
         steal = false
+        blockForeignAid = true
     }
     
 }

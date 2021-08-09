@@ -74,7 +74,17 @@ class AI: Player{
     // photo
     // cards:(Card, Card)
     // coins
+    
+    /*
+     
+    var blockAssassination = true -> Contessa
+    var blockForeignAid = true -> Duke
+    var blockSteal = true -> Captain and Ambassador
+     
+    */
     var moveRateDic: [String:Double] = ["income":2.0, "foreignAid":5.0, "tax":5.0, "steal":5.0, "assassinate":5.0, "exchange":5.0, "coup":5.0]
+    
+    var blockRateDic: [String:Double] = ["blockAssassination":5.0, "blockForeignAid":5.0, "blockSteal":5.0]
     
     var challengeRate = 0.15
 //    var allowRate: Double?
@@ -390,6 +400,222 @@ class AI: Player{
             
             newRate = moveRateDic["assassinate"]! + 2
             moveRateDic.updateValue(newRate, forKey: "assassinate")
+        }
+        
+    }
+    
+    /*
+     
+    var blockAssassination = true -> Contessa
+    var blockForeignAid = true -> Duke
+    var blockSteal = true -> Captain and Ambassador
+     
+    */
+    func changeBlockRate() {
+        // when the game is kicked off, and after this AI check out two cards
+        let card1 = self.cards.0
+        let card2 = self.cards.1
+        var newRate = 0.0
+        
+        
+        // 1. if AI has the move, increase the rate of it by 2
+        //  if other players have the card, rating is increased by 0.5, each time
+        // 2. if plyaer doe not have the move, decrease the rate of if by 1
+        //  if any other player has the card, rating is lowered again by 1
+        
+        if card1.blockAssassination || card2.blockAssassination {
+            
+            newRate = blockRateDic["blockAssassination"]! + 2
+            
+            if card1.blockAssassination && card2.blockAssassination {
+                newRate = blockRateDic["blockAssassination"]! + 4
+            }
+            
+            blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+            
+            for i in 0...players.count - 1 {
+                let player = players[i]
+                let pCard1 = player.cards.0
+                let pCard2 = player.cards.1
+                
+                if pCard1.revealed {
+                    if pCard1.blockAssassination{
+                        newRate = blockRateDic["blockAssassination"]! + 0.5
+                        blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+                    }
+                }
+                if pCard2.revealed {
+                    if pCard2.blockAssassination{
+                        newRate = blockRateDic["blockAssassination"]! + 0.5
+                        blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+                    }
+                }
+            }
+            
+            // if card1.revealed then they cannot use it
+            if card1.revealed || card2.revealed {
+                newRate = blockRateDic["blockAssassination"]! - 2
+                
+                if card1.revealed && card2.revealed {
+                    newRate = blockRateDic["blockAssassination"]! - 4
+                }
+                
+                blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+            }
+            
+        } else {
+            newRate = blockRateDic["blockAssassination"]! - 1
+            blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+            
+            for i in 0...players.count - 1 {
+                let player = players[i]
+                let pCard1 = player.cards.0
+                let pCard2 = player.cards.1
+                
+                if pCard1.revealed {
+                    if pCard1.blockAssassination{
+                        newRate = blockRateDic["blockAssassination"]! - 1
+                        blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+                    }
+                }
+                
+                if pCard2.revealed {
+                    if pCard2.blockAssassination{
+                        newRate = blockRateDic["blockAssassination"]! - 1
+                        blockRateDic.updateValue(newRate, forKey: "blockAssassination")
+                    }
+                }
+            }
+        }
+        
+        if card1.blockForeignAid || card2.blockForeignAid {
+            
+            newRate = blockRateDic["blockForeignAid"]! + 2
+            
+            if card1.blockForeignAid && card2.blockForeignAid {
+                newRate = blockRateDic["blockForeignAid"]! + 4
+            }
+            
+            blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+            
+            for i in 0...players.count - 1 {
+                let player = players[i]
+                let pCard1 = player.cards.0
+                let pCard2 = player.cards.1
+                
+                if pCard1.revealed {
+                    if pCard1.blockForeignAid{
+                        newRate = blockRateDic["blockForeignAid"]! + 0.5
+                        blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+                    }
+                }
+                if pCard2.revealed {
+                    if pCard2.blockForeignAid{
+                        newRate = blockRateDic["blockForeignAid"]! + 0.5
+                        blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+                    }
+                }
+            }
+            
+            // if card1.revealed then they cannot use it
+            if card1.revealed || card2.revealed {
+                newRate = blockRateDic["blockForeignAid"]! - 2
+                
+                if card1.revealed && card2.revealed {
+                    newRate = blockRateDic["blockForeignAid"]! - 4
+                }
+                
+                blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+            }
+            
+        } else {
+            newRate = blockRateDic["blockForeignAid"]! - 1
+            blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+            
+            for i in 0...players.count - 1 {
+                let player = players[i]
+                let pCard1 = player.cards.0
+                let pCard2 = player.cards.1
+                
+                if pCard1.revealed {
+                    if pCard1.blockForeignAid{
+                        newRate = blockRateDic["blockForeignAid"]! - 1
+                        blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+                    }
+                }
+                
+                if pCard2.revealed {
+                    if pCard2.blockForeignAid{
+                        newRate = blockRateDic["blockForeignAid"]! - 1
+                        blockRateDic.updateValue(newRate, forKey: "blockForeignAid")
+                    }
+                }
+            }
+        }
+        
+        if card1.blockSteal || card2.blockSteal {
+            
+            newRate = blockRateDic["blockSteal"]! + 2
+            
+            if card1.blockSteal && card2.blockSteal {
+                newRate = blockRateDic["blockSteal"]! + 4
+            }
+            
+            blockRateDic.updateValue(newRate, forKey: "blockSteal")
+            
+            for i in 0...players.count - 1 {
+                let player = players[i]
+                let pCard1 = player.cards.0
+                let pCard2 = player.cards.1
+                
+                if pCard1.revealed {
+                    if pCard1.blockSteal{
+                        newRate = blockRateDic["blockSteal"]! + 0.5
+                        blockRateDic.updateValue(newRate, forKey: "blockSteal")
+                    }
+                }
+                if pCard2.revealed {
+                    if pCard2.blockSteal{
+                        newRate = blockRateDic["blockSteal"]! + 0.5
+                        blockRateDic.updateValue(newRate, forKey: "blockSteal")
+                    }
+                }
+            }
+            
+            // if card1.revealed then they cannot use it
+            if card1.revealed || card2.revealed {
+                newRate = blockRateDic["blockSteal"]! - 2
+                
+                if card1.revealed && card2.revealed {
+                    newRate = blockRateDic["blockSteal"]! - 4
+                }
+                
+                blockRateDic.updateValue(newRate, forKey: "blockSteal")
+            }
+            
+        } else {
+            newRate = blockRateDic["blockSteal"]! - 1
+            blockRateDic.updateValue(newRate, forKey: "blockSteal")
+            
+            for i in 0...players.count - 1 {
+                let player = players[i]
+                let pCard1 = player.cards.0
+                let pCard2 = player.cards.1
+                
+                if pCard1.revealed {
+                    if pCard1.blockSteal{
+                        newRate = blockRateDic["blockSteal"]! - 1
+                        blockRateDic.updateValue(newRate, forKey: "blockSteal")
+                    }
+                }
+                
+                if pCard2.revealed {
+                    if pCard2.blockSteal{
+                        newRate = blockRateDic["blockSteal"]! - 1
+                        blockRateDic.updateValue(newRate, forKey: "blockSteal")
+                    }
+                }
+            }
         }
         
     }
