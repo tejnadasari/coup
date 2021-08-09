@@ -11,7 +11,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     var aiArray = ["Charlie Puth", "Ed Sheeran", "Justin Bieber", "Selena Gomez", "Taylor Swift"]
-    let user = Player(name: "real", photo: SettingsViewController.getImage(), cards: (Card(), Card()))
+    let user = Player(name: LoginViewController.getUsername(), photo: SettingsViewController.getImage(), cards: (Card(), Card()))
     var playerArray: [Player] = []
     var playerCount = 1
     

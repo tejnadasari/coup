@@ -816,8 +816,3 @@ class AI: Player{
         return Move(name:"allow", caller: self, target: target)
     }
 }
-
-class realPlayer: Player{
-    
-}
-

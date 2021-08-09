@@ -11,15 +11,15 @@
  RunGame() will consist of a while loop (moving the Game backend to this file)
     1)Go through array
     2)GetplayerMove() return boolean
-        When it is the actual player, always return a move with movename = "real"
-            if movename == "real" then break out of loop
+        When it is the actual player, always return a move with movename = LoginViewController.getUsername()
+            if movename == LoginViewController.getUsername() then break out of loop
                 button onClick listeners call runGame(true), now we have input from user
                 runGame(true) skips to the line after getPlayerMove()
         When it is the AI, some calculation is done and move is returned
     3)anyChallenges(false), returns a move as well
         loop that just goes through entire player array
-        asks getChallengeOrAllow(), AI does calculation, real player return movename = "real"
-            if movename == "real" then break out of while loop
+        asks getChallengeOrAllow(), AI does calculation, real player return movename = LoginViewController.getUsername()
+            if movename == LoginViewController.getUsername() then break out of while loop
                 button onClick listeners will now call anyChallenges(true), now we have input from user
                 anyChallenges(true) skips to line directly after getChallengeOrAllow()
             if move is a challenge, then stop and return that move
@@ -137,16 +137,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //JULIE HIGHLIGHT CHANGE
                 continue
             }
-            if currentPlayer.name == "real" {
+            if currentPlayer.name == LoginViewController.getUsername() {
                 highlightUser()
             } else {
                 highlightAI(index: turnInd)
             }
-            if (currentPlayer.name == "real" && didPlayerMove == false){
+            if (currentPlayer.name == LoginViewController.getUsername() && didPlayerMove == false){
                 enableButtons()
                 break
             }
-            else if (currentPlayer.name == "real"){
+            else if (currentPlayer.name == LoginViewController.getUsername()){
                 disableAllButtons()
                 curMove = playerMove
                 didPlayerMove = false
@@ -197,7 +197,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //still need to update the labels!
     func revealCard(curPlayer: Player){
-        if (curPlayer.name == "real"){
+        if (curPlayer.name == LoginViewController.getUsername()){
             //create alert message here!!
         }
         else{
@@ -302,7 +302,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (player.name == move.caller.name){
                 continue
             }
-            if (player.name == "real"){
+            if (player.name == LoginViewController.getUsername()){
                 enableChallengeButtons()
                 break
             }
