@@ -159,6 +159,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 curMove = currentPlayer.getPlayerMove()
             }
+            
+            // ???? nothing is updating
+            statusLabel.text = "hi"
 
             sleep(1)
             statusLabel.text = curMove.toString() //updates label
