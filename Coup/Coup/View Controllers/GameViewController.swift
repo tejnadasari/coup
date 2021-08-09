@@ -46,6 +46,8 @@ protocol ApplyExchangeDelegate {
 
 class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApplyExchangeDelegate {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userCoinLabel: UILabel!
@@ -68,6 +70,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var userStack: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Variables
     var deck: Deck? // deck for game
     var twoCards: (Card, Card)? // twoCards for exchange
     var userCard: Card? // userCard for exchange
@@ -107,7 +110,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // setup AIs and user
         setupAIs()
         setupUser()
-        
+
         runGame()
     }
     
@@ -156,7 +159,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 curMove = currentPlayer.getPlayerMove()
             }
-            
+
             sleep(1)
             statusLabel.text = curMove.toString() //updates label
             
