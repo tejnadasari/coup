@@ -16,17 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SYq-wB-LWT">
-                                <rect key="frame" x="0.0" y="61" width="390" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Login"/>
-                                    <segment title="Sign Up"/>
-                                </segments>
-                                <connections>
-                                    <action selector="onSegmentChange:" destination="WtE-Bv-kTN" eventType="valueChanged" id="LMf-uR-IBZ"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZJ-nL-ya0">
                                 <rect key="frame" x="16" y="449" width="358" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -86,6 +75,17 @@
                                     <action selector="loginButtonPressed:" destination="WtE-Bv-kTN" eventType="touchUpInside" id="syY-aB-eYY"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SYq-wB-LWT">
+                                <rect key="frame" x="49" y="87" width="293" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Login"/>
+                                    <segment title="Sign Up"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSegmentChange:" destination="WtE-Bv-kTN" eventType="valueChanged" id="LMf-uR-IBZ"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7FY-DP-ENi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBw-wf-LZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="-635.54502369668239"/>
+            <point key="canvasLocation" x="-60" y="-639.09952606635068"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
