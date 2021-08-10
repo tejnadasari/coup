@@ -73,8 +73,8 @@ class Player{
 //
 //    }
     
-    func revealCard() {  // TODO
-    }
+//    func revealCard() {  // TODO
+//    }
     
     func otherCardCount(cardLookingFor: String) -> Int{
         var count: Int = 0

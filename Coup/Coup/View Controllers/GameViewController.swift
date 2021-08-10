@@ -160,22 +160,31 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             sleep(1)
+            print(curMove)
+            print(curMove.name)
+            print(curMove.caller.name)
+            print(curMove.target.name)
+            
             statusLabel.text = curMove.toString() //updates label
             //curMove is now set
             moveLog.append(curMove)
+            
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
+            break
+            
             statusLabel.text = objection.toString()
+            
             sleep(1)
             
             if (objection.name == "challenge"){
                 statusLabel.text = objection.challengeString()
                 sleep(1)
-                if currentPlayer.checkhaveCard(moveName: curMove.name){//fix up in player class
-                    objection.caller.revealCard()
+                if currentPlayer.checkhaveCard(moveName: curMove.name){ //fix up in player class
+                    revealCard(curPlayer: objection.caller)
                 }
                 else{
-                    objection.target.revealCard() //reveal card must present modally
+                    revealCard(curPlayer: objection.target) //reveal card must present modally
                 }
                 sleep(1)
             }
@@ -237,7 +246,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             move.caller.coins += 2
         case "coup":
             move.caller.coins -= 7
-            move.target.revealCard()
+            revealCard(curPlayer: move.target)
         case "exchange":
             // get 2 cards from the current deck
             twoCards = deck!.give2Cards()
@@ -262,7 +271,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             deck!.get2CardsBackNShuffle(twoCards: twoCards!)
             
         case "assassinate":
-            move.target.revealCard()
+            revealCard(curPlayer: move.target)
         case "steal":
             move.target.coins -= 2
             move.caller.coins += 2
@@ -277,25 +286,31 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func anyChallenges(move: Move) -> Move{
         var curMove: Move = Move()
         challengeTurnInd = 0
-        while challengeTurnInd < players.count{
+        
+        while challengeTurnInd < players.count {
             let player = players[challengeTurnInd]
             if (player.name == move.caller.name){
                 challengeTurnInd += 1
                 continue
             }
+            
+            highlightPlayer(index: challengeTurnInd)
             if (player.name == LoginViewController.getUsername()){
                 enableChallengeButtons()
                 break
-            } else{
+            } else {
                 curMove = player.getChallengeOrAllow(target: move.caller)
             }
+            
             if (didPlayerChallengeOrAllow){
                 curMove = challengeMove
             }
             if (curMove.name == "challenge"){
                 return curMove
             }
+            
             challengeTurnInd += 1
+            dismissHighlights()
         }
         return curMove
     }
