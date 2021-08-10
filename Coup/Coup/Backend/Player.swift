@@ -4,7 +4,7 @@ class Player{
     var name: String
     var photo: UIImage
     var cards: (Card, Card)
-    var coins = 0
+    var coins = 2
     
     init(name: String, photo: UIImage, cards: (Card, Card)){
         self.name = name
