@@ -171,7 +171,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (objection.name == "challenge"){
                 statusLabel.text = objection.challengeString()
                 sleep(1)
-                if currentPlayer.checkhaveCard(cardName: curMove.name){//fix up in player class
+                if currentPlayer.checkhaveCard(moveName: curMove.name){//fix up in player class
                     objection.caller.revealCard()
                 }
                 else{
@@ -286,8 +286,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (player.name == LoginViewController.getUsername()){
                 enableChallengeButtons()
                 break
-            }
-            else{
+            } else{
                 curMove = player.getChallengeOrAllow(target: move.caller)
             }
             if (didPlayerChallengeOrAllow){

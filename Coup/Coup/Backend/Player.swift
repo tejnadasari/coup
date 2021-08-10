@@ -6,7 +6,6 @@ class Player{
     var cards: (Card, Card)
     var coins = 0
     
-    // constructor
     init(name: String, photo: UIImage, cards: (Card, Card)){
         self.name = name
         self.photo = photo
@@ -19,7 +18,6 @@ class Player{
         cards = (Card(), Card())
     }
     
-    // check out if this player has a specific card or not
     func checkhaveCard(moveName: String) -> Bool{
         switch moveName{
         case "assassinate":
@@ -47,47 +45,40 @@ class Player{
             }
             return false
         case "coup":
-            return true
+            if self.cards.0.coup! || self.cards.1.coup!
+            {
+                return true
+            }
+            return false
         case "foreignAid":
-            //contessa
+            if self.cards.0.foreignAid! || self.cards.1.foreignAid!
+            {
+                return true
+            }
+            return false
         default:
             return false
         }
-        if(self.cards.0.name == cardName || self.cards.1.name == cardName){
-            return true
-        }
-        return false
     }
     
     func isPlayerRevealed() -> Bool{
-            return (self.cards.0.revealed && self.cards.1.revealed)
-    }
-    
-    func getPlayerMove() -> Move {
-        // Swtich Case statement for chosen Move
-        // use multithreading to ask for move and get move
-        
-        return Move(name: "", caller: Player(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card())), target: Player(name: "", photo: UIImage(named: "Ariana Grande")!, cards: (Card(), Card())))
+        return (self.cards.0.revealed && self.cards.1.revealed)
     }
     
     func updateCoin(coinVal:Int) {
         self.coins = self.coins + coinVal
     }
+
+//    func choose() {
+//
+//    }
     
-    func getChallengeOrAllow(target: Player) -> Move{
-        return Move()
-    }
-    
-    func choose() {
-        
-    }
-    
-    func revealCard(){
+    func revealCard() {  // TODO
     }
     
     func otherCardCount(cardLookingFor: String) -> Int{
         var count: Int = 0
-        for current in players{
+        for current in players {
             if (current.name != self.name){
                 if (current.cards.0.revealed && current.cards.0.name == cardLookingFor){
                     count += 1
@@ -98,6 +89,18 @@ class Player{
             }
         }
         return count
+    }
+    
+    // MARK: - Only for AIs
+    
+    func getPlayerMove() -> Move {  // only for AI
+        print("This should never happen")
+        return Move()
+    }
+    
+    func getChallengeOrAllow(target: Player) -> Move {  // only for AI
+        print("This should never happen")
+        return Move()
     }
 }
 
@@ -832,7 +835,7 @@ class AI: Player{
         
     }
 
-    // MARK: getChallengeOrAllow
+    // MARK: - getChallengeOrAllow
     // -> challenge or allow to the latest move from moveLog
     //   based on the percentage of challenge rate.
     override func getChallengeOrAllow(target: Player) -> Move {
