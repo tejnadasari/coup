@@ -20,7 +20,39 @@ class Player{
     }
     
     // check out if this player has a specific card or not
-    func checkhaveCard(cardName: String) -> Bool{
+    func checkhaveCard(moveName: String) -> Bool{
+        switch moveName{
+        case "assassinate":
+            if self.cards.0.assassinate! || self.cards.1.assassinate!
+            {
+                return true
+            }
+            return false
+        case "tax":
+            if self.cards.0.tax! || self.cards.1.tax!
+            {
+                return true
+            }
+            return false
+        case "steal":
+            if self.cards.0.steal! || self.cards.1.steal!
+            {
+                return true
+            }
+            return false
+        case "exchange":
+            if self.cards.0.exchange! || self.cards.1.exchange!
+            {
+                return true
+            }
+            return false
+        case "coup":
+            return true
+        case "foreignAid":
+            //contessa
+        default:
+            return false
+        }
         if(self.cards.0.name == cardName || self.cards.1.name == cardName){
             return true
         }

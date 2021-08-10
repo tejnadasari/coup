@@ -161,12 +161,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             sleep(1)
             statusLabel.text = curMove.toString() //updates label
-            
             //curMove is now set
             moveLog.append(curMove)
-            
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
+            statusLabel.text = objection.toString()
             sleep(1)
             
             if (objection.name == "challenge"){
@@ -281,6 +280,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while challengeTurnInd < players.count{
             let player = players[challengeTurnInd]
             if (player.name == move.caller.name){
+                challengeTurnInd += 1
                 continue
             }
             if (player.name == LoginViewController.getUsername()){
@@ -296,6 +296,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (curMove.name == "challenge"){
                 return curMove
             }
+            challengeTurnInd += 1
         }
         return curMove
     }
@@ -459,7 +460,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.identity1Label.textColor = UIColor.label
         } else {
             cell.identity1Label.text = "Hidden"
-            cell.identity1Label.textColor = UIColor(white: 1, alpha: 0.5)
+            cell.identity1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
         
         if AIs[row].cards.1.revealed {
@@ -467,7 +468,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.identity2Label.textColor = UIColor.label
         } else {
             cell.identity2Label.text = "Hidden"
-            cell.identity2Label.textColor = UIColor(white: 1, alpha: 0.5)
+            cell.identity2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
         
         cell.contentView.backgroundColor = AICellColors[row]

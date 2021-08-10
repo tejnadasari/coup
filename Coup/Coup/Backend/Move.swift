@@ -17,18 +17,18 @@ class Move {
     
     //check whenever player is real LoginViewController.getUsername()
     func toString() -> String{
-        return "\(self.caller) played the move \(self.name) onto \(self.target). Waiting for any challenges."
+        return "\(self.caller.name) played the move \(self.name) onto \(self.target.name). Waiting for any challenges."
     }
     
     func successfulString() -> String{
-        return "\(self.caller) successfully played the move \(self.name)."
+        return "\(self.caller.name) successfully played the move \(self.name)."
     }
     
     func challengeString() -> String{
-        return "\(self.caller) challenges \(self.target)."
+        return "\(self.caller.name) challenges \(self.target.name)."
     }
     
     func challengeFailedString() -> String{
-        return "\(self.caller) incorrectly challenged \(self.target), he reveals: "
+        return "\(self.caller.name) incorrectly challenged \(self.target.name), he reveals: "
     }
 }
