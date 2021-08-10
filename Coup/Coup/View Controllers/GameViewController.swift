@@ -93,11 +93,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var userCellColor = UIColor.clear
     var AICellColors: [UIColor] = []
     
+    var workingItem:DispatchWorkItem!
     // MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
         disableAllButtons()
+        
+
         
         // make Deck and assign 2 cards to each player
         deck = Deck()
@@ -110,8 +113,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // setup AIs and user
         setupAIs()
         setupUser()
-
+    
         runGame()
+       
     }
     
     func setupAIs() {
@@ -138,6 +142,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var gameOn:Bool = true
         
+        setupUser()
         while gameOn{
             dismissHighlights()
             var curMove: Move = Move()
@@ -160,23 +165,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             sleep(1)
-            print(curMove)
-            print(curMove.name)
-            print(curMove.caller.name)
-            print(curMove.target.name)
             
-            statusLabel.text = curMove.toString() //updates label
+            self.statusLabel.text = curMove.toString() //updates label
             //curMove is now set
             moveLog.append(curMove)
-            
+            sleep(1)
             //checking for challenges
             let objection = anyChallenges(move: curMove) //move
-            break
-            
-            statusLabel.text = objection.toString()
+            self.statusLabel.text = objection.toString()
             
             sleep(1)
-            
+            break
             if (objection.name == "challenge"){
                 statusLabel.text = objection.challengeString()
                 sleep(1)
@@ -192,6 +191,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (objection.name == "allow"){
                 statusLabel.text = curMove.successfulString()
                 actOnMove(move: curMove)
+                tableView.reloadData()
+                setupUser()
             }
             
             /*
@@ -204,6 +205,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
              }
              */
             isGameOver(gameOn: &gameOn)
+            break
             incrementInd()
         }
     }
@@ -222,10 +224,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //still need to update the labels!
     func revealCard(curPlayer: Player){
-        if (curPlayer.name == LoginViewController.getUsername()){
-            //create alert message here!!
-        }
-        else{
             if (!curPlayer.cards.0.revealed){
                 statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
                 curPlayer.cards.0.revealed = true
@@ -234,7 +232,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
                 curPlayer.cards.1.revealed = true
             }
-        }
         tableView.reloadData()
     }
     
@@ -308,7 +305,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (curMove.name == "challenge"){
                 return curMove
             }
-            
+            sleep(1)
             challengeTurnInd += 1
             dismissHighlights()
         }
