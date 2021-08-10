@@ -115,7 +115,7 @@ class SettingsViewController: UIViewController,
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - Load User Defaults
+    // MARK: - Load User Defaults in Setup
     
     func setUpSettings() {
         loadImage()
@@ -148,6 +148,10 @@ class SettingsViewController: UIViewController,
         default:
             print("This should never happen")
         }
+    }
+    
+    static func isSoundEnabled() -> Bool {
+        return LoginViewController.getEffectInUserDefaults() == "on"
     }
     
     // MARK: - UI

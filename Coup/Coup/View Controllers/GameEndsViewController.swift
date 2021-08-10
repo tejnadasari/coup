@@ -26,7 +26,10 @@ class GameEndsViewController: UIViewController {
     
     func typeStatus() {
         for char in status {
-            AudioServicesPlaySystemSound(1306)
+            if SettingsViewController.isSoundEnabled() {
+                AudioServicesPlaySystemSound(1306)
+            }
+            
             statusLabel.text! += "\(char)"
             RunLoop.current.run(until: Date() + 0.12)
         }
