@@ -42,8 +42,6 @@ class LoginViewController: UIViewController {
           }
         }
         
-        let font = UIFont.systemFont(ofSize: 16)
-        segCtrl.setTitleTextAttributes(<#T##attributes: [NSAttributedString.Key : Any]?##[NSAttributedString.Key : Any]?#>, for: <#T##UIControl.State#>)
     }
     
     // MARK: - UI
