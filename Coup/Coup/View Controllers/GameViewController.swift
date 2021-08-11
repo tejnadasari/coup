@@ -344,32 +344,29 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //still need to update the labels!
-    func revealCard(curPlayer: Player){
-            if (!curPlayer.cards.0.revealed){
-                
-                DispatchQueue.main.async {
-                    self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
-                }
-                sleep(2)
-                
-                curPlayer.cards.0.revealed = true
+    func revealCard(curPlayer: Player) {
+        if (!curPlayer.cards.0.revealed) {
+            DispatchQueue.main.async {
+                self.revealFirstCard()
+                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
             }
-            else if (!curPlayer.cards.1.revealed){
-                
-                DispatchQueue.main.async {
-                    self.revealSecondCard()
-                    self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
-                }
-                sleep(2)
-                
-                curPlayer.cards.1.revealed = true
+            
+            sleep(2)
+            curPlayer.cards.0.revealed = true
+        } else if (!curPlayer.cards.1.revealed) {
+            DispatchQueue.main.async {
+                self.revealSecondCard()
+                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
             }
+            
+            sleep(2)
+            curPlayer.cards.1.revealed = true
+        }
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
         sleep(2)
-        
     }
     
     func actOnMove(move: Move){
@@ -595,16 +592,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func incomeBtnPressed(_ sender: Any) {
-        // add this to reveal first card, TODO REMOVE from income
-        DispatchQueue.main.async {
-            self.revealFirstCard()
-        }
-        
-        // add this to reveal second card, TODO REMOVE from income
-        DispatchQueue.main.async {
-            self.revealSecondCard()
-        }
-
         didPlayerMove = true
         playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
