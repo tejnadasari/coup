@@ -238,7 +238,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             sleep(1)
             
             DispatchQueue.main.async {
-               self.statusLabel.text = curMove.toString() //updates label
+               self.statusLabel.text = curMove.toString() //updates strings properly
             }
             sleep(2)
             
@@ -246,31 +246,49 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             moveLog.append(curMove)
             sleep(1)
             //checking for challenges
-            let objection = anyChallenges(move: curMove) //move
-            
-            DispatchQueue.main.async {
-                self.statusLabel.text = objection.toString()
-            }
-            sleep(2)
-            
-            if (objection.name == "challenge"){
-                
+            var objection: Move = Move()
+            if (curMove.name != "income" && curMove.name != "coup"){
+                objection = anyChallenges(move: curMove) //move
                 DispatchQueue.main.async {
-                    self.statusLabel.text = objection.challengeString()
+                    self.statusLabel.text = objection.toString()
                 }
                 sleep(2)
                 
-                if currentPlayer.checkhaveCard(moveName: curMove.name){ //fix up in player class
-                    revealCard(curPlayer: objection.caller)
+                if (objection.name == "challenge"){
+                    DispatchQueue.main.async {
+                        self.statusLabel.text = objection.challengeString()
+                    }
+                    sleep(2)
+                    
+                    if currentPlayer.checkhaveCard(moveName: curMove.name){ //fix up in player class
+                        revealCard(curPlayer: objection.caller)
+                    }
+                    else{
+                        revealCard(curPlayer: objection.target) //reveal card must present modally
+                    }
+                    sleep(1)
                 }
-                else{
-                    revealCard(curPlayer: objection.target) //reveal card must present modally
-                }
-                sleep(1)
-            }
-            
-            if (objection.name == "allow"){
                 
+                if (objection.name == "allow"){
+                    
+                    DispatchQueue.main.async {
+                        self.statusLabel.text = curMove.successfulString()
+                    }
+                    sleep(2)
+                    
+                    DispatchQueue.main.async {
+                        self.actOnMove(move: curMove)
+                    }
+                    sleep(2)
+                    
+                    DispatchQueue.main.async {
+                        self.setupUser()
+                        self.tableView.reloadData()
+                    }
+                    sleep(2)
+                }
+            }
+            else{
                 DispatchQueue.main.async {
                     self.statusLabel.text = curMove.successfulString()
                 }
@@ -286,8 +304,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.tableView.reloadData()
                 }
                 sleep(2)
-                
             }
+            
             
             /*
              For block, we also need to figure out how to incorporate extra buttons
