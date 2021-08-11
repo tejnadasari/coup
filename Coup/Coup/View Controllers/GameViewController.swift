@@ -157,7 +157,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         workingItem = DispatchWorkItem {
             self.runGame()
         }
@@ -177,32 +176,34 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userNameLabel.text = user!.name
         userCoinLabel.text = "$ \(user!.coins)"
         userCard1Label.text = user!.cards.0.name!
+        userCard1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         card1ImageView.image = currentUserCard1
         userCard2Label.text = user!.cards.1.name!
+        userCard2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         card2ImageView.image = currentUserCard2
         
         if user!.cards.0.revealed {
-            userCard1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
+            userCard1Label.textColor = UIColor.label
         }
         
         if user!.cards.1.revealed {
-            userCard2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
+            userCard2Label.textColor = UIColor.label
         }
     }
     
     // MARK: - Run game
     
     // After assigning 2 cards to each player,
-    func runGame(){
-        
-        var gameOn:Bool = true
+    func runGame() {
+
+        var gameOn = true
         
         DispatchQueue.main.async {
             self.setupUser()
         }
         sleep(2)
         
-        while gameOn{
+        while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
             }
@@ -251,10 +252,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             sleep(3)
             
-            //curMove is now set
+            // curMove is now set
             moveLog.append(curMove)
             sleep(1)
-            //checking for challenges
+            // checking for challenges
             var objection: Move = Move()
             if (curMove.name != "income" && curMove.name != "coup"){
                 objection = anyChallenges(move: curMove) //move
@@ -297,7 +298,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     sleep(2)
                 }
             }
-            else{
+            else {
                 DispatchQueue.main.async {
                     self.statusLabel.text = curMove.successfulString()
                 }
@@ -328,17 +329,35 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             isGameOver(gameOn: &gameOn)
             incrementInd()
         }
+        
+        if !gameOn {
+            DispatchQueue.main.sync {
+                self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
+            }
+        }
     }
     
-    func isGameOver(gameOn: inout Bool){
-        var countFalse: Int = 0
-        for cur in players{
-            if cur.isPlayerRevealed(){
+    func isGameOver(gameOn: inout Bool) {
+        var countFalse = 0
+        for cur in players {
+            if cur.isPlayerRevealed() {
                 countFalse += 1
             }
         }
-        if (countFalse == 1){
+        if (countFalse == 1) {
             gameOn = false
+            
+            if players[0].isPlayerRevealed() {
+                DispatchQueue.main.sync {
+                    self.youLose()
+                    self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
+                }
+            } else {
+                DispatchQueue.main.sync {
+                    self.youWon()
+                    self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
+                }
+            }
         }
     }
     
@@ -349,16 +368,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.revealFirstCard()
                 self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
             }
-            
             sleep(2)
+            
             curPlayer.cards.0.revealed = true
         } else if (!curPlayer.cards.1.revealed) {
             DispatchQueue.main.async {
                 self.revealSecondCard()
                 self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
             }
-            
             sleep(2)
+            
             curPlayer.cards.1.revealed = true
         }
         
@@ -816,6 +835,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
            let nextVC = segue.destination as? GameEndsViewController {
             nextVC.status = status
         }
+    }
+    
+    func youLose() {
+        statusLabel.text = "You Lose"
     }
     
     func youWon() {

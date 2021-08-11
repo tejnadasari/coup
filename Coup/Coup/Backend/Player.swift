@@ -68,13 +68,6 @@ class Player{
     func updateCoin(coinVal:Int) {
         self.coins = self.coins + coinVal
     }
-
-//    func choose() {
-//
-//    }
-    
-//    func revealCard() {  // TODO
-//    }
     
     func otherCardCount(cardLookingFor: String) -> Int{
         var count: Int = 0
@@ -93,12 +86,12 @@ class Player{
     
     // MARK: - Only for AIs
     
-    func getPlayerMove() -> Move {  // only for AI
+    func getPlayerMove() -> Move {
         print("This should never happen")
         return Move()
     }
     
-    func getChallengeOrAllow(target: Player) -> Move {  // only for AI
+    func getChallengeOrAllow(target: Player) -> Move {
         print("This should never happen")
         return Move()
     }

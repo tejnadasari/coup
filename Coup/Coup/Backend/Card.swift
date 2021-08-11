@@ -24,12 +24,11 @@
  Duke
 
  -> After playing an action, the other players have an opportunity to block the action or to challenge it. After this the turn passes to the next player.
- 
- 
  */
+
 import UIKit
 
-class Card{
+class Card {
     var name: String?
     var photo: UIImage?
     var tax: Bool?
@@ -41,15 +40,10 @@ class Card{
     var blockAssassination = false
     var blockForeignAid = false
     var blockSteal = false
-    
     var revealed: Bool = false
-    
-    init() {
-    }
 }
 
 class Assassin: Card {
-    
     override init() {
         super.init()
         name = "Assassin"
@@ -61,11 +55,9 @@ class Assassin: Card {
         foreignAid = false
         coup = true
     }
-    
 }
 
 class Ambassador: Card {
-    
     override init() {
         super.init()
         name = "Ambassador"
@@ -78,11 +70,9 @@ class Ambassador: Card {
         blockSteal = true
         coup = true
     }
-    
 }
 
 class Captain: Card {
-    
     override init() {
         super.init()
         name = "Captain"
@@ -95,11 +85,9 @@ class Captain: Card {
         blockSteal = true
         coup = true
     }
-    
 }
 
 class Contessa: Card {
-    
     override init() {
         super.init()
         name = "Contessa"
@@ -112,11 +100,9 @@ class Contessa: Card {
         blockAssassination = true
         coup = true
     }
-    
 }
 
 class Duke: Card {
-    
     override init() {
         super.init()
         name = "Duke"
@@ -129,5 +115,4 @@ class Duke: Card {
         blockForeignAid = true
         coup = true
     }
-    
 }
