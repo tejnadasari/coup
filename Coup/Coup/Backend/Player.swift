@@ -108,7 +108,7 @@ class AI: Player{
     
     var moveRateDic: [String:Int] = ["income":5, "foreignAid":5, "tax":5, "steal":5, "assassinate":5, "exchange":5]
     
-    var challengeRate = 0.15
+    var challengeRate = 0.25
 
     // MARK:- getAIMoveName and getPlayerMove
     
@@ -827,9 +827,9 @@ class AI: Player{
         
         //access move logs most recent move
         if assassinateCount <= 1 || exchangeCount <= 1 || taxCount <= 1 || stealCount <= 1 {
-            challengeRate = 0.20
+            challengeRate = 0.30
         } else if assassinateCount == 2 || exchangeCount == 2 || taxCount == 2 || stealCount == 2 {
-            challengeRate = 0.25
+            challengeRate = 0.45
         } else if assassinateCount >= 3 || exchangeCount >= 3 || taxCount >= 3 || stealCount >= 3 {
             challengeRate = 1.00
         } else {
@@ -846,6 +846,9 @@ class AI: Player{
         self.adjustChallengeRate()
         
         let rand = Double.random(in: 0.01...1.00)
+        
+        print(challengeRate)
+        print(rand)
         
         if rand <= challengeRate {
             return Move(name: "challenge", caller: self, target: target)

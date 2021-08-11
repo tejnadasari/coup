@@ -181,11 +181,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         card2ImageView.image = user!.cards.1.photo
         
         if user!.cards.0.revealed {
-            userCard1Label.textColor = UIColor(white: 0, alpha: 0.5)
+            userCard1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
         
         if user!.cards.1.revealed {
-            userCard2Label.textColor = UIColor(white: 0, alpha: 0.5)
+            userCard2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
 
     }
@@ -200,7 +200,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         DispatchQueue.main.async {
             self.setupUser()
         }
-        sleep(1)
+        sleep(2)
         
         while gameOn{
             DispatchQueue.main.async {
@@ -471,26 +471,26 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async {
                     self.statusLabel.text = "Please choose allow or challenge in 5 seconds"
                 }
-                sleep(2)
+                sleep(1)
                 
                 DispatchQueue.main.async {
                     self.enableChallengeButtons()
                 }
-                sleep(3)
+                sleep(5)
+                
+                if (didPlayerChallengeOrAllow){
+                    return challengeMove
+                } else {
+                    curMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
+                }
                 
             } else {
-                curMove = player.getChallengeOrAllow(target: move.caller)
+                return player.getChallengeOrAllow(target: move.caller)
             }
             
-            if (didPlayerChallengeOrAllow){
-                return challengeMove
-            } else {
-                curMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
-            }
-            
-            if (curMove.name == "challenge"){
-                return curMove
-            }
+//            if (curMove.name == "challenge"){
+//                return curMove
+//            }
             
             challengeTurnInd += 1
             
