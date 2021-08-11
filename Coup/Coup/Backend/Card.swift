@@ -36,7 +36,7 @@ class Card{
     var assassinate: Bool?
     var exchange: Bool?
     var steal: Bool?
-    var foreignAid = false
+    var foreignAid : Bool?
     var coup: Bool?
     var blockAssassination = false
     var blockForeignAid = false

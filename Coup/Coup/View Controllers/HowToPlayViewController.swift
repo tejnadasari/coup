@@ -19,8 +19,8 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         howToPlayLabel.text! = "How to Play?"
                
-        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 390, height: 2000))
-        descriptionLabel.numberOfLines = 1000
+        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 390, height: 1800))
+        descriptionLabel.numberOfLines = 800
         descriptionLabel.text = """
             1. The game begins giving two cards to each player. Each player gets two roles(cards) which are confidential from the other players.
 
@@ -61,14 +61,6 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
 
             # Challenge - Unlikely to Allow, if you doubt a player has not the roles(cards) you claim, you can challenge them.
              -> The player must reveal the card that you claimed. If your doubt was right, the player's original action will be not carried out, and the player may no longer use the card. Otherwise, you must reveal your card as a penalty. And the card that the player revealed, will be shuffled back to the deck, and they will get a new card. After failed challenge, the player's original action will be taken as usual (Income, Foreign Aid, Coup which do not need specific role to be taken can never be challenged)
-
-            # Block - You can decide to block a player's action with one of your cards(roles) If other players doubt you do not have the card(role), they can challenge you.
-
-            7. Note: 2 ways in which you can lose both of cards at one go
-               1) When you fail to challenge Assassination
-                 -> you lose one card as a penalty of failing challenge, another by being assassinated.
-               2) When you try to block Assassination lying that you have Contessa, but challenged
-                 -> you lose one card by being challenged successfully by others, another by being assassinated.
 
             Sources from: https://coup.thebrown.net/rules.html
             """
