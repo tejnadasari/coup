@@ -188,7 +188,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if user!.cards.1.revealed {
             userCard2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
-
     }
     
     // MARK: - Run game
@@ -752,9 +751,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func highlightPlayerInGray(index: Int) {
         if index == 0 {
-            highlightUser(color: UIColor.gray)
+            highlightUser(color: UIColor.lightGray)
         } else {
-            highlightAI(index: index - 1, color: UIColor.gray)
+            highlightAI(index: index - 1, color: UIColor.lightGray)
         }
     }
     
