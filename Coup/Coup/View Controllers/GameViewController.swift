@@ -213,7 +213,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             let currentPlayer = players[turnInd]
             
             DispatchQueue.main.async {
-                self.highlightPlayer(index: self.turnInd)
+                self.highlightPlayerInGray(index: self.turnInd)
             }
             sleep(1)
             
@@ -461,7 +461,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             DispatchQueue.main.async {
-                self.highlightPlayer(index: self.challengeTurnInd)
+                self.highlightPlayerInYellow(index: self.challengeTurnInd)
             }
             sleep(2)
             
@@ -740,21 +740,29 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func highlightUser() {
-        userCellColor = UIColor.gray
+    func highlightUser(color: UIColor) {
+        userCellColor = color
         userStack.backgroundColor = userCellColor
     }
     
-    func highlightAI(index: Int) {
-        AICellColors[index] = UIColor.gray
+    func highlightAI(index: Int, color: UIColor) {
+        AICellColors[index] = color
         tableView.reloadData()
     }
     
-    func highlightPlayer(index: Int) {
+    func highlightPlayerInGray(index: Int) {
         if index == 0 {
-            highlightUser()
+            highlightUser(color: UIColor.gray)
         } else {
-            highlightAI(index: index - 1)
+            highlightAI(index: index - 1, color: UIColor.gray)
+        }
+    }
+    
+    func highlightPlayerInYellow(index: Int) {
+        if index == 0 {
+            highlightUser(color: UIColor.yellow)
+        } else {
+            highlightAI(index: index - 1, color: UIColor.yellow)
         }
     }
     
