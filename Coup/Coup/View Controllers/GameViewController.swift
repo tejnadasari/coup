@@ -215,10 +215,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async {
                     self.statusLabel.text = "Please choose any action you want to take"
                 }
-                sleep(2)
+                sleep(3)
                 
                 DispatchQueue.main.async {
-                    self.enableButtons()
+                    self.enableButtons(currentPlayer: currentPlayer)
                 }
                 sleep(2)
                 
@@ -240,7 +240,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                self.statusLabel.text = curMove.toString() //updates strings properly
             }
-            sleep(2)
+            sleep(3)
             
             //curMove is now set
             moveLog.append(curMove)
@@ -252,13 +252,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async {
                     self.statusLabel.text = objection.toString()
                 }
-                sleep(2)
+                sleep(3)
                 
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
                     }
-                    sleep(2)
+                    sleep(3)
                     
                     if currentPlayer.checkhaveCard(moveName: curMove.name){ //fix up in player class
                         revealCard(curPlayer: objection.caller)
@@ -274,12 +274,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     DispatchQueue.main.async {
                         self.statusLabel.text = curMove.successfulString()
                     }
-                    sleep(2)
+                    sleep(3)
                     
                     DispatchQueue.main.async {
                         self.actOnMove(move: curMove)
                     }
-                    sleep(2)
+                    sleep(3)
                     
                     DispatchQueue.main.async {
                         self.setupUser()
@@ -292,12 +292,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async {
                     self.statusLabel.text = curMove.successfulString()
                 }
-                sleep(2)
+                sleep(3)
                 
                 DispatchQueue.main.async {
                     self.actOnMove(move: curMove)
                 }
-                sleep(2)
+                sleep(3)
                 
                 DispatchQueue.main.async {
                     self.setupUser()
@@ -426,6 +426,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             deck!.get2CardsBackNShuffle(twoCards: twoCards!)
             
         case "assassinate":
+            move.caller.coins -= 3
             revealCard(curPlayer: move.target)
         case "steal":
             move.target.coins -= 2
@@ -596,11 +597,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
     }
     
-    func enableButtons(){
-        coupBtn.isEnabled = true
+    func enableButtons(currentPlayer: Player){
+        if currentPlayer.coins >= 7 {
+            coupBtn.isEnabled = true
+        }
+        
         taxBtn.isEnabled = true
         stealBtn.isEnabled = true
-        assassinateBtn.isEnabled = true
+        
+        if currentPlayer.coins >= 3 {
+            assassinateBtn.isEnabled = true
+        }
+        
         foreignBtn.isEnabled = true
         incomeBtn.isEnabled = true
         exchangeBtn.isEnabled = true

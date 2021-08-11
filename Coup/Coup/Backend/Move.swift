@@ -17,6 +17,10 @@ class Move {
     
     //check whenever player is real LoginViewController.getUsername()
     func toString() -> String {
+        if self.name == "income" || self.name == "coup" {
+            return "\(self.caller.name) played the move \(self.name) onto \(self.target.name). No challenge acceptable."
+        }
+        
         return "\(self.caller.name) played the move \(self.name) onto \(self.target.name). Waiting for any challenges."
     }
     

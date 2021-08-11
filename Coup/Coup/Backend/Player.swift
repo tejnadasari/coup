@@ -153,8 +153,15 @@ class AI: Player{
         let moveName = getAIMoveName()
         
         //randomly select the target of the move
-        let rand = Int.random(in: 0...players.count-1)
-        let target = players[rand]
+        var rand = Int.random(in: 0...players.count-1)
+        var target = players[rand]
+        
+        if moveName == "steal" {
+            while target.coins < 2 {
+                rand = Int.random(in: 0...players.count-1)
+                target = players[rand]
+            }
+        }
         
         return Move(name: moveName, caller: self, target: target)
     }
@@ -174,6 +181,9 @@ class AI: Player{
         //  if any other player has the card, rating is lowered again by 1
         
         if card1.assassinate! || card2.assassinate! {
+            
+            // initialize it as 5
+            moveRateDic.updateValue(5, forKey: "assassinate")
             
             newRate = moveRateDic["assassinate"]! + 10
             
@@ -440,6 +450,10 @@ class AI: Player{
         }
         
         if card1.steal! || card2.steal! {
+            
+            //initialize it as 5
+            moveRateDic.updateValue(5, forKey: "steal")
+            
             newRate = moveRateDic["steal"]! + 10
             
             if card1.steal! && card2.steal! {
@@ -617,39 +631,59 @@ class AI: Player{
             }
         }
         
-        
-        // Adjusting rate according to Money
+        // Adjusting rate based on Money
         if self.coins < 3 {
             newRate = moveRateDic["income"]! + 10
             moveRateDic.updateValue(newRate, forKey: "income")
+            
+            moveRateDic.updateValue(0, forKey: "assassinate")
             
         } else {
             newRate = moveRateDic["income"]! - 10
             moveRateDic.updateValue(newRate, forKey: "income")
         }
         
+        // Adjustig rate of steal based on Money
+        var count = 0
         
-        if moveRateDic["income"]! <= 0 {
-            moveRateDic.updateValue(0, forKey: "income")
+        for i in 0...players.count - 1 {
+            let player = players[i]
+            
+            if player.name == self.name {
+                continue
+            }
+            
+            if player.coins < 2 {
+                count += 1
+            }
         }
         
-        if moveRateDic["foreignAid"]! <= 0 {
-            moveRateDic.updateValue(0, forKey: "foreignAid")
-        }
-        
-        if moveRateDic["tax"]! <= 0 {
-            moveRateDic.updateValue(0, forKey: "tax")
-        }
-        
-        if moveRateDic["steal"]! <= 0 {
+        if count == players.count - 1 {
             moveRateDic.updateValue(0, forKey: "steal")
         }
         
-        if moveRateDic["assassinate"]! <= 0 {
+        // 0 filter
+        if moveRateDic["income"]! < 0 {
+            moveRateDic.updateValue(0, forKey: "income")
+        }
+        
+        if moveRateDic["foreignAid"]! < 0 {
+            moveRateDic.updateValue(0, forKey: "foreignAid")
+        }
+        
+        if moveRateDic["tax"]! < 0 {
+            moveRateDic.updateValue(0, forKey: "tax")
+        }
+        
+        if moveRateDic["steal"]! < 0 {
+            moveRateDic.updateValue(0, forKey: "steal")
+        }
+        
+        if moveRateDic["assassinate"]! < 0 {
             moveRateDic.updateValue(0, forKey: "assassinate")
         }
         
-        if moveRateDic["exchange"]! <= 0 {
+        if moveRateDic["exchange"]! < 0 {
             moveRateDic.updateValue(0, forKey: "exchange")
         }
         
