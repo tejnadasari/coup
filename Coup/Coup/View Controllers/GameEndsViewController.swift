@@ -10,7 +10,7 @@ import AVFoundation
 
 class GameEndsViewController: UIViewController {
     
-    var status = "undefined"
+    static var status = "undefined"
 
     @IBOutlet weak var statusLabel: UILabel!
 
@@ -25,7 +25,7 @@ class GameEndsViewController: UIViewController {
     }
     
     func typeStatus() {
-        for char in status {
+        for char in GameEndsViewController.status {
             if SettingsViewController.isSoundEnabled() {
                 AudioServicesPlaySystemSound(1306)
             }

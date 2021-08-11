@@ -816,14 +816,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         
         if segue.identifier == "activityLogSegueIdentifier",
            let activityLogVC = segue.destination as? ActivityLogViewController {
             activityLogVC.players = players
 //            activityLogVC.activityLog =
         }
+        
         else if segue.identifier == "exchangeSegueIdentifier",
            let exchangeVC = segue.destination as? ExchangeViewController {
             exchangeVC.delegate = self
@@ -831,17 +830,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             exchangeVC.userCard = userCard
             exchangeVC.caseNum = caseNum
         }
-        else if segue.identifier == "gameEndsSegueIdentifier",
-           let nextVC = segue.destination as? GameEndsViewController {
-            nextVC.status = status
+        
+        else if segue.identifier == "gameEndsSegueIdentifier" {
+            GameEndsViewController.status = status
         }
     }
     
     func youLose() {
-        statusLabel.text = "You Lose"
+        status = "You Lose"
+        statusLabel.text = status
+        GameEndsViewController.status = status
     }
     
     func youWon() {
-        statusLabel.text = "You Won"
+        status = "You Won"
+        statusLabel.text = status
+        GameEndsViewController.status = status
     }
 }
