@@ -20,6 +20,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+
     
     let loginToCoupSegueIdentifier = "LoginToCoupSegueIdentifier"
     
@@ -41,6 +44,15 @@ class LoginViewController: UIViewController {
             self.passwordTextField.text = nil
           }
         }
+        
+        statusLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
+        loginButton.titleLabel?.font = UIFont(name: "Lato-Bold.ttf", size: 20)
+        emailLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
+        passwordLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
+        confirmPasswordLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
+        
+//        let font = UIFont.systemFont(ofSize: 16)
+//        segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: "Lato-Bold.ttf"], for: .normal)
         
     }
     

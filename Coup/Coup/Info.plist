@@ -64,5 +64,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Lato-Light.ttf</string>
+		<string>Lato-LightItalic.ttf</string>
+		<string>Lato-Bold.ttf</string>
+		<string>ethnocentric rg.ttf</string>
+		<string>ethnocentric rg it.ttf</string>
+	</array>
 </dict>
 </plist>

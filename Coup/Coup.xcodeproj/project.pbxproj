@@ -15,6 +15,12 @@
 		32DEC32726B29C660049F2F3 /* AddAITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DEC32626B29C660049F2F3 /* AddAITableViewCell.swift */; };
 		32FA1D6B26B6E00F00B899F4 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA1D6A26B6E00F00B899F4 /* OfflineViewController.swift */; };
 		32FE4AD226B4663D0055EB30 /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */; };
+		A58C8EB326C40771008FE287 /* ethnocentric rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A58C8EB226C40770008FE287 /* ethnocentric rg.ttf */; };
+		A58C8EB526C40F8A008FE287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */; };
+		A5AC08C626C406E700D49BC3 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5AC08C426C406E600D49BC3 /* Lato-Light.ttf */; };
+		A5AC08C726C406E700D49BC3 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5AC08C526C406E700D49BC3 /* Lato-LightItalic.ttf */; };
+		A5AC08C926C406F000D49BC3 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5AC08C826C406F000D49BC3 /* Lato-Bold.ttf */; };
+		A5AC08CC26C406FB00D49BC3 /* ethnocentric rg it.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5AC08CA26C406FB00D49BC3 /* ethnocentric rg it.ttf */; };
 		AC900F0F26A3601F000C6B89 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F0E26A3601F000C6B89 /* GameViewController.swift */; };
 		AC900F1926A36C6D000C6B89 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1826A36C6D000C6B89 /* Card.swift */; };
 		AC900F1B26A36C9C000C6B89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC900F1A26A36C9C000C6B89 /* Deck.swift */; };
@@ -27,7 +33,6 @@
 		FD1C9A4226B4CFC7006146D7 /* Taylor Swift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3C26B4CFC7006146D7 /* Taylor Swift.jpg */; };
 		FD1C9A4326B4CFC7006146D7 /* Selena Gomez.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3D26B4CFC7006146D7 /* Selena Gomez.jpg */; };
 		FD1C9A4426B4CFC7006146D7 /* Ariana Grande.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1C9A3E26B4CFC7006146D7 /* Ariana Grande.jpg */; };
-		FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */; };
 		FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */; };
 		FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */; };
 		FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */; };
@@ -51,6 +56,11 @@
 		32FE4AD126B4663D0055EB30 /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 		7A4F4F117DB1A58538E9749A /* Pods-Coup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coup.release.xcconfig"; path = "Target Support Files/Pods-Coup/Pods-Coup.release.xcconfig"; sourceTree = "<group>"; };
 		89FFF089A57325E0FD37053B /* Pods_Coup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58C8EB226C40770008FE287 /* ethnocentric rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ethnocentric rg.ttf"; sourceTree = "<group>"; };
+		A5AC08C426C406E600D49BC3 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		A5AC08C526C406E700D49BC3 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		A5AC08C826C406F000D49BC3 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		A5AC08CA26C406FB00D49BC3 /* ethnocentric rg it.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ethnocentric rg it.ttf"; sourceTree = "<group>"; };
 		AC900F0E26A3601F000C6B89 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		AC900F1826A36C6D000C6B89 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC900F1A26A36C9C000C6B89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -113,6 +123,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A5AC08C326C4069200D49BC3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A5AC08C426C406E600D49BC3 /* Lato-Light.ttf */,
+				A5AC08C526C406E700D49BC3 /* Lato-LightItalic.ttf */,
+				A5AC08C826C406F000D49BC3 /* Lato-Bold.ttf */,
+				A5AC08CA26C406FB00D49BC3 /* ethnocentric rg it.ttf */,
+				A58C8EB226C40770008FE287 /* ethnocentric rg.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		FD1C9A3826B4CFA3006146D7 /* AI */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +181,7 @@
 		FD6956892690DB1E0057BBE8 /* Coup */ = {
 			isa = PBXGroup;
 			children = (
+				A5AC08C326C4069200D49BC3 /* Fonts */,
 				FD1C9A3826B4CFA3006146D7 /* AI */,
 				FDF30E3826A719A9008859A7 /* Sounds */,
 				FD2F633426A697CD00E9BE63 /* Coup.entitlements */,
@@ -268,12 +291,17 @@
 				FD1C9A4026B4CFC7006146D7 /* Charlie Puth.jpg in Resources */,
 				FD1C9A4326B4CFC7006146D7 /* Selena Gomez.jpg in Resources */,
 				FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */,
+				A5AC08C626C406E700D49BC3 /* Lato-Light.ttf in Resources */,
+				A5AC08CC26C406FB00D49BC3 /* ethnocentric rg it.ttf in Resources */,
 				FD1C9A4426B4CFC7006146D7 /* Ariana Grande.jpg in Resources */,
+				A5AC08C926C406F000D49BC3 /* Lato-Bold.ttf in Resources */,
 				FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */,
 				FD6956942690DB1F0057BBE8 /* Assets.xcassets in Resources */,
+				A5AC08C726C406E700D49BC3 /* Lato-LightItalic.ttf in Resources */,
 				FD1C9A4126B4CFC7006146D7 /* Ed Sheeran.jpg in Resources */,
 				FD6956922690DB1E0057BBE8 /* Main.storyboard in Resources */,
 				FD1C9A3F26B4CFC7006146D7 /* Justin Bieber.jpg in Resources */,
+				A58C8EB326C40771008FE287 /* ethnocentric rg.ttf in Resources */,
 				FD1C9A4226B4CFC7006146D7 /* Taylor Swift.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD4FFE5326A69B6C00FF766F /* LoginViewController.swift in Sources */,
+				A58C8EB526C40F8A008FE287 /* LoginViewController.swift in Sources */,
 				32BE2ACD26B9AD9B00CB6A24 /* ActivityLogViewController.swift in Sources */,
 				326B550226ADC99C0008223E /* ActivityLogTableViewCell.swift in Sources */,
 				FD9E5ACD26C016450079F28C /* BlankViewController.swift in Sources */,

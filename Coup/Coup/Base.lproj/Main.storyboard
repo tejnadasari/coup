@@ -91,10 +91,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="confirmPasswordLabel" destination="9OS-ON-gH4" id="YTi-cw-mpT"/>
+                        <outlet property="confirmPasswordLabel" destination="9OS-ON-gH4" id="xGf-2u-VX4"/>
                         <outlet property="confirmPasswordTextField" destination="Vn2-Qm-BH6" id="Kah-iL-ywb"/>
+                        <outlet property="emailLabel" destination="mcU-LC-CmS" id="5zW-K4-ch2"/>
                         <outlet property="emailTextField" destination="6Wf-1e-oSw" id="4xs-s8-f50"/>
                         <outlet property="loginButton" destination="wpB-43-Q9K" id="eua-PY-Cmj"/>
+                        <outlet property="passwordLabel" destination="ObN-iI-gFZ" id="ckf-8N-YCM"/>
                         <outlet property="passwordTextField" destination="PE4-Qx-grR" id="HnS-WZ-nsL"/>
                         <outlet property="segCtrl" destination="SYq-wB-LWT" id="sk7-rC-ETP"/>
                         <outlet property="statusLabel" destination="IZJ-nL-ya0" id="TK9-Mi-yzV"/>
@@ -425,24 +427,6 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ytn-oC-X7A">
                                         <rect key="frame" x="0.0" y="552" width="390" height="32"/>
                                         <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-PZ-0Ti">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="gAl-ke-dN1"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="Light Mode"/>
-                                                    <segment title="Dark Mode"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="onModeSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="cpQ-h0-dTM"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="LTl-Qb-bUF">
-                                        <rect key="frame" x="0.0" y="614" width="390" height="32"/>
-                                        <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gOG-KZ-4Y0">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
                                                 <constraints>
@@ -454,6 +438,24 @@
                                                 </segments>
                                                 <connections>
                                                     <action selector="onEffectSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="l5X-KK-FRp"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="LTl-Qb-bUF">
+                                        <rect key="frame" x="0.0" y="614" width="390" height="32"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-PZ-0Ti">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="gAl-ke-dN1"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="Light Mode"/>
+                                                    <segment title="Dark Mode"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="onModeSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="cpQ-h0-dTM"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
