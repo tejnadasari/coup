@@ -127,7 +127,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         willSet{}
     }
     
-    var status = "You Lost"
+    var status = "You Lost or You Win"
     var userCellColor = UIColor.clear
     var AICellColors: [UIColor] = []
     
@@ -179,6 +179,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         card1ImageView.image = user!.cards.0.photo
         userCard2Label.text = user!.cards.1.name!
         card2ImageView.image = user!.cards.1.photo
+        
+        if user!.cards.0.revealed {
+            userCard1Label.textColor = UIColor(white: 0, alpha: 0.5)
+        }
+        
+        if user!.cards.1.revealed {
+            userCard2Label.textColor = UIColor(white: 0, alpha: 0.5)
+        }
+
     }
     
     // MARK: - Run game
@@ -215,7 +224,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async {
                     self.statusLabel.text = "Please choose any action you want to take"
                 }
-                sleep(3)
+                sleep(2)
                 
                 DispatchQueue.main.async {
                     self.enableButtons(currentPlayer: currentPlayer)
@@ -467,7 +476,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async {
                     self.enableChallengeButtons()
                 }
-                sleep(5)
+                sleep(3)
                 
             } else {
                 curMove = player.getChallengeOrAllow(target: move.caller)
@@ -484,6 +493,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             challengeTurnInd += 1
+            
+            DispatchQueue.main.async {
+                self.disableAllButtons()
+            }
+            sleep(1)
             
             DispatchQueue.main.async {
                 self.dismissHighlights()
@@ -526,12 +540,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         present(controller, animated: true, completion: nil)
         //list of variables for each move name, and they will use didSet
         //in didSet, they set self.target, and then self.target uses the movename that has already been set
+        self.disableAllButtons()
     }
     
     @IBAction func taxBtnPressed(_ sender: Any) {
         didPlayerMove = true
         playerMove = Move(name: "tax", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
+        self.disableAllButtons()
     }
     
     @IBAction func stealBtnPressed(_ sender: Any) {
@@ -549,6 +565,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             ind += 1
         }
         present(controller, animated: true, completion: {})
+        self.disableAllButtons()
     }
     
     @IBAction func assassinateBtnPressed(_ sender: Any) {
@@ -566,23 +583,27 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             ind += 1
         }
         present(controller, animated: true, completion: nil)
+        self.disableAllButtons()
     }
     
-//    @IBAction func allowBtnPressed(_ sender: Any) {
+    @IBAction func allowBtnPressed(_ sender: Any) {
 //        didPlayerChallengeOrAllow = true
 //        challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
-//    }
+        self.disableAllButtons()
+    }
     
     @IBAction func incomeBtnPressed(_ sender: Any) {
         didPlayerMove = true
         playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
+        self.disableAllButtons()
     }
     
     @IBAction func foreignBtnPressed(_ sender: Any) {
         didPlayerMove = true
         playerMove = Move(name: "foreignAid", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
+        self.disableAllButtons()
     }
     
     @IBAction func exchangeBtnPressed(_ sender: Any) {
@@ -590,11 +611,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         playerMove = Move(name: "exchange", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
         //intiate segue here
+        self.disableAllButtons()
     }
     
     @IBAction func challengeBtnPressed(_ sender: Any) {
         didPlayerChallengeOrAllow = true
         challengeMove = Move(name: "challenge", caller: players[challengeTurnInd], target: players[turnInd])
+        self.disableAllButtons()
     }
     
     func enableButtons(currentPlayer: Player){
@@ -676,9 +699,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+//    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+//        return false
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameLogTableViewCell", for: indexPath) as! GameLogTableViewCell
