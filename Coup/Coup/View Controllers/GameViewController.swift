@@ -347,6 +347,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (countFalse == 1) {
             gameOn = false
             
+            // TODO Move need moving because seems like user loses when 1 card is revealed
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
                     self.youLose()
