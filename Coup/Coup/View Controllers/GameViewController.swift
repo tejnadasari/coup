@@ -101,6 +101,32 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var challengeMove: Move = Move() //this is the move that is chosen for challenge/allow
     var targetInd: Int = -1 //the index in the players array of whoever is being targeted
     
+    //a bunch of boolean values for each move, and then this is set everytime a button is clicked
+    //steal, assassinate, and coup
+    var steal: Bool = false
+    var assassinate: Bool = false
+    var coup: Bool = false
+    
+    var target:Player?{
+        didSet{
+            print("HOLA didSet")
+            didPlayerMove = true
+            if steal{
+                print("In steal")
+                print(self.target!.name)
+                playerMove = Move(name: "steal", caller: players[turnInd], target: (self.target!))
+            }
+            else if coup{
+                playerMove = Move(name: "coup", caller: players[turnInd], target: (self.target!))
+            }
+            else{
+                playerMove = Move(name: "assassinate", caller: players[turnInd], target: (self.target!))
+            }
+            queueForGame.async(execute: workingItem)
+        }
+        willSet{}
+    }
+    
     var status = "You Lost"
     var userCellColor = UIColor.clear
     var AICellColors: [UIColor] = []
@@ -157,7 +183,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Run game
     
-    // After assigning 2 cards to each player, 
+    // After assigning 2 cards to each player,
     func runGame(){
         
         var gameOn:Bool = true
@@ -165,13 +191,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         DispatchQueue.main.async {
             self.setupUser()
         }
-        sleep(2)
+        sleep(1)
         
         while gameOn{
             DispatchQueue.main.async {
                 self.dismissHighlights()
             }
-            sleep(2)
+            sleep(1)
             
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
@@ -179,7 +205,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.highlightPlayer(index: self.turnInd)
             }
-            sleep(2)
+            sleep(1)
             
             if (currentPlayer.isPlayerRevealed()){
                 continue
@@ -264,7 +290,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             /*
-             For block, we also need to figure out how to incorporate extra buttons 
+             For block, we also need to figure out how to incorporate extra buttons
              if (objection.name == "block"){
                 statusLabel update
                 move = lastRoundOfAnyChallenges() method
@@ -425,29 +451,31 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func targetMoveSelected(areWeStealing: Bool, areWeKilling: Bool, areWeCoup: Bool){
+        self.steal = areWeStealing
+        self.assassinate = areWeKilling
+        self.coup = areWeCoup
+    }
     // MARK: - Buttons
         
     @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
-        if targetInd == -1 {
-            let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
-            var ind = 1
-            
-            for i in AIs {
-                controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
-                _ in
-                    self.targetInd = ind
-                })
-                ind += 1
+        let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
+        var ind = 1
+        var tempPlayer: Player = Player()
+        for i in AIs {
+            if i.isPlayerRevealed(){
+                continue
             }
-
-            self.statusLabel.text = "It's time to get the target. After choosing the target, please press coup button one more time"
-            
-        } else {
-            didPlayerMove = true
-            playerMove = Move(name: "coup", caller: players[turnInd], target: players[targetInd])
-            queueForGame.async(execute: workingItem)
+            controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
+            _ in
+                self.targetMoveSelected(areWeStealing: false, areWeKilling: false, areWeCoup: true)
+                self.target = i
+            })
+            ind += 1
         }
-    
+        present(controller, animated: true, completion: nil)
+        //list of variables for each move name, and they will use didSet
+        //in didSet, they set self.target, and then self.target uses the movename that has already been set
     }
     
     @IBAction func taxBtnPressed(_ sender: Any) {
@@ -457,47 +485,38 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func stealBtnPressed(_ sender: Any) {
-        if targetInd == -1 {
-            let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
-            var ind = 1
-            
-            for i in AIs {
-                controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
-                _ in
-                    self.targetInd = ind
-                })
-                ind += 1
+        let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
+        var ind = 1
+        for i in AIs {
+            if i.isPlayerRevealed(){
+                continue
             }
-
-            self.statusLabel.text = "It's time to get the target. After choosing the target, please press steal button one more time"
-            
-        } else {
-            didPlayerMove = true
-            playerMove = Move(name: "steal", caller: players[turnInd], target: players[targetInd])
-            queueForGame.async(execute: workingItem)
+            controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
+            _ in
+                self.targetMoveSelected(areWeStealing: true, areWeKilling: false, areWeCoup: false)
+                self.target = i
+            })
+            ind += 1
         }
+        present(controller, animated: true, completion: {})
     }
     
     @IBAction func assassinateBtnPressed(_ sender: Any) {
-        if targetInd == -1 {
-            let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
-            var ind = 1
-            
-            for i in AIs {
-                controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
-                _ in
-                    self.targetInd = ind
-                })
-                ind += 1
+        let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
+        var ind = 1
+        var tempPlayer: Player = Player()
+        for i in AIs {
+            if i.isPlayerRevealed(){
+                continue
             }
-
-            self.statusLabel.text = "It's time to get the target. After choosing the target, please press assassinate button one more time"
-            
-        } else {
-            didPlayerMove = true
-            playerMove = Move(name: "assassinate", caller: players[turnInd], target: players[targetInd])
-            queueForGame.async(execute: workingItem)
+            controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
+            _ in
+                self.targetMoveSelected(areWeStealing: false, areWeKilling: true, areWeCoup: false)
+                self.target = i
+            })
+            ind += 1
         }
+        present(controller, animated: true, completion: nil)
     }
     
 //    @IBAction func allowBtnPressed(_ sender: Any) {
@@ -679,7 +698,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "activityLogSegueIdentifier",
            let activityLogVC = segue.destination as? ActivityLogViewController {
             activityLogVC.players = players
-//            activityLogVC.activityLog = 
+//            activityLogVC.activityLog =
         }
         else if segue.identifier == "exchangeSegueIdentifier",
            let exchangeVC = segue.destination as? ExchangeViewController {
