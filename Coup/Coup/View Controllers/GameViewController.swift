@@ -127,12 +127,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         willSet{}
     }
     
+    var queueForGame = DispatchQueue(label: "queueForGame")
+    var workingItem:DispatchWorkItem!
+    
     var status = "You Lost or You Win"
     var userCellColor = UIColor.clear
     var AICellColors: [UIColor] = []
     
-    var queueForGame = DispatchQueue(label: "queueForGame")
-    var workingItem:DispatchWorkItem!
+    var currentUserCard1 = UIImage(named: "Card Back")
+    var currentUserCard2 = UIImage(named: "Card Back")
+    
     // MARK: - Setup
     
     override func viewDidLoad() {
@@ -150,9 +154,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // setup AIs and user
         setupAIs()
         setupUser()
-    
-//        runGame()
-       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -176,9 +177,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userNameLabel.text = user!.name
         userCoinLabel.text = "$ \(user!.coins)"
         userCard1Label.text = user!.cards.0.name!
-        card1ImageView.image = user!.cards.0.photo
+        card1ImageView.image = currentUserCard1
         userCard2Label.text = user!.cards.1.name!
-        card2ImageView.image = user!.cards.1.photo
+        card2ImageView.image = currentUserCard2
         
         if user!.cards.0.revealed {
             userCard1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
@@ -356,6 +357,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             else if (!curPlayer.cards.1.revealed){
                 
                 DispatchQueue.main.async {
+                    self.revealSecondCard()
                     self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
                 }
                 sleep(2)
@@ -593,6 +595,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func incomeBtnPressed(_ sender: Any) {
+        // add this to reveal first card, TODO REMOVE from income
+        DispatchQueue.main.async {
+            self.revealFirstCard()
+        }
+        
+        // add this to reveal second card, TODO REMOVE from income
+        DispatchQueue.main.async {
+            self.revealSecondCard()
+        }
+
         didPlayerMove = true
         playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
@@ -690,6 +702,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK:- tableView function
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AIs.count
     }
@@ -766,6 +779,25 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             AICellColors[i - 1] = UIColor.clear
         }
         tableView.reloadData()
+    }
+    
+    // MARK: - Reveal user cards
+    func revealFirstCard() {
+        DispatchQueue.main.async {
+            let image = self.user!.cards.0.photo
+            self.currentUserCard1 = image
+            self.card1ImageView.image = image
+            UIView.transition(with: self.card1ImageView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        }
+    }
+    
+    func revealSecondCard() {
+        DispatchQueue.main.async {
+            let image = self.user!.cards.1.photo
+            self.currentUserCard2 = image
+            self.card2ImageView.image = image
+            UIView.transition(with: self.card2ImageView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        }
     }
     
     // MARK: - Segues

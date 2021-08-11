@@ -14,9 +14,9 @@
             filePath = "Coup/View Controllers/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
-            landmarkName = "highlightPlayer(index:)"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
+            landmarkName = "anyChallenges(move:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -30,9 +30,9 @@
             filePath = "Coup/View Controllers/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
-            landmarkName = "highlightAI(index:)"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
+            landmarkName = "anyChallenges(move:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "Coup/View Controllers/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
-            landmarkName = "highlightUser()"
+            startingLineNumber = "498"
+            endingLineNumber = "498"
+            landmarkName = "anyChallenges(move:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
