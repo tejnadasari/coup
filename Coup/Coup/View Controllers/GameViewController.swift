@@ -373,21 +373,53 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "exchange":
             // get 2 cards from the current deck
             twoCards = deck!.give2Cards()
+            let caller = move.caller
             
-            // if the caller's first card has not revealed yet,
-            // give them a chance to exchange it for another one from twoCards
-            if self.user!.cards.0.revealed == false {
-                userCard = user!.cards.0
-                caseNum = 0
-                self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
-            }
-            
-            // if the caller's second card has not revealed yet,
-            // give them a chance to exchange it for another one from twoCards
-            if self.user!.cards.1.revealed == false {
-                userCard = user!.cards.1
-                caseNum = 2
-                self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+            if caller.name == LoginViewController.getUsername() {
+                // if the caller's first card has not revealed yet,
+                // give them a chance to exchange it for another one from twoCards
+                if self.user!.cards.0.revealed == false {
+                    userCard = user!.cards.0
+                    caseNum = 0
+                    self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                }
+                
+                // if the caller's second card has not revealed yet,
+                // give them a chance to exchange it for another one from twoCards
+                if self.user!.cards.1.revealed == false {
+                    userCard = user!.cards.1
+                    caseNum = 2
+                    self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                }
+            } else {
+                let caseNum = Int.random(in: 0...3)
+                var temp = Card()
+                
+                switch caseNum {
+                
+                case 0:
+                    temp = twoCards!.0
+                    twoCards!.0 = caller.cards.0
+                    caller.cards.0 = temp
+                    
+                case 1:
+                    temp = twoCards!.1
+                    twoCards!.1 = caller.cards.0
+                    caller.cards.0 = temp
+                    
+                case 2:
+                    temp = twoCards!.0
+                    twoCards!.0 = caller.cards.1
+                    caller.cards.1 = temp
+                    
+                case 3:
+                    temp = twoCards!.1
+                    twoCards!.1 = caller.cards.1
+                    caller.cards.1 = temp
+                    
+                default:
+                    print("Not Applicable")
+                }
             }
             
             // give 2 cards back to the current deck -> shuffle activated
@@ -479,7 +511,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
-        var tempPlayer: Player = Player()
         for i in AIs {
             if i.isPlayerRevealed(){
                 continue
@@ -522,7 +553,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func assassinateBtnPressed(_ sender: Any) {
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
-        var tempPlayer: Player = Player()
         for i in AIs {
             if i.isPlayerRevealed(){
                 continue
