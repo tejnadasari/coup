@@ -18,47 +18,69 @@ class Player{
         cards = (Card(), Card())
     }
     
-    func checkhaveCard(moveName: String) -> Bool{
+    func checkhaveCard(moveName: String) -> Int{
+        var theCard = -1
+        
         switch moveName{
         case "assassinate":
             if self.cards.0.assassinate! || self.cards.1.assassinate!
             {
-                return true
+                if self.cards.0.assassinate! {
+                    theCard = 0
+                } else {
+                    theCard = 1
+                }
             }
-            return false
         case "tax":
             if self.cards.0.tax! || self.cards.1.tax!
             {
-                return true
+                if self.cards.0.tax! {
+                    theCard = 0
+                } else {
+                    theCard = 1
+                }
             }
-            return false
         case "steal":
             if self.cards.0.steal! || self.cards.1.steal!
             {
-                return true
+                if self.cards.0.steal! {
+                    theCard = 0
+                } else {
+                    theCard = 1
+                }
             }
-            return false
         case "exchange":
             if self.cards.0.exchange! || self.cards.1.exchange!
             {
-                return true
+                if self.cards.0.exchange! {
+                    theCard = 0
+                } else {
+                    theCard = 1
+                }
             }
-            return false
         case "coup":
             if self.cards.0.coup! || self.cards.1.coup!
             {
-                return true
+                if self.cards.0.coup! {
+                    theCard = 0
+                } else {
+                    theCard = 1
+                }
             }
-            return false
         case "foreignAid":
             if self.cards.0.foreignAid! || self.cards.1.foreignAid!
             {
-                return true
+                if self.cards.0.foreignAid! {
+                    theCard = 0
+                } else {
+                    theCard = 1
+                }
             }
-            return false
         default:
-            return false
+            print("Not Applicable")
         }
+        
+        return theCard
     }
     
     func isPlayerRevealed() -> Bool{
@@ -68,6 +90,13 @@ class Player{
     func updateCoin(coinVal:Int) {
         self.coins = self.coins + coinVal
     }
+
+//    func choose() {
+//
+//    }
+    
+//    func revealCard() {  // TODO
+//    }
     
     func otherCardCount(cardLookingFor: String) -> Int{
         var count: Int = 0
@@ -86,12 +115,12 @@ class Player{
     
     // MARK: - Only for AIs
     
-    func getPlayerMove() -> Move {
+    func getPlayerMove() -> Move {  // only for AI
         print("This should never happen")
         return Move()
     }
     
-    func getChallengeOrAllow(target: Player) -> Move {
+    func getChallengeOrAllow(target: Player) -> Move {  // only for AI
         print("This should never happen")
         return Move()
     }
@@ -154,6 +183,10 @@ class AI: Player{
                 rand = Int.random(in: 0...players.count-1)
                 target = players[rand]
             }
+        }
+        
+        if moveName == "income" || moveName == "foreignAid" || moveName == "tax" {
+            return Move(name: moveName, caller: self, target: self)
         }
         
         return Move(name: moveName, caller: self, target: target)

@@ -19,16 +19,40 @@ public class Deck{
     // Literally, make deck
     func makeDeck() {
         let assassin = Assassin()
+        let assassin2 = Assassin()
+        let assassin3 = Assassin()
+        
         let ambassador = Ambassador()
+        let ambassador2 = Ambassador()
+        let ambassador3 = Ambassador()
+        
         let captain = Captain()
+        let captain2 = Captain()
+        let captain3 = Captain()
+        
         let contessa = Contessa()
+        let contessa2 = Contessa()
+        let contessa3 = Contessa()
+        
         let duke = Duke()
+        let duke2 = Duke()
+        let duke3 = Duke()
 
-        shuffleDeck(cardDeck: &self.cardDeck, card: assassin, count: 3)
-        shuffleDeck(cardDeck: &self.cardDeck, card: ambassador, count: 3)
-        shuffleDeck(cardDeck: &self.cardDeck, card: captain, count: 3)
-        shuffleDeck(cardDeck: &self.cardDeck, card: contessa, count: 3)
-        shuffleDeck(cardDeck: &self.cardDeck, card: duke, count: 3)
+        shuffleDeck(cardDeck: &self.cardDeck, card: assassin, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: ambassador, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: captain, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: contessa, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: duke, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: assassin2, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: ambassador2, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: captain2, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: contessa2, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: duke2, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: assassin3, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: ambassador3, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: captain3, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: contessa3, count: 1)
+        shuffleDeck(cardDeck: &self.cardDeck, card: duke3, count: 1)
     }
     
     // Literally, shuffle deck
@@ -106,6 +130,8 @@ public class Deck{
     // when the challenge was failed, the card the targted player revealed will be
     // shuffled back to the deck and they get a new card
     func get1CardBackNShuffle(oneCard: Card) {
+        // switch back the value of revealed`
+        oneCard.revealed = false
         self.cardDeck.append(oneCard)
         
         shuffle()

@@ -154,9 +154,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         // setup AIs and user
         setupAIs()
         setupUser()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         workingItem = DispatchWorkItem {
             self.runGame()
         }
@@ -198,15 +196,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
          
         var gameOn:Bool = true
         
-        /*DispatchQueue.main.async {
-            self.setupUser()
-        }
-        sleep(1)*/
-        
         while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
-                self.setupUser()
             }
             sleep(1)
             
@@ -259,8 +251,54 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     sleep(2)
                     
-                    if currentPlayer.checkhaveCard(moveName: curMove.name){ //fix up in player class
+                    // if the target win
+                    // if the result card.name is not none, the target has the card
+                    if currentPlayer.checkhaveCard(moveName: curMove.name) != -1 {
+                        let theCard = currentPlayer.checkhaveCard(moveName: curMove.name)
                         revealCard(curPlayer: objection.caller)
+                        
+                        var newCard = deck!.giveACard()
+                        
+                        if theCard == 0 {
+                            currentPlayer.cards.0.revealed = true
+                        } else if theCard == 1 {
+                            currentPlayer.cards.1.revealed = true
+                        } else {
+                            print("Not Applicable")
+                        }
+                        
+                        
+                        DispatchQueue.main.async {
+                            self.statusLabel.text = "\(currentPlayer.name) won the challenge. \(currentPlayer.name)'s action will be taken"
+                        }
+                        sleep(3)
+                        
+                        self.actOnMove(move: curMove)
+                        
+                        DispatchQueue.main.async {
+                            self.statusLabel.text = "\(currentPlayer.name) won the challenge but one of \(currentPlayer.name)'s card is revealed so a new card will be given"
+                        }
+                        sleep(3)
+                        
+                        var temp = Card()
+                        
+                        if theCard == 0 {
+                            temp = currentPlayer.cards.0
+                            currentPlayer.cards.0 = newCard
+                            newCard = temp
+                            
+                        } else if theCard == 1 {
+                            temp = currentPlayer.cards.1
+                            currentPlayer.cards.1 = newCard
+                            newCard = temp
+                            
+                        } else {
+                            print("Not Applicable")
+                        }
+                        
+                        deck!.get1CardBackNShuffle(oneCard: newCard)
+                        
+                        print("target win")
                     }
                     else{
                         revealCard(curPlayer: objection.target) //reveal card must present modally
@@ -303,7 +341,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 countFalse += 1
             }
         }
-        if (countFalse == 1) {
+        if (countFalse == players.count - 1) {
             gameOn = false
             
             // TODO Move need moving because seems like user loses when 1 card is revealed
@@ -364,21 +402,28 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if caller.name == LoginViewController.getUsername() {
                 // if the caller's first card has not revealed yet,
                 // give them a chance to exchange it for another one from twoCards
-                if self.user!.cards.0.revealed == false {
-                    userCard = user!.cards.0
-                    caseNum = 0
-                    self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                DispatchQueue.main.async {
+                    if self.user!.cards.0.revealed == false {
+                        self.userCard = self.user!.cards.0
+                        self.caseNum = 0
+                        self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                    }
                 }
+                sleep(3)
                 
-                // if the caller's second card has not revealed yet,
-                // give them a chance to exchange it for another one from twoCards
-                if self.user!.cards.1.revealed == false {
-                    userCard = user!.cards.1
-                    caseNum = 2
-                    self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                DispatchQueue.main.async {
+                    // if the caller's second card has not revealed yet,
+                    // give them a chance to exchange it for another one from twoCards
+                    if self.user!.cards.1.revealed == false {
+                        self.userCard = self.user!.cards.1
+                        self.caseNum = 2
+                        self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                    }
                 }
+                sleep(3)
+                
             } else {
-                let caseNum = Int.random(in: 0...3)
+                let caseNum = Int.random(in: 0...4)
                 var temp = Card()
                 
                 switch caseNum {
@@ -404,7 +449,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     caller.cards.1 = temp
                     
                 default:
-                    print("Not Applicable")
+                    temp = Card()
                 }
             }
             
@@ -691,7 +736,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.identity1Label.textColor = UIColor.label
         } else {
             cell.identity1Label.text = "Hidden"
-            cell.identity1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
+            cell.identity1Label.textColor = UIColor(white: 0.7, alpha: 0.5)
         }
         
         if AIs[row].cards.1.revealed {
@@ -699,7 +744,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.identity2Label.textColor = UIColor.label
         } else {
             cell.identity2Label.text = "Hidden"
-            cell.identity2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
+            cell.identity2Label.textColor = UIColor(white: 0.7, alpha: 0.5)
         }
         
         cell.contentView.backgroundColor = AICellColors[row]
