@@ -50,9 +50,11 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         let row = indexPath.row
         
         // Configure the cell...
+        cell.aiLabel.font = UIFont(name: "Avenir", size: 16)
         cell.aiLabel.text = playerArray[row].name
         cell.userImage.image = playerArray[row].photo
-
+        cell.backgroundColor = UIColor.clear
+        
         return cell
     }
     
@@ -117,6 +119,5 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    
 
 }

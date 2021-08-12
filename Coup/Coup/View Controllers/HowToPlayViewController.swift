@@ -69,6 +69,7 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
         scrollView.maximumZoomScale = 3.0
         scrollView.zoomScale = 1.0
         
+
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
