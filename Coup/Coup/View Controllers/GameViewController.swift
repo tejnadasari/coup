@@ -46,7 +46,6 @@
  
  */
 
-
 import UIKit
 
 var players: [Player] = []
@@ -205,6 +204,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
             
+            // If this players is knocked out, skip this player's turn
+            if currentPlayer.isPlayerRevealed() {
+                continue
+            }
+            
             DispatchQueue.main.async {
                 self.highlightPlayerInGray(index: self.turnInd)
             }
@@ -276,7 +280,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.actOnMove(move: curMove)
                         
                         DispatchQueue.main.async {
-                            self.statusLabel.text = "\(currentPlayer.name) won the challenge but one of \(currentPlayer.name)'s card is revealed so a new card will be given"
+                            self.statusLabel.text = "\(currentPlayer.name) won the challenge. New card will be given"
                         }
                         sleep(3)
                         
@@ -302,6 +306,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     else{
                         revealCard(curPlayer: objection.target) //reveal card must present modally
+                        print("challenger win")
                     }
                 }
                 if (objection.name == "allow"){
@@ -341,7 +346,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 countFalse += 1
             }
         }
-        if (countFalse == players.count - 1) {
+        if (countFalse == players.count - 1 || user!.isPlayerRevealed()) {
             gameOn = false
             
             // TODO Move need moving because seems like user loses when 1 card is revealed
@@ -363,15 +368,22 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func revealCard(curPlayer: Player) {
         if (!curPlayer.cards.0.revealed) {
             DispatchQueue.main.async {
-                self.revealFirstCard()
+                if curPlayer.name == LoginViewController.getUsername() {
+                    self.revealFirstCard()
+                }
+                
                 self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
             }
             sleep(2)
             
             curPlayer.cards.0.revealed = true
+            
         } else if (!curPlayer.cards.1.revealed) {
             DispatchQueue.main.async {
-                self.revealSecondCard()
+                if curPlayer.name == LoginViewController.getUsername() {
+                    self.revealSecondCard()
+                }
+                
                 self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
             }
             sleep(2)
@@ -380,6 +392,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         DispatchQueue.main.async {
+            self.setupUser()
             self.tableView.reloadData()
         }
         sleep(2)
@@ -736,7 +749,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.identity1Label.textColor = UIColor.label
         } else {
             cell.identity1Label.text = "Hidden"
-            cell.identity1Label.textColor = UIColor(white: 0.7, alpha: 0.5)
+            cell.identity1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
         
         if AIs[row].cards.1.revealed {
@@ -744,7 +757,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.identity2Label.textColor = UIColor.label
         } else {
             cell.identity2Label.text = "Hidden"
-            cell.identity2Label.textColor = UIColor(white: 0.7, alpha: 0.5)
+            cell.identity2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         }
         
         cell.contentView.backgroundColor = AICellColors[row]

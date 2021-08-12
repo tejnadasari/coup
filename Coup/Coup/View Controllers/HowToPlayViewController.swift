@@ -19,7 +19,7 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         howToPlayLabel.text! = "How to Play?"
                
-        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 1800))
+        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 1500))
         descriptionLabel.numberOfLines = 750
         descriptionLabel.font = UIFont(name: "Avenir", size: 16)
         descriptionLabel.text = """
