@@ -47,6 +47,7 @@
  */
 
 import UIKit
+import AVFoundation
 
 var players: [Player] = []
 var moveLog: [Move] = []
@@ -145,6 +146,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var currentUserCard1 = UIImage(named: "Card Back")
     var currentUserCard2 = UIImage(named: "Card Back")
+    
+    var soundEffect: AVAudioPlayer?
     
     // MARK: - Setup
     
@@ -653,6 +656,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func incomeBtnPressed(_ sender: Any) {
         didPlayerMove = true
         playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
+        DispatchQueue.main.async {
+            self.playIncome()
+        }
         queueForGame.async(execute: workingItem)
         self.disableAllButtons()
     }
@@ -747,7 +753,36 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK:- tableView function
+    // MARK: - Sound Effects
+    
+    func playIncome() {
+        playSound(file: "Cash Register")
+    }
+    
+    func playSound(file: String) {
+        guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
+
+            do {
+                print("found music")
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+
+                /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+                soundEffect = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+
+                /* iOS 10 and earlier require the following line:
+                player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+                guard let soundEffect = soundEffect else { return }
+
+                soundEffect.play()
+
+            } catch let error {
+                print(error.localizedDescription)
+            }
+    }
+    
+    // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AIs.count

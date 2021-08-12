@@ -42,6 +42,9 @@
 		FD69569F2690DEB50057BBE8 /* GameEndsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69569E2690DEB50057BBE8 /* GameEndsViewController.swift */; };
 		FD98412D269E3E290035E9BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD98412C269E3E290035E9BB /* SettingsViewController.swift */; };
 		FD9E5ACD26C016450079F28C /* BlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9E5ACC26C016450079F28C /* BlankViewController.swift */; };
+		FDBF058A26C5478500D5DD72 /* Cash Register.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD944F1726AE7CFE00A7A9B0 /* Cash Register.m4a */; };
+		FDBF058B26C5478800D5DD72 /* Waiting.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD944F1626AE7CFE00A7A9B0 /* Waiting.m4a */; };
+		FDBF058C26C5478A00D5DD72 /* Count Down.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD944F1826AE7CFF00A7A9B0 /* Count Down.m4a */; };
 		FDEE75AF26B3C88D001EFBF4 /* Settings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDEE75AD26B3C88D001EFBF4 /* Settings.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -285,6 +288,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDBF058C26C5478A00D5DD72 /* Count Down.m4a in Resources */,
+				FDBF058B26C5478800D5DD72 /* Waiting.m4a in Resources */,
+				FDBF058A26C5478500D5DD72 /* Cash Register.m4a in Resources */,
 				FD1C9A4026B4CFC7006146D7 /* Charlie Puth.jpg in Resources */,
 				FD1C9A4326B4CFC7006146D7 /* Selena Gomez.jpg in Resources */,
 				FD6956972690DB1F0057BBE8 /* LaunchScreen.storyboard in Resources */,
