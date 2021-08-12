@@ -21,6 +21,7 @@ class GameEndsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         typeStatus()
+        GameViewController.playNextLevel()
         spinStatus()
     }
     

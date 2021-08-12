@@ -182,7 +182,7 @@
             <objects>
                 <viewController id="yhG-CG-umP" customClass="BlankViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtn-bQ-52d">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-ic-qdT">
@@ -369,7 +369,7 @@
             <objects>
                 <viewController id="Auq-Mg-zAN" userLabel="How To Play View Controller" customClass="HowToPlayViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="suN-JZ-sdd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9rU-ib-UR7">
@@ -404,7 +404,7 @@
             <objects>
                 <viewController id="WSx-xW-JoZ" customClass="SettingsViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e0g-aO-Dso">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
@@ -492,6 +492,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DIJ-9k-M3G"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0HA-h8-sZp">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -605,7 +606,7 @@
                         <outlet property="addAIButton" destination="6c5-7l-C9H" id="nXo-gr-oQ2"/>
                         <outlet property="gameStartButton" destination="1jl-4z-LdC" id="uGX-y7-ftG"/>
                         <outlet property="tableView" destination="lcW-g4-bxs" id="cVw-qA-zF1"/>
-                        <segue destination="P54-Zb-Yud" kind="show" identifier="toGameSegueIdentifier" id="GFW-xD-3go"/>
+                        <segue destination="P54-Zb-Yud" kind="presentation" identifier="toGameSegueIdentifier" modalPresentationStyle="fullScreen" id="GFW-xD-3go"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJt-Aq-tpc" sceneMemberID="firstResponder"/>
@@ -617,7 +618,7 @@
             <objects>
                 <viewController id="Kgb-ep-6KY" userLabel="Activity Log View Controller" customClass="ActivityLogViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2A-2M-T5J">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="646"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-tl-J22" userLabel="Activity Log Label">
@@ -709,7 +710,7 @@
             <objects>
                 <viewController id="RcR-Jo-Qpw" userLabel="Exchange View Controller" customClass="ExchangeViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ubr-0h-mkU">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-el-cvS">
@@ -862,7 +863,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c7g-4b-0i5" userLabel="Stack View for My Cards">
-                                <rect key="frame" x="20" y="88" width="350" height="80"/>
+                                <rect key="frame" x="20" y="44" width="350" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M2Y-H9-nhJ">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="80"/>
@@ -933,15 +934,15 @@
                                     <constraint firstAttribute="width" constant="350" id="yQS-sy-6zT"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86P-JL-F0s">
-                                <rect key="frame" x="176.66666666666666" y="551" width="37" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86P-JL-F0s">
+                                <rect key="frame" x="177" y="537" width="37" height="30"/>
                                 <state key="normal" title="Coup"/>
                                 <connections>
                                     <action selector="coupBtnPressed:" destination="P54-Zb-Yud" eventType="touchUpInside" id="qp5-QL-IYI"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="o1H-AU-pdU" userLabel="Stack View for func1">
-                                <rect key="frame" x="60" y="576" width="82" height="180"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="o1H-AU-pdU" userLabel="Stack View for func1">
+                                <rect key="frame" x="51" y="561" width="82" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoC-LC-FiP">
                                         <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
@@ -973,8 +974,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PeL-vR-NMe" userLabel="Stack View for func2">
-                                <rect key="frame" x="252" y="576" width="78" height="180"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PeL-vR-NMe" userLabel="Stack View for func2">
+                                <rect key="frame" x="243" y="561" width="78" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAG-9d-2Lp">
                                         <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
@@ -1007,8 +1008,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qal-xk-JTg">
-                                <rect key="frame" x="59" y="776" width="85" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qal-xk-JTg">
+                                <rect key="frame" x="50" y="761" width="85" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="oGM-lh-G65"/>
                                 </constraints>
@@ -1018,7 +1019,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Otx-vB-4Qp">
-                                <rect key="frame" x="20" y="183" width="350" height="324"/>
+                                <rect key="frame" x="20" y="139" width="350" height="368"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="g5L-3q-I1W"/>
@@ -1095,7 +1096,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cd-yr-Ppc">
-                                <rect key="frame" x="233" y="776" width="116" height="30"/>
+                                <rect key="frame" x="224" y="761" width="116" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="y6i-iO-p6H"/>
                                 </constraints>
@@ -1112,6 +1113,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wBj-oF-T3e">
+                                <rect key="frame" x="160" y="799" width="71" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="End Game"/>
+                                <connections>
+                                    <segue destination="vi6-8A-CW4" kind="presentation" identifier="gameEndsSegueIdentifier" modalPresentationStyle="fullScreen" id="cr7-bM-LGL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="csP-34-TK8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1137,27 +1146,6 @@
                             <constraint firstItem="Otx-vB-4Qp" firstAttribute="centerX" secondItem="fgS-Tg-KgQ" secondAttribute="centerX" id="zPu-1E-4LG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wql-eL-Am7">
-                        <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wBj-oF-T3e">
-                            <rect key="frame" x="159.66666666666666" y="7" width="71" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="End Game"/>
-                            <connections>
-                                <segue destination="vi6-8A-CW4" kind="presentation" identifier="gameEndsSegueIdentifier" modalPresentationStyle="fullScreen" id="cr7-bM-LGL"/>
-                            </connections>
-                        </button>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="oSS-5x-uCA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="68H-E5-6dg">
-                                <rect key="frame" x="288" y="7" width="86" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
-                            <connections>
-                                <segue destination="WSx-xW-JoZ" kind="presentation" id="qaR-Rk-EXt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="allowBtn" destination="g0Y-84-Na6" id="Eia-MM-Vr8"/>
                         <outlet property="assassinateBtn" destination="tXG-03-0ij" id="Nzy-e8-6Ce"/>
@@ -1187,9 +1175,6 @@
             <point key="canvasLocation" x="2696.9230769230767" y="93.838862559241704"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="dXM-7x-Tti"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

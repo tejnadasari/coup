@@ -103,21 +103,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var user: Player?
     var AIs: [Player] = []
     
-    var playerMove: Move = Move() //this is the move the player chooses
-    var didPlayerMove: Bool = false //did the player select a move yet
-    var turnInd: Int = 0 //current turn
+    var playerMove = Move() //this is the move the player chooses
+    var didPlayerMove = false //did the player select a move yet
+    var turnInd = 0 //current turn
     var didPlayerChallengeOrAllow = false
-    var challengeTurnInd: Int = 0 //whose turn it is to select challenge or allow
-    var challengeMove: Move = Move() //this is the move that is chosen for challenge/allow
-    var targetInd: Int = -1 //the index in the players array of whoever is being targeted
+    var challengeTurnInd = 0 //whose turn it is to select challenge or allow
+    var challengeMove = Move() //this is the move that is chosen for challenge/allow
+    var targetInd = -1 //the index in the players array of whoever is being targeted
     
     //a bunch of boolean values for each move, and then this is set everytime a button is clicked
     //steal, assassinate, and coup
-    var steal: Bool = false
-    var assassinate: Bool = false
-    var coup: Bool = false
+    var steal = false
+    var assassinate = false
+    var coup = false
     
-    var target:Player?{
+    var target: Player?{
         didSet{
             print("HOLA didSet")
             didPlayerMove = true
@@ -147,15 +147,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentUserCard1 = UIImage(named: "Card Back")
     var currentUserCard2 = UIImage(named: "Card Back")
     
-    var soundEffect: AVAudioPlayer?
+    static var audioPlayer: AVAudioPlayer?
+    var gameOn = true
     
     // MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
         disableAllButtons()
-        
-        // make Deck and assign 2 cards to each player
+
         deck = Deck()
         deck!.assign2Cards(players: players)
         
@@ -205,12 +205,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // After assigning 2 cards to each player,
     func runGame(){
-         
-        var gameOn:Bool = true
-        
         while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
+                self.playWaiting()
             }
             sleep(1)
             
@@ -265,6 +263,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
+                        self.playCountDown()
                     }
                     sleep(3)
                     
@@ -361,6 +360,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if !gameOn {
             DispatchQueue.main.sync {
+                GameViewController.stopPlay()
                 self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
             }
         }
@@ -381,18 +381,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
                     self.youLose()
+                    GameViewController.stopPlay()
                     self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
                 }
             } else {
                 DispatchQueue.main.sync {
                     self.youWon()
+                    GameViewController.stopPlay()
                     self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
                 }
             }
         }
     }
     
-    //still need to update the labels!
     func revealCard(curPlayer: Player) {
         if (!curPlayer.cards.0.revealed) {
             DispatchQueue.main.async {
@@ -430,8 +431,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch move.name {
         case "income":
             move.caller.coins += 1
+            DispatchQueue.main.async {
+                self.playIncome()
+            }
+            sleep(1)
         case "foreignAid":
             move.caller.coins += 2
+            DispatchQueue.main.async {
+                self.playIncome()
+            }
+            sleep(1)
         case "coup":
             move.caller.coins -= 7
             revealCard(curPlayer: move.target)
@@ -506,14 +515,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "steal":
             move.target.coins -= 2
             move.caller.coins += 2
+            DispatchQueue.main.async {
+                self.playIncome()
+            }
+            sleep(1)
         case "tax":
             move.caller.coins += 3
+            DispatchQueue.main.async {
+                self.playIncome()
+            }
+            sleep(1)
         default:
             break
         }
     }
     
-    //Julie highlighting
     func anyChallenges(move: Move) -> Move{
         var curMove: Move = Move()
         challengeTurnInd = 0
@@ -656,9 +672,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func incomeBtnPressed(_ sender: Any) {
         didPlayerMove = true
         playerMove = Move(name: "income", caller: players[turnInd], target: players[turnInd])
-        DispatchQueue.main.async {
-            self.playIncome()
-        }
         queueForGame.async(execute: workingItem)
         self.disableAllButtons()
     }
@@ -756,30 +769,39 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Sound Effects
     
     func playIncome() {
-        playSound(file: "Cash Register")
+        GameViewController.playSound(file: "Cash Register")
     }
     
-    func playSound(file: String) {
+    func playCountDown() {
+        GameViewController.playSound(file: "Count Down")
+    }
+    
+    func playWaiting() {
+        GameViewController.playSound(file: "Waiting")
+    }
+    
+    static func playNextLevel() {
+        GameViewController.playSound(file: "Next Level")
+    }
+    
+    static func stopPlay() {
+        GameViewController.audioPlayer?.stop()
+    }
+    
+    static func playSound(file: String) {
         guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
-
-            do {
-                print("found music")
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-
-                /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-                soundEffect = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
-
-                /* iOS 10 and earlier require the following line:
-                player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-
-                guard let soundEffect = soundEffect else { return }
-
-                soundEffect.play()
-
-            } catch let error {
-                print(error.localizedDescription)
-            }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            GameViewController.audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+            guard let audioPlayer = GameViewController.audioPlayer else { return }
+            audioPlayer.numberOfLoops = -1
+            audioPlayer.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     // MARK: - TableView
@@ -909,6 +931,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         else if segue.identifier == "gameEndsSegueIdentifier" {
             GameEndsViewController.status = status
+            gameOn = false
+            DispatchQueue.main.async {
+                GameViewController.stopPlay()
+            }
         }
     }
     
