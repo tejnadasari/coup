@@ -194,18 +194,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Run game
     
     // After assigning 2 cards to each player,
-    func runGame() {
-
-        var gameOn = true
+    func runGame(){
+         
+        var gameOn:Bool = true
         
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             self.setupUser()
         }
-        sleep(2)
+        sleep(1)*/
         
         while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
+                self.setupUser()
             }
             sleep(1)
             
@@ -223,13 +224,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             if (currentPlayer.name == LoginViewController.getUsername() && didPlayerMove == false){
                 DispatchQueue.main.async {
-                    self.statusLabel.text = "Please choose any action you want to take"
-                }
-                sleep(2)
-                
-                DispatchQueue.main.async {
+                    self.statusLabel.text = "Your turn. Select a move."
                     self.enableButtons(currentPlayer: currentPlayer)
-                }
+                 }
                 sleep(2)
                 
                 break
@@ -245,30 +242,22 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 curMove = currentPlayer.getPlayerMove()
             }
             
-            sleep(1)
-            
             DispatchQueue.main.async {
                self.statusLabel.text = curMove.toString() //updates strings properly
             }
-            sleep(3)
-            
-            // curMove is now set
-            moveLog.append(curMove)
             sleep(1)
-            // checking for challenges
-            var objection: Move = Move()
+            
+            //curMove is now set
+            moveLog.append(curMove)
+            //checking for challenges
+             var objection: Move = Move()
             if (curMove.name != "income" && curMove.name != "coup"){
                 objection = anyChallenges(move: curMove) //move
-                DispatchQueue.main.async {
-                    self.statusLabel.text = objection.toString()
-                }
-                sleep(3)
-                
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
                     }
-                    sleep(3)
+                    sleep(2)
                     
                     if currentPlayer.checkhaveCard(moveName: curMove.name){ //fix up in player class
                         revealCard(curPlayer: objection.caller)
@@ -276,56 +265,26 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     else{
                         revealCard(curPlayer: objection.target) //reveal card must present modally
                     }
-                    sleep(1)
                 }
-                
                 if (objection.name == "allow"){
-                    
                     DispatchQueue.main.async {
                         self.statusLabel.text = curMove.successfulString()
-                    }
-                    sleep(3)
-                    
-                    DispatchQueue.main.async {
                         self.actOnMove(move: curMove)
-                    }
-                    sleep(3)
-                    
-                    DispatchQueue.main.async {
                         self.setupUser()
                         self.tableView.reloadData()
                     }
-                    sleep(2)
+                    sleep(4)
                 }
             }
             else {
                 DispatchQueue.main.async {
                     self.statusLabel.text = curMove.successfulString()
-                }
-                sleep(3)
-                
-                DispatchQueue.main.async {
                     self.actOnMove(move: curMove)
-                }
-                sleep(3)
-                
-                DispatchQueue.main.async {
                     self.setupUser()
                     self.tableView.reloadData()
                 }
-                sleep(2)
+                sleep(4)
             }
-            
-            
-            /*
-             For block, we also need to figure out how to incorporate extra buttons
-             if (objection.name == "block"){
-                statusLabel update
-                move = lastRoundOfAnyChallenges() method
-                if move.name == "allow" ...
-                if move.name == "challenge" ...
-             }
-             */
             isGameOver(gameOn: &gameOn)
             incrementInd()
         }
@@ -487,42 +446,37 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (player.name == LoginViewController.getUsername()){
                 
                 DispatchQueue.main.async {
-                    self.statusLabel.text = "Please choose allow or challenge in 5 seconds"
+                    self.statusLabel.text = "Please choose allow or challenge"
                 }
-                sleep(1)
-                
-                DispatchQueue.main.async {
-                    self.enableChallengeButtons()
-                }
-                sleep(5)
-                
-                if (didPlayerChallengeOrAllow){
-                    return challengeMove
-                } else {
-                    curMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
-                }
+                while (!didPlayerChallengeOrAllow){
+                    sleep(1)
+                    DispatchQueue.main.async {
+                        self.enableChallengeButtons()
+                    }
+                 }
                 
             } else {
-                return player.getChallengeOrAllow(target: move.caller)
+                curMove = player.getChallengeOrAllow(target: move.caller)
             }
             
-//            if (curMove.name == "challenge"){
-//                return curMove
-//            }
-            
+            //didPlayerChallenge is already set to false right before this loop
+            if (didPlayerChallengeOrAllow){
+                if (challengeMove.name == "challenge"){
+                    return challengeMove
+                }
+            }
+            else if (curMove.name == "challenge"){
+                return curMove
+            }
+            else{
+                curMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
+            }
             challengeTurnInd += 1
-            
-            DispatchQueue.main.async {
-                self.disableAllButtons()
-            }
-            sleep(1)
-            
-            DispatchQueue.main.async {
+             DispatchQueue.main.async {
                 self.dismissHighlights()
             }
-            sleep(2)
-            
-        }
+            sleep(1)
+         }
         
         return curMove
     }
@@ -605,10 +559,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func allowBtnPressed(_ sender: Any) {
-//        didPlayerChallengeOrAllow = true
-//        challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
+        didPlayerChallengeOrAllow = true
+        challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
         self.disableAllButtons()
-    }
+     }
     
     @IBAction func incomeBtnPressed(_ sender: Any) {
         didPlayerMove = true
