@@ -45,14 +45,9 @@ class LoginViewController: UIViewController {
           }
         }
         
-        statusLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
-        loginButton.titleLabel?.font = UIFont(name: "Lato-Bold.ttf", size: 20)
-        emailLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
-        passwordLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
-        confirmPasswordLabel.font = UIFont(name:"Lato-Bold.ttf", size: 18)
-        
-//        let font = UIFont.systemFont(ofSize: 16)
-//        segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: "Lato-Bold.ttf"], for: .normal)
+        segCtrl.layer.cornerRadius = 20.0
+        let font = UIFont.systemFont(ofSize: 16)
+        segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
     }
     

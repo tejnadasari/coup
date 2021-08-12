@@ -19,54 +19,50 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         howToPlayLabel.text! = "How to Play?"
                
-        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 390, height: 1800))
-        descriptionLabel.numberOfLines = 800
+        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 1800))
+        descriptionLabel.numberOfLines = 750
+        descriptionLabel.font = UIFont(name: "Avenir", size: 16)
         descriptionLabel.text = """
-            1. The game begins giving two cards to each player. Each player gets two roles(cards) which are confidential from the other players.
+            Game Objectives:
+            
+            1. At the start of the game, each player is given 2 roles (cards) which are confidential from the other players & $2
+            2. The goal is for each player to reveal the others' cards through several actions (some involve the money).
+            3. When both the cards of a player are revealed, they are kicked out of the game.
+            
+            
+            Winner: The last player who has one or more unrevealed cards wins.
 
-            2. Each player can force each other to reveal one card through several actions.
-
-            3. When both of two cards of a player are revealed, they are kicked out of the game.
-            The last player who has one or more unrevealed  cards wins.
-
-            4. There are five different roles(cards):
-                - Ambassador
-                - Assassin
-                - Captain
-                - Contessa
-                - Duke
-             -> Two cards from a pool of 15, consisting of 3 of each of the 5 roles, will be given to each player at the beginning of the game.
-
-            5. $2 also will be given to each player and you will see how you use the money you get in the next section(6).
-
-            6. Several Actions you can take:
-
-             - At each player's turn, a player can take one of these diverse actions below (some actions can only be taken or only be blocked by a specific role):
-             
-            # Income - Anyone can draw $1 of income
-
-            # Foreign Aid - Anyone can draw $2 of foreign aid -> (duke can block)
-
-            # Coup - Anyone can pay $7 to stage a coup : forcing a player of your choice to show one of his or her cards -> (cannot be blocked)
-
-            # Tax - Duke can claim tax, getting $3
-
-            # Assassinate - Assassin can let a player of their choice to reveal one of the cards, paying $3 -> (If the chosen player owns Contessa, they can block Assassinate)
-
-            # Exchange - Ambassador can draw 2 new roles and get the right of choice if they will exchange any of them with their current hidden cards
-
-            # Steal - Captain may steal $2 from a player of their choice -> (If the chosen player owns Ambassador, they can block Steal)
-
-            # Allow - When a player try to take an action, you will allow it with no doubt although the action can be taken by a specific role
-
-            # Challenge - Unlikely to Allow, if you doubt a player has not the roles(cards) you claim, you can challenge them.
-             -> The player must reveal the card that you claimed. If your doubt was right, the player's original action will be not carried out, and the player may no longer use the card. Otherwise, you must reveal your card as a penalty. And the card that the player revealed, will be shuffled back to the deck, and they will get a new card. After failed challenge, the player's original action will be taken as usual (Income, Foreign Aid, Coup which do not need specific role to be taken can never be challenged)
-
-            Sources from: https://coup.thebrown.net/rules.html
+            Game Roles(cards) & Actions:
+            Note: At the end of each player's turn: everyone else can challenge or allow the move.
+            
+            1. Ambassador
+                Exclusive Action: Exchange - Takes 2 cards and returns two cards
+            2. Assassin
+                Exclusive Action: Assassinate - Pays 3 coins to reveal an influence
+            3. Captain
+                Exclusive Action: Steal - Takes 2 coins from another player
+            4. Contessa
+                Exclusive Action: Foreign Aid - Takes 2 coins from the treasury
+            5. Duke
+                Exclusive Action: Tax - Takes 3 coins from the treasury
+            
+            Everyone
+            1. Generic Action: Anyone can draw $1 of income
+            2. Foreign Aid: Anyone can draw $2 of foreign aid
+            3. Coup: Once 7 coins are collected, a player can force another to show one of their cards.
+            
+            Turn Actions:
+            1. Allow: When another player takes can action they can approve it
+            2. Challenge: When another player suspects that someone is bluffing about their cards, they can force the other people to reveal their card.
+                a. If the challenger's notion is correct, then the action will not be carried out, they are forced to discard the card which will then be shuffled into the deck and they will recieve a new card.
+                b. If the challenger's notion is incorrect, then their action will be carried out as normal.
+            
+            Additional Information
+            1. There are a total of 15 cards, consisting of 3 each of the roles.
+            2. Treasury: Pool of money that is distributed between throughout the players and game.
+            3. Strategy: Bluff so your correct characters are never revealed.
             """
         scrollView.addSubview(descriptionLabel)
-        
-        scrollView.backgroundColor = UIColor.white
         scrollView.contentSize = descriptionLabel.bounds.size
         scrollView.contentOffset = CGPoint(x: 0, y: 60)
         
@@ -82,7 +78,7 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
     }
 
     /*
-    // MARK: - Navigation   
+    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
