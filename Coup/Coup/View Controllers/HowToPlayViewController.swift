@@ -35,18 +35,18 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
             Note: At the end of each player's turn: everyone else can challenge or allow the move.
             
             1. Ambassador
-                Exclusive Action: Exchange - Takes 2 cards and returns two cards
+                Exclusive Action: Exchange - Takes 2 cards and returns two cards.
             2. Assassin
-                Exclusive Action: Assassinate - Pays 3 coins to reveal an influence
+                Exclusive Action: Assassinate - Pays 3 coins to reveal an influence.
             3. Captain
-                Exclusive Action: Steal - Takes 2 coins from another player
+                Exclusive Action: Steal - Takes 2 coins from another player.
             4. Contessa
-                Exclusive Action: Foreign Aid - Takes 2 coins from the treasury
+                Exclusive Action: Foreign Aid - Takes 2 coins from the treasury.
             5. Duke
-                Exclusive Action: Tax - Takes 3 coins from the treasury
+                Exclusive Action: Tax - Takes 3 coins from the treasury.
             
             Everyone
-            1. Generic Action: Anyone can draw $1 of income
+            1. Generic Action: Anyone can draw $1 of income.
             2. Coup: Once 7 coins are collected, a player can force another to show one of their cards.
             
             Turn Actions:
