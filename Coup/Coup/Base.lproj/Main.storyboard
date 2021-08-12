@@ -407,93 +407,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="boA-03-5VX">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="706"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="1db-ko-i7W"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VwX-yn-4yA">
-                                        <rect key="frame" x="0.0" y="70" width="390" height="452"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-un-gM0">
-                                                <rect key="frame" x="45" y="0.0" width="300" height="300"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="300" id="0xR-XQ-CNA"/>
-                                                    <constraint firstAttribute="height" constant="300" id="zRG-ie-SPU"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNN-Tu-y8I">
-                                                <rect key="frame" x="106" y="300" width="178" height="152"/>
-                                                <state key="normal" title="Change My Profile Picture"/>
-                                                <connections>
-                                                    <action selector="changeProfilePicture:" destination="WSx-xW-JoZ" eventType="touchUpInside" id="YkD-fd-9ik"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ytn-oC-X7A">
-                                        <rect key="frame" x="0.0" y="552" width="390" height="32"/>
-                                        <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gOG-KZ-4Y0">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="3pP-cV-c6g"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="Sound Effect On"/>
-                                                    <segment title="Sound Effect Off"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="onEffectSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="l5X-KK-FRp"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="LTl-Qb-bUF">
-                                        <rect key="frame" x="0.0" y="614" width="390" height="32"/>
-                                        <subviews>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-PZ-0Ti">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="gAl-ke-dN1"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="Light Mode"/>
-                                                    <segment title="Dark Mode"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="onModeSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="cpQ-h0-dTM"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK6-fM-8In">
-                                        <rect key="frame" x="0.0" y="676" width="390" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="gLd-hM-In1"/>
-                                        </constraints>
-                                        <state key="normal" title="Done"/>
-                                        <connections>
-                                            <action selector="doneButtonPressed:" destination="WSx-xW-JoZ" eventType="touchUpInside" id="x3Y-Z3-9DL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
+                                <rect key="frame" x="45" y="43" width="300" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="35"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-un-gM0">
+                                <rect key="frame" x="95" y="133" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Flq-0q-0HH"/>
+                                    <constraint firstAttribute="height" constant="200" id="dfh-N0-10B"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNN-Tu-y8I">
+                                <rect key="frame" x="45" y="362" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Change My Profile Picture">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeProfilePicture:" destination="WSx-xW-JoZ" eventType="touchUpInside" id="YkD-fd-9ik"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2FZ-PZ-0Ti">
+                                <rect key="frame" x="45" y="470" width="300" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Light Mode"/>
+                                    <segment title="Dark Mode"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onModeSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="cpQ-h0-dTM"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK6-fM-8In">
+                                <rect key="frame" x="45" y="617" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="WSx-xW-JoZ" eventType="touchUpInside" id="x3Y-Z3-9DL"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gOG-KZ-4Y0">
+                                <rect key="frame" x="45" y="528" width="300" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Sound Effect On"/>
+                                    <segment title="Sound Effect Off"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onEffectSegChange:" destination="WSx-xW-JoZ" eventType="valueChanged" id="l5X-KK-FRp"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iNV-RD-8kY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.95638102293014526" green="0.93360108137130737" blue="0.83033710718154907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="boA-03-5VX" firstAttribute="top" secondItem="iNV-RD-8kY" secondAttribute="top" id="2dR-xU-OOS"/>
-                            <constraint firstItem="iNV-RD-8kY" firstAttribute="trailing" secondItem="boA-03-5VX" secondAttribute="trailing" id="HXu-ku-bSS"/>
-                            <constraint firstItem="boA-03-5VX" firstAttribute="bottom" secondItem="iNV-RD-8kY" secondAttribute="bottom" constant="-50" id="M4W-KG-dOY"/>
-                            <constraint firstItem="boA-03-5VX" firstAttribute="leading" secondItem="iNV-RD-8kY" secondAttribute="leading" id="PqZ-qA-FQW"/>
+                            <constraint firstItem="iNV-RD-8kY" firstAttribute="bottom" secondItem="Fmu-un-gM0" secondAttribute="bottom" constant="423" id="WN2-iE-oai"/>
+                            <constraint firstItem="iNV-RD-8kY" firstAttribute="trailing" secondItem="Fmu-un-gM0" secondAttribute="trailing" constant="95" id="Zse-x0-6HL"/>
+                            <constraint firstItem="Fmu-un-gM0" firstAttribute="leading" secondItem="iNV-RD-8kY" secondAttribute="leading" constant="95" id="hUQ-KQ-lCZ"/>
+                            <constraint firstItem="Fmu-un-gM0" firstAttribute="top" secondItem="iNV-RD-8kY" secondAttribute="top" constant="133" id="xUo-2P-fCd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QqO-tD-Gog"/>
@@ -505,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYT-Hl-h4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949" y="1029"/>
+            <point key="canvasLocation" x="947.69230769230762" y="1028.6729857819905"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nQt-yF-nlq">

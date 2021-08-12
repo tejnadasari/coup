@@ -22,6 +22,13 @@ class SettingsViewController: UIViewController,
         super.viewDidLoad()
         picker.delegate = self
         setUpSettings()
+        
+        modeSegCtrl.layer.cornerRadius = 20.0
+        let font = UIFont.systemFont(ofSize: 16)
+        modeSegCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
+        effectSegCtrl.layer.cornerRadius = 20.0
+        effectSegCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
     }
     
     // MARK: - Core Data
