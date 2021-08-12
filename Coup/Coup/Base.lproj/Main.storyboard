@@ -182,7 +182,7 @@
             <objects>
                 <viewController id="yhG-CG-umP" customClass="BlankViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtn-bQ-52d">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-ic-qdT">
@@ -369,7 +369,7 @@
             <objects>
                 <viewController id="Auq-Mg-zAN" userLabel="How To Play View Controller" customClass="HowToPlayViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="suN-JZ-sdd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9rU-ib-UR7">
@@ -404,7 +404,7 @@
             <objects>
                 <viewController id="WSx-xW-JoZ" customClass="SettingsViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e0g-aO-Dso">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
@@ -492,7 +492,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DIJ-9k-M3G"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0HA-h8-sZp">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -618,7 +617,7 @@
             <objects>
                 <viewController id="Kgb-ep-6KY" userLabel="Activity Log View Controller" customClass="ActivityLogViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2A-2M-T5J">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="646"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-tl-J22" userLabel="Activity Log Label">
@@ -710,7 +709,7 @@
             <objects>
                 <viewController id="RcR-Jo-Qpw" userLabel="Exchange View Controller" customClass="ExchangeViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ubr-0h-mkU">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-el-cvS">
@@ -730,6 +729,9 @@
                                                     <constraint firstAttribute="width" constant="120" id="IbL-4T-dzj"/>
                                                     <constraint firstAttribute="height" constant="160" id="Zui-Ge-XLd"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Woy-4r-Q9M" appends="YES" id="xys-PI-aoF"/>
+                                                </connections>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgu-rO-l4N" userLabel="Middle Empty View">
                                                 <rect key="frame" x="170" y="0.0" width="50" height="160"/>
@@ -796,14 +798,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RI6-f9-FKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Woy-4r-Q9M">
-                    <connections>
-                        <action selector="recognizeLongPressedGesture1WithRecognizer:" destination="RcR-Jo-Qpw" id="UFO-5i-4LO"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="HsD-8X-Qvl">
                     <connections>
                         <action selector="recognizeLongPressedGesture2WithRecognizer:" destination="RcR-Jo-Qpw" id="74U-w3-d4o"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Woy-4r-Q9M">
+                    <connections>
+                        <action selector="recognizeLongPressedGesture1WithRecognizer:" destination="RcR-Jo-Qpw" id="UFO-5i-4LO"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

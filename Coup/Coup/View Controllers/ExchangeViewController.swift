@@ -40,6 +40,7 @@ class ExchangeViewController: UIViewController {
     
     @IBAction func recognizeLongPressedGesture1 (recognizer: UILongPressGestureRecognizer){
         let gameVC = self.delegate as? ApplyExchangeDelegate
+        let gameVC2 = self.delegate as? SwitchbuttonDelegate
         
         if caseNum == 0 {
             gameVC?.applyExchange(chosenCard: twoCards!.0, caseNum: 0)
@@ -49,11 +50,13 @@ class ExchangeViewController: UIViewController {
             print("Not Applicable")
         }
         
+        gameVC2?.switchButton()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func recognizeLongPressedGesture2 (recognizer: UILongPressGestureRecognizer){
         let gameVC = self.delegate as? ApplyExchangeDelegate
+        let gameVC2 = self.delegate as? SwitchbuttonDelegate
         
         if caseNum == 0 {
             gameVC?.applyExchange(chosenCard: twoCards!.1, caseNum: 1)
@@ -63,10 +66,13 @@ class ExchangeViewController: UIViewController {
             print("Not Applicable")
         }
         
+        gameVC2?.switchButton()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func keepCardButtonPressed(_ sender: Any) {
+        let gameVC2 = self.delegate as? SwitchbuttonDelegate
+        gameVC2?.switchButton()
         dismiss(animated: true, completion: nil)
     }
     

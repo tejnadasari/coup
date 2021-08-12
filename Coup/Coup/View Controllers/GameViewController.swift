@@ -55,7 +55,16 @@ protocol ApplyExchangeDelegate {
     func applyExchange(chosenCard: Card, caseNum: Int)
 }
 
-class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApplyExchangeDelegate {
+protocol SwitchbuttonDelegate {
+    func switchButton()
+}
+
+class GameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApplyExchangeDelegate, SwitchbuttonDelegate {
+    
+    func switchButton() {
+        switchSegue = true
+    }
+    
     
     // MARK: - Outlets
     
@@ -86,6 +95,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var twoCards: (Card, Card)? // twoCards for exchange
     var userCard: Card? // userCard for exchange
     var caseNum: Int?
+    var switchSegue = false
     
 //    var numPlayers: Int? //this will be set in a prepare function in the previous VC
     //var players: [Player] = [] //this is set in previous VC
@@ -223,14 +233,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.statusLabel.text = "Your turn. Select a move."
                     self.enableButtons(currentPlayer: currentPlayer)
                  }
-                sleep(2)
+                sleep(3)
                 
                 break
             } else if (currentPlayer.name == LoginViewController.getUsername()) {
                 DispatchQueue.main.async {
                     self.disableAllButtons()
                 }
-                sleep(2)
+                sleep(1)
                 
                 curMove = playerMove
                 didPlayerMove = false
@@ -241,7 +251,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                self.statusLabel.text = curMove.toString() //updates strings properly
             }
-            sleep(1)
+            sleep(3)
             
             //curMove is now set
             moveLog.append(curMove)
@@ -253,13 +263,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
                     }
-                    sleep(2)
+                    sleep(3)
                     
                     // if the target win
-                    // if the result card.name is not none, the target has the card
+                    // if the result of checkhaveCardd == -1, the target has the card
                     if currentPlayer.checkhaveCard(moveName: curMove.name) != -1 {
                         let theCard = currentPlayer.checkhaveCard(moveName: curMove.name)
                         revealCard(curPlayer: objection.caller)
+                        
+//                        // this code is needed -> when the user is the challenger and they fails,
+//                        // and two of their cards are revealed, the game should be ended right away.
+//                        isGameOver(gameOn: &gameOn)
                         
                         var newCard = deck!.giveACard()
                         
@@ -270,7 +284,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         } else {
                             print("Not Applicable")
                         }
-                        
                         
                         DispatchQueue.main.async {
                             self.statusLabel.text = "\(currentPlayer.name) won the challenge. \(currentPlayer.name)'s action will be taken"
@@ -305,28 +318,39 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         print("target win")
                     }
                     else{
-                        revealCard(curPlayer: objection.target) //reveal card must present modally
+                        revealCard(curPlayer: objection.target)
                         print("challenger win")
                     }
                 }
                 if (objection.name == "allow"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = curMove.successfulString()
-                        self.actOnMove(move: curMove)
+                    }
+                    sleep(1)
+                    
+                    self.actOnMove(move: curMove)
+                    
+                    DispatchQueue.main.async {
                         self.setupUser()
                         self.tableView.reloadData()
                     }
-                    sleep(4)
+                    sleep(2)
+                    
                 }
             }
             else {
                 DispatchQueue.main.async {
                     self.statusLabel.text = curMove.successfulString()
-                    self.actOnMove(move: curMove)
+                }
+                sleep(1)
+                
+                self.actOnMove(move: curMove)
+                
+                DispatchQueue.main.async {
                     self.setupUser()
                     self.tableView.reloadData()
                 }
-                sleep(4)
+                sleep(2)
             }
             isGameOver(gameOn: &gameOn)
             incrementInd()
@@ -345,10 +369,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if cur.isPlayerRevealed() {
                 countFalse += 1
             }
+            print("DooDoo")
         }
         if (countFalse == players.count - 1 || user!.isPlayerRevealed()) {
             gameOn = false
-            
+            print("DaaDaa")
             // TODO Move need moving because seems like user loses when 1 card is revealed
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
@@ -419,10 +444,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if self.user!.cards.0.revealed == false {
                         self.userCard = self.user!.cards.0
                         self.caseNum = 0
+                        print("hi")
                         self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+//                        while(!self.switchSegue){}
                     }
                 }
-                sleep(3)
+                sleep(5)
                 
                 DispatchQueue.main.async {
                     // if the caller's second card has not revealed yet,
@@ -431,9 +458,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.userCard = self.user!.cards.1
                         self.caseNum = 2
                         self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                        while(!self.switchSegue){}
                     }
                 }
-                sleep(3)
+                sleep(5)
                 
             } else {
                 let caseNum = Int.random(in: 0...4)
@@ -507,10 +535,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.statusLabel.text = "Please choose allow or challenge"
                 }
                 while (!didPlayerChallengeOrAllow){
-                    sleep(1)
                     DispatchQueue.main.async {
                         self.enableChallengeButtons()
                     }
+                    sleep(1)
                  }
                 
             } else {
