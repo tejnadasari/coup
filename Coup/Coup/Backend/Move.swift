@@ -17,11 +17,25 @@ class Move {
     
     //check whenever player is real LoginViewController.getUsername()
     func toString() -> String {
-        if self.name == "income" || self.name == "coup" {
-            return "\(self.caller.name) played the move \(self.name) onto \(self.target.name). No challenge acceptable."
+        if (self.name == "income"){
+            return "\(self.caller.name) claimed income. Cannot challenge."
         }
-        
-        return "\(self.caller.name) played the move \(self.name) onto \(self.target.name). Waiting for any challenges."
+        else if (self.name == "foreignAid" || self.name == "tax"){
+            return "\(self.caller.name) is claiming foreign aid. Waiting for challenges."
+        }
+        else if (self.name == "tax"){
+            return "\(self.caller.name) is claiming tax. Waiting for challenges."
+        }
+        else if (self.name == "coup"){
+            return "\(self.caller.name) played coup towards \(self.target.name). Cannot challenge."
+        }
+        else if (self.name == "steal"){
+            return "\(self.caller.name) is trying to steal $2 from \(self.target.name). Waiting for challenges."
+        }
+        else if (self.name == "exchange"){
+            return "\(self.caller.name) is trying to exchange. Waiting for challenges."
+        }
+        return "\(self.caller.name) played \(self.name) towards \(self.target.name). Waiting for challenges."
     }
     
     func successfulString() -> String{
@@ -33,6 +47,6 @@ class Move {
     }
     
     func challengeFailedString() -> String{
-        return "\(self.caller.name) incorrectly challenged \(self.target.name), he reveals: "
+        return "\(self.caller.name) incorrectly challenged \(self.target.name), and reveals: "
     }
 }

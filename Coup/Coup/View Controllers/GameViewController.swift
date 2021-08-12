@@ -370,7 +370,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         deck!.get1CardBackNShuffle(oneCard: newCard)
-                        
+                        DispatchQueue.main.async {
+                            self.setupUser()
+                        }
+                        sleep(1)
                         print("target win")
                     }
                     else{
@@ -455,10 +458,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.revealFirstCard()
                 }
                 
-                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
+                self.statusLabel.text = "\(curPlayer.name) exchanges \(curPlayer.cards.0.name ?? "error") for a new role."
             }
             sleep(2)
-            
             curPlayer.cards.0.revealed = true
             
         } else if (!curPlayer.cards.1.revealed) {
@@ -467,7 +469,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.revealSecondCard()
                 }
                 
-                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
+                self.statusLabel.text = "\(curPlayer.name) exchanges \(curPlayer.cards.1.name ?? "error") for a new role."
             }
             sleep(2)
             
@@ -605,7 +607,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (player.name == LoginViewController.getUsername()){
                 
                 DispatchQueue.main.async {
-                    self.statusLabel.text = "Please choose allow or challenge"
+                    self.statusLabel.text = "Please choose allow or challenge when it is your turn."
                 }
                 while (!didPlayerChallengeOrAllow){
                     DispatchQueue.main.async {
@@ -655,6 +657,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Buttons
         
     @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
+
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
         for i in AIs {
