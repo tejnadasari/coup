@@ -13,10 +13,15 @@ class GameEndsViewController: UIViewController {
     static var status = "undefined"
 
     @IBOutlet weak var statusLabel: UILabel!
-
+    @IBOutlet weak var mainMenuOption: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         statusLabel.text = ""
+        
+        mainMenuOption.layer.cornerRadius = 15
+        mainMenuOption.layer.borderWidth = 2
+        mainMenuOption.layer.borderColor = UIColor.black.cgColor
     }
     
     override func viewDidAppear(_ animated: Bool) {

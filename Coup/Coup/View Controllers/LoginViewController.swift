@@ -49,6 +49,10 @@ class LoginViewController: UIViewController {
         let font = UIFont.systemFont(ofSize: 16)
         segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
+        loginButton.layer.cornerRadius = 15
+        loginButton.layer.borderWidth = 2
+        loginButton.layer.borderColor = UIColor.black.cgColor
+        
     }
     
     // MARK: - UI

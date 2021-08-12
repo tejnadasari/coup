@@ -29,6 +29,16 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         playerArray.append(user)
+        
+        addAIButton.layer.cornerRadius = 15
+        addAIButton.layer.borderWidth = 2
+        addAIButton.layer.borderColor = UIColor.black.cgColor
+        
+        gameStartButton.layer.cornerRadius = 15
+        gameStartButton.layer.borderWidth = 2
+        gameStartButton.layer.borderColor = UIColor.black.cgColor
+
+
 
     }
 

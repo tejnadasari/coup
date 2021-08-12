@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController,
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var modeSegCtrl: UISegmentedControl!
     @IBOutlet weak var effectSegCtrl: UISegmentedControl!
+    @IBOutlet weak var doneButton: UIButton!
     
     let picker = UIImagePickerController()
     
@@ -29,6 +30,10 @@ class SettingsViewController: UIViewController,
         
         effectSegCtrl.layer.cornerRadius = 20.0
         effectSegCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
+        doneButton.layer.cornerRadius = 15
+        doneButton.layer.borderWidth = 2
+        doneButton.layer.borderColor = UIColor.black.cgColor
     }
     
     // MARK: - Core Data

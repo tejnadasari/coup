@@ -91,7 +91,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var userStack: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Variables
+    
+    @IBOutlet weak var cheatSheet: UIButton!
+    @IBOutlet weak var logsButton: UIButton!
+    @IBOutlet weak var engButton: UIButton!
+    
+    
+            // MARK: - Variables
     var deck: Deck? // deck for game
     var twoCards: (Card, Card)? // twoCards for exchange
     var userCard: Card? // userCard for exchange
@@ -170,8 +176,56 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         workingItem = DispatchWorkItem {
             self.runGame()
         }
-        
         queueForGame.async(execute: workingItem)
+        
+        coupBtn.layer.cornerRadius = 15
+        coupBtn.layer.borderWidth = 2
+        coupBtn.layer.borderColor = UIColor.black.cgColor
+
+        taxBtn.layer.cornerRadius = 15
+        taxBtn.layer.borderWidth = 2
+        taxBtn.layer.borderColor = UIColor.black.cgColor
+        
+        stealBtn.layer.cornerRadius = 15
+        stealBtn.layer.borderWidth = 2
+        stealBtn.layer.borderColor = UIColor.black.cgColor
+        
+        assassinateBtn.layer.cornerRadius = 15
+        assassinateBtn.layer.borderWidth = 2
+        assassinateBtn.layer.borderColor = UIColor.black.cgColor
+        
+        allowBtn.layer.cornerRadius = 15
+        allowBtn.layer.borderWidth = 2
+        allowBtn.layer.borderColor = UIColor.black.cgColor
+        
+        incomeBtn.layer.cornerRadius = 15
+        incomeBtn.layer.borderWidth = 2
+        incomeBtn.layer.borderColor = UIColor.black.cgColor
+        
+        exchangeBtn.layer.cornerRadius = 15
+        exchangeBtn.layer.borderWidth = 2
+        exchangeBtn.layer.borderColor = UIColor.black.cgColor
+        
+        challengeBtn.layer.cornerRadius = 15
+        challengeBtn.layer.borderWidth = 2
+        challengeBtn.layer.borderColor = UIColor.black.cgColor
+        
+        foreignBtn.layer.cornerRadius = 15
+        foreignBtn.layer.borderWidth = 2
+        foreignBtn.layer.borderColor = UIColor.black.cgColor
+        
+        
+        cheatSheet.layer.cornerRadius = 15
+        cheatSheet.layer.borderWidth = 2
+        cheatSheet.layer.borderColor = UIColor.black.cgColor
+        
+        logsButton.layer.cornerRadius = 15
+        logsButton.layer.borderWidth = 2
+        logsButton.layer.borderColor = UIColor.black.cgColor
+        
+        engButton.layer.cornerRadius = 15
+        engButton.layer.borderWidth = 2
+        engButton.layer.borderColor = UIColor.black.cgColor
     }
     
     func setupAIs() {

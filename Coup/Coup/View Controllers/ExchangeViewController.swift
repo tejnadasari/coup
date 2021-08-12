@@ -12,6 +12,7 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var cardImage1: UIImageView!
     @IBOutlet weak var cardImage2: UIImageView!
     @IBOutlet weak var explainLabel: UILabel!
+    @IBOutlet weak var keepCardsLabel: UIButton!
     
     // delegate for applying any changes
     var delegate: UIViewController?
@@ -36,6 +37,9 @@ class ExchangeViewController: UIViewController {
         
         explainLabel.numberOfLines = 2
         explainLabel.text = "Press the card for which\nyou want to exchange \(userCard!.name!) for a few seconds"
+        keepCardsLabel.layer.cornerRadius = 15
+        keepCardsLabel.layer.borderWidth = 2
+        keepCardsLabel.layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func recognizeLongPressedGesture1 (recognizer: UILongPressGestureRecognizer){
