@@ -38,6 +38,7 @@
 		FD20D67E26C6149B00150E69 /* Exchange.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD20D67926C6145800150E69 /* Exchange.m4a */; };
 		FD20D67F26C6149D00150E69 /* Lose.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD20D67826C6145800150E69 /* Lose.m4a */; };
 		FD20D68326C6179300150E69 /* Challenge.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD20D68226C6178D00150E69 /* Challenge.m4a */; };
+		FD20D68526C62F1000150E69 /* Piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD20D68426C62EF900150E69 /* Piano.m4a */; };
 		FD642A6026A6954E00EC5B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */; };
 		FD69568B2690DB1E0057BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568A2690DB1E0057BBE8 /* AppDelegate.swift */; };
 		FD69568D2690DB1E0057BBE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD69568C2690DB1E0057BBE8 /* SceneDelegate.swift */; };
@@ -50,7 +51,6 @@
 		FD9E5ACD26C016450079F28C /* BlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9E5ACC26C016450079F28C /* BlankViewController.swift */; };
 		FDBF058A26C5478500D5DD72 /* Cash Register.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD944F1726AE7CFE00A7A9B0 /* Cash Register.m4a */; };
 		FDBF058B26C5478800D5DD72 /* Waiting.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FD944F1626AE7CFE00A7A9B0 /* Waiting.m4a */; };
-		FDBF058E26C54F8700D5DD72 /* Next Level.m4a in Resources */ = {isa = PBXBuildFile; fileRef = FDBF058D26C54F5500D5DD72 /* Next Level.m4a */; };
 		FDEE75AF26B3C88D001EFBF4 /* Settings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDEE75AD26B3C88D001EFBF4 /* Settings.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +87,7 @@
 		FD20D67A26C6145900150E69 /* Kill.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kill.m4a; sourceTree = "<group>"; };
 		FD20D67B26C6145900150E69 /* Allow.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Allow.m4a; sourceTree = "<group>"; };
 		FD20D68226C6178D00150E69 /* Challenge.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Challenge.m4a; sourceTree = "<group>"; };
+		FD20D68426C62EF900150E69 /* Piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.m4a; sourceTree = "<group>"; };
 		FD2F633426A697CD00E9BE63 /* Coup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Coup.entitlements; sourceTree = "<group>"; };
 		FD4FFE5226A69B6C00FF766F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FD642A5F26A6954E00EC5B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		FD944F1726AE7CFE00A7A9B0 /* Cash Register.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cash Register.m4a"; sourceTree = "<group>"; };
 		FD98412C269E3E290035E9BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FD9E5ACC26C016450079F28C /* BlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankViewController.swift; sourceTree = "<group>"; };
-		FDBF058D26C54F5500D5DD72 /* Next Level.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Next Level.m4a"; sourceTree = "<group>"; };
 		FDEE75AE26B3C88D001EFBF4 /* Settings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Settings.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,7 +237,7 @@
 			children = (
 				FD944F1726AE7CFE00A7A9B0 /* Cash Register.m4a */,
 				FD20D68226C6178D00150E69 /* Challenge.m4a */,
-				FDBF058D26C54F5500D5DD72 /* Next Level.m4a */,
+				FD20D68426C62EF900150E69 /* Piano.m4a */,
 				FD944F1626AE7CFE00A7A9B0 /* Waiting.m4a */,
 				FD20D67A26C6145900150E69 /* Kill.m4a */,
 				FD20D67B26C6145900150E69 /* Allow.m4a */,
@@ -306,12 +306,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD20D68526C62F1000150E69 /* Piano.m4a in Resources */,
 				FD20D68326C6179300150E69 /* Challenge.m4a in Resources */,
 				FD20D67F26C6149D00150E69 /* Lose.m4a in Resources */,
 				FD20D67E26C6149B00150E69 /* Exchange.m4a in Resources */,
 				FD20D67D26C6149900150E69 /* Allow.m4a in Resources */,
 				FD20D67C26C6149600150E69 /* Kill.m4a in Resources */,
-				FDBF058E26C54F8700D5DD72 /* Next Level.m4a in Resources */,
 				FDBF058B26C5478800D5DD72 /* Waiting.m4a in Resources */,
 				FDBF058A26C5478500D5DD72 /* Cash Register.m4a in Resources */,
 				FD1C9A4026B4CFC7006146D7 /* Charlie Puth.jpg in Resources */,

@@ -286,7 +286,7 @@ class SettingsViewController: UIViewController,
         case 0:
             LoginViewController.storeEffectInUserDefaults(effect: "on")
             Sound.continuePlay()
-            if audioPlayer == nil {
+            if audioPlayerMainSong == nil {
                 Sound.playMainSong()
             }
         case 1:

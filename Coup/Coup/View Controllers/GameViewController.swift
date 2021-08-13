@@ -271,12 +271,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // After assigning 2 cards to each player,
     func runGame(){
         while gameOn {
-            DispatchQueue.main.async {
-                self.dismissHighlights()
-                Sound.playGame()
-            }
-            sleep(1)
-            
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
             

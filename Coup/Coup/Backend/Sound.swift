@@ -8,11 +8,12 @@
 import Foundation
 import AVFoundation
 
-var audioPlayer: AVAudioPlayer?
+var audioPlayerMainSong: AVAudioPlayer?
+var audioPlayerSound: AVAudioPlayer?
 
 class Sound {
     
-    // MARK: - Sounds
+    // MARK: - Sound Effects
     
     static func playIncome() {
         Sound.playSound(file: "Cash Register")
@@ -24,10 +25,6 @@ class Sound {
     
     static func playGame() {
         Sound.playSound(file: "Waiting")
-    }
-    
-    static func playMainSong() {
-        Sound.playSound(file: "Next Level")
     }
     
     static func playKill() {
@@ -46,19 +43,45 @@ class Sound {
         Sound.playSound(file: "Exchange")
     }
     
+    // MARK: - Main Song
+    
+    static func playMainSong() {
+        Sound.playMainSong(file: "Piano")
+    }
+    
     // MARK: - General
     
     static func stopPlay() {
-        audioPlayer?.stop()
-        audioPlayer = nil
+        audioPlayerMainSong?.stop()
+        audioPlayerMainSong = nil
     }
     
     static func pausePlay() {
-        audioPlayer?.pause()
+        audioPlayerMainSong?.pause()
     }
     
     static func continuePlay() {
-        audioPlayer?.play()
+        audioPlayerMainSong?.play()
+    }
+    
+    static func playMainSong(file: String) {
+        if !SettingsViewController.isSoundEnabled() {
+            return
+        }
+
+        guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            audioPlayerMainSong = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+            guard let audioPlayer = audioPlayerMainSong else { return }
+            audioPlayer.numberOfLoops = -1
+            audioPlayer.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     static func playSound(file: String) {
@@ -72,9 +95,8 @@ class Sound {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
-            guard let audioPlayer = audioPlayer else { return }
-//            audioPlayer.numberOfLoops = 1
+            audioPlayerSound = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+            guard let audioPlayer = audioPlayerSound else { return }
             audioPlayer.play()
         } catch let error {
             print(error.localizedDescription)

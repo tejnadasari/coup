@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if SettingsViewController.isSoundEnabled() && audioPlayer == nil {
+        if SettingsViewController.isSoundEnabled() && audioPlayerMainSong == nil {
             Sound.playMainSong()
         }
         
