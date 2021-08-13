@@ -26,7 +26,8 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
 
         howToPlayLabel.text! = "How to Play?"
                
-        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 1500))
+        descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 370, height: 1500))
+        descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 750
         descriptionLabel.font = UIFont(name: "Avenir", size: 16)
         descriptionLabel.text = """
@@ -43,15 +44,15 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
             Note: At the end of each player's turn: everyone else can challenge or allow the move.
             
             1. Ambassador
-                Exclusive Action: Exchange - Takes 2 cards and returns two cards.
+                Exchange - Takes 2 cards and returns two cards.
             2. Assassin
-                Exclusive Action: Assassinate - Pays 3 coins to reveal an influence.
+                Assassinate - Pays 3 coins to reveal an influence.
             3. Captain
-                Exclusive Action: Steal - Takes 2 coins from another player.
+                Steal - Takes 2 coins from another player.
             4. Contessa
-                Exclusive Action: Foreign Aid - Takes 2 coins from the treasury.
+                Foreign Aid - Takes 2 coins from the treasury.
             5. Duke
-                Exclusive Action: Tax - Takes 3 coins from the treasury.
+                Tax - Takes 3 coins from the treasury.
             
             Everyone
             1. Generic Action: Anyone can draw $1 of income.
@@ -60,8 +61,8 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
             Turn Actions:
             1. Allow: When another player takes can action, you can choose to approve it.
             2. Challenge: When you suspect that someone is bluffing about their cards, you can force the other people to reveal their card.
-                a. If you are correct, then the action will not be carried out. The other player will be forced to discard a card, which will then be shuffled into the deck and they will recieve a new card.
-                b. If you are incorrect, then the other player's action will be carried out as normal.
+                a. If you win the challenge, then the opponents action will not be carried out. And the opponent will be forced to reveal a card.
+                b. If you lose the challenge, then the opponents action will be carried out. And the opponent will exchange their revealed card for a new card.
             
             Additional Information
             1. There are a total of 15 cards, consisting 3 of each of the roles.

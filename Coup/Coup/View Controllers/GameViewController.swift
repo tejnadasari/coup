@@ -313,7 +313,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             //curMove is now set
             moveLog.append(curMove)
             //checking for challenges
-             var objection: Move = Move()
+            var objection: Move = Move()
             if (curMove.name != "income" && curMove.name != "coup"){
                 objection = anyChallenges(move: curMove) //move
                 if (objection.name == "challenge"){
@@ -423,12 +423,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func isGameOver(gameOn: inout Bool) {
-        print("GAME OVER ENTER: size = \(players.count)")
         var countFalse = 0
         for cur in players{
-            print("NAME: \(cur.name)")
             if cur.isPlayerRevealed() {
-                print("HI: \(cur.name) is gone")
                 countFalse += 1
             }
         }
@@ -624,7 +621,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     sleep(1)
                  }
-                
             } else {
                 curMove = player.getChallengeOrAllow(target: move.caller)
             }
@@ -646,8 +642,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.dismissHighlights()
             }
             sleep(1)
-         }
-        
+        }
         return curMove
     }
     
@@ -708,7 +703,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
         for i in AIs {
-            if i.isPlayerRevealed(){
+            if i.isPlayerRevealed() && i.coins >= 2{
                 continue
             }
             controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
@@ -791,11 +786,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         for i in AIs {
+            if i.isPlayerRevealed() {
+                continue
+            }
             if i.coins >= 2 {
                 stealBtn.isEnabled = true
                 isStealPossible = true
             }
         }
+        
         if (!stealBtn.isEnabled){
             isStealPossible = false
         }
