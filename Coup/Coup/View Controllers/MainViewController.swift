@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        GameViewController.playNextLevel()
+        GameViewController.playMainSong()
     }
 
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {

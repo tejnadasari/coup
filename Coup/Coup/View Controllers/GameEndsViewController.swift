@@ -26,7 +26,7 @@ class GameEndsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         typeStatus()
-        GameViewController.playNextLevel()
+        GameViewController.playMainSong()
         spinStatus()
     }
     
@@ -58,6 +58,9 @@ class GameEndsViewController: UIViewController {
     
     @IBAction func playAgainPressed(_ sender: Any) {
         statusLabel.layer.removeAllAnimations()
+        if !GameViewController.audioPlayer!.isPlaying {
+            GameViewController.playMainSong()
+        }
         self.performSegue(withIdentifier: "unwindToMainVC", sender: self)
     }
 }

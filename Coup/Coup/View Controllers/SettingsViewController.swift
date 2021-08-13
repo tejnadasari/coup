@@ -245,8 +245,10 @@ class SettingsViewController: UIViewController,
         switch effectSegCtrl.selectedSegmentIndex {
         case 0:
             LoginViewController.storeEffectInUserDefaults(effect: "on")
+            GameViewController.playMainSong()
         case 1:
             LoginViewController.storeEffectInUserDefaults(effect: "off")
+            GameViewController.stopPlay()
         default:
             print("This should never happen")
         }

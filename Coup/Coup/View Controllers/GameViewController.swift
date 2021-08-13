@@ -262,7 +262,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
-                self.playWaiting()
+                self.playGame()
             }
             sleep(1)
             
@@ -317,7 +317,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
-                        self.playCountDown()
+                        self.playChallenge()
                     }
                     sleep(3)
                     
@@ -829,15 +829,15 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         GameViewController.playSound(file: "Cash Register")
     }
     
-    func playCountDown() {
+    func playChallenge() {
         GameViewController.playSound(file: "Count Down")
     }
     
-    func playWaiting() {
+    func playGame() {
         GameViewController.playSound(file: "Waiting")
     }
     
-    static func playNextLevel() {
+    static func playMainSong() {
         GameViewController.playSound(file: "Next Level")
     }
     
@@ -846,6 +846,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     static func playSound(file: String) {
+        if !SettingsViewController.isSoundEnabled() {
+            return
+        }
+
         guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
         
         do {
