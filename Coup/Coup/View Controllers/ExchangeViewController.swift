@@ -64,7 +64,7 @@ class ExchangeViewController: UIViewController {
         cardLabel2.text = twoCards!.1.name
         
         explainLabel.numberOfLines = 2
-        explainLabel.text = "Press the card for which you want\n to exchange \(userCard!.name!) for a few seconds"
+        explainLabel.text = "Hold down on the card you want\n in exchange for your \(userCard!.name!)"
     }
     
     @IBAction func recognizeLongPressedGesture1 (recognizer: UILongPressGestureRecognizer){

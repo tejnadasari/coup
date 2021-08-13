@@ -95,34 +95,32 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Variables
     var deck: Deck? // deck for game
-    var twoCards: (Card, Card)? // twoCards for exchange
+    var twoCards: (Card, Card)? // twoCards that will be used for exchange
     var userCard: Card? // userCard for exchange
     var caseNum: Int?
     var switchSegue = false
     
-//    var numPlayers: Int? //this will be set in a prepare function in the previous VC
-    //var players: [Player] = [] //this is set in previous VC
-    var user: Player?
-    var AIs: [Player] = []
+    var user: Player? //the user of the app
+    var AIs: [Player] = [] //list of all AIs
     
     var playerMove = Move() //this is the move the player chooses
-    var didPlayerMove = false //did the player select a move yet
-    var turnInd = 0 //current turn
-    var didPlayerChallengeOrAllow = false
+    var didPlayerMove = false //did the player select a move yet?
+    var turnInd = 0 //whose turn is it
+    var didPlayerChallengeOrAllow = false //did the player allow or challenge yet?
     var challengeTurnInd = 0 //whose turn it is to select challenge or allow
     var challengeMove = Move() //this is the move that is chosen for challenge/allow
-    var targetInd = -1 //the index in the players array of whoever is being targeted
     
-    //a bunch of boolean values for each move, and then this is set everytime a button is clicked
-    //steal, assassinate, and coup
+    //boolean values for each move, and then this is set everytime a button is clicked
     var steal = false
     var assassinate = false
     var coup = false
     
+    //steal is not always possible, when others players do not have enough money to steal from
     var isStealPossible: Bool = false
     
     var target: Player?{
         didSet{
+            //this ensures the whenever the player move is set, we do have a target (prevents multithreading error)
             didPlayerMove = true
             if steal{
                 playerMove = Move(name: "steal", caller: players[turnInd], target: (self.target!))
@@ -138,6 +136,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         willSet{}
     }
     
+    //custom thread for gameplay
     var queueForGame = DispatchQueue(label: "queueForGame")
     var workingItem:DispatchWorkItem!
     
@@ -150,11 +149,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var gameOn = true
     
     // MARK: - Setup
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //initially buttons are disabled
         disableAllButtons()
-
+        
+        //deck initialization
         deck = Deck()
         deck!.assign2Cards(players: players)
         
@@ -166,11 +167,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupAIs()
         setupUser()
         
+        //runGame begins
         workingItem = DispatchWorkItem {
             self.runGame()
         }
         queueForGame.async(execute: workingItem)
         
+        //UI
         coupBtn.layer.cornerRadius = 15
         coupBtn.layer.borderWidth = 2
         coupBtn.layer.borderColor = UIColor.black.cgColor
@@ -220,6 +223,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         engButton.layer.borderWidth = 2
         engButton.layer.borderColor = UIColor.black.cgColor
         
+        //handles darkmode
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -241,10 +245,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func setupAIs() {
         AIs = players
-        AIs.remove(at: 0)
+        AIs.remove(at: 0) //removes the user object, so it is just AIs
         addAIColors()
     }
     
+    //updates user UI, so it reflects gamestate accurately
     func setupUser() {
         user = players[0]
         userImageView.image = user!.photo
@@ -267,55 +272,54 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Run game
-    
-    // After assigning 2 cards to each player,
     func runGame(){
         while gameOn {
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
             
-            // If this players is knocked out, skip this player's turn
+            // If this players is fully revealed, skip this player's turn
             if currentPlayer.isPlayerRevealed() {
                 incrementInd()
                 continue
             }
             
+            //all UI updates, are placed in main queue
             DispatchQueue.main.async {
                 self.highlightPlayerInGray(index: self.turnInd)
             }
-            sleep(1)
+            sleep(1) //so main queue can run and update the UI
 
+            //if it is the players turn
             if (currentPlayer.name == LoginViewController.getUsername() && didPlayerMove == false){
                 DispatchQueue.main.async {
                     self.statusLabel.text = "Your turn. Select a move."
                     self.enableButtons(currentPlayer: currentPlayer)
                  }
                 sleep(3)
-                
                 break
-            } else if (currentPlayer.name == LoginViewController.getUsername()) {
-                DispatchQueue.main.async {
+            } else if (currentPlayer.name == LoginViewController.getUsername()) { //user has selected a move
+                /*DispatchQueue.main.async {
                     self.disableAllButtons()
                 }
-                sleep(1)
-                
-                curMove = playerMove
+                sleep(1)*/
+                curMove = playerMove //user move is stored in curMove
                 didPlayerMove = false
-            } else {
+            } else { //else we get a move from the AI
                 curMove = currentPlayer.getPlayerMove()
             }
             
+            //displays move
             DispatchQueue.main.async {
-               self.statusLabel.text = curMove.toString() //updates strings properly
+               self.statusLabel.text = curMove.toString()
             }
             sleep(3)
             
-            //curMove is now set
-            moveLog.append(curMove)
+            moveLog.append(curMove) //records the move in the movelog
             //checking for challenges
             var objection: Move = Move()
+            //cannot challenge income or coup
             if (curMove.name != "income" && curMove.name != "coup"){
-                objection = anyChallenges(move: curMove) //move
+                objection = anyChallenges(move: curMove) //checks for challenges
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
@@ -565,7 +569,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 sleep(2)
                 
             } else {
-                // let caseNum = Int.random(in: 0...4)
                 var temp = Card()
                 
                 if !caller.cards.0.revealed{
@@ -1001,7 +1004,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             activityLogVC.players = players
 //            activityLogVC.activityLog =
         }
-        
         else if segue.identifier == "exchangeSegueIdentifier",
            let exchangeVC = segue.destination as? ExchangeViewController {
             exchangeVC.delegate = self
