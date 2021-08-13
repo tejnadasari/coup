@@ -954,6 +954,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Reveal user cards
+    
     func revealFirstCard() {
         DispatchQueue.main.async {
             let image = self.user!.cards.0.photo

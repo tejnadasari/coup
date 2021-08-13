@@ -854,6 +854,7 @@
                     <navigationItem key="navigationItem" id="2nG-Kb-byv"/>
                     <connections>
                         <outlet property="mainMenuOption" destination="6bm-hM-NxF" id="eLZ-lg-s3f"/>
+                        <outlet property="returnButton" destination="6bm-hM-NxF" id="QhH-Ca-OGl"/>
                         <outlet property="statusLabel" destination="RDi-F7-zJL" id="hOn-uC-Frp"/>
                         <segue destination="Vet-c4-Mgm" kind="unwind" identifier="unwindToMainVC" unwindAction="prepareForUnwindWithSegue:" id="ZDt-cC-iUE"/>
                     </connections>

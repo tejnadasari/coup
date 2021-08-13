@@ -11,12 +11,13 @@ import AVFoundation
 class GameEndsViewController: UIViewController {
     
     static var status = "undefined"
-
+    @IBOutlet weak var returnButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var mainMenuOption: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        returnButton.isHidden = true
         statusLabel.text = ""
         
         mainMenuOption.layer.cornerRadius = 15
@@ -39,6 +40,8 @@ class GameEndsViewController: UIViewController {
             statusLabel.text! += "\(char)"
             RunLoop.current.run(until: Date() + 0.12)
         }
+        
+        returnButton.isHidden = false
     }
     
     func spinStatus() {
