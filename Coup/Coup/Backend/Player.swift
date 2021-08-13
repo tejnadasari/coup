@@ -23,7 +23,7 @@ class Player{
         
         switch moveName{
         case "assassinate":
-            if self.cards.0.assassinate! || self.cards.1.assassinate!
+            if (!self.cards.0.revealed && self.cards.0.assassinate!) || (!self.cards.1.revealed && self.cards.1.assassinate!)
             {
                 if self.cards.0.assassinate! {
                     theCard = 0
@@ -32,7 +32,7 @@ class Player{
                 }
             }
         case "tax":
-            if self.cards.0.tax! || self.cards.1.tax!
+            if (!self.cards.0.revealed && self.cards.0.tax!) || (!self.cards.1.revealed && self.cards.1.tax!)
             {
                 if self.cards.0.tax! {
                     theCard = 0
@@ -41,7 +41,7 @@ class Player{
                 }
             }
         case "steal":
-            if self.cards.0.steal! || self.cards.1.steal!
+            if (!self.cards.0.revealed && self.cards.0.steal!) || (!self.cards.1.revealed && self.cards.1.steal!)
             {
                 if self.cards.0.steal! {
                     theCard = 0
@@ -50,7 +50,7 @@ class Player{
                 }
             }
         case "exchange":
-            if self.cards.0.exchange! || self.cards.1.exchange!
+            if (!self.cards.0.revealed && self.cards.0.exchange!) || (!self.cards.1.revealed && self.cards.1.exchange!)
             {
                 if self.cards.0.exchange! {
                     theCard = 0
@@ -59,7 +59,7 @@ class Player{
                 }
             }
         case "coup":
-            if self.cards.0.coup! || self.cards.1.coup!
+            if (!self.cards.0.revealed && self.cards.0.coup!) || (!self.cards.1.revealed && self.cards.1.coup!)
             {
                 if self.cards.0.coup! {
                     theCard = 0
@@ -68,7 +68,7 @@ class Player{
                 }
             }
         case "foreignAid":
-            if self.cards.0.foreignAid! || self.cards.1.foreignAid!
+            if (!self.cards.0.revealed && self.cards.0.foreignAid!) || (!self.cards.1.revealed && self.cards.1.foreignAid!)
             {
                 if self.cards.0.foreignAid! {
                     theCard = 0

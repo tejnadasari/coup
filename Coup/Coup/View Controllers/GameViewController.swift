@@ -266,6 +266,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             // If this players is knocked out, skip this player's turn
             if currentPlayer.isPlayerRevealed() {
+                incrementInd()
                 continue
             }
             
@@ -273,10 +274,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.highlightPlayerInGray(index: self.turnInd)
             }
             sleep(1)
-            
-            if (currentPlayer.isPlayerRevealed()){
-                continue
-            }
 
             if (currentPlayer.name == LoginViewController.getUsername() && didPlayerMove == false){
                 DispatchQueue.main.async {
@@ -468,7 +465,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.revealSecondCard()
                 }
                 if (mostRecentMove == "coup" || mostRecentMove == "assassinate"){
-                    self.statusLabel.text = "\(curPlayer.name) reveals the \(curPlayer.cards.0.name ?? "error")."
+                    self.statusLabel.text = "\(curPlayer.name) reveals the \(curPlayer.cards.1.name ?? "error")."
                 }
                 else{
                     self.statusLabel.text = "\(curPlayer.name) fails challenge\n and reveals the \(curPlayer.cards.1.name ?? "error") card."
@@ -544,33 +541,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 sleep(2)
                 
             } else {
-                let caseNum = Int.random(in: 0...4)
-                var temp = Card()
-                
-                switch caseNum {
-                
-                case 0:
-                    temp = twoCards!.0
-                    twoCards!.0 = caller.cards.0
-                    caller.cards.0 = temp
-                    
-                case 1:
-                    temp = twoCards!.1
-                    twoCards!.1 = caller.cards.0
-                    caller.cards.0 = temp
-                    
-                case 2:
-                    temp = twoCards!.0
-                    twoCards!.0 = caller.cards.1
-                    caller.cards.1 = temp
-                    
-                case 3:
-                    temp = twoCards!.1
-                    twoCards!.1 = caller.cards.1
-                    caller.cards.1 = temp
-                    
-                default:
-                    temp = Card()
+                /*let caseNum = Int.random(in: 0...4)
+                var temp = Card()*/
+                if !caller.cards.0.revealed{
+                    caller.cards.0 = twoCards!.0
+                }
+                if !caller.cards.1.revealed{
+                    caller.cards.1 = twoCards!.1
                 }
             }
             
