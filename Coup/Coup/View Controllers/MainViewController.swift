@@ -14,7 +14,9 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        MainViewController.playMainSong()
+        if SettingsViewController.isSoundEnabled() {
+            MainViewController.playMainSong()
+        }
     }
 
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {

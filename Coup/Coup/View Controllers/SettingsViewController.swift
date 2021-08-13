@@ -255,10 +255,8 @@ class SettingsViewController: UIViewController,
         case 0:
             LoginViewController.storeEffectInUserDefaults(effect: "on")
             MainViewController.continuePlay()
-            if let play = MainViewController.audioPlayer?.isPlaying {
-                if !play {
-                    MainViewController.playMainSong()
-                }
+            if MainViewController.audioPlayer == nil {
+                MainViewController.playMainSong()
             }
         case 1:
             LoginViewController.storeEffectInUserDefaults(effect: "off")
