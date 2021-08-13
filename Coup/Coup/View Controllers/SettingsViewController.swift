@@ -11,7 +11,7 @@ import CoreData
 
 class SettingsViewController: UIViewController,
                               UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var modeSegCtrl: UISegmentedControl!
     @IBOutlet weak var effectSegCtrl: UISegmentedControl!
@@ -94,7 +94,7 @@ class SettingsViewController: UIViewController,
         
         let profile = NSEntityDescription.insertNewObject(forEntityName: "Profile", into: context)
         profile.setValue(selectedImage.jpegData(compressionQuality: 1)?.base64EncodedString(),
-                        forKey: "image")
+                         forKey: "image")
         
         do {
             try context.save()
@@ -245,7 +245,7 @@ class SettingsViewController: UIViewController,
                 self.present(alertVC, animated: true, completion: nil)
             }
         })
-
+        
         present(controller, animated: true, completion: nil)
     }
     
@@ -271,14 +271,6 @@ class SettingsViewController: UIViewController,
         default:
             print("This should never happen")
         }
-        
-//        if SettingsViewController.isLightModeEnabled() {
-//            overrideUserInterfaceStyle = .light
-//            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-//        } else {
-//            overrideUserInterfaceStyle = .dark
-//            self.view.backgroundColor = UIColor(hex: "#283747FF")
-//        }
     }
     
     @IBAction func onEffectSegChange(_ sender: Any) {
@@ -301,27 +293,27 @@ class SettingsViewController: UIViewController,
 extension UIColor {
     public convenience init?(hex: String) {
         let r, g, b, a: CGFloat
-
+        
         if hex.hasPrefix("#") {
             let start = hex.index(hex.startIndex, offsetBy: 1)
             let hexColor = String(hex[start...])
-
+            
             if hexColor.count == 8 {
                 let scanner = Scanner(string: hexColor)
                 var hexNumber: UInt64 = 0
-
+                
                 if scanner.scanHexInt64(&hexNumber) {
                     r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
                     g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
                     b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
                     a = CGFloat(hexNumber & 0x000000ff) / 255
-
+                    
                     self.init(red: r, green: g, blue: b, alpha: a)
                     return
                 }
             }
         }
-
+        
         return nil
     }
 }

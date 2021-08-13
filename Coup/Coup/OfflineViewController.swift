@@ -20,12 +20,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.delegate = self
         tableView.dataSource = self
         playerArray.append(user)
@@ -59,13 +54,7 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: - Table view data source
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return playerArray.count
     }
 
@@ -141,17 +130,14 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if playerArray.count <= 1{
-            return //ADD ALERT
+            return
         }
         if segue.identifier == "toGameSegueIdentifier",
-                   let nextVC = segue.destination as? GameViewController {
-                   players = playerArray
-                }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+           let nextVC = segue.destination as? GameViewController {
+            players = playerArray
+        }
     }
 
 }

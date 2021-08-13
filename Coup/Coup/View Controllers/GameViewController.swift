@@ -649,6 +649,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (didPlayerChallengeOrAllow){
                 if (challengeMove.name == "challenge"){
                     return challengeMove
+                } else {
+                    curMove = challengeMove
                 }
             }
             else if (curMove.name == "challenge"){
@@ -884,13 +886,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // write the code you want to implement when the cell was selected
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-//    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-//        return false
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameLogTableViewCell", for: indexPath) as! GameLogTableViewCell
@@ -933,6 +930,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Table Colors
+    
     func addAIColors() {
         for _ in 1...AIs.count {
             AICellColors.append(UIColor.clear)
@@ -1002,7 +1000,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "activityLogSegueIdentifier",
            let activityLogVC = segue.destination as? ActivityLogViewController {
             activityLogVC.players = players
-//            activityLogVC.activityLog =
         }
         else if segue.identifier == "exchangeSegueIdentifier",
            let exchangeVC = segue.destination as? ExchangeViewController {
