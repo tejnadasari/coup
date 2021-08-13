@@ -27,8 +27,9 @@ class GameEndsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         typeStatus()
-        GameViewController.playMainSong()
+        MainViewController.playMainSong()
         spinStatus()
+        returnButton.isHidden = false
     }
     
     func typeStatus() {
@@ -40,8 +41,6 @@ class GameEndsViewController: UIViewController {
             statusLabel.text! += "\(char)"
             RunLoop.current.run(until: Date() + 0.12)
         }
-        
-        returnButton.isHidden = false
     }
     
     func spinStatus() {
@@ -49,7 +48,7 @@ class GameEndsViewController: UIViewController {
         
         UIView.animate(
             withDuration: durationValue,
-            delay: 1.0,
+            delay: 0.0,
             options: [.repeat, .autoreverse],
             animations: {
                 // 180 degree rotation
@@ -61,8 +60,8 @@ class GameEndsViewController: UIViewController {
     
     @IBAction func playAgainPressed(_ sender: Any) {
         statusLabel.layer.removeAllAnimations()
-        if !GameViewController.audioPlayer!.isPlaying {
-            GameViewController.playMainSong()
+        if SettingsViewController.isSoundEnabled() && !MainViewController.audioPlayer!.isPlaying {
+            MainViewController.playMainSong()
         }
         self.performSegue(withIdentifier: "unwindToMainVC", sender: self)
     }

@@ -166,6 +166,10 @@ class SettingsViewController: UIViewController,
         return LoginViewController.getEffectInUserDefaults() == "on"
     }
     
+    static func isLightModeEnabled() -> Bool {
+        return LoginViewController.getEffectInUserDefaults() == "light"
+    }
+    
     // MARK: - UI
     
     @IBAction func changeProfilePicture(_ sender: Any) {
@@ -227,8 +231,13 @@ class SettingsViewController: UIViewController,
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        if effectSegCtrl.selectedSegmentIndex == 1 {
+            MainViewController.stopPlay()
+        }
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: - On Segment Control Change
     
     @IBAction func onModeSegChange(_ sender: Any) {
         switch modeSegCtrl.selectedSegmentIndex {
@@ -245,10 +254,15 @@ class SettingsViewController: UIViewController,
         switch effectSegCtrl.selectedSegmentIndex {
         case 0:
             LoginViewController.storeEffectInUserDefaults(effect: "on")
-            GameViewController.playMainSong()
+            MainViewController.continuePlay()
+            if let play = MainViewController.audioPlayer?.isPlaying {
+                if !play {
+                    MainViewController.playMainSong()
+                }
+            }
         case 1:
             LoginViewController.storeEffectInUserDefaults(effect: "off")
-            GameViewController.stopPlay()
+            MainViewController.pausePlay()
         default:
             print("This should never happen")
         }

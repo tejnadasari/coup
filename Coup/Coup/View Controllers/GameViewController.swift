@@ -47,7 +47,6 @@
  */
 
 import UIKit
-import AVFoundation
 
 var players: [Player] = []
 var moveLog: [Move] = []
@@ -146,14 +145,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var queueForGame = DispatchQueue(label: "queueForGame")
     var workingItem:DispatchWorkItem!
     
-    var status = "You Lost or You Win"
+    var status = "You Lost"
     var userCellColor = UIColor.clear
     var AICellColors: [UIColor] = []
     
     var currentUserCard1 = UIImage(named: "Card Back")
     var currentUserCard2 = UIImage(named: "Card Back")
-    
-    static var audioPlayer: AVAudioPlayer?
     var gameOn = true
     
     // MARK: - Setup
@@ -262,7 +259,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
-                self.playGame()
+                MainViewController.playGame()
             }
             sleep(1)
             
@@ -317,7 +314,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
-                        self.playChallenge()
+                        MainViewController.playChallenge()
                     }
                     sleep(3)
                     
@@ -417,7 +414,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if !gameOn {
             DispatchQueue.main.sync {
-                GameViewController.stopPlay()
+                MainViewController.stopPlay()
                 self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
             }
         }
@@ -438,13 +435,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
                     self.youLose()
-                    GameViewController.stopPlay()
+                    MainViewController.stopPlay()
                     self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
                 }
             } else {
                 DispatchQueue.main.sync {
                     self.youWon()
-                    GameViewController.stopPlay()
+                    MainViewController.stopPlay()
                     self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
                 }
             }
@@ -488,13 +485,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "income":
             move.caller.coins += 1
             DispatchQueue.main.async {
-                self.playIncome()
+                MainViewController.playIncome()
             }
             sleep(1)
         case "foreignAid":
             move.caller.coins += 2
             DispatchQueue.main.async {
-                self.playIncome()
+                MainViewController.playIncome()
             }
             sleep(1)
         case "coup":
@@ -572,13 +569,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             move.target.coins -= 2
             move.caller.coins += 2
             DispatchQueue.main.async {
-                self.playIncome()
+                MainViewController.playIncome()
             }
             sleep(1)
         case "tax":
             move.caller.coins += 3
             DispatchQueue.main.async {
-                self.playIncome()
+                MainViewController.playIncome()
             }
             sleep(1)
         default:
@@ -822,49 +819,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Not Applicable")
         }
     }
-    
-    // MARK: - Sound Effects
-    
-    func playIncome() {
-        GameViewController.playSound(file: "Cash Register")
-    }
-    
-    func playChallenge() {
-        GameViewController.playSound(file: "Count Down")
-    }
-    
-    func playGame() {
-        GameViewController.playSound(file: "Waiting")
-    }
-    
-    static func playMainSong() {
-        GameViewController.playSound(file: "Next Level")
-    }
-    
-    static func stopPlay() {
-        GameViewController.audioPlayer?.stop()
-    }
-    
-    static func playSound(file: String) {
-        if !SettingsViewController.isSoundEnabled() {
-            return
-        }
 
-        guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            GameViewController.audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
-            guard let audioPlayer = GameViewController.audioPlayer else { return }
-            audioPlayer.numberOfLoops = -1
-            audioPlayer.play()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -995,7 +950,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             GameEndsViewController.status = status
             gameOn = false
             DispatchQueue.main.async {
-                GameViewController.stopPlay()
+                MainViewController.stopPlay()
             }
         }
     }
