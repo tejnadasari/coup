@@ -258,7 +258,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while gameOn {
             DispatchQueue.main.async {
                 self.dismissHighlights()
-                MainViewController.playGame()
+                Sound.playGame()
             }
             sleep(1)
             
@@ -313,7 +313,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
                         self.statusLabel.text = objection.challengeString()
-                        MainViewController.playChallenge()
+                        Sound.playChallenge()
                     }
                     sleep(3)
                     
@@ -413,7 +413,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if !gameOn {
             DispatchQueue.main.sync {
-                MainViewController.stopPlay()
+                Sound.stopPlay()
                 self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
             }
         }
@@ -434,13 +434,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
                     self.youLose()
-                    MainViewController.stopPlay()
+                    Sound.stopPlay()
                     self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
                 }
             } else {
                 DispatchQueue.main.sync {
                     self.youWon()
-                    MainViewController.stopPlay()
+                    Sound.stopPlay()
                     self.performSegue(withIdentifier: "gameEndsSegueIdentifier", sender: nil)
                 }
             }
@@ -484,13 +484,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "income":
             move.caller.coins += 1
             DispatchQueue.main.async {
-                MainViewController.playIncome()
+                Sound.playIncome()
             }
             sleep(1)
         case "foreignAid":
             move.caller.coins += 2
             DispatchQueue.main.async {
-                MainViewController.playIncome()
+                Sound.playIncome()
             }
             sleep(1)
         case "coup":
@@ -581,13 +581,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             move.target.coins -= 2
             move.caller.coins += 2
             DispatchQueue.main.async {
-                MainViewController.playIncome()
+                Sound.playIncome()
             }
             sleep(1)
         case "tax":
             move.caller.coins += 3
             DispatchQueue.main.async {
-                MainViewController.playIncome()
+                Sound.playIncome()
             }
             sleep(1)
         default:
@@ -595,7 +595,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func anyChallenges(move: Move) -> Move{
+    func anyChallenges(move: Move) -> Move {
         var curMove: Move = Move()
         challengeTurnInd = 0
         didPlayerChallengeOrAllow = false
@@ -666,7 +666,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Buttons
         
     @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
-
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
         for i in AIs {
@@ -966,9 +965,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if segue.identifier == "gameEndsSegueIdentifier" {
             GameEndsViewController.status = status
             gameOn = false
-            DispatchQueue.main.async {
-                MainViewController.stopPlay()
-            }
         }
     }
     

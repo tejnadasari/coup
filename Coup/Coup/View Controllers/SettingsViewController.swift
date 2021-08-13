@@ -232,7 +232,7 @@ class SettingsViewController: UIViewController,
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         if effectSegCtrl.selectedSegmentIndex == 1 {
-            MainViewController.stopPlay()
+            Sound.stopPlay()
         }
         dismiss(animated: true, completion: nil)
     }
@@ -254,13 +254,13 @@ class SettingsViewController: UIViewController,
         switch effectSegCtrl.selectedSegmentIndex {
         case 0:
             LoginViewController.storeEffectInUserDefaults(effect: "on")
-            MainViewController.continuePlay()
-            if MainViewController.audioPlayer == nil {
-                MainViewController.playMainSong()
+            Sound.continuePlay()
+            if audioPlayer == nil {
+                Sound.playMainSong()
             }
         case 1:
             LoginViewController.storeEffectInUserDefaults(effect: "off")
-            MainViewController.pausePlay()
+            Sound.pausePlay()
         default:
             print("This should never happen")
         }

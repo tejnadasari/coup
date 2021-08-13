@@ -17,6 +17,7 @@ class GameEndsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Sound.stopPlay()
         returnButton.isHidden = true
         statusLabel.text = ""
         
@@ -27,13 +28,6 @@ class GameEndsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         typeStatus()
-        
-        if SettingsViewController.isSoundEnabled() {
-            DispatchQueue.main.async {
-                MainViewController.playMainSong()
-            }
-        }
-        
         spinStatus()
         returnButton.isHidden = false
     }
@@ -66,10 +60,6 @@ class GameEndsViewController: UIViewController {
     
     @IBAction func playAgainPressed(_ sender: Any) {
         statusLabel.layer.removeAllAnimations()
-        if SettingsViewController.isSoundEnabled()
-            && MainViewController.audioPlayer == nil {
-            MainViewController.playMainSong()
-        }
         self.performSegue(withIdentifier: "unwindToMainVC", sender: self)
     }
 }
