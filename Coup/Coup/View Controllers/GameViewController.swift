@@ -89,13 +89,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var userStack: UIStackView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     @IBOutlet weak var cheatSheet: UIButton!
     @IBOutlet weak var logsButton: UIButton!
     @IBOutlet weak var engButton: UIButton!
     
-    
-            // MARK: - Variables
+    // MARK: - Variables
     var deck: Deck? // deck for game
     var twoCards: (Card, Card)? // twoCards for exchange
     var userCard: Card? // userCard for exchange
@@ -221,6 +219,24 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         engButton.layer.cornerRadius = 15
         engButton.layer.borderWidth = 2
         engButton.layer.borderColor = UIColor.black.cgColor
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
     
     func setupAIs() {
@@ -503,6 +519,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             move.caller.coins -= 7
             revealCard(curPlayer: move.target)
         case "exchange":
+            DispatchQueue.main.async {
+                Sound.playExchange()
+            }
+            sleep(1)
+            
             // get 2 cards from the current deck
             twoCards = deck!.give2Cards()
             let caller = move.caller
@@ -578,6 +599,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             deck!.get2CardsBackNShuffle(twoCards: twoCards!)
             
         case "assassinate":
+            DispatchQueue.main.async {
+                Sound.playKill()
+            }
+            sleep(1)
+            
             move.caller.coins -= 3
             revealCard(curPlayer: move.target)
         case "steal":
@@ -752,6 +778,11 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func allowBtnPressed(_ sender: Any) {
         didPlayerChallengeOrAllow = true
         challengeMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
+        
+        DispatchQueue.main.async {
+            Sound.playAllow()
+        }
+        sleep(1)
         self.disableAllButtons()
      }
     
@@ -898,6 +929,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         cell.contentView.backgroundColor = AICellColors[row]
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.tableView.backgroundColor = UIColor(hex: "#FFF8E1FF")
+            cell.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.tableView.backgroundColor = UIColor(hex: "#283747FF")
+            cell.backgroundColor = UIColor(hex: "#283747FF")
+        }
+        
         return cell
     }
     

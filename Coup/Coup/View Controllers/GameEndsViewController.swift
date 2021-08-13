@@ -17,19 +17,39 @@ class GameEndsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Sound.stopPlay()
+        DispatchQueue.main.async {
+            Sound.stopPlay()
+        }
+        sleep(1)
+        
         returnButton.isHidden = true
         statusLabel.text = ""
         
         mainMenuOption.layer.cornerRadius = 15
         mainMenuOption.layer.borderWidth = 2
         mainMenuOption.layer.borderColor = UIColor.black.cgColor
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         typeStatus()
         spinStatus()
         returnButton.isHidden = false
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
     
     func typeStatus() {

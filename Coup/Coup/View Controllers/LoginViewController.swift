@@ -53,6 +53,23 @@ class LoginViewController: UIViewController {
         loginButton.layer.borderWidth = 2
         loginButton.layer.borderColor = UIColor.black.cgColor
         
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
     
     // MARK: - UI

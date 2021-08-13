@@ -12,26 +12,44 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var activityLogLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    var activityLog: [String]?
+
     var players: [Player] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+        
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+        
+        tableView.reloadData()
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activityLog!.count
+        return moveLog.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -41,11 +59,21 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "activityLogTableViewCell", for: indexPath) as! ActivityLogTableViewCell
         
-//        let row = indexPath.row
+        let row = indexPath.row
         
         // Configure the cell...
-//        cell.userProfile.image =
-//        cell.gameLogLabel.text =
+        cell.userProfile.image = moveLog[row].caller.photo
+        cell.gameLogLabel.text = moveLog[row].toString()
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.tableView.backgroundColor = UIColor(hex: "#FFF8E1FF")
+            cell.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.tableView.backgroundColor = UIColor(hex: "#283747FF")
+            cell.backgroundColor = UIColor(hex: "#283747FF")
+        }
 
         return cell
     }
