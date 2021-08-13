@@ -350,6 +350,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         self.actOnMove(move: curMove)
                         
+                        print("cardDeck: \(deck!.cardDeck)")
+                        
+                        DispatchQueue.main.async {
+                            self.setupUser()
+                            self.tableView.reloadData()
+                        }
+                        sleep(2)
+                        
                         DispatchQueue.main.async {
                             self.statusLabel.text = "\(currentPlayer.name) won the challenge.\n New card will be given to \(currentPlayer.name)."
                         }
@@ -372,10 +380,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         deck!.get1CardBackNShuffle(oneCard: newCard)
+                        
+                        print("cardDeck: \(deck!.cardDeck)")
+                        
                         DispatchQueue.main.async {
                             self.setupUser()
+                            self.tableView.reloadData()
                         }
-                        sleep(1)
+                        sleep(2)
                     }
                     else{
                         revealCard(curPlayer: objection.target)
@@ -553,13 +565,18 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 sleep(2)
                 
             } else {
-                /*let caseNum = Int.random(in: 0...4)
-                var temp = Card()*/
+                // let caseNum = Int.random(in: 0...4)
+                var temp = Card()
+                
                 if !caller.cards.0.revealed{
+                    temp = caller.cards.0
                     caller.cards.0 = twoCards!.0
+                    twoCards!.0 = temp
                 }
                 if !caller.cards.1.revealed{
+                    temp = caller.cards.1
                     caller.cards.1 = twoCards!.1
+                    twoCards!.1 = temp
                 }
             }
             
@@ -595,10 +612,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     func anyChallenges(move: Move) -> Move {
         var curMove: Move = Move()
         challengeTurnInd = 0
-        didPlayerChallengeOrAllow = false
         
         while challengeTurnInd < players.count {
             let player = players[challengeTurnInd]
+            didPlayerChallengeOrAllow = false
             
             if (player.name == move.caller.name || player.isPlayerRevealed()){
                 challengeTurnInd += 1

@@ -163,7 +163,6 @@ class AI: Player{
         }
         
         // as soon as 7+ dollars have been accumulated, initiate coup
-        // (lean towards person that is about to be knocked out)
         if self.coins >= 7 {
             aiMoveName = "coup"
         }
@@ -176,37 +175,42 @@ class AI: Player{
         var target = Player()
         var rand = 0
         
-        if moveName == "income" || moveName == "foreignAid" || moveName == "tax" {
+        if moveName == "income" || moveName == "foreignAid"
+            || moveName == "tax" || moveName == "exchange" {
             return Move(name: moveName, caller: self, target: self)
-        }
-        
-        //randomly select the target of the move
-        while true {
-            rand = Int.random(in: 0...players.count-1)
-            target = players[rand]
-            
-            // if target is self, continue
-            if target.name == self.name {
-                continue
-            } else {
-                break
-            }
         }
         
         // if move is steal
         if moveName == "steal" {
-            if target.coins < 2 {
-                while true {
-                    rand = Int.random(in: 0...players.count-1)
-                    target = players[rand]
-                    
-                    if target.name == self.name {
-                        continue
-                    }
-                    
-                    if target.coins >= 2{
-                        break
-                    }
+            while true {
+                rand = Int.random(in: 0...players.count-1)
+                target = players[rand]
+                
+                // if the randomly selected target is self, reselect it
+                if target.name == self.name {
+                    continue
+                }
+                
+                // if the randomly selected target has the same as or more than 2 dollars,
+                // self can set it as the target
+                if target.coins >= 2{
+                    break
+                }
+            }
+            
+        }
+        
+        if moveName == "coup" || moveName == "assassinate" {
+            
+            while true {
+                rand = Int.random(in: 0...players.count-1)
+                target = players[rand]
+                
+                // if target is self, continue
+                if target.name == self.name {
+                    continue
+                } else {
+                    break
                 }
             }
         }
@@ -227,7 +231,6 @@ class AI: Player{
         //  if other players have the card, rating is increased by 0.5, each time
         // 2. if plyaer doe not have the move, decrease the rate of if by 1
         //  if any other player has the card, rating is lowered again by 1
-        
         if card1.assassinate! || card2.assassinate! {
             
             // initialize it as 5
@@ -690,6 +693,7 @@ class AI: Player{
             newRate = moveRateDic["foreignAid"]! + 10
             moveRateDic.updateValue(newRate, forKey: "foreignAid")
             
+            // AI cannot take "assassinate" if they do not have enough money ($3)
             moveRateDic.updateValue(0, forKey: "assassinate")
             
         } else {
@@ -709,6 +713,7 @@ class AI: Player{
         for i in 0...players.count - 1 {
             let player = players[i]
             
+            // if player is self, continue
             if player.name == self.name {
                 continue
             }
@@ -718,11 +723,13 @@ class AI: Player{
             }
         }
         
+        // if no other players have at least $2,
+        // AI cannot take "steal"
         if count == players.count - 1 {
             moveRateDic.updateValue(0, forKey: "steal")
         }
         
-        // 0 filter
+        // All actions cannot decrease to below 0.
         if moveRateDic["income"]! < 0 {
             moveRateDic.updateValue(0, forKey: "income")
         }
@@ -749,15 +756,6 @@ class AI: Player{
         
     }
 
-    // MARK:- changeBlockRate
-    /*
-    You can find out these variables in Card.swift under the Card class and the children classes of Card
-        var blockAssassination = true -> Contessa
-        var blockForeignAid = true -> Duke
-        var blockSteal = true -> Captain and Ambassador
-     
-    */
-        
     // MARK:- adustChallengeRate
     // allow/challenge
     // other card count is 1, then 80/20
@@ -772,6 +770,8 @@ class AI: Player{
         var exchangeCount = 0
         var taxCount = 0
         var stealCount = 0
+        
+        print("moveName: \(moveLog[moveLog.count-1].name)")
         
         if moveLog[moveLog.count-1].name == "assassinate" {
             if card1.assassinate! || card2.assassinate! {
@@ -907,8 +907,8 @@ class AI: Player{
         
         let rand = Double.random(in: 0.01...1.00)
         
-        print(challengeRate)
-        print(rand)
+        print("challengeRate: \(challengeRate)")
+        print("random number: \(rand)")
         
         if rand <= challengeRate {
             return Move(name: "challenge", caller: self, target: target)
