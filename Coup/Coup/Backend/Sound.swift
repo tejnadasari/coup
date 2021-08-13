@@ -11,14 +11,15 @@ import AVFoundation
 var audioPlayer: AVAudioPlayer?
 
 class Sound {
-    // MARK: - Sound Effects
+    
+    // MARK: - Sounds
     
     static func playIncome() {
         Sound.playSound(file: "Cash Register")
     }
     
     static func playChallenge() {
-        Sound.playSound(file: "Count Down")
+        Sound.playSound(file: "Challenge")
     }
     
     static func playGame() {
@@ -28,6 +29,24 @@ class Sound {
     static func playMainSong() {
         Sound.playSound(file: "Next Level")
     }
+    
+    static func playKill() {
+        Sound.playSound(file: "Kill")
+    }
+    
+    static func playAllow() {
+        Sound.playSound(file: "Allow")
+    }
+    
+    static func playLose() {
+        Sound.playSound(file: "Lose")
+    }
+    
+    static func playExchange() {
+        Sound.playSound(file: "Exchange")
+    }
+    
+    // MARK: - General
     
     static func stopPlay() {
         audioPlayer?.stop()
@@ -55,7 +74,7 @@ class Sound {
             
             audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
             guard let audioPlayer = audioPlayer else { return }
-            audioPlayer.numberOfLoops = -1
+//            audioPlayer.numberOfLoops = 1
             audioPlayer.play()
         } catch let error {
             print(error.localizedDescription)

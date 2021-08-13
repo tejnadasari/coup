@@ -39,9 +39,25 @@ class ExchangeViewController: UIViewController {
         let longPressReconizer2 = UILongPressGestureRecognizer(target: self, action: #selector(recognizeLongPressedGesture2(recognizer:)))
         self.cardImage2.addGestureRecognizer(longPressReconizer2)
         // Do any additional setup after loading the view.
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+        
         cardImage1.image = twoCards!.0.photo
         cardImage2.image = twoCards!.1.photo
         cardLabel1.text = twoCards!.0.name

@@ -147,7 +147,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="WSx-xW-JoZ" kind="presentation" id="dXM-7x-Tti"/>
+                                    <segue destination="WSx-xW-JoZ" kind="presentation" modalPresentationStyle="fullScreen" id="dXM-7x-Tti"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4L-Od-m8e">
@@ -405,8 +405,8 @@
         <scene sceneID="OSA-Mi-CWu">
             <objects>
                 <viewController id="WSx-xW-JoZ" customClass="SettingsViewController" customModule="Coup" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e0g-aO-Dso">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="e0g-aO-Dso">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKc-kF-KRF">
@@ -415,7 +415,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-un-gM0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-un-gM0">
                                 <rect key="frame" x="95" y="133" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Flq-0q-0HH"/>
@@ -669,8 +669,8 @@
                                                         <constraint firstAttribute="width" constant="80" id="rEP-92-eSG"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Activity( ex: Player 1 took income) " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-WR-6d5" userLabel="activityLogLabel">
-                                                    <rect key="frame" x="97" y="30.000000000000057" width="290" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Activity( ex: Player 1 took income)  ... ..." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-WR-6d5" userLabel="activityLogLabel">
+                                                    <rect key="frame" x="97" y="0.0" width="290" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="290" id="l3b-gw-iSu"/>
                                                         <constraint firstAttribute="height" constant="20" id="lga-1L-M8v"/>
@@ -724,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bB-Fo-MIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3606" y="94"/>
+            <point key="canvasLocation" x="3604.6153846153843" y="93.838862559241704"/>
         </scene>
         <!--Exchange View Controller-->
         <scene sceneID="aNY-VI-6Lq">
@@ -1042,7 +1042,6 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="cheatSheetButton:" destination="P54-Zb-Yud" eventType="touchUpInside" id="zfL-96-MwB"/>
                                     <segue destination="yhG-CG-umP" kind="presentation" id="rgp-ZP-AX2"/>
                                 </connections>
                             </button>
@@ -1057,7 +1056,6 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="logsButton:" destination="P54-Zb-Yud" eventType="touchUpInside" id="lqR-ak-KLm"/>
                                     <segue destination="Kgb-ep-6KY" kind="popoverPresentation" identifier="activityLogSegueIdentifier" popoverAnchorView="6Cd-yr-Ppc" id="uyu-PJ-HYz">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>

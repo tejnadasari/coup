@@ -15,6 +15,14 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
 
         howToPlayLabel.text! = "How to Play?"
                
@@ -68,6 +76,16 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
         scrollView.minimumZoomScale = 0.5
         scrollView.maximumZoomScale = 3.0
         scrollView.zoomScale = 1.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

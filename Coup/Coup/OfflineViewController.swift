@@ -37,9 +37,24 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         gameStartButton.layer.cornerRadius = 15
         gameStartButton.layer.borderWidth = 2
         gameStartButton.layer.borderColor = UIColor.black.cgColor
-
-
-
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
     }
 
     // MARK: - Table view data source
@@ -63,7 +78,16 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.aiLabel.font = UIFont(name: "Avenir", size: 16)
         cell.aiLabel.text = playerArray[row].name
         cell.userImage.image = playerArray[row].photo
-        cell.backgroundColor = UIColor.clear
+        
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.tableView.backgroundColor = UIColor(hex: "#FFF8E1FF")
+            cell.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.tableView.backgroundColor = UIColor(hex: "#283747FF")
+            cell.backgroundColor = UIColor(hex: "#283747FF")
+        }
         
         return cell
     }
