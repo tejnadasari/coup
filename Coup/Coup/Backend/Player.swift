@@ -173,20 +173,42 @@ class AI: Player{
     
     override func getPlayerMove() -> Move {
         let moveName = getAIMoveName()
-        
-        //randomly select the target of the move
-        var rand = Int.random(in: 0...players.count-1)
-        var target = players[rand]
-        
-        if moveName == "steal" {
-            while target.coins < 2 {
-                rand = Int.random(in: 0...players.count-1)
-                target = players[rand]
-            }
-        }
+        var target = Player()
+        var rand = 0
         
         if moveName == "income" || moveName == "foreignAid" || moveName == "tax" {
             return Move(name: moveName, caller: self, target: self)
+        }
+        
+        //randomly select the target of the move
+        while true {
+            rand = Int.random(in: 0...players.count-1)
+            target = players[rand]
+            
+            // if target is self, continue
+            if target.name == self.name {
+                continue
+            } else {
+                break
+            }
+        }
+        
+        // if move is steal
+        if moveName == "steal" {
+            if target.coins < 2 {
+                while true {
+                    rand = Int.random(in: 0...players.count-1)
+                    target = players[rand]
+                    
+                    if target.name == self.name {
+                        continue
+                    }
+                    
+                    if target.coins >= 2{
+                        break
+                    }
+                }
+            }
         }
         
         return Move(name: moveName, caller: self, target: target)
@@ -669,7 +691,7 @@ class AI: Player{
             moveRateDic.updateValue(newRate, forKey: "income")
         }
         
-        // Adjustig rate of steal based on Money
+        // Adjusting rate of steal based on Money
         var count = 0
         
         for i in 0...players.count - 1 {

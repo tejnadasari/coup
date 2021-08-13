@@ -769,7 +769,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         taxBtn.isEnabled = true
-        stealBtn.isEnabled = true
+        
+        for i in AIs {
+            if i.coins >= 2 {
+                stealBtn.isEnabled = true
+            }
+        }
         
         if currentPlayer.coins >= 3 {
             assassinateBtn.isEnabled = true
