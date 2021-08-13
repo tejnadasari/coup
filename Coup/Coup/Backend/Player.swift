@@ -193,7 +193,7 @@ class AI: Player{
                 
                 // if the randomly selected target has the same as or more than 2 dollars,
                 // self can set it as the target
-                if target.coins >= 2{
+                if !target.isPlayerRevealed() && target.coins >= 2{
                     break
                 }
             }
@@ -209,9 +209,12 @@ class AI: Player{
                 // if target is self, continue
                 if target.name == self.name {
                     continue
-                } else {
+                }
+                
+                if !target.isPlayerRevealed() {
                     break
                 }
+                
             }
         }
         
@@ -770,8 +773,6 @@ class AI: Player{
         var exchangeCount = 0
         var taxCount = 0
         var stealCount = 0
-        
-        print("moveName: \(moveLog[moveLog.count-1].name)")
         
         if moveLog[moveLog.count-1].name == "assassinate" {
             if card1.assassinate! || card2.assassinate! {
