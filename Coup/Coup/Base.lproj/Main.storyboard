@@ -746,9 +746,6 @@
                                     <constraint firstAttribute="width" constant="120" id="hew-kU-f3J"/>
                                     <constraint firstAttribute="height" constant="160" id="o2Y-rG-FbV"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="HsD-8X-Qvl" appends="YES" id="6up-ir-71F"/>
-                                </connections>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-iM-kpb">
                                 <rect key="frame" x="66" y="24" width="120" height="160"/>
@@ -757,9 +754,6 @@
                                     <constraint firstAttribute="width" constant="120" id="IbL-4T-dzj"/>
                                     <constraint firstAttribute="height" constant="160" id="Zui-Ge-XLd"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Woy-4r-Q9M" appends="YES" id="xys-PI-aoF"/>
-                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyy-qI-Lqg">
                                 <rect key="frame" x="29" y="317" width="332" height="44"/>
@@ -776,22 +770,39 @@
                                     <action selector="keepCardButtonPressed:" destination="RcR-Jo-Qpw" eventType="touchUpInside" id="rJ6-fD-fc5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCF-IW-quO">
+                                <rect key="frame" x="105" y="192" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ay5-mP-CxR">
+                                <rect key="frame" x="251" y="192" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="krH-bY-l9c"/>
                         <color key="backgroundColor" red="0.95638102293014526" green="0.93360108137130737" blue="0.83033710718154907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fCF-IW-quO" firstAttribute="top" secondItem="8nc-iM-kpb" secondAttribute="bottom" constant="8" symbolic="YES" id="4YR-vT-woz"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="trailing" secondItem="Yyy-qI-Lqg" secondAttribute="trailing" constant="29" id="9Mp-4d-UBH"/>
+                            <constraint firstItem="fCF-IW-quO" firstAttribute="centerX" secondItem="8nc-iM-kpb" secondAttribute="centerX" id="DOT-ev-mZi"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="bottom" secondItem="SPQ-Sg-c1x" secondAttribute="bottom" constant="216" id="H3c-UU-qSh"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="trailing" secondItem="SPQ-Sg-c1x" secondAttribute="trailing" constant="58" id="KnI-Eg-uU7"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="bottom" secondItem="CNQ-Jd-QeU" secondAttribute="bottom" constant="154" id="LcS-l0-uHl"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="trailing" secondItem="CNQ-Jd-QeU" secondAttribute="trailing" constant="120" id="OFC-mi-WTo"/>
                             <constraint firstItem="Yyy-qI-Lqg" firstAttribute="leading" secondItem="krH-bY-l9c" secondAttribute="leading" constant="29" id="P5Q-7g-ZcA"/>
                             <constraint firstItem="8nc-iM-kpb" firstAttribute="leading" secondItem="krH-bY-l9c" secondAttribute="leading" constant="66" id="Q3J-vM-akn"/>
+                            <constraint firstItem="Ay5-mP-CxR" firstAttribute="top" secondItem="SPQ-Sg-c1x" secondAttribute="bottom" constant="8" symbolic="YES" id="RZS-Bg-4zA"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="bottom" secondItem="Yyy-qI-Lqg" secondAttribute="bottom" constant="39" id="YCW-fW-v17"/>
+                            <constraint firstItem="Ay5-mP-CxR" firstAttribute="leading" secondItem="fCF-IW-quO" secondAttribute="trailing" constant="104" id="bBL-6G-N2t"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="top" secondItem="SPQ-Sg-c1x" secondAttribute="top" constant="20" id="csS-LX-efk"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="bottom" secondItem="8nc-iM-kpb" secondAttribute="bottom" constant="216" id="jpU-R7-Mmd"/>
                             <constraint firstItem="krH-bY-l9c" firstAttribute="top" secondItem="8nc-iM-kpb" secondAttribute="top" constant="20" id="kqO-Bj-2Xe"/>
                             <constraint firstItem="CNQ-Jd-QeU" firstAttribute="top" secondItem="krH-bY-l9c" secondAttribute="top" constant="167" id="qWS-py-xGh"/>
+                            <constraint firstItem="Ay5-mP-CxR" firstAttribute="centerX" secondItem="SPQ-Sg-c1x" secondAttribute="centerX" id="u46-u8-boN"/>
                             <constraint firstItem="CNQ-Jd-QeU" firstAttribute="leading" secondItem="krH-bY-l9c" secondAttribute="leading" constant="151" id="yYa-Gf-JVl"/>
                         </constraints>
                     </view>
@@ -799,21 +810,13 @@
                     <connections>
                         <outlet property="cardImage1" destination="8nc-iM-kpb" id="G7N-G3-2DP"/>
                         <outlet property="cardImage2" destination="SPQ-Sg-c1x" id="hq7-tE-yBO"/>
+                        <outlet property="cardLabel1" destination="fCF-IW-quO" id="L15-UK-lrP"/>
+                        <outlet property="cardLabel2" destination="Ay5-mP-CxR" id="Jdq-Zh-2Np"/>
                         <outlet property="explainLabel" destination="CNQ-Jd-QeU" id="zHZ-KC-0ig"/>
                         <outlet property="keepCardsLabel" destination="Yyy-qI-Lqg" id="sDV-oJ-64r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RI6-f9-FKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="HsD-8X-Qvl">
-                    <connections>
-                        <action selector="recognizeLongPressedGesture2WithRecognizer:" destination="RcR-Jo-Qpw" id="74U-w3-d4o"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Woy-4r-Q9M">
-                    <connections>
-                        <action selector="recognizeLongPressedGesture1WithRecognizer:" destination="RcR-Jo-Qpw" id="UFO-5i-4LO"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2693.8461538461538" y="708.76777251184831"/>
         </scene>

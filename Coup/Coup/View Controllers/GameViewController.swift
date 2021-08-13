@@ -65,7 +65,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         switchSegue = true
     }
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -455,7 +454,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.revealFirstCard()
                 }
                 
-                self.statusLabel.text = "\(curPlayer.name) exchanges \(curPlayer.cards.0.name ?? "error") for a new role."
+                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
             }
             sleep(2)
             curPlayer.cards.0.revealed = true
@@ -466,7 +465,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.revealSecondCard()
                 }
                 
-                self.statusLabel.text = "\(curPlayer.name) exchanges \(curPlayer.cards.1.name ?? "error") for a new role."
+                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
             }
             sleep(2)
             
@@ -505,28 +504,41 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if caller.name == LoginViewController.getUsername() {
                 // if the caller's first card has not revealed yet,
                 // give them a chance to exchange it for another one from twoCards
-                DispatchQueue.main.async {
-                    if self.user!.cards.0.revealed == false {
+                switchSegue = false
+                
+                if self.user!.cards.0.revealed == false {
+                    DispatchQueue.main.sync {
                         self.userCard = self.user!.cards.0
                         self.caseNum = 0
-                        print("hi")
                         self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
-//                        while(!self.switchSegue){}
                     }
+                    
+                    while (!switchSegue) {}
                 }
-                sleep(5)
+                
+                if self.user!.cards.1.revealed == false {
+                    DispatchQueue.main.sync {
+                        // if the caller's second card has not revealed yet,
+                        // give them a chance to exchange it for another one from twoCards
+                            self.userCard = self.user!.cards.1
+                            self.caseNum = 2
+                            self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                        print("segue2~")
+                    }
+                    sleep(1) // important
+                    switchSegue = false
+                    
+                    while (!switchSegue) {}
+                    
+                    sleep(1) // important
+                    switchSegue = false
+                }
                 
                 DispatchQueue.main.async {
-                    // if the caller's second card has not revealed yet,
-                    // give them a chance to exchange it for another one from twoCards
-                    if self.user!.cards.1.revealed == false {
-                        self.userCard = self.user!.cards.1
-                        self.caseNum = 2
-                        self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
-                        while(!self.switchSegue){}
-                    }
+                    self.setupUser()
                 }
-                sleep(5)
+                
+                sleep(2)
                 
             } else {
                 let caseNum = Int.random(in: 0...4)
