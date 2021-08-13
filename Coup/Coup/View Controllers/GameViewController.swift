@@ -121,13 +121,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     var assassinate = false
     var coup = false
     
+    var isStealPossible: Bool = false
+    
     var target: Player?{
         didSet{
-            print("HOLA didSet")
             didPlayerMove = true
             if steal{
-                print("In steal")
-                print(self.target!.name)
                 playerMove = Move(name: "steal", caller: players[turnInd], target: (self.target!))
             }
             else if coup{
@@ -338,14 +337,14 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         DispatchQueue.main.async {
-                            self.statusLabel.text = "\(currentPlayer.name) won the challenge. \(currentPlayer.name)'s action will be taken"
+                            self.statusLabel.text = "\(currentPlayer.name) won the challenge.\n \(currentPlayer.name)'s action will be taken."
                         }
                         sleep(3)
                         
                         self.actOnMove(move: curMove)
                         
                         DispatchQueue.main.async {
-                            self.statusLabel.text = "\(currentPlayer.name) won the challenge. New card will be given"
+                            self.statusLabel.text = "\(currentPlayer.name) won the challenge.\n New card will be given to \(currentPlayer.name)."
                         }
                         sleep(3)
                         
@@ -370,11 +369,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                             self.setupUser()
                         }
                         sleep(1)
-                        print("target win")
                     }
                     else{
                         revealCard(curPlayer: objection.target)
-                        print("challenger win")
                     }
                 }
                 if (objection.name == "allow"){
@@ -390,7 +387,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.tableView.reloadData()
                     }
                     sleep(2)
-                    
                 }
             }
             else {
@@ -420,16 +416,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func isGameOver(gameOn: inout Bool) {
+        print("GAME OVER ENTER: size = \(players.count)")
         var countFalse = 0
-        for cur in players {
+        for cur in players{
+            print("NAME: \(cur.name)")
             if cur.isPlayerRevealed() {
+                print("HI: \(cur.name) is gone")
                 countFalse += 1
             }
-            print("DooDoo")
         }
         if (countFalse == players.count - 1 || user!.isPlayerRevealed()) {
             gameOn = false
-            print("DaaDaa")
             // TODO Move need moving because seems like user loses when 1 card is revealed
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
@@ -448,13 +445,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func revealCard(curPlayer: Player) {
+        
+        let mostRecentMove: String = moveLog[moveLog.count - 1].name
         if (!curPlayer.cards.0.revealed) {
             DispatchQueue.main.async {
                 if curPlayer.name == LoginViewController.getUsername() {
                     self.revealFirstCard()
                 }
-                
-                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.0.name ?? "error") card."
+                if (mostRecentMove == "coup" || mostRecentMove == "assassinate"){
+                    self.statusLabel.text = "\(curPlayer.name) reveals the \(curPlayer.cards.0.name ?? "error")."
+                }
+                else{
+                    self.statusLabel.text = "\(curPlayer.name) fails challenge\n and reveals the \(curPlayer.cards.0.name ?? "error") card."
+                }
             }
             sleep(2)
             curPlayer.cards.0.revealed = true
@@ -464,14 +467,17 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if curPlayer.name == LoginViewController.getUsername() {
                     self.revealSecondCard()
                 }
-                
-                self.statusLabel.text = "\(curPlayer.name) fails challenge and reveals his \(curPlayer.cards.1.name ?? "error") card."
+                if (mostRecentMove == "coup" || mostRecentMove == "assassinate"){
+                    self.statusLabel.text = "\(curPlayer.name) reveals the \(curPlayer.cards.0.name ?? "error")."
+                }
+                else{
+                    self.statusLabel.text = "\(curPlayer.name) fails challenge\n and reveals the \(curPlayer.cards.1.name ?? "error") card."
+                }
             }
             sleep(2)
             
             curPlayer.cards.1.revealed = true
         }
-        
         DispatchQueue.main.async {
             self.setupUser()
             self.tableView.reloadData()
@@ -523,13 +529,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                             self.userCard = self.user!.cards.1
                             self.caseNum = 2
                             self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
-                        print("segue2~")
                     }
                     sleep(1) // important
                     switchSegue = false
-                    
                     while (!switchSegue) {}
-                    
                     sleep(1) // important
                     switchSegue = false
                 }
@@ -603,7 +606,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         while challengeTurnInd < players.count {
             let player = players[challengeTurnInd]
             
-            if (player.name == move.caller.name){
+            if (player.name == move.caller.name || player.isPlayerRevealed()){
                 challengeTurnInd += 1
                 continue
             }
@@ -616,7 +619,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (player.name == LoginViewController.getUsername()){
                 
                 DispatchQueue.main.async {
-                    self.statusLabel.text = "Please choose allow or challenge when it is your turn."
+                    self.statusLabel.text = "Please choose allow or challenge \nwhen it is your turn."
                 }
                 while (!didPlayerChallengeOrAllow){
                     DispatchQueue.main.async {
@@ -666,6 +669,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Buttons
         
     @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
+        if (user!.coins < 7){
+            let controller = UIAlertController(title: "You need 7 coins to coup!", message: "", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(controller, animated: true, completion: nil)
+            return
+        }
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
         for i in AIs {
@@ -693,6 +702,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func stealBtnPressed(_ sender: Any) {
+        if (!isStealPossible){
+            let controller = UIAlertController(title: "Nobody has enough coins to steal from!", message: "", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(controller, animated: true, completion: nil)
+            return
+        }
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
         for i in AIs {
@@ -711,6 +726,12 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func assassinateBtnPressed(_ sender: Any) {
+        if (user!.coins < 3){
+            let controller = UIAlertController(title: "You need 3 coins to assassinate!", message: "", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(controller, animated: true, completion: nil)
+            return
+        }
         let controller = UIAlertController(title: "Set the Target", message: "", preferredStyle: .actionSheet)
         var ind = 1
         for i in AIs {
@@ -763,22 +784,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func enableButtons(currentPlayer: Player){
-        if currentPlayer.coins >= 7 {
-            coupBtn.isEnabled = true
-        }
-        
+        coupBtn.isEnabled = true
         taxBtn.isEnabled = true
+        
         
         for i in AIs {
             if i.coins >= 2 {
                 stealBtn.isEnabled = true
+                isStealPossible = true
             }
         }
-        
-        if currentPlayer.coins >= 3 {
-            assassinateBtn.isEnabled = true
+        if (!stealBtn.isEnabled){
+            isStealPossible = false
         }
         
+        assassinateBtn.isEnabled = true
         foreignBtn.isEnabled = true
         incomeBtn.isEnabled = true
         exchangeBtn.isEnabled = true

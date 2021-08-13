@@ -684,11 +684,23 @@ class AI: Player{
             newRate = moveRateDic["income"]! + 10
             moveRateDic.updateValue(newRate, forKey: "income")
             
+            newRate = moveRateDic["tax"]! + 10
+            moveRateDic.updateValue(newRate, forKey: "tax")
+            
+            newRate = moveRateDic["foreignAid"]! + 10
+            moveRateDic.updateValue(newRate, forKey: "foreignAid")
+            
             moveRateDic.updateValue(0, forKey: "assassinate")
             
         } else {
             newRate = moveRateDic["income"]! - 10
             moveRateDic.updateValue(newRate, forKey: "income")
+            
+            newRate = moveRateDic["tax"]! - 10
+            moveRateDic.updateValue(newRate, forKey: "tax")
+            
+            newRate = moveRateDic["foreignAid"]! - 10
+            moveRateDic.updateValue(newRate, forKey: "foreignAid")
         }
         
         // Adjusting rate of steal based on Money
