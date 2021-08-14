@@ -910,9 +910,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func highlightPlayerInYellow(index: Int) {
         if index == 0 {
-            highlightUser(color: UIColor(hex: "#7D3C98FF")!)
+            if (SettingsViewController.isLightModeEnabled()){
+                highlightUser(color: UIColor(hex: "#D2B4DEFF")!)
+            }
+            else{
+                highlightUser(color: UIColor(hex: "#7D3C98FF")!)
+            }
         } else {
-            highlightAI(index: index - 1, color: UIColor(hex: "#7D3C98FF")!)
+            if (SettingsViewController.isLightModeEnabled()){
+                highlightAI(index: index - 1, color: UIColor(hex: "#D2B4DEFF")!)
+            }
+            else{
+                highlightAI(index: index - 1, color: UIColor(hex: "#7D3C98FF")!)
+            }
         }
     }
     

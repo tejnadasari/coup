@@ -871,7 +871,6 @@ class AI: Player{
                 }
             }
         }
-        
         //access move logs most recent move
         if assassinateCount <= 1 || exchangeCount <= 1 || taxCount <= 1 || stealCount <= 1 {
             challengeRate = 0.30
@@ -882,7 +881,6 @@ class AI: Player{
         } else {
             print("challengeRate = 0.00")
         }
-        
     }
     
     // MARK: - getChallengeOrAllow
