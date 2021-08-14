@@ -29,13 +29,7 @@ class GameEndsViewController: UIViewController {
         mainMenuOption.layer.borderWidth = 2
         mainMenuOption.layer.borderColor = UIColor.black.cgColor
         
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
+        setUpMode()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +37,10 @@ class GameEndsViewController: UIViewController {
         spinStatus()
         returnButton.isHidden = false
         
+        setUpMode()
+    }
+    
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -74,7 +72,7 @@ class GameEndsViewController: UIViewController {
                 // 180 degree rotation
                 self.statusLabel.transform =
                     self.statusLabel.transform.rotated(by: CGFloat(Double.pi))
-                }
+            }
         )
     }
     

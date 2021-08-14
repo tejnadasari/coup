@@ -8,24 +8,16 @@
 import UIKit
 
 class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
-
+    
     @IBOutlet weak var howToPlayLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpMode()
         
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
-
         howToPlayLabel.text! = "How to Play?"
-               
         descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 370, height: 1500))
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 750
@@ -39,7 +31,7 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
             
             
             Winner: The last player who has one or more unrevealed card(s) wins.
-
+            
             Game Roles (cards) & Actions:
             Note: At the end of each player's turn: everyone else can challenge or allow the move.
             
@@ -80,6 +72,10 @@ class HowToPlayViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+    }
+    
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")

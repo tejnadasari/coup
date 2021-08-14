@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var segCtrl: UISegmentedControl!
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
-
     
     let loginToCoupSegueIdentifier = "LoginToCoupSegueIdentifier"
     
@@ -36,13 +35,13 @@ class LoginViewController: UIViewController {
         statusLabel.text = "Status"
         
         Auth.auth().addStateDidChangeListener() {
-          auth, user in
-
-          if user != nil {
-            self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
-            self.emailTextField.text = nil
-            self.passwordTextField.text = nil
-          }
+            auth, user in
+            
+            if user != nil {
+                self.performSegue(withIdentifier: self.loginToCoupSegueIdentifier, sender: nil)
+                self.emailTextField.text = nil
+                self.passwordTextField.text = nil
+            }
         }
         
         segCtrl.layer.cornerRadius = 20.0
@@ -53,16 +52,14 @@ class LoginViewController: UIViewController {
         loginButton.layer.borderWidth = 2
         loginButton.layer.borderColor = UIColor.black.cgColor
         
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
+        setUpMode()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+    }
+    
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")

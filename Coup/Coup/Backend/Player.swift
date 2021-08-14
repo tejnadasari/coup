@@ -1,30 +1,30 @@
 import UIKit
 
-class Player{
+class Player {
     var name: String
     var photo: UIImage
     var cards: (Card, Card)
     var coins = 2
     
-    init(name: String, photo: UIImage, cards: (Card, Card)){
+    init(name: String, photo: UIImage, cards: (Card, Card)) {
         self.name = name
         self.photo = photo
         self.cards = cards
     }
     
-    init(){
+    init() {
         name = ""
         photo = UIImage()
         cards = (Card(), Card())
     }
     
-    func checkhaveCard(moveName: String) -> Int{
+    func checkhaveCard(moveName: String) -> Int {
         var theCard = -1
         
         switch moveName{
         case "assassinate":
-            if (!self.cards.0.revealed && self.cards.0.assassinate!) || (!self.cards.1.revealed && self.cards.1.assassinate!)
-            {
+            if (!self.cards.0.revealed && self.cards.0.assassinate!)
+                || (!self.cards.1.revealed && self.cards.1.assassinate!) {
                 if self.cards.0.assassinate! {
                     theCard = 0
                 } else {
@@ -32,8 +32,8 @@ class Player{
                 }
             }
         case "tax":
-            if (!self.cards.0.revealed && self.cards.0.tax!) || (!self.cards.1.revealed && self.cards.1.tax!)
-            {
+            if (!self.cards.0.revealed && self.cards.0.tax!)
+                || (!self.cards.1.revealed && self.cards.1.tax!) {
                 if self.cards.0.tax! {
                     theCard = 0
                 } else {
@@ -41,8 +41,8 @@ class Player{
                 }
             }
         case "steal":
-            if (!self.cards.0.revealed && self.cards.0.steal!) || (!self.cards.1.revealed && self.cards.1.steal!)
-            {
+            if (!self.cards.0.revealed && self.cards.0.steal!)
+                || (!self.cards.1.revealed && self.cards.1.steal!) {
                 if self.cards.0.steal! {
                     theCard = 0
                 } else {
@@ -50,8 +50,8 @@ class Player{
                 }
             }
         case "exchange":
-            if (!self.cards.0.revealed && self.cards.0.exchange!) || (!self.cards.1.revealed && self.cards.1.exchange!)
-            {
+            if (!self.cards.0.revealed && self.cards.0.exchange!)
+                || (!self.cards.1.revealed && self.cards.1.exchange!) {
                 if self.cards.0.exchange! {
                     theCard = 0
                 } else {
@@ -59,8 +59,8 @@ class Player{
                 }
             }
         case "coup":
-            if (!self.cards.0.revealed && self.cards.0.coup!) || (!self.cards.1.revealed && self.cards.1.coup!)
-            {
+            if (!self.cards.0.revealed && self.cards.0.coup!)
+                || (!self.cards.1.revealed && self.cards.1.coup!) {
                 if self.cards.0.coup! {
                     theCard = 0
                 } else {
@@ -68,8 +68,8 @@ class Player{
                 }
             }
         case "foreignAid":
-            if (!self.cards.0.revealed && self.cards.0.foreignAid!) || (!self.cards.1.revealed && self.cards.1.foreignAid!)
-            {
+            if (!self.cards.0.revealed && self.cards.0.foreignAid!)
+                || (!self.cards.1.revealed && self.cards.1.foreignAid!) {
                 if self.cards.0.foreignAid! {
                     theCard = 0
                 } else {
@@ -83,22 +83,15 @@ class Player{
         return theCard
     }
     
-    func isPlayerRevealed() -> Bool{
+    func isPlayerRevealed() -> Bool {
         return (self.cards.0.revealed && self.cards.1.revealed)
     }
     
     func updateCoin(coinVal:Int) {
         self.coins = self.coins + coinVal
     }
-
-//    func choose() {
-//
-//    }
     
-//    func revealCard() {  // TODO
-//    }
-    
-    func otherCardCount(cardLookingFor: String) -> Int{
+    func otherCardCount(cardLookingFor: String) -> Int {
         var count: Int = 0
         for current in players {
             if (current.name != self.name){
@@ -115,12 +108,12 @@ class Player{
     
     // MARK: - Only for AIs
     
-    func getPlayerMove() -> Move {  // only for AI
+    func getPlayerMove() -> Move {
         print("This should never happen")
         return Move()
     }
     
-    func getChallengeOrAllow(target: Player) -> Move {  // only for AI
+    func getChallengeOrAllow(target: Player) -> Move {
         print("This should never happen")
         return Move()
     }
@@ -128,10 +121,17 @@ class Player{
 
 class AI: Player{
     
-    var moveRateDic: [String:Int] = ["income":5, "foreignAid":5, "tax":5, "steal":5, "assassinate":5, "exchange":5]
+    var moveRateDic: [String:Int] = [
+        "income":5,
+        "foreignAid":5,
+        "tax":5,
+        "steal":5,
+        "assassinate":5,
+        "exchange":5
+    ]
     
     var challengeRate = 0.25
-
+    
     // MARK:- getAIMoveName and getPlayerMove
     
     // Let's get the name of Move first and then, let's figure out the target
@@ -146,7 +146,7 @@ class AI: Player{
         for (_, value) in moveRateDic {
             total += value
         }
-                
+        
         let rand = Int.random(in: 0...total)
         
         var lowerbound = 0
@@ -162,7 +162,6 @@ class AI: Player{
             lowerbound += value
         }
         
-        // as soon as 7+ dollars have been accumulated, initiate coup
         if self.coins >= 7 {
             aiMoveName = "coup"
         }
@@ -180,33 +179,26 @@ class AI: Player{
             return Move(name: moveName, caller: self, target: self)
         }
         
-        // if move is steal
         if moveName == "steal" {
             while true {
                 rand = Int.random(in: 0...players.count-1)
                 target = players[rand]
                 
-                // if the randomly selected target is self, reselect it
                 if target.name == self.name {
                     continue
                 }
                 
-                // if the randomly selected target has the same as or more than 2 dollars,
-                // self can set it as the target
                 if !target.isPlayerRevealed() && target.coins >= 2{
                     break
                 }
             }
-            
         }
         
         if moveName == "coup" || moveName == "assassinate" {
-            
             while true {
                 rand = Int.random(in: 0...players.count-1)
                 target = players[rand]
                 
-                // if target is self, continue
                 if target.name == self.name {
                     continue
                 }
@@ -214,7 +206,6 @@ class AI: Player{
                 if !target.isPlayerRevealed() {
                     break
                 }
-                
             }
         }
         
@@ -235,16 +226,12 @@ class AI: Player{
         // 2. if plyaer doe not have the move, decrease the rate of if by 1
         //  if any other player has the card, rating is lowered again by 1
         if card1.assassinate! || card2.assassinate! {
-            
-            // initialize it as 5
             moveRateDic.updateValue(5, forKey: "assassinate")
-            
             newRate = moveRateDic["assassinate"]! + 10
             
             if card1.assassinate! && card2.assassinate! {
                 newRate = moveRateDic["assassinate"]! + 20
             }
-            
             moveRateDic.updateValue(newRate, forKey: "assassinate")
             
             for i in 0...players.count - 1 {
@@ -327,11 +314,9 @@ class AI: Player{
         
         if card1.exchange! || card2.exchange! {
             newRate = moveRateDic["exchange"]! + 10
-            
             if card1.exchange! && card2.exchange! {
                 newRate = moveRateDic["exchange"]! + 20
             }
-            
             moveRateDic.updateValue(newRate, forKey: "exchange")
             
             for i in 0...players.count - 1 {
@@ -416,11 +401,9 @@ class AI: Player{
         
         if card1.tax! || card2.tax! {
             newRate = moveRateDic["tax"]! + 10
-            
             if card1.tax! && card2.tax! {
                 newRate = moveRateDic["tax"]! + 20
             }
-            
             moveRateDic.updateValue(newRate, forKey: "tax")
             
             for i in 0...players.count - 1 {
@@ -447,7 +430,6 @@ class AI: Player{
                 }
             }
             
-            // if card1.revealed then they cannot use it
             if (card1.revealed && card1.tax!) || (card2.revealed && card2.tax!) {
                 newRate = moveRateDic["tax"]! / 2
                 
@@ -504,16 +486,12 @@ class AI: Player{
         }
         
         if card1.steal! || card2.steal! {
-            
-            //initialize it as 5
             moveRateDic.updateValue(5, forKey: "steal")
-            
             newRate = moveRateDic["steal"]! + 10
             
             if card1.steal! && card2.steal! {
                 newRate = moveRateDic["steal"]! + 20
             }
-            
             moveRateDic.updateValue(newRate, forKey: "steal")
             
             for i in 0...players.count - 1 {
@@ -540,7 +518,6 @@ class AI: Player{
                 }
             }
             
-            // if card1.revealed then they cannot use it
             if (card1.revealed && card1.steal!) || (card2.revealed && card2.steal!) {
                 newRate = moveRateDic["steal"]! / 2
                 
@@ -602,7 +579,6 @@ class AI: Player{
             if card1.foreignAid! && card2.foreignAid! {
                 newRate = moveRateDic["foreignAid"]! + 20
             }
-            
             moveRateDic.updateValue(newRate, forKey: "foreignAid")
             
             for i in 0...players.count - 1 {
@@ -629,7 +605,6 @@ class AI: Player{
                 }
             }
             
-            // if card1.revealed then they cannot use it
             if (card1.revealed && card1.foreignAid!) || (card2.revealed && card2.foreignAid!) {
                 newRate = moveRateDic["foreignAid"]! / 2
                 
@@ -659,7 +634,6 @@ class AI: Player{
                 
                 moveRateDic.updateValue(newRate, forKey: "foreignAid")
             }
-            
         } else {
             newRate = moveRateDic["foreignAid"]! - 1
             moveRateDic.updateValue(newRate, forKey: "foreignAid")
@@ -685,7 +659,6 @@ class AI: Player{
             }
         }
         
-        // Adjusting rate based on Money
         if self.coins < 3 {
             newRate = moveRateDic["income"]! + 10
             moveRateDic.updateValue(newRate, forKey: "income")
@@ -696,7 +669,6 @@ class AI: Player{
             newRate = moveRateDic["foreignAid"]! + 10
             moveRateDic.updateValue(newRate, forKey: "foreignAid")
             
-            // AI cannot take "assassinate" if they do not have enough money ($3)
             moveRateDic.updateValue(0, forKey: "assassinate")
             
         } else {
@@ -716,7 +688,6 @@ class AI: Player{
         for i in 0...players.count - 1 {
             let player = players[i]
             
-            // if player is self, continue
             if player.name == self.name {
                 continue
             }
@@ -726,13 +697,12 @@ class AI: Player{
             }
         }
         
-        // if no other players have at least $2,
-        // AI cannot take "steal"
+        // if no other players have at least $2, AI cannot take "steal"
         if count == players.count - 1 {
             moveRateDic.updateValue(0, forKey: "steal")
         }
         
-        // All actions cannot decrease to below 0.
+        // All actions cannot decrease to below 0
         if moveRateDic["income"]! < 0 {
             moveRateDic.updateValue(0, forKey: "income")
         }
@@ -758,7 +728,7 @@ class AI: Player{
         }
         
     }
-
+    
     // MARK:- adustChallengeRate
     // allow/challenge
     // other card count is 1, then 80/20
@@ -898,23 +868,19 @@ class AI: Player{
         }
         
     }
-
+    
     // MARK: - getChallengeOrAllow
     // -> challenge or allow to the latest move from moveLog
     //   based on the percentage of challenge rate.
+    
     override func getChallengeOrAllow(target: Player) -> Move {
         //exclude all the moves except for challenge or allow
         self.adjustChallengeRate()
         
         let rand = Double.random(in: 0.01...1.00)
-        
-        print("challengeRate: \(challengeRate)")
-        print("random number: \(rand)")
-        
         if rand <= challengeRate {
             return Move(name: "challenge", caller: self, target: target)
         }
-        
         return Move(name:"allow", caller: self, target: target)
     }
 }

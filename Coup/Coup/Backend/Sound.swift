@@ -68,7 +68,7 @@ class Sound {
         if !SettingsViewController.isSoundEnabled() {
             return
         }
-
+        
         guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
         
         do {
@@ -88,7 +88,7 @@ class Sound {
         if !SettingsViewController.isSoundEnabled() {
             return
         }
-
+        
         guard let url = Bundle.main.url(forResource: file, withExtension: "m4a") else { return }
         
         do {

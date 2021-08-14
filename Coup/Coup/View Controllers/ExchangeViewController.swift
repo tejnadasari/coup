@@ -8,7 +8,7 @@
 import UIKit
 
 class ExchangeViewController: UIViewController {
-
+    
     @IBOutlet weak var cardImage1: UIImageView!
     @IBOutlet weak var cardImage2: UIImageView!
     @IBOutlet weak var cardLabel1: UILabel!
@@ -16,14 +16,9 @@ class ExchangeViewController: UIViewController {
     @IBOutlet weak var explainLabel: UILabel!
     @IBOutlet weak var keepCardsLabel: UIButton!
     
-    // delegate for applying any changes
     var delegate: UIViewController?
-    
-    // need to fetch two cards from GameViewController
-    var twoCards: (Card, Card)?
-    
-    // need to fetch the card which will be exchanged to the card
-    // chosen by user in this ViewController from GameViewController
+
+    var twoCards: (Card, Card)? // need to fetch two cards from deck
     var userCard: Card?
     var caseNum: Int?
     
@@ -39,27 +34,14 @@ class ExchangeViewController: UIViewController {
         let longPressReconizer2 = UILongPressGestureRecognizer(target: self, action: #selector(recognizeLongPressedGesture2(recognizer:)))
         self.cardImage2.addGestureRecognizer(longPressReconizer2)
         
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
-        
         keepCardsLabel.layer.cornerRadius = 15
         keepCardsLabel.layer.borderWidth = 2
         keepCardsLabel.layer.borderColor = UIColor.black.cgColor
+        setUpMode()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
+        setUpMode()
         
         cardImage1.image = twoCards!.0.photo
         cardImage2.image = twoCards!.1.photo
@@ -70,7 +52,17 @@ class ExchangeViewController: UIViewController {
         explainLabel.text = "Hold down on the card you want\n in exchange for your \(userCard!.name!)"
     }
     
-    @IBAction func recognizeLongPressedGesture1 (recognizer: UILongPressGestureRecognizer){
+    func setUpMode() {
+        if SettingsViewController.isLightModeEnabled() {
+            overrideUserInterfaceStyle = .light
+            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
+        } else {
+            overrideUserInterfaceStyle = .dark
+            self.view.backgroundColor = UIColor(hex: "#283747FF")
+        }
+    }
+    
+    @IBAction func recognizeLongPressedGesture1 (recognizer: UILongPressGestureRecognizer) {
         let gameVC = self.delegate as? ApplyExchangeDelegate
         let gameVC2 = self.delegate as? SwitchbuttonDelegate
         
@@ -86,7 +78,7 @@ class ExchangeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func recognizeLongPressedGesture2 (recognizer: UILongPressGestureRecognizer){
+    @IBAction func recognizeLongPressedGesture2 (recognizer: UILongPressGestureRecognizer) {
         let gameVC = self.delegate as? ApplyExchangeDelegate
         let gameVC2 = self.delegate as? SwitchbuttonDelegate
         

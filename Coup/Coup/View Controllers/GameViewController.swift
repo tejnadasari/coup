@@ -1,51 +1,3 @@
-/*
- How will gameplay work:
- 
- Previous view controller will initialize: numberOfAI / players
- 
- Deck, and AI array will be initialized. Entire array will just be AI.
- User will be included within the array
- 
- ViewDidLoad will call runGame(false) method, will also be in this file
- 
- RunGame() will consist of a while loop (moving the Game backend to this file)
-    1)Go through array
-    2)GetplayerMove() return boolean
-        When it is the actual player, always return a move with movename = LoginViewController.getUsername()
-            if movename == LoginViewController.getUsername() then break out of loop
-                button onClick listeners call runGame(true), now we have input from user
-                runGame(true) skips to the line after getPlayerMove()
-        When it is the AI, some calculation is done and move is returned
-    3)anyChallenges(false), returns a move as well
-        loop that just goes through entire player array
-        asks getChallengeOrAllow(), AI does calculation, real player return movename = LoginViewController.getUsername()
-            if movename == LoginViewController.getUsername() then break out of while loop
-                button onClick listeners will now call anyChallenges(true), now we have input from user
-                anyChallenges(true) skips to line directly after getChallengeOrAllow()
-            if move is a challenge, then stop and return that move
-            else return an empty move, indicating there is no challenge
-    4)then the game updates the game stats based on the move made and whether there was a challenge or not
-    5)checks to see if game over, if game is not over then loop continues
-    6) if game is over, then break out of it, and make sure nothing else happens
- 
- 
- IMPORTANT FOR TABLEVIEW:
- The user should be able to highlight a user, and then click a button.
- A user should not be able to click a button, without having a user highlighted (for moves that require a target).
- Once a user is highlighted, we need to be able to get their name, so we can properly create a Move object.
- */
-
-/* simple comment
- 
- 1. we need to change highlight thing for challenge turn
- 2. make button be pressed only one times except for steal and assassinate
- 3. income and coup should not be challenged
- 4. exchange doesn't work
-    -> For AI, I've already made exchange for AI before but I lost the file so I will implement it tomorrow
- 
- 
- */
-
 import UIKit
 
 var players: [Player] = []
@@ -94,21 +46,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var engButton: UIButton!
     
     // MARK: - Variables
-    var deck: Deck? // deck for game
-    var twoCards: (Card, Card)? // twoCards that will be used for exchange
-    var userCard: Card? // userCard for exchange
+    var deck: Deck?
+    var twoCards: (Card, Card)?
+    var userCard: Card?
     var caseNum: Int?
     var switchSegue = false
     
-    var user: Player? //the user of the app
-    var AIs: [Player] = [] //list of all AIs
+    var user: Player?
+    var AIs: [Player] = []
     
-    var playerMove = Move() //this is the move the player chooses
-    var didPlayerMove = false //did the player select a move yet?
-    var turnInd = 0 //whose turn is it
-    var didPlayerChallengeOrAllow = false //did the player allow or challenge yet?
-    var challengeTurnInd = 0 //whose turn it is to select challenge or allow
-    var challengeMove = Move() //this is the move that is chosen for challenge/allow
+    var playerMove = Move()
+    var didPlayerMove = false
+    var turnInd = 0
+    var didPlayerChallengeOrAllow = false
+    var challengeTurnInd = 0
+    var challengeMove = Move()
     
     //boolean values for each move, and then this is set everytime a button is clicked
     var steal = false
@@ -120,19 +72,19 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var target: Player?{
         didSet{
-            //this ensures the whenever the player move is set, we do have a target (prevents multithreading error)
+            //this ensures the whenever the player move is set, we have a target
             didPlayerMove = true
+            
             if steal{
                 playerMove = Move(name: "steal", caller: players[turnInd], target: (self.target!))
-            }
-            else if coup{
+            } else if coup {
                 playerMove = Move(name: "coup", caller: players[turnInd], target: (self.target!))
-            }
-            else{
+            } else {
                 playerMove = Move(name: "assassinate", caller: players[turnInd], target: (self.target!))
             }
             queueForGame.async(execute: workingItem)
         }
+        
         willSet{}
     }
     
@@ -151,8 +103,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //initially buttons are disabled
         disableAllButtons()
         
         //deck initialization
@@ -163,21 +113,28 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        // setup AIs and user
         setupAIs()
         setupUser()
         
-        //runGame begins
+        // runGame begins
         workingItem = DispatchWorkItem {
             self.runGame()
         }
         queueForGame.async(execute: workingItem)
         
-        //UI
+        setUpUI()
+        setUpMode()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+    }
+    
+    func setUpUI() {
         coupBtn.layer.cornerRadius = 15
         coupBtn.layer.borderWidth = 2
         coupBtn.layer.borderColor = UIColor.black.cgColor
-
+        
         taxBtn.layer.cornerRadius = 15
         taxBtn.layer.borderWidth = 2
         taxBtn.layer.borderColor = UIColor.black.cgColor
@@ -222,18 +179,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         engButton.layer.cornerRadius = 15
         engButton.layer.borderWidth = 2
         engButton.layer.borderColor = UIColor.black.cgColor
-        
-        //handles darkmode
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -272,7 +220,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Run game
-    func runGame(){
+    
+    func runGame() {
         while gameOn {
             var curMove: Move = Move()
             let currentPlayer = players[turnInd]
@@ -287,38 +236,32 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.highlightPlayerInGray(index: self.turnInd)
             }
-            sleep(1) //so main queue can run and update the UI
-
+            sleep(1)
+            
             //if it is the players turn
             if (currentPlayer.name == LoginViewController.getUsername() && didPlayerMove == false){
                 DispatchQueue.main.async {
                     self.statusLabel.text = "Your turn. Select a move."
                     self.enableButtons(currentPlayer: currentPlayer)
-                 }
+                }
                 sleep(3)
                 break
             } else if (currentPlayer.name == LoginViewController.getUsername()) { //user has selected a move
-                /*DispatchQueue.main.async {
-                    self.disableAllButtons()
-                }
-                sleep(1)*/
                 curMove = playerMove //user move is stored in curMove
                 didPlayerMove = false
             } else { //else we get a move from the AI
                 curMove = currentPlayer.getPlayerMove()
             }
             
-            //displays move
             DispatchQueue.main.async {
-               self.statusLabel.text = curMove.toString()
+                self.statusLabel.text = curMove.toString()
             }
             sleep(3)
+            moveLog.append(curMove)
             
-            moveLog.append(curMove) //records the move in the movelog
-            //checking for challenges
-            var objection: Move = Move()
             //cannot challenge income or coup
-            if (curMove.name != "income" && curMove.name != "coup"){
+            var objection: Move = Move()
+            if (curMove.name != "income" && curMove.name != "coup") {
                 objection = anyChallenges(move: curMove) //checks for challenges
                 if (objection.name == "challenge"){
                     DispatchQueue.main.async {
@@ -327,15 +270,9 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     sleep(3)
                     
-                    // if the target win
-                    // if the result of checkhaveCardd == -1, the target has the card
                     if currentPlayer.checkhaveCard(moveName: curMove.name) != -1 {
                         let theCard = currentPlayer.checkhaveCard(moveName: curMove.name)
                         revealCard(curPlayer: objection.caller)
-                        
-//                        // this code is needed -> when the user is the challenger and they fails,
-//                        // and two of their cards are revealed, the game should be ended right away.
-//                        isGameOver(gameOn: &gameOn)
                         
                         var newCard = deck!.giveACard()
                         
@@ -447,7 +384,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         if (countFalse == players.count - 1 || user!.isPlayerRevealed()) {
             gameOn = false
-            // TODO Move need moving because seems like user loses when 1 card is revealed
             if players[0].isPlayerRevealed() {
                 DispatchQueue.main.sync {
                     self.youLose()
@@ -465,7 +401,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func revealCard(curPlayer: Player) {
-        
         let mostRecentMove: String = moveLog[moveLog.count - 1].name
         if (!curPlayer.cards.0.revealed) {
             DispatchQueue.main.async {
@@ -528,7 +463,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             sleep(1)
             
-            // get 2 cards from the current deck
             twoCards = deck!.give2Cards()
             let caller = move.caller
             
@@ -551,21 +485,21 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                     DispatchQueue.main.sync {
                         // if the caller's second card has not revealed yet,
                         // give them a chance to exchange it for another one from twoCards
-                            self.userCard = self.user!.cards.1
-                            self.caseNum = 2
-                            self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
+                        self.userCard = self.user!.cards.1
+                        self.caseNum = 2
+                        self.performSegue(withIdentifier: "exchangeSegueIdentifier", sender: nil)
                     }
-                    sleep(1) // important
+                    sleep(1)
+                    
                     switchSegue = false
                     while (!switchSegue) {}
-                    sleep(1) // important
+                    sleep(1)
                     switchSegue = false
                 }
                 
                 DispatchQueue.main.async {
                     self.setupUser()
                 }
-                
                 sleep(2)
                 
             } else {
@@ -583,7 +517,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             
-            // give 2 cards back to the current deck -> shuffle activated
             deck!.get2CardsBackNShuffle(twoCards: twoCards!)
             
         case "assassinate":
@@ -640,7 +573,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.enableChallengeButtons()
                     }
                     sleep(1)
-                 }
+                }
             } else {
                 curMove = player.getChallengeOrAllow(target: move.caller)
             }
@@ -660,7 +593,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 curMove = Move(name: "allow", caller: players[challengeTurnInd], target: players[turnInd])
             }
             challengeTurnInd += 1
-             DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 self.dismissHighlights()
             }
             sleep(1)
@@ -680,9 +613,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.assassinate = areWeKilling
         self.coup = areWeCoup
     }
+    
     // MARK: - Buttons
-        
-    @IBAction func coupBtnPressed(_ sender: Any) { //how do we select target
+    
+    @IBAction func coupBtnPressed(_ sender: Any) {
         if (user!.coins < 7){
             let controller = UIAlertController(title: "You need 7 coins to coup!", message: "", preferredStyle: .alert)
             controller.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -696,15 +630,13 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 continue
             }
             controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
-            _ in
+                _ in
                 self.targetMoveSelected(areWeStealing: false, areWeKilling: false, areWeCoup: true)
                 self.target = i
             })
             ind += 1
         }
         present(controller, animated: true, completion: nil)
-        //list of variables for each move name, and they will use didSet
-        //in didSet, they set self.target, and then self.target uses the movename that has already been set
         self.disableAllButtons()
     }
     
@@ -729,7 +661,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 continue
             }
             controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
-            _ in
+                _ in
                 self.targetMoveSelected(areWeStealing: true, areWeKilling: false, areWeCoup: false)
                 self.target = i
             })
@@ -753,7 +685,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
                 continue
             }
             controller.addAction(UIAlertAction(title: "\(i.name)", style: .default){
-            _ in
+                _ in
                 self.targetMoveSelected(areWeStealing: false, areWeKilling: true, areWeCoup: false)
                 self.target = i
             })
@@ -772,7 +704,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         sleep(1)
         self.disableAllButtons()
-     }
+    }
     
     @IBAction func incomeBtnPressed(_ sender: Any) {
         didPlayerMove = true
@@ -792,7 +724,6 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         didPlayerMove = true
         playerMove = Move(name: "exchange", caller: players[turnInd], target: players[turnInd])
         queueForGame.async(execute: workingItem)
-        //intiate segue here
         self.disableAllButtons()
     }
     
@@ -878,7 +809,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Not Applicable")
         }
     }
-
+    
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -994,7 +925,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Segues
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "activityLogSegueIdentifier",
@@ -1002,7 +933,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             activityLogVC.players = players
         }
         else if segue.identifier == "exchangeSegueIdentifier",
-           let exchangeVC = segue.destination as? ExchangeViewController {
+                let exchangeVC = segue.destination as? ExchangeViewController {
             exchangeVC.delegate = self
             exchangeVC.twoCards = twoCards
             exchangeVC.userCard = userCard

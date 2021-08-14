@@ -8,7 +8,7 @@
 import UIKit
 
 class GameLogTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var aiImageView: UIImageView!
     @IBOutlet weak var aiNameLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
@@ -18,7 +18,7 @@ class GameLogTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

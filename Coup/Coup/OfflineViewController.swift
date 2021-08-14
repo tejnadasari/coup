@@ -8,13 +8,24 @@
 import UIKit
 
 class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
-    var aiArray = ["Charlie Puth", "Ed Sheeran", "Justin Bieber", "Selena Gomez", "Taylor Swift"]
-    let user = Player(name: LoginViewController.getUsername(), photo: SettingsViewController.getImage(), cards: (Card(), Card()))
+    
+    var aiArray = [
+        "Charlie Puth",
+        "Ed Sheeran",
+        "Justin Bieber",
+        "Selena Gomez",
+        "Taylor Swift"
+    ]
+    
+    let user = Player(
+        name: LoginViewController.getUsername(),
+        photo: SettingsViewController.getImage(),
+        cards: (Card(), Card())
+    )
     var playerArray: [Player] = []
     var playerCount = 1
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var gameStartButton: UIButton!
     @IBOutlet weak var addAIButton: UIButton!
     
@@ -33,6 +44,14 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         gameStartButton.layer.borderWidth = 2
         gameStartButton.layer.borderColor = UIColor.black.cgColor
         
+        setUpMode()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+    }
+    
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -42,22 +61,12 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
-    }
-
     // MARK: - Table view data source
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerArray.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addAITableViewCell", for: indexPath) as! AddAITableViewCell
         
@@ -98,12 +107,12 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     @IBAction func addAIButtonPressed(_ sender: Any) {
         
         if playerCount < 6 {
             let AI = AI(name: aiArray[0], photo: UIImage(named: "\(aiArray[0]).jpg")!, cards: (Card(), Card()))
-            aiArray.remove(at: 0) //change the index to the last index? (increased efficiency? since elements will not get shifted that way
+            aiArray.remove(at: 0)
             playerCount += 1
             playerArray.append(AI)
             
@@ -127,9 +136,9 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
             present(controller, animated: true, completion: nil)
         }
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if playerArray.count <= 1{
             return
@@ -139,5 +148,5 @@ class OfflineViewController: UIViewController, UITableViewDelegate, UITableViewD
             players = playerArray
         }
     }
-
+    
 }

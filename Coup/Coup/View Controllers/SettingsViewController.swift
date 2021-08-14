@@ -23,7 +23,15 @@ class SettingsViewController: UIViewController,
         super.viewDidLoad()
         picker.delegate = self
         setUpSettings()
-        
+        setUpUI()
+        setUpMode()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+    }
+    
+    func setUpUI() {
         modeSegCtrl.layer.cornerRadius = 20.0
         let font = UIFont.systemFont(ofSize: 16)
         modeSegCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
@@ -34,18 +42,9 @@ class SettingsViewController: UIViewController,
         doneButton.layer.cornerRadius = 15
         doneButton.layer.borderWidth = 2
         doneButton.layer.borderColor = UIColor.black.cgColor
-        
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print(LoginViewController.getEffectInUserDefaults())
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -78,7 +77,6 @@ class SettingsViewController: UIViewController,
                 return UIImage(data: decodedData)!
             }
         } catch {
-            // if an error occurs
             let nserror = error as NSError
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
@@ -99,7 +97,6 @@ class SettingsViewController: UIViewController,
         do {
             try context.save()
         } catch {
-            // If an error occurs
             let nserror = error as NSError
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
@@ -124,7 +121,6 @@ class SettingsViewController: UIViewController,
             
             try context.save()
         } catch {
-            // if an error occurs
             let nserror = error as NSError
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()

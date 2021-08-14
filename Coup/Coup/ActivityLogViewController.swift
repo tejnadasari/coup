@@ -8,11 +8,11 @@
 import UIKit
 
 class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var activityLogLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-
+    
     var players: [Player] = []
     
     override func viewDidLoad() {
@@ -21,18 +21,16 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        if SettingsViewController.isLightModeEnabled() {
-            overrideUserInterfaceStyle = .light
-            self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
-        } else {
-            overrideUserInterfaceStyle = .dark
-            self.view.backgroundColor = UIColor(hex: "#283747FF")
-        }
-        
+        setUpMode()
         tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+        tableView.reloadData()
+    }
+    
+    func setUpMode() {
         if SettingsViewController.isLightModeEnabled() {
             overrideUserInterfaceStyle = .light
             self.view.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -40,8 +38,6 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
             overrideUserInterfaceStyle = .dark
             self.view.backgroundColor = UIColor(hex: "#283747FF")
         }
-        
-        tableView.reloadData()
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
@@ -61,7 +57,6 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
         
         let row = indexPath.row
         
-        // Configure the cell...
         cell.userProfile.image = moveLog[row].caller.photo
         cell.gameLogLabel.text = moveLog[row].toString()
         
