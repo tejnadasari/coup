@@ -46,6 +46,10 @@ class ExchangeViewController: UIViewController {
             overrideUserInterfaceStyle = .dark
             self.view.backgroundColor = UIColor(hex: "#283747FF")
         }
+        
+        keepCardsLabel.layer.cornerRadius = 15
+        keepCardsLabel.layer.borderWidth = 2
+        keepCardsLabel.layer.borderColor = UIColor.black.cgColor
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -74,7 +74,8 @@ class ActivityLogViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.backgroundColor = UIColor(hex: "#283747FF")
             cell.backgroundColor = UIColor(hex: "#283747FF")
         }
-
+        cell.textLabel?.numberOfLines = 3;
+        
         return cell
     }
 }
