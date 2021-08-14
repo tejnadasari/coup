@@ -44,6 +44,15 @@ class LoginViewController: UIViewController {
             }
         }
         
+        setUpUI()
+        setUpMode()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpMode()
+    }
+    
+    func setUpUI() {
         segCtrl.layer.cornerRadius = 20.0
         let font = UIFont.systemFont(ofSize: 16)
         segCtrl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
@@ -51,12 +60,6 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 15
         loginButton.layer.borderWidth = 2
         loginButton.layer.borderColor = UIColor.black.cgColor
-        
-        setUpMode()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        setUpMode()
     }
     
     func setUpMode() {
