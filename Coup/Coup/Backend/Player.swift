@@ -729,11 +729,8 @@ class AI: Player{
         
     }
     
-    // MARK:- adjustChallengeRate
-    // allow/challenge
-    // other card count is 1, then 80/20
-    // other card count is 2, then 75/25
-    // other card count is 3, then 0/100
+    // MARK: - adjustChallengeRate
+    
     func adjustChallengeRate() {
         
         let card1 = self.cards.0
@@ -871,6 +868,7 @@ class AI: Player{
                 }
             }
         }
+        
         //access move logs most recent move
         if assassinateCount <= 1 || exchangeCount <= 1 || taxCount <= 1 || stealCount <= 1 {
             challengeRate = 0.30
