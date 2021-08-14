@@ -204,11 +204,16 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         userNameLabel.text = user!.name
         userCoinLabel.text = "$ \(user!.coins)"
         userCard1Label.text = user!.cards.0.name!
-        userCard1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         card1ImageView.image = currentUserCard1
         userCard2Label.text = user!.cards.1.name!
-        userCard2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
         card2ImageView.image = currentUserCard2
+        if SettingsViewController.isLightModeEnabled() {
+            userCard1Label.textColor = UIColor.black
+            userCard2Label.textColor = UIColor.black
+        } else {
+            userCard1Label.textColor = UIColor.white
+            userCard2Label.textColor = UIColor.white
+        }
         
         if user!.cards.0.revealed {
             userCard1Label.textColor = UIColor.label
@@ -833,22 +838,38 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if AIs[row].cards.0.revealed {
             cell.identity1Label.text = AIs[row].cards.0.name
-            cell.identity1Label.textColor = UIColor.label
+            if(SettingsViewController.isLightModeEnabled()) {
+                cell.identity1Label.textColor = UIColor.black
+            } else {
+                cell.identity1Label.textColor = UIColor.white
+            }
         } else {
             cell.identity1Label.text = "Hidden"
-            cell.identity1Label.textColor = UIColor(white: 0.5, alpha: 0.5)
+            if(SettingsViewController.isLightModeEnabled()) {
+                cell.identity1Label.textColor = UIColor.black
+            } else {
+                cell.identity1Label.textColor = UIColor.white
+            }
         }
         
         if AIs[row].cards.1.revealed {
             cell.identity2Label.text = AIs[row].cards.1.name
-            cell.identity2Label.textColor = UIColor.label
+            if(SettingsViewController.isLightModeEnabled()) {
+                cell.identity1Label.textColor = UIColor.black
+            } else {
+                cell.identity1Label.textColor = UIColor.white
+            }
         } else {
             cell.identity2Label.text = "Hidden"
-            cell.identity2Label.textColor = UIColor(white: 0.5, alpha: 0.5)
+            if(SettingsViewController.isLightModeEnabled()) {
+                cell.identity1Label.textColor = UIColor.black
+            } else {
+                cell.identity1Label.textColor = UIColor.white
+            }
         }
         
         cell.contentView.backgroundColor = AICellColors[row]
-        if SettingsViewController.isLightModeEnabled() {
+        if(SettingsViewController.isLightModeEnabled()) {
             overrideUserInterfaceStyle = .light
             self.tableView.backgroundColor = UIColor(hex: "#FFF8E1FF")
             cell.backgroundColor = UIColor(hex: "#FFF8E1FF")
@@ -889,10 +910,10 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func highlightPlayerInYellow(index: Int) {
         if index == 0 {
-            highlightUser(color: UIColor.yellow)
+            highlightUser(color: UIColor(hex: "#7D3C98FF")!)
         } else {
             highlightAI(index: index - 1, color: UIColor(hex: "#7D3C98FF")!)
-        }//UIColor(hex: "#FFF8E1FF")
+        }
     }
     
     func dismissHighlights() {

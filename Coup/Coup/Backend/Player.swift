@@ -729,7 +729,7 @@ class AI: Player{
         
     }
     
-    // MARK:- adustChallengeRate
+    // MARK:- adjustChallengeRate
     // allow/challenge
     // other card count is 1, then 80/20
     // other card count is 2, then 75/25
@@ -756,6 +756,10 @@ class AI: Player{
                     let player = players[i]
                     let pCard1 = player.cards.0
                     let pCard2 = player.cards.1
+                    
+                    if player.name == self.name{
+                        continue
+                    }
                     
                     if pCard1.revealed {
                         if pCard1.assassinate!{
@@ -785,6 +789,10 @@ class AI: Player{
                     let pCard1 = player.cards.0
                     let pCard2 = player.cards.1
                     
+                    if player.name == self.name{
+                        continue
+                    }
+                    
                     if pCard1.revealed {
                         if pCard1.exchange!{
                             exchangeCount += 1
@@ -813,6 +821,10 @@ class AI: Player{
                     let pCard1 = player.cards.0
                     let pCard2 = player.cards.1
                     
+                    if player.name == self.name{
+                        continue
+                    }
+                    
                     if pCard1.revealed {
                         if pCard1.tax!{
                             taxCount += 1
@@ -840,6 +852,10 @@ class AI: Player{
                     let player = players[i]
                     let pCard1 = player.cards.0
                     let pCard2 = player.cards.1
+                    
+                    if player.name == self.name{
+                        continue
+                    }
                     
                     if pCard1.revealed {
                         if pCard1.steal!{
