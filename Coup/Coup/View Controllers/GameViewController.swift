@@ -234,6 +234,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             //all UI updates, are placed in main queue
             DispatchQueue.main.async {
+                self.dismissHighlights()
                 self.highlightPlayerInGray(index: self.turnInd)
             }
             sleep(1)
@@ -888,7 +889,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func highlightPlayerInYellow(index: Int) {
         if index == 0 {
-            highlightUser(color: UIColor(red: 41.00, green: 128.00, blue: 185.00, alpha: 1.00))
+            highlightUser(color: UIColor.yellow)
         } else {
             highlightAI(index: index - 1, color: UIColor.yellow)
         }
