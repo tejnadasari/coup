@@ -891,8 +891,8 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
         if index == 0 {
             highlightUser(color: UIColor.yellow)
         } else {
-            highlightAI(index: index - 1, color: UIColor.yellow)
-        }
+            highlightAI(index: index - 1, color: UIColor(hex: "#7D3C98FF")!)
+        }//UIColor(hex: "#FFF8E1FF")
     }
     
     func dismissHighlights() {
