@@ -38,7 +38,7 @@ class GameViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var foreignBtn: UIButton!
     
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var userStack: UIStackView!
+    @IBOutlet weak var userStack: UIStackView!//a
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var cheatSheet: UIButton!
